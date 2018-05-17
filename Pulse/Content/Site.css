@@ -1,0 +1,257 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.mainlogo > h1 {
+    color: deepskyblue;
+    -webit-margin-before: 0px !important;
+    font-size: 17px !important;
+    padding-left: 15px;
+    margin-top: 5px !important;
+}
+/*
+span.logo {
+    font-family: 'Bad Script', cursive;
+    color: white !important;
+    font-size: 17px; 
+}
+*/
+.mainlogo {
+    background-color: #196871 !important;
+    height: 45px;
+    padding-top: 1px;
+    display: block;
+    width: 100%;
+}
+
+.dateholder {
+    color: deepskyblue;
+    font-size: 15px;
+    position: fixed;
+    right: 120px;
+    top: 5px;
+}
+
+.footer {
+    border-top: 5px solid #f39c12;
+    bottom: 0px;
+    position: fixed;
+    height: 35px;
+    width: 100%;
+    color: white;
+    padding-top: 5px;
+    background-color: #196871;
+}
+
+    .footer > span {
+        margin-left: 50%;
+        color: white;
+    }
+
+
+.login-form {
+    width: 370px;
+}
+
+.login-title {
+    font-family: 'Exo', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.login-userinput {
+    margin-bottom: 10px;
+}
+
+.login-button {
+    margin-top: 10px;
+}
+
+.login-options {
+    margin-bottom: 0px;
+}
+
+.login-forgot {
+    float: right;
+}
+
+.icon-user {
+    color: rgb(218, 167, 45);
+}
+
+.icon-pwd {
+    color: rgb(218, 167, 45);
+}
+
+.login-container {
+    padding-top: 10%;
+    margin: 0 auto;
+}
+
+.panel-body {
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+.login-bg {
+    background: #02b8d8 no-repeat; /* Old browsers */
+}
+
+/*.btn-info {
+    color: #fff;
+    background-color: #196871 !important;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    border-radius: 0px;
+    border-left: 2px solid white;
+}
+
+    .btn-info:hover {
+        color: #fff;
+        background-color: #196871 !important;
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+        border-radius: 0px;
+        border-left: 2px solid white;
+    }*/
+
+.btn-pad {
+    padding-top: 5px;
+}
+
+
+.long-shadow {
+    margin-left: 30px;
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 25px;
+    border: none;
+    font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 3px 3px 0 #0199d9, 4px 4px 0 #0199d9;
+}
+
+.logout-button {
+    background-color: indianred;
+    color: black;
+    float: right;
+    margin-right: 1%;
+    /*padding:5px;*/
+}
+
+button.logout-button > a {
+    color: white;
+}
+
+
+
+li a.active {
+    color: yellow !important;
+    /* background-color: #f39c12; */
+}
+
+.form-control {
+    margin: 4px !important;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: #2da4b1 !important
+}
+
+ul.dropdown-menu > li > a {
+    color: white !important;
+}
+
+    ul.dropdown-menu > li > a:hover {
+        background-color: #2da4b1 !important;
+    }
+
+
+.navbar-nav {
+    background-color: #196871 !important;
+    border-bottom: 5px solid #f39c12;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+}
+.navbar-nav>li>a{
+    color: white !important;
+}
+
+    .navbar-nav > li > a:hover {
+        background-color: #2da4b1 !important;
+    }
+.navbar-fixed-top{
+    width: 100%;
+}
+
+.dropdown-menu {
+    color: white !important;
+    background-color: #196871 !important;
+    border-bottom: 3px solid #f39c12;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #2da4b1 !important;
+}
+
+ul.nav.navbar-nav > li.active > a {
+    background-color: #2da4b1 !important;  
+    
+
+}
+ul.nav.navbar-nav > li> a{
+    justify-content: space-around;
+}
+.navbar{
+    margin-bottom: 0px !important;
+}

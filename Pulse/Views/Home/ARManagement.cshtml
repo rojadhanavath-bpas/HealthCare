@@ -1,0 +1,303 @@
+﻿
+@{
+
+    ViewBag.Title = "ARManagement";
+
+}
+
+
+
+<html>
+<head>
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+    <script src='https://public.tableau.com/javascripts/api/tableau-2.js'></script>
+    <script src='https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.9.2/xlsx.core.min.js"></script>
+    <script>
+
+    $(document).ready(function initViz() {
+
+        w = $(window).width() - 20;
+
+        h = $(window).height() - 70;
+        var vizDiv = document.getElementById("vizDiv");
+        var ticket = "@ViewBag.Message";
+        var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/ARM-Comparisons/ARM-Dashboard?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
+
+
+  options = {
+height: h,
+width: w,
+            hideToolbar: true,
+            onFirstInteractive: function () {
+
+                workbook = viz.getWorkbook();
+
+                dash = viz.getWorkbook().getActiveSheet();
+				//console.log(dash.getName());
+                workbook.activateSheetAsync(dash.getName())
+                    .then(function (dashboard) {
+                        //this is the secret sauce that stores all of the sheet names on the dashboard in an array named sheetNames
+                        var worksheets = dashboard.getWorksheets();
+						console.log(dashboard);
+						console.log("[Debug]: Trying to get the worksheets"+worksheets.length);
+                        //here is the aforementioned array
+                        var sheetNames = [];
+                        //here we are looping through all the sheets on the dash, & pushing the sheet name to the sheetNames array
+                        for (var i = 0, len = worksheets.length; i < len; i++) {
+
+                            var sheet = worksheets[i];
+                            sheetNames.push(sheet.getName());
+							console.log("[Debug]: Acquired:"+sheet.getName());
+                        }
+
+                        //here is where we are creating our dropdown menu... kind of like a Tableau parameter
+                        //we will inject this value into the getVizData() function a little bit later
+                        var sel = document.getElementById('SheetList');
+                        var fragment = document.createDocumentFragment();
+
+                        sheetNames.forEach(function (sheetName, index) {
+
+                            var opt = document.createElement('option');
+                            opt.innerHTML = sheetName;
+                            opt.value = sheetName;
+                            fragment.appendChild(opt);
+                        });
+
+                        sel.appendChild(fragment);
+
+                    });
+            }
+        };
+        viz = new tableau.Viz(vizDiv, url, options);
+
+    });
+
+    //if you've made it to this point, know that the magic came from here: https://www.interworks.com/blog/rrouse/2016/06/07/pull-viz-data-new-javascript-api-features-tableau-10
+        function getVizData() {
+            console.log("[pulse]: Generating EXCEL...");
+            $('#myModal').modal('hide');
+        options = {
+
+            maxRows: 0, // Max rows to return. Use 0 to return all rows
+            ignoreAliases: false,
+            ignoreSelection: true,
+            includeAllColumns: false
+        };
+
+        sheet = viz.getWorkbook().getActiveSheet();
+
+        //if active tab is a worksheet, get data from that sheet
+        if (sheet.getSheetType() === 'worksheet') {
+            sheet.getUnderlyingDataAsync(options).then(function (t) {
+                buildMenu(t);
+            });
+
+            sheet.getFiltersAsync(options).then(function (t) {
+
+                console.log(t);
+
+            });
+
+            //if active sheet is a dashboard get data from a specified sheet
+        } else {
+            worksheetArray = viz.getWorkbook().getActiveSheet().getWorksheets();
+            for (var i = 0; i < worksheetArray.length; i++) {
+                worksheet = worksheetArray[i];
+                sheetName = worksheet.getName();
+
+                //get user's selection from dropdown of sheets
+                var selectedVal = document.getElementById("SheetList").value;
+
+
+
+                //get the data from the selected sheet
+                if (sheetName == selectedVal) {
+                    viz.showExportCrossTabDialog(selectedVal);
+                }
+            }
+        }
+
+        $('#myModal').modal('hide');
+    }
+        function exportToPDF() {
+            console.log("[pulse]: Generating PDF...");
+
+
+        viz.showExportPDFDialog();
+        }
+
+
+    function yearFilter(year) {
+
+        worksheetArray = viz.getWorkbook().getActiveSheet().getWorksheets();
+        for (var i = 0; i < worksheetArray.length; i++) {
+            worksheet = worksheetArray[i];
+            sheetName = worksheet.getName();
+
+            //get user's selection from dropdown of sheets
+            var selectedVal = document.getElementById("SheetList").value;
+
+
+
+            //get the data from the selected sheet
+            if (sheetName == selectedVal) {
+
+                if (year === "") {
+                    worksheetArray[i].clearFilterAsync("Kpi Service Area");
+                } else {
+                    worksheetArray[i].applyFilterAsync("Kpi Service Area", year, tableau.FilterUpdateType.REPLACE);
+                }
+
+            }
+        }
+
+    }
+
+    //restructure the data and build something with it
+    function buildMenu(table) {
+
+        //the data returned from the tableau API
+        var columns = table.getColumns();
+        var data = table.getData();
+
+        //convert to field:values convention
+        function reduceToObjects(cols, data) {
+            var fieldNameMap = $.map(cols, function (col) {
+                return col.$impl.$fieldName;
+            });
+            var dataToReturn = $.map(data, function (d) {
+                return d.reduce(function (memo, value, idx) {
+                    memo[fieldNameMap[idx]] = value.value;
+                    return memo;
+                }, {});
+            });
+            return dataToReturn;
+        }
+
+        var niceData = reduceToObjects(columns, data);
+
+        //take the niceData and send it to a csv named TableauDataExport
+        alasql('SELECT * INTO  XLSX("myinquires.xlsx",{headers:true}) FROM ?', [niceData]);
+
+    }
+
+
+
+    </script>
+
+    <style>
+        select {
+            margin: 5px;
+            border: 1px solid #111;
+            background: transparent;
+            width: 150px;
+            padding: 3px 35px 3px 3px;
+            background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+            background-position: 97% center;
+            background-repeat: no-repeat;
+            border: 1px solid #ccc;
+            height: 24px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+
+        input {
+            margin: 5px;
+            border: 1px solid #111;
+            background: transparent;
+            width: 150px;
+            padding: 3px 3px 3px 3px;
+            background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+            background-position: 97% center;
+            background-repeat: no-repeat;
+            border: 1px solid #ccc;
+            height: 24px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .custom-button {
+            margin: 5px;
+            border: 1px solid #111;
+            background: transparent;
+            width: 30px;
+            padding: 3px 3px 3px 3px;
+            height: 24px;
+        }
+
+        .custom-button-1 {
+            margin: 5px;
+            border: 1px solid #111;
+            background: transparent;
+            width: 100px;
+            padding: 3px 3px 3px 3px;
+            height: 24px;
+        }
+
+        .container-fluid {
+            padding-top: 3px;
+        }
+        /* CAUTION: IE hackery ahead */
+        select::-ms-expand {
+            display: none; /* remove default arrow in IE 10 and 11 */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav pull-right">
+                <li>
+                    <div class="row" style="padding-top:10px;">
+                        <div class="col-sm-4"><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>&nbsp; &nbsp;</a></div>
+                        <div class="col-sm-4">
+                            <a href="#" onclick="exportToPDF()"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>&nbsp; &nbsp;</a>
+
+
+                        </div>
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Choose a workbook to download Excel : </h4>
+                </div>
+                <div class="modal-body">
+
+                    <select id="SheetList"></select>
+                    <button type="button" class="btn btn-default" onclick="getVizData()"> Generate </button> <br />
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="vizDiv" style="height:690px!important;"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

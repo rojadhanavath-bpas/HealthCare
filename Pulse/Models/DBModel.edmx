@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="healthcareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'healthcare.dbo.roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="cst_first_name" />
+            <PropertyRef Name="cst_last_name" />
+          </Key>
+          <Property Name="cst_first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cst_last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cst_url_code" Type="nvarchar" MaxLength="100" />
+          <Property Name="cst_eml_address" Type="nvarchar" MaxLength="50" />
+          <Property Name="cst_web_login" Type="nvarchar" MaxLength="80" />
+          <Property Name="cst_web_password" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="healthcareModelStoreContainer">
+          <EntitySet Name="roles" EntityType="Self.roles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [roles].[cst_first_name] AS [cst_first_name], 
+    [roles].[cst_last_name] AS [cst_last_name], 
+    [roles].[cst_url_code] AS [cst_url_code], 
+    [roles].[cst_eml_address] AS [cst_eml_address], 
+    [roles].[cst_web_login] AS [cst_web_login], 
+    [roles].[cst_web_password] AS [cst_web_password]
+    FROM [dbo].[roles] AS [roles]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="healthcareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="cst_first_name" />
+            <PropertyRef Name="cst_last_name" />
+          </Key>
+          <Property Name="cst_first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cst_last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cst_url_code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cst_eml_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cst_web_login" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="cst_web_password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="healthcareEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="roles" EntityType="Self.role" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="healthcareModelStoreContainer" CdmEntityContainer="healthcareEntities">
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="healthcareModel.role">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="cst_first_name" ColumnName="cst_first_name" />
+                <ScalarProperty Name="cst_last_name" ColumnName="cst_last_name" />
+                <ScalarProperty Name="cst_url_code" ColumnName="cst_url_code" />
+                <ScalarProperty Name="cst_eml_address" ColumnName="cst_eml_address" />
+                <ScalarProperty Name="cst_web_login" ColumnName="cst_web_login" />
+                <ScalarProperty Name="cst_web_password" ColumnName="cst_web_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

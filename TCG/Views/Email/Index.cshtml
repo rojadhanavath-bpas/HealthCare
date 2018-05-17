@@ -1,0 +1,70 @@
+﻿@model HealthcareAnalytics.Models.Users_Data
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="login-container login-form">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p style="text-align:center">please enter your e-mail address</p>
+
+
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.user_email_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.user_email_id, new { htmlAttributes = new { @class = "form-control", required = "Email Id is required" } })
+                            @Html.ValidationMessageFor(model => model.user_email_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @if (ViewBag.Message != null && ViewBag.Message != "YES" && ViewBag.Message != "Done")
+                    {
+                        <div class="alert alert-danger" role="alert">
+
+                            @Html.Raw(ViewBag.Message)
+                        </div>
+                    }
+                    else if (ViewBag.Message == "YES")
+                    {
+                        <div class="alert alert-success" role="alert">
+                            A code has been sent to your registered email ID!!
+                        </div>
+                    }
+                    else if (ViewBag.Message == "Done")
+                    {
+                        <div class="alert alert-success" role="alert">
+                            Password succesfully changed .Go back to login page!!
+                        </div>
+
+                    }<div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" style="width:360px!important;" value="Reset" class="btn btn-primary">
+
+                        </div>
+                        <br />
+                        <br />
+
+                        <div>
+                            <b>  @Html.ActionLink("Back to Login", "Login", "Home")</b>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

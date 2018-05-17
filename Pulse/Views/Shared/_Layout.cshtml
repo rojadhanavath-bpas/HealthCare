@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/font-awesome.css")
+    @Styles.Render("~/Content/font-awesome")
+    @Styles.Render("~/Content/fontawesome")
+    <script>
+        $(document).ready(function () {
+               $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+
+             
+         
+        });
+    </script>
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+       
+
+
+            @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
+            {
+                
+
+                <ul  class="nav navbar-nav">
+                    <li><span class="logo">&nbsp;<img src="~/Images/Logo_New.png" style="height: 50px; width:auto; padding-top: 10px;" /></span></li>
+                    <li style="padding-left: 14%;">@Html.ActionLink("Executive Summary", "ExecutiveSummary", "Home")</li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" role="button" aria-expanded="false"  data-toggle="dropdown">Financial Management <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Financial Management", "Financial_Management", "Home")</li>
+                            <li>@Html.ActionLink("Financial RVU", "RVU", "Home")</li>
+                        </ul>
+                    </li>
+
+
+
+                    <li>@Html.ActionLink("Billing", "Billing", "Home")</li>
+
+                    @*<li>@Html.ActionLink("AR Management", "ARManagement", "Home")</li>*@
+
+
+                    <li class="dropdown">
+                        <a href="@Url.Action("Coding", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
+                           <ul class="dropdown-menu" role="menu">
+                           <li>@Html.ActionLink("AR Management", "ARManagement", "Home")</li>
+                            <li>@Html.ActionLink("Debit AR", "debitAR", "Home")</li>
+                            <li>@Html.ActionLink("Credi AR", "creditAR", "Home")</li>
+                        </ul>
+                    </li>
+
+
+                    <li>@Html.ActionLink("Denials Management", "DenialsManagement", "Home")</li>
+
+                    <li>@Html.ActionLink("Charge Liquidation", "ChargeLiquidation", "Home")</li>
+
+
+                    @*<li>@Html.ActionLink("Coding Requirement", "Coding", "Home")</li>*@
+                    <li class="dropdown">
+                        <a href="@Url.Action("Coding", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Coding Requirement<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Coding Requirement ", "Coding", "Home")</li>
+                            <li>@Html.ActionLink("Established & New Patient", "newpatient", "Home")</li>
+                            <li>@Html.ActionLink("Initial &Subsequent", "subsequent", "Home")</li> 
+                        </ul>
+                    </li>
+
+
+                    <!-- Single button -->
+                    
+                    @*<ul class="nav navbar-nav navbar-right">*@
+                        <li class="dropdown" style="right: -10%;">
+                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
+                            </ul>
+                          </ul>
+                
+            }
+
+                </div>
+
+
+      <div class=" body-content">
+        @RenderBody()
+
+       <footer>
+            <div class="footer">
+                <span>All Rights Reserved 2018&reg;</span>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿@model HealthcareAnalytics.Models.forgotPassword
+
+@{
+    ViewBag.Title = "Change Password";
+}
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+@using (@Html.BeginForm("passwordReset", "Email", FormMethod.Post, new { @class = "my_form" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <script>
+        var d = new Date();
+
+        var mins = d.getMinutes();
+
+        d.setMinutes(mins + 5);
+        var countDownDate = d.getTime();
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now an the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("otptimer").innerHTML = "Your OTP will expire in"+ minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("otptimer").innerHTML = "Your OTP is EXPIRED! Retry!!";
+            }
+        }, 1000);
+    </script>
+    <div class="login-container login-form">
+        <div class="panel panel-default" style="width: 550px !important;">
+            <div class="panel-body">
+                <h4 style="text-align:center">Reset your password!</h4>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.otp_text, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.otp_text, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.otp_text, " ", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.email, " ", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+            <div class="col-md-2"></div>
+            <div id="otptimer" class="col-md-8"></div>
+            <div class="col-md-2"></div>
+        </div>*@
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.password, " ", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.confirm_pwd, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.confirm_pwd, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.confirm_pwd, " ", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <button type="submit" class="btn btn-primary">Reset</button>
+                    </div>
+                </div>
+
+
+                <div>
+                    @Html.ActionLink("Back to Login", "Login", "Home")
+                </div>
+
+                @if (ViewBag.Message == "NOTVALID")
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Passwords mismatch.
+                    </div>
+
+                }
+                else
+                {
+                    @Html.Raw(ViewBag.Message)
+                    //  ViewBag.message = "Please fill all the fields";
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+}
+
+
+

@@ -1,0 +1,58 @@
+﻿@model HealthcareAnalytics.Models.Users_Data
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Users_Data</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_phone_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_phone_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_email_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_email_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_updated_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_updated_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_updated_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_updated_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_middle_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_middle_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

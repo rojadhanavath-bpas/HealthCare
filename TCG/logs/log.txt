@@ -1,0 +1,537 @@
+DEBUG 2018-05-02 22:56:32,705   922ms HomeController         login              - Loading Login Page..
+DEBUG 2018-05-02 23:00:08,788 217005ms HomeController         login              - Byte[] {177, 9, 243, 187, 188, 36, 78, 184, 36, 65, 145, 126, 208, 109, 97, 139, 144, 8, 221, 9, 179, 190, 253, 27, 94, 7, 57, 76, 112, 106, 139, 185, 128, 177, 215, 120, 94, 89, 118, 236, 4, 155, 70, 223, 95, 19, 38, 175, 90, 46, 166, 209, 3, 253, 7, 201, 83, 133, 255, 171, 12, 172, 188, 134}
+DEBUG 2018-05-02 23:00:08,809 217026ms HomeController         login              - System.Byte[]
+DEBUG 2018-05-02 23:00:08,812 217029ms HomeController         login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-02 23:00:08,991 217208ms HomeController         getTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-02 23:00:09,430 217647ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-02 23:01:20,580  1004ms HomeController         login              - Loading Login Page..
+DEBUG 2018-05-02 23:01:39,686 20109ms HomeController         login              - Byte[] {177, 9, 243, 187, 188, 36, 78, 184, 36, 65, 145, 126, 208, 109, 97, 139, 144, 8, 221, 9, 179, 190, 253, 27, 94, 7, 57, 76, 112, 106, 139, 185, 128, 177, 215, 120, 94, 89, 118, 236, 4, 155, 70, 223, 95, 19, 38, 175, 90, 46, 166, 209, 3, 253, 7, 201, 83, 133, 255, 171, 12, 172, 188, 134}
+DEBUG 2018-05-02 23:01:39,690 20114ms HomeController         login              - Byte[] {165, 171, 44, 194, 138, 221}
+DEBUG 2018-05-02 23:01:39,691 20115ms HomeController         login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-02 23:01:39,874 20298ms HomeController         getTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-02 23:01:40,470 20893ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 10:06:12,263  3317ms HomeController         login              - Loading Login Page..
+DEBUG 2018-05-03 10:08:08,773 119827ms HomeController         login              - BP@S2018
+DEBUG 2018-05-03 10:08:08,780 119833ms HomeController         login              - 
+DEBUG 2018-05-03 10:08:08,783 119836ms HomeController         login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 10:08:09,840 120894ms HomeController         getTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:08:12,014 123068ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 10:08:32,042 143096ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-03 10:08:32,044 143098ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-03 10:08:32,089 143142ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-03 10:08:32,143 143197ms HomeController         login              - Loading Login Page..
+DEBUG 2018-05-03 10:17:32,720  8090ms HomeController         login              - Loading Login Page..
+DEBUG 2018-05-03 10:18:44,997 80367ms HomeController         login              - BP@S2018
+DEBUG 2018-05-03 10:18:45,001 80371ms HomeController         login              - 
+DEBUG 2018-05-03 10:18:45,003 80373ms HomeController         login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 10:18:45,570 80940ms HomeController         getTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:18:46,681 82051ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 10:19:29,023 124394ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-03 10:19:29,026 124397ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-03 10:19:29,058 124429ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-03 10:19:29,089 124459ms HomeController         login              - Loading Login Page..
+DEBUG 2018-05-03 10:34:28,444  6911ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-03 10:35:06,233 44700ms HomeController         login              - BP@S2018
+DEBUG 2018-05-03 10:35:06,236 44703ms HomeController         login              - 
+DEBUG 2018-05-03 10:35:06,238 44705ms HomeController         login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 10:35:06,745 45212ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:35:07,906 46373ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 10:35:18,379 56846ms HomeController         DispatchPdf        - [User:roja]  [Home][dispatchPdf]: Dispatching PDF  with parameter: armanagement
+DEBUG 2018-05-03 10:35:18,398 56865ms HomeController         DispatchPdf        - [Home][dispatchPdf]: Creating post request with url : http://34.194.103.217:8111/api/GeneratePDF?url=armanagement
+DEBUG 2018-05-03 10:35:45,179 83646ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:35:45,445 83912ms HomeController         DenialsManagement  - [User:roja]  Loading Denials Management  Page..
+DEBUG 2018-05-03 10:35:52,457 90925ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:35:52,748 91215ms HomeController         DebitAR            - [User:roja]  Loading Debit AR  Page..
+DEBUG 2018-05-03 10:36:04,440 102907ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:36:04,750 103217ms HomeController         CreditAR           - [User:roja]  Loading Credit AR  Page..
+DEBUG 2018-05-03 10:36:11,130 109597ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:36:11,207 109674ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 10:36:21,061 119528ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:36:21,176 119644ms HomeController         DebitAR            - [User:roja]  Loading Debit AR  Page..
+DEBUG 2018-05-03 10:38:39,358 257825ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:38:39,583 258050ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 10:38:54,165 272632ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:38:54,278 272746ms HomeController         DebitAR            - [User:roja]  Loading Debit AR  Page..
+DEBUG 2018-05-03 10:39:00,674 279142ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:39:00,757 279224ms HomeController         CreditAR           - [User:roja]  Loading Credit AR  Page..
+DEBUG 2018-05-03 10:39:03,781 282248ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:39:03,928 282395ms HomeController         DenialsManagement  - [User:roja]  Loading Denials Management  Page..
+DEBUG 2018-05-03 10:43:27,699  7653ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-03 10:44:21,455 61409ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-03 10:44:21,459 61413ms HomeController         Login              - 
+DEBUG 2018-05-03 10:44:21,462 61416ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 10:44:21,455 61409ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-03 10:44:21,469 61423ms HomeController         Login              - 
+DEBUG 2018-05-03 10:44:21,473 61427ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 10:44:22,900 62854ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:44:24,891 64845ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 10:44:39,098 79052ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:44:39,367 79321ms HomeController         DenialsManagement  - [User:roja]  Loading Denials Management  Page..
+DEBUG 2018-05-03 10:44:51,930 91884ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:44:52,050 92004ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 10:44:58,724 98678ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:44:59,009 98963ms HomeController         DebitAR            - [User:roja]  Loading Debit AR  Page..
+DEBUG 2018-05-03 10:45:06,171 106125ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 10:45:06,477 106431ms HomeController         CreditAR           - [User:roja]  Loading Credit AR  Page..
+DEBUG 2018-05-03 11:19:57,786   744ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-03 11:20:25,127 28085ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-03 11:20:25,128 28086ms HomeController         Login              - 
+DEBUG 2018-05-03 11:20:25,128 28086ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 11:20:25,252 28210ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 11:20:25,570 28528ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 12:32:33,818  1432ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-03 12:34:58,383 145997ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-03 12:34:58,384 145998ms HomeController         Login              - 
+DEBUG 2018-05-03 12:34:58,384 145998ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 12:34:58,508 146123ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:34:58,873 146488ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 12:35:10,861 158476ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-03 12:35:10,862 158477ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-03 12:35:10,873 158488ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-03 12:35:10,903 158518ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-03 12:35:12,966 160581ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-03 12:35:12,967 160582ms HomeController         Login              - 
+DEBUG 2018-05-03 12:35:12,967 160582ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 12:35:12,975 160590ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:35:13,083 160698ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 12:40:35,751  1109ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-03 12:42:37,650 123007ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-03 12:42:37,661 123018ms HomeController         Login              - 
+DEBUG 2018-05-03 12:42:37,662 123019ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 12:42:37,820 123177ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:42:38,211 123568ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 12:43:25,793 171150ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:43:25,910 171267ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 12:48:11,643 457000ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:48:11,787 457144ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 12:48:15,592 460949ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-03 12:48:18,341 463698ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-03 12:48:22,014 467371ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-03 12:48:22,015 467372ms HomeController         Login              - 
+DEBUG 2018-05-03 12:48:22,015 467372ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-03 12:48:22,022 467379ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:48:22,129 467486ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 12:48:24,653 470010ms HomeController         DispatchPdf        - [User:roja]  [Home][dispatchPdf]: Dispatching PDF  with parameter: armanagement
+DEBUG 2018-05-03 12:48:24,657 470014ms HomeController         DispatchPdf        - [Home][dispatchPdf]: Creating post request with url : http://34.194.103.217:8111/api/GeneratePDF?url=armanagement
+DEBUG 2018-05-03 12:48:46,276 491633ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:48:46,418 491775ms HomeController         DenialsManagement  - [User:roja]  Loading Denials Management  Page..
+DEBUG 2018-05-03 12:49:07,271 512628ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:49:07,380 512737ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-03 12:49:11,922 517279ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:49:12,034 517391ms HomeController         DebitAR            - [User:roja]  Loading Debit AR  Page..
+DEBUG 2018-05-03 12:51:34,060 659417ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-03 12:51:34,254 659612ms HomeController         CreditAR           - [User:roja]  Loading Credit AR  Page..
+DEBUG 2018-05-07 11:35:29,362   797ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-07 11:36:53,361 84796ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-07 11:37:28,647 120082ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-07 11:38:54,450 205885ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-07 11:39:14,139 225574ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-07 12:49:44,481 4455915ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-07 12:49:44,852 4456287ms HomeController         CreditAR           - [User:]  Loading Credit AR  Page..
+DEBUG 2018-05-07 12:50:00,067 4471501ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-07 12:50:00,183 4471618ms HomeController         CreditAR           - [User:]  Loading Credit AR  Page..
+DEBUG 2018-05-07 12:50:27,741 4499176ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-08 12:24:55,543  1325ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 09:53:12,627  1295ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 09:54:05,303   661ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 09:55:17,915  1639ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 10:01:09,818   701ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 11:22:06,202   736ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 11:23:23,444 77979ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 11:42:11,276   931ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 11:43:48,893 98548ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 12:06:00,789   820ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 12:08:30,040   755ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 12:30:44,472 1335186ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 12:30:51,826 1342541ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 12:30:54,457 1345171ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 13:19:27,882  1117ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 13:21:39,430 132666ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 13:22:06,119 159355ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 13:22:07,215 160451ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 13:32:24,503  1176ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 13:54:14,937  1779ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 14:49:43,755  2370ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 14:51:21,934   952ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 14:53:18,365  1136ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 14:55:13,444  1282ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 15:12:53,420  1663ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:11:06,279  1139ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:39:42,231   704ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:39:50,635  9107ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:40:32,409 50881ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:40:50,829 69301ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:41:06,153 84625ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:41:10,323 88795ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:41:12,728 91200ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:43:16,284  1278ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:44:19,578 64571ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:44:22,445 67439ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-09 20:44:22,446 67440ms HomeController         Login              - 
+DEBUG 2018-05-09 20:44:22,447 67440ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-09 20:44:27,963 72957ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:44:29,731 74724ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:44:33,510 78504ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:44:37,841 82834ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:44:40,841 85835ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:44:42,321 87315ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:44:49,137 94130ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:44:50,504 95497ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:45:27,868 132862ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:45:30,227 135220ms HomeController         VerifyEmail        - Loading Login Page..
+DEBUG 2018-05-09 20:54:05,859  2086ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:56:08,979   790ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:57:50,541  2461ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 20:58:05,562 17482ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-09 20:58:05,563 17483ms HomeController         Login              - 
+DEBUG 2018-05-09 20:58:05,563 17483ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-09 21:00:14,217 146136ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 21:00:15,334 147254ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 21:02:19,149 271069ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-09 21:02:19,152 271072ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-09 21:02:19,165 271085ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-09 21:02:19,201 271120ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 21:15:08,438  1157ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 21:17:34,107   942ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 21:24:21,236  2336ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 22:04:55,380  1451ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 22:08:49,754   693ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 22:15:26,684 397623ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 22:17:11,749  1628ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 22:18:06,294 56173ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:35:33,948  2106ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 22:55:21,276  2472ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 22:56:03,684 44879ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:04,386 45581ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:05,090 46286ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:05,999 47194ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:06,689 47885ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:07,910 49105ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:08,603 49798ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:09,306 50501ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:10,221 51416ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:11,382 52578ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:12,060 53256ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:12,803 53998ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 22:56:13,504 54700ms EmailController        SendSimpleMessage  - checking
+DEBUG 2018-05-09 23:03:04,037  2556ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:05:11,367  1981ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:08:19,052  2824ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:09:36,171  1732ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:14:58,191  1660ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:18:39,582 223051ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:30:03,643  1411ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:31:57,277   692ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:32:12,462 15877ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-09 23:32:12,464 15879ms HomeController         Login              - 
+DEBUG 2018-05-09 23:32:12,464 15879ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-09 23:32:12,603 16017ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-09 23:32:13,105 16520ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-09 23:32:45,461 48876ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-09 23:32:45,462 48877ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-09 23:32:45,474 48889ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-09 23:32:45,505 48920ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:34:16,240  3790ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:34:36,327 23878ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-09 23:34:36,916 24466ms HomeController         ARManagement       - [User:]  Loading AR Management Page..
+DEBUG 2018-05-09 23:34:41,125 28676ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-09 23:34:41,266 28817ms HomeController         DebitAR            - [User:]  Loading Debit AR  Page..
+DEBUG 2018-05-09 23:36:07,375  2711ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:40:30,156  1898ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:40:43,543 15285ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:55:40,651  1764ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:57:02,177  2566ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:57:15,480 15869ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-09 23:57:15,481 15870ms HomeController         Login              - 
+DEBUG 2018-05-09 23:57:15,481 15870ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-09 23:57:15,617 16006ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-09 23:57:16,066 16455ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-09 23:57:20,877 21266ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-09 23:57:20,878 21267ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-09 23:57:20,887 21276ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-09 23:57:20,901 21290ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:57:23,268 23657ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-09 23:57:23,269 23658ms HomeController         Login              - 
+DEBUG 2018-05-09 23:57:23,270 23659ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-09 23:57:23,281 23670ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-09 23:57:23,401 23790ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-09 23:57:34,008 34397ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-09 23:57:34,012 34401ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-09 23:57:34,013 34402ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-09 23:57:34,031 34420ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:57:47,284 47673ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-09 23:57:47,285 47674ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-09 23:57:47,288 47677ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-09 23:57:47,303 47692ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:57:49,653 50042ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-09 23:57:49,657 50046ms HomeController         Login              - 
+DEBUG 2018-05-09 23:57:49,658 50047ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-09 23:57:49,672 50061ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-09 23:57:49,849 50238ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-09 23:57:56,913 57302ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-09 23:57:56,914 57303ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-09 23:57:56,915 57304ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-09 23:57:56,928 57317ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:57:58,846 59235ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-09 23:57:58,848 59236ms HomeController         Login              - 
+DEBUG 2018-05-09 23:57:58,848 59237ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-09 23:57:58,856 59244ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-09 23:57:59,018 59406ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-09 23:59:15,619 136007ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-09 23:59:57,595 177984ms EmailController        SendSimpleMessage  - checking=BFBLh1@b-1q
+DEBUG 2018-05-10 00:00:28,286 208675ms EmailController        SendSimpleMessage  - checkingpdAy{7bHa@My
+DEBUG 2018-05-10 09:42:38,529  1311ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 09:43:13,897 36678ms EmailController        SendSimpleMessage  - checkingeLNe0B4MO]k3
+DEBUG 2018-05-10 09:43:28,368 51149ms EmailController        SendSimpleMessage  - checking/Y2Ko:G|i6bC
+DEBUG 2018-05-10 10:16:16,164  1570ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 10:17:47,625  1464ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 10:22:18,654 272493ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-10 10:22:18,656 272495ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-10 10:22:18,672 272511ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-10 10:22:18,720 272559ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 10:22:28,853 282691ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-10 10:22:28,854 282692ms HomeController         Login              - 
+DEBUG 2018-05-10 10:22:28,854 282692ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-10 10:22:28,965 282803ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-10 10:22:29,520 283358ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-10 20:01:41,801  1140ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 20:03:17,029  1739ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 20:16:33,559 798268ms EmailController        SendSimpleMessage  - checking]pP_6n
+DEBUG 2018-05-10 20:19:46,797  1649ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 20:22:40,600  1735ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 20:33:36,580  1671ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 20:35:55,399  1756ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 20:56:20,313  1712ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-10 23:55:56,231  1494ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-11 00:01:24,890  2834ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-11 00:17:08,785   959ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-11 00:17:30,688 22862ms EmailController        SendSimpleMessage  - checkingSystem.NullReferenceException: Object reference not set to an instance of an object.
+   at HealthcareAnalytics.Controllers.EmailController.SendSimpleMessage(Users_Data data) in C:\Users\roja dhanavath\source\repos\TCG\HealthcareAnalytics\Controllers\EmailController.cs:line 42
+DEBUG 2018-05-13 13:32:55,385   952ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 13:33:20,823 26389ms EmailController        SendSimpleMessage  - checkingSystem.NullReferenceException: Object reference not set to an instance of an object.
+   at HealthcareAnalytics.Controllers.EmailController.SendSimpleMessage(Users_Data data) in C:\Users\roja dhanavath\source\repos\TCG\HealthcareAnalytics\Controllers\EmailController.cs:line 42
+DEBUG 2018-05-13 13:38:08,456   860ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 13:40:04,064  2449ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 13:42:19,405 137789ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 13:46:55,635 414019ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 13:47:25,689 444073ms HomeController         Login              - BP@S2018
+DEBUG 2018-05-13 13:47:25,690 444074ms HomeController         Login              - 
+DEBUG 2018-05-13 13:47:25,690 444074ms HomeController         Login              - [Home][login]: Succesfully logged in  roja.dhanavath
+DEBUG 2018-05-13 13:47:25,892 444276ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-13 13:47:26,362 444747ms HomeController         ARManagement       - [User:roja]  Loading AR Management Page..
+DEBUG 2018-05-13 13:51:29,190   818ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 13:53:22,283   959ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 13:54:48,109  1783ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 13:57:39,595  1035ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 13:58:31,988 53428ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 14:02:46,931  3719ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 14:19:50,729  3241ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 14:21:22,973   921ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 14:26:23,698  1742ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 14:30:10,194  2987ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 14:33:54,758  6673ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 21:42:44,175  2352ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 22:02:41,226  4468ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 22:05:58,238 201481ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 22:35:44,018  3268ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 22:36:22,818 42068ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 22:36:36,877 56127ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 22:39:12,371 211621ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 22:55:12,528  1982ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 22:59:47,624  2775ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 23:19:01,946  6345ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 23:22:19,971  4911ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 23:28:54,069  1994ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 23:52:57,904  1931ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-13 23:59:37,048  2030ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:02:20,127  3319ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:04:55,431  2109ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:07:56,390   902ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:09:56,309  2649ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:10:26,255 32595ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:13:33,300  5219ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:30:08,174   700ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:42:54,040  2948ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:45:22,803   811ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 00:53:46,084 504092ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:03:30,360  2477ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:06:01,437 153554ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:06:28,521 180638ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:06:54,014 206131ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:06:58,355 210471ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:07:08,277 220394ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:09:39,517  3214ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:09:59,279 22977ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:13:16,756  1895ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:16:59,219   857ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:17:30,645  3103ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:19:37,573  2754ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:24:00,766  5178ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:26:57,567  1806ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 01:34:44,569  1975ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 10:41:46,786  1413ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 10:58:18,283  1019ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 11:10:32,682  1455ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 11:49:07,849  1614ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 11:56:42,932  1521ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:02:51,941  1219ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:14:43,477  1442ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:16:34,563  1271ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:27:14,303  1504ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:37:16,564  1357ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:38:22,362 67155ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:38:36,656 81450ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:40:30,570  1454ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:43:37,420  2031ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:45:20,277 104889ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 12:57:24,199  1079ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 13:00:44,754  1346ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 13:07:37,534 414126ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 13:07:51,595 428187ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 13:10:59,248 615840ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 13:11:26,232 642824ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 15:18:30,474  1091ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 15:53:04,857  2113ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 15:57:55,515 292771ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 15:58:28,166 325422ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 15:58:47,947 345203ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 15:59:08,114 365370ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:04:59,058 716314ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:05:17,430 734687ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:05:40,503 757759ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:05:51,388 768644ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:06:04,886 782142ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:06:17,256 794512ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:06:32,740 809996ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:07:09,308 846564ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:07:32,017 869273ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:08:02,162 899418ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:08:14,045 911301ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:08:24,756   674ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:08:38,590 14508ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:08:48,998 24916ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:11:15,868 171786ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:17:17,318 533236ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:19:53,018 688936ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:22:39,115 119814ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 16:23:50,105 190805ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 20:37:37,845  1391ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 20:48:48,542 672088ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 21:44:34,548 4018093ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 21:46:45,383  2328ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 22:00:40,495  4317ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 22:03:51,394 11330ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-14 23:58:47,420  1012ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 00:13:03,166   850ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 00:13:19,728 17412ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 00:13:34,509 32193ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 00:17:13,246  1081ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 00:18:42,024  1093ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 00:19:02,599 21669ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 00:19:29,083 48153ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 00:28:22,242  1134ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:21:31,644  1560ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:42:39,891  1152ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:43:05,405 26666ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:43:40,540 61801ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:43:41,673 62934ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:43:52,020 73281ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:45:54,567 195829ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:49:19,391 400652ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:49:21,232 402493ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:49:32,042 413303ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:51:43,866   791ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:53:35,168   781ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:56:07,689   823ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 10:57:26,511   803ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 11:00:36,075  1175ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 11:07:28,026  1531ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 11:13:44,766  1116ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-15 11:17:10,235   803ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:11:57,628   783ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:25:29,402   831ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:27:40,030   789ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:30:53,631   776ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:33:42,326 169472ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:33:53,999 181144ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:34:02,571 189717ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:34:25,438 212583ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:41:15,080 622225ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:41:20,742 627887ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:41:58,790  1561ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:42:37,215 39986ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:46:41,542 284312ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:46:48,875 291646ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:55:33,422   845ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 00:59:02,400   892ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 01:00:18,561 77053ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 01:24:05,719  1545ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 01:26:07,405 123231ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 01:27:46,269 222095ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 01:27:54,224 230050ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 01:28:45,778 281604ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 01:28:50,128 285953ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 01:28:54,016 289842ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 01:39:40,622  1044ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:20:43,183  1086ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:24:51,431 249334ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:25:38,105 296008ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:25:54,284 312187ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:26:26,330 344233ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:26:35,192 353095ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:26:39,440 357342ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:37:12,426  1243ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:38:59,869  1217ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:41:46,272   855ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:44:47,387  1228ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:50:38,375  3537ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:51:04,488 29649ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:53:07,174  1514ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:54:27,195 81535ms HomeController         Login              - password
+DEBUG 2018-05-16 10:54:27,196 81536ms HomeController         Login              - password
+DEBUG 2018-05-16 10:54:27,196 81536ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-05-16 10:54:27,316 81656ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-16 10:54:27,702 82042ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-05-16 10:54:32,003 86344ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-05-16 10:54:32,004 86345ms HomeController         LogOff             - Signing out user
+DEBUG 2018-05-16 10:54:32,029 86369ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-05-16 10:54:32,050 86390ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:54:42,183 96523ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:54:51,373 105713ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:54:55,933 110274ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:57:52,458   863ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:58:31,389 39794ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 10:59:49,790 118196ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 11:29:24,691  1356ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 11:30:54,068 90733ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 11:31:05,249 101914ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 21:28:30,461  5093ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 21:30:23,290  8963ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 21:34:05,198  2298ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 21:39:50,487  3734ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 21:49:08,234  3020ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 22:23:38,897  2093ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 22:32:34,285  2235ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 22:34:59,284 147234ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 22:43:52,975  1975ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 22:48:42,981  3488ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 22:57:30,764  4357ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:04:00,516  5350ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:04:12,990 17823ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:14:18,211  2999ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:18:48,057 272844ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:22:30,064  7310ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:26:17,326  1800ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:28:38,831  1854ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:30:53,945 136967ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:30:56,307 139329ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-16 23:31:35,624 178647ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-17 09:43:05,208  3083ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-17 09:43:30,412 28286ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-17 09:43:49,766 47640ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-17 10:11:34,114 1711988ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-17 10:12:08,526 1746401ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-17 10:12:11,212 1749086ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-17 10:12:56,559 1794433ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-17 10:13:44,961 1842835ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-17 10:13:49,889 1847763ms HomeController         Login              - Loading Login Page..

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pulse", "Pulse\Pulse.csproj", "{FBBA1B6B-32BA-4F5A-9441-3120592B332E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG", "TCG\TCG.csproj", "{BAF77A02-40FF-4160-84C1-D87361A8CB05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBBA1B6B-32BA-4F5A-9441-3120592B332E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBBA1B6B-32BA-4F5A-9441-3120592B332E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBBA1B6B-32BA-4F5A-9441-3120592B332E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBBA1B6B-32BA-4F5A-9441-3120592B332E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF77A02-40FF-4160-84C1-D87361A8CB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF77A02-40FF-4160-84C1-D87361A8CB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF77A02-40FF-4160-84C1-D87361A8CB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF77A02-40FF-4160-84C1-D87361A8CB05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5598A74D-7991-46DB-8BCE-D6E8C43C8086}
+	EndGlobalSection
+EndGlobal

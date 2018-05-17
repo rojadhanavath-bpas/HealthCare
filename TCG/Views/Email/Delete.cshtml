@@ -1,0 +1,65 @@
+﻿@model HealthcareAnalytics.Models.Users_Data
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Users_Data</h4>
+    <p>account created successfully</p>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_phone_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_phone_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_email_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_email_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_updated_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_updated_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_updated_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_updated_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_middle_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_middle_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

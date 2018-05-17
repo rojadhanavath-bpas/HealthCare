@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TCG_DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="User_Login">
+          <Key>
+            <PropertyRef Name="user_Id" />
+          </Key>
+          <Property Name="user_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="user_first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_web_login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_web_pwd" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users_Data">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="user_first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_full_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_role_key" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="user_phone_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_email_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_added_by" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_add_date" Type="smalldatetime" Nullable="false" />
+          <Property Name="user_updated_by" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_updated_date" Type="smalldatetime" />
+          <Property Name="user_delete_flag" Type="tinyint" Nullable="false" />
+          <Property Name="user_middle_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_web_pwd" Type="nvarchar" MaxLength="50" />
+          <Property Name="otp_key" Type="nvarchar" MaxLength="50" />
+          <Property Name="otp_time" Type="smalldatetime" />
+        </EntityType>
+        <Function Name="Case_Task_InsUpd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AccCase_ID" Type="int" Mode="In" />
+          <Parameter Name="AccTsk_ID" Type="int" Mode="In" />
+          <Parameter Name="AccCase_HspAccID" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_Amount" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_Status" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_Owner" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_Type" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_SubType" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_PayerReason" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_PrimaryReason" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_SecondaryReason" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_PrinDiag" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_PrinProc" Type="varchar" Mode="In" />
+          <Parameter Name="AccCase_Comments" Type="varchar(max)" Mode="In" />
+          <Parameter Name="AccTsk_AccCase_ID" Type="int" Mode="In" />
+          <Parameter Name="AccTsk_Completed" Type="varchar" Mode="In" />
+          <Parameter Name="AccTsk_Priority" Type="varchar" Mode="In" />
+          <Parameter Name="AccTsk_Description" Type="varchar" Mode="In" />
+          <Parameter Name="AccTsk_Owner" Type="varchar" Mode="In" />
+          <Parameter Name="AccTsk_Comment" Type="varchar(max)" Mode="In" />
+          <Parameter Name="AccTsk_DueDate" Type="datetime" Mode="In" />
+          <Parameter Name="AccTsk_CreatedBy_User" Type="varchar" Mode="In" />
+          <Parameter Name="AccTsk_CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="AccTsk_UpdatedBy_User" Type="varchar" Mode="In" />
+          <Parameter Name="AccTsk_Updateddate" Type="datetime" Mode="In" />
+          <Parameter Name="AccTsk_UpdatedBy_DB" Type="varchar" Mode="In" />
+          <Parameter Name="new_recordNumber" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="CreateAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="First_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="last_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="middle_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone_number" Type="nvarchar" Mode="In" />
+          <Parameter Name="pwd" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Account_Info_for_ARandDenial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Account_ID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_AR_Age_Amount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+          <Parameter Name="varAccountID" Type="varchar" Mode="In" />
+          <Parameter Name="varPeriod" Type="int" Mode="In" />
+          <Parameter Name="IsServiceDateOrBillDate" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_AR_Age_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="varPeriod" Type="int" Mode="In" />
+          <Parameter Name="IsServiceDateOrBillDate" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_AR_Agency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="varAccountID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_AR_Agency1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="varAccountID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_AR_Info_for_Balance_Range" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="varBalanceRange" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Get_Denial_Aging_Bucket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="LastPayorRcvdDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="IsCollectable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="varAccountID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="md_notnull_to_null_fields" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tablename" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="md_null_blank_fields" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tablename" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="md_null_to_NULL_fields" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tablename" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="TCG_DataModelStoreContainer">
+          <EntitySet Name="User_Login" EntityType="Self.User_Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_Data" EntityType="Self.Users_Data" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TCG_DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TCG_DataEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="Get_Account_Info_for_ARandDenial" ReturnType="Collection(TCG_DataModel.Get_Account_Info_for_ARandDenial_Result)">
+          <Parameter Name="Account_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_AR_Info_for_Balance_Range" ReturnType="Collection(TCG_DataModel.Get_AR_Info_for_Balance_Range_Result)">
+          <Parameter Name="varBalanceRange" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Users_Data" EntityType="TCG_DataModel.Users_Data" />
+          <FunctionImport Name="registration">
+            <Parameter Name="First_name" Mode="In" Type="String" />
+            <Parameter Name="last_name" Mode="In" Type="String" />
+            <Parameter Name="middle_name" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_number" Mode="In" Type="String" />
+            <Parameter Name="pwd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateAccount">
+            <Parameter Name="First_name" Mode="In" Type="String" />
+            <Parameter Name="last_name" Mode="In" Type="String" />
+            <Parameter Name="middle_name" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_number" Mode="In" Type="String" />
+            <Parameter Name="pwd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Case_Task_InsUpd">
+            <Parameter Name="AccCase_ID" Mode="In" Type="Int32" />
+            <Parameter Name="AccTsk_ID" Mode="In" Type="Int32" />
+            <Parameter Name="AccCase_HspAccID" Mode="In" Type="String" />
+            <Parameter Name="AccCase_Amount" Mode="In" Type="String" />
+            <Parameter Name="AccCase_Status" Mode="In" Type="String" />
+            <Parameter Name="AccCase_Owner" Mode="In" Type="String" />
+            <Parameter Name="AccCase_Type" Mode="In" Type="String" />
+            <Parameter Name="AccCase_SubType" Mode="In" Type="String" />
+            <Parameter Name="AccCase_PayerReason" Mode="In" Type="String" />
+            <Parameter Name="AccCase_PrimaryReason" Mode="In" Type="String" />
+            <Parameter Name="AccCase_SecondaryReason" Mode="In" Type="String" />
+            <Parameter Name="AccCase_PrinDiag" Mode="In" Type="String" />
+            <Parameter Name="AccCase_PrinProc" Mode="In" Type="String" />
+            <Parameter Name="AccCase_Comments" Mode="In" Type="String" />
+            <Parameter Name="AccTsk_AccCase_ID" Mode="In" Type="Int32" />
+            <Parameter Name="AccTsk_Completed" Mode="In" Type="String" />
+            <Parameter Name="AccTsk_Priority" Mode="In" Type="String" />
+            <Parameter Name="AccTsk_Description" Mode="In" Type="String" />
+            <Parameter Name="AccTsk_Owner" Mode="In" Type="String" />
+            <Parameter Name="AccTsk_Comment" Mode="In" Type="String" />
+            <Parameter Name="AccTsk_DueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AccTsk_CreatedBy_User" Mode="In" Type="String" />
+            <Parameter Name="AccTsk_CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AccTsk_UpdatedBy_User" Mode="In" Type="String" />
+            <Parameter Name="AccTsk_Updateddate" Mode="In" Type="DateTime" />
+            <Parameter Name="AccTsk_UpdatedBy_DB" Mode="In" Type="String" />
+            <Parameter Name="new_recordNumber" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="md_notnull_to_null_fields">
+          <Parameter Name="tablename" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="md_null_blank_fields">
+          <Parameter Name="tablename" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="md_null_to_NULL_fields">
+          <Parameter Name="tablename" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="User_Login" EntityType="TCG_DataModel.User_Login" />
+        </EntityContainer>
+        <ComplexType Name="Get_Account_Info_for_ARandDenial_Result">
+          <Property Type="DateTime" Name="Account_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Admission_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Discharge_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Coding_Date" Nullable="true" />
+          <Property Type="DateTime" Name="First_Billed_Date" Nullable="true" />
+          <Property Type="DateTime" Name="First_Claim_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Most_Recent_Claim_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Most_Recent_Insurance_Payment_Received_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Most_Recent_SelfPay_Payment_Received_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Account_Closed_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Zero_Balance_Date" Nullable="true" />
+          <Property Type="String" Name="Primary_Coverage_Payor_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Primary_Coverage_Payor_Financial_Class" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Primary_Coverage_Benefit_Plan_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Second_Coverage_Financial_Class" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Second_Coverage_Benefit_Plan_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Second_Coverage_Payor_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Admitting_Provider_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Account_Department_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Department_Specialty" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Location_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Service_Area_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Billing_DRG_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Billing_DRG_Code_Set" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MS_DRG_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Guarantor_Epic_ID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Guarantor_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Encounter_Epic_CSN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Encounter_Type" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Patient_Epic_ID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Patient_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Hospital_Account_ID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Financial_Class" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Source" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Bill_Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_AR_Status" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Total_Account_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Self_Pay_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Primary_Insurance_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Pre_Billed_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Non_Primary_Insurance_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Undistributed_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Bad_Debt_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Self_Pay_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Primary_Insurance_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Non_Primary_Insurance_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Undistributed_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Bad_Debt_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Self_Pay_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Primary_Insurance_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Non_Primary_Insurance_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Undistributed_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Bad_Debt_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Settlement_Payments" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Charge_Amount" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Invoice" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ext_Rsn_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ln_on_EOB" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Rev_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CPT_R__Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Allowed_Amt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Denied_Amount" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Billed_Amount" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bucket_Payor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bucket_Plan" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Aging_Bkt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Owning_Area" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Source_Area" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Root_Cause" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Preventable_" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Follow_up_Dt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Resolution_or_Resp_Cat" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Rcvd_Dt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Acct_Class" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_ID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Location" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Follow_up_ID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Age" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="First_Payor_Rcvd_Dt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Last_Payor_Rcvd_Dt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Clinical_Root_Cause" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Days_Denied" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Denial_Cat" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ext_Rsn_Code_w__Desc" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Financial_Class" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="First_Claim_Dt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="First_Ext_Claim_Sent_Dt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="HB_Acct_Bal" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Acct_Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Last_Completed_Dt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Last_Reopened_Dt" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Last_User_for_Closed_Rec" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Paid_Amount" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Rsn_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Reporting_Rsn_Code_w__Desc" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Rev_Code_Desc" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Service_Area" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Source" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Source_Dept" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Src_Pmt_Tx" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Stage" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Get_AR_Info_for_Balance_Range_Result">
+          <Property Type="DateTime" Name="Account_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Admission_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Discharge_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Coding_Date" Nullable="true" />
+          <Property Type="DateTime" Name="First_Billed_Date" Nullable="true" />
+          <Property Type="DateTime" Name="First_Claim_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Most_Recent_Claim_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Most_Recent_Insurance_Payment_Received_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Most_Recent_SelfPay_Payment_Received_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Account_Closed_Date" Nullable="true" />
+          <Property Type="DateTime" Name="Zero_Balance_Date" Nullable="true" />
+          <Property Type="String" Name="Primary_Coverage_Payor_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Primary_Coverage_Payor_Financial_Class" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Primary_Coverage_Benefit_Plan_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Second_Coverage_Financial_Class" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Second_Coverage_Benefit_Plan_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Second_Coverage_Payor_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Admitting_Provider_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Account_Department_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Department_Specialty" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Location_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Service_Area_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Billing_DRG_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Billing_DRG_Code_Set" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MS_DRG_Code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Guarantor_Epic_ID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Guarantor_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Encounter_Epic_CSN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Encounter_Type" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Patient_Epic_ID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Patient_Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Hospital_Account_ID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Financial_Class" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Source" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_Bill_Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Account_AR_Status" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Total_Account_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Self_Pay_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Primary_Insurance_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Pre_Billed_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Non_Primary_Insurance_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Undistributed_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Bad_Debt_Balance" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Self_Pay_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Primary_Insurance_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Non_Primary_Insurance_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Undistributed_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Bad_Debt_Adjustment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Self_Pay_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Primary_Insurance_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Non_Primary_Insurance_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Undistributed_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Bad_Debt_Payment_Amount" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Settlement_Payments" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Total_Charge_Amount" Nullable="true" Precision="19" />
+        </ComplexType>
+        <EntityType Name="Users_Data">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="Guid" Nullable="false" />
+          <Property Name="user_first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_full_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_role_key" Type="Guid" Nullable="false" />
+          <Property Name="user_phone_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_email_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_added_by" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_add_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="user_updated_by" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_updated_date" Type="DateTime" Precision="0" />
+          <Property Name="user_delete_flag" Type="Byte" Nullable="false" />
+          <Property Name="user_middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_web_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="otp_key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="otp_time" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="User_Login">
+          <Key>
+            <PropertyRef Name="user_Id" />
+          </Key>
+          <Property Name="user_Id" Type="Guid" Nullable="false" />
+          <Property Name="user_first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_web_login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_web_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TCG_DataModelStoreContainer" CdmEntityContainer="TCG_DataEntities" >
+          <FunctionImportMapping FunctionImportName="Get_Account_Info_for_ARandDenial" FunctionName="TCG_DataModel.Store.Get_Account_Info_for_ARandDenial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCG_DataModel.Get_Account_Info_for_ARandDenial_Result">
+                <ScalarProperty Name="Account_Date" ColumnName="Account_Date" />
+                <ScalarProperty Name="Admission_Date" ColumnName="Admission_Date" />
+                <ScalarProperty Name="Discharge_Date" ColumnName="Discharge_Date" />
+                <ScalarProperty Name="Coding_Date" ColumnName="Coding_Date" />
+                <ScalarProperty Name="First_Billed_Date" ColumnName="First_Billed_Date" />
+                <ScalarProperty Name="First_Claim_Date" ColumnName="First_Claim_Date" />
+                <ScalarProperty Name="Most_Recent_Claim_Date" ColumnName="Most_Recent_Claim_Date" />
+                <ScalarProperty Name="Most_Recent_Insurance_Payment_Received_Date" ColumnName="Most_Recent_Insurance_Payment_Received_Date" />
+                <ScalarProperty Name="Most_Recent_SelfPay_Payment_Received_Date" ColumnName="Most_Recent_SelfPay_Payment_Received_Date" />
+                <ScalarProperty Name="Account_Closed_Date" ColumnName="Account_Closed_Date" />
+                <ScalarProperty Name="Zero_Balance_Date" ColumnName="Zero_Balance_Date" />
+                <ScalarProperty Name="Primary_Coverage_Payor_Name" ColumnName="Primary_Coverage_Payor_Name" />
+                <ScalarProperty Name="Primary_Coverage_Payor_Financial_Class" ColumnName="Primary_Coverage_Payor_Financial_Class" />
+                <ScalarProperty Name="Primary_Coverage_Benefit_Plan_Name" ColumnName="Primary_Coverage_Benefit_Plan_Name" />
+                <ScalarProperty Name="Second_Coverage_Financial_Class" ColumnName="Second_Coverage_Financial_Class" />
+                <ScalarProperty Name="Second_Coverage_Benefit_Plan_Name" ColumnName="Second_Coverage_Benefit_Plan_Name" />
+                <ScalarProperty Name="Second_Coverage_Payor_Name" ColumnName="Second_Coverage_Payor_Name" />
+                <ScalarProperty Name="Admitting_Provider_Name" ColumnName="Admitting_Provider_Name" />
+                <ScalarProperty Name="Account_Department_Name" ColumnName="Account_Department_Name" />
+                <ScalarProperty Name="Account_Department_Specialty" ColumnName="Account_Department_Specialty" />
+                <ScalarProperty Name="Account_Location_Name" ColumnName="Account_Location_Name" />
+                <ScalarProperty Name="Account_Service_Area_Name" ColumnName="Account_Service_Area_Name" />
+                <ScalarProperty Name="Billing_DRG_Code" ColumnName="Billing_DRG_Code" />
+                <ScalarProperty Name="Billing_DRG_Code_Set" ColumnName="Billing_DRG_Code_Set" />
+                <ScalarProperty Name="MS_DRG_Code" ColumnName="MS_DRG_Code" />
+                <ScalarProperty Name="Guarantor_Epic_ID" ColumnName="Guarantor_Epic_ID" />
+                <ScalarProperty Name="Guarantor_Name" ColumnName="Guarantor_Name" />
+                <ScalarProperty Name="Encounter_Epic_CSN" ColumnName="Encounter_Epic_CSN" />
+                <ScalarProperty Name="Encounter_Type" ColumnName="Encounter_Type" />
+                <ScalarProperty Name="Account_Patient_Epic_ID" ColumnName="Account_Patient_Epic_ID" />
+                <ScalarProperty Name="Account_Patient_Name" ColumnName="Account_Patient_Name" />
+                <ScalarProperty Name="Hospital_Account_ID" ColumnName="Hospital_Account_ID" />
+                <ScalarProperty Name="Account_Financial_Class" ColumnName="Account_Financial_Class" />
+                <ScalarProperty Name="Account_Source" ColumnName="Account_Source" />
+                <ScalarProperty Name="Account_Bill_Status" ColumnName="Account_Bill_Status" />
+                <ScalarProperty Name="Account_AR_Status" ColumnName="Account_AR_Status" />
+                <ScalarProperty Name="Total_Account_Balance" ColumnName="Total_Account_Balance" />
+                <ScalarProperty Name="Total_Self_Pay_Balance" ColumnName="Total_Self_Pay_Balance" />
+                <ScalarProperty Name="Total_Primary_Insurance_Balance" ColumnName="Total_Primary_Insurance_Balance" />
+                <ScalarProperty Name="Total_Pre_Billed_Balance" ColumnName="Total_Pre_Billed_Balance" />
+                <ScalarProperty Name="Total_Non_Primary_Insurance_Balance" ColumnName="Total_Non_Primary_Insurance_Balance" />
+                <ScalarProperty Name="Total_Undistributed_Balance" ColumnName="Total_Undistributed_Balance" />
+                <ScalarProperty Name="Total_Bad_Debt_Balance" ColumnName="Total_Bad_Debt_Balance" />
+                <ScalarProperty Name="Total_Adjustment_Amount" ColumnName="Total_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Self_Pay_Adjustment_Amount" ColumnName="Total_Self_Pay_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Primary_Insurance_Adjustment_Amount" ColumnName="Total_Primary_Insurance_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Non_Primary_Insurance_Adjustment_Amount" ColumnName="Total_Non_Primary_Insurance_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Undistributed_Adjustment_Amount" ColumnName="Total_Undistributed_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Bad_Debt_Adjustment_Amount" ColumnName="Total_Bad_Debt_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Payment_Amount" ColumnName="Total_Payment_Amount" />
+                <ScalarProperty Name="Total_Self_Pay_Payment_Amount" ColumnName="Total_Self_Pay_Payment_Amount" />
+                <ScalarProperty Name="Total_Primary_Insurance_Payment_Amount" ColumnName="Total_Primary_Insurance_Payment_Amount" />
+                <ScalarProperty Name="Total_Non_Primary_Insurance_Payment_Amount" ColumnName="Total_Non_Primary_Insurance_Payment_Amount" />
+                <ScalarProperty Name="Total_Undistributed_Payment_Amount" ColumnName="Total_Undistributed_Payment_Amount" />
+                <ScalarProperty Name="Total_Bad_Debt_Payment_Amount" ColumnName="Total_Bad_Debt_Payment_Amount" />
+                <ScalarProperty Name="Total_Settlement_Payments" ColumnName="Total_Settlement_Payments" />
+                <ScalarProperty Name="Total_Charge_Amount" ColumnName="Total_Charge_Amount" />
+                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+                <ScalarProperty Name="Ext_Rsn_Code" ColumnName="Ext Rsn Code" />
+                <ScalarProperty Name="Ln_on_EOB" ColumnName="Ln on EOB" />
+                <ScalarProperty Name="Rev_Code" ColumnName="Rev Code" />
+                <ScalarProperty Name="CPT_R__Code" ColumnName="CPT(R) Code" />
+                <ScalarProperty Name="Allowed_Amt" ColumnName="Allowed Amt" />
+                <ScalarProperty Name="Denied_Amount" ColumnName="Denied Amount" />
+                <ScalarProperty Name="Billed_Amount" ColumnName="Billed Amount" />
+                <ScalarProperty Name="Bucket_Payor" ColumnName="Bucket Payor" />
+                <ScalarProperty Name="Bucket_Plan" ColumnName="Bucket Plan" />
+                <ScalarProperty Name="Aging_Bkt" ColumnName="Aging Bkt" />
+                <ScalarProperty Name="Owning_Area" ColumnName="Owning Area" />
+                <ScalarProperty Name="Source_Area" ColumnName="Source Area" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Root_Cause" ColumnName="Root Cause" />
+                <ScalarProperty Name="Preventable_" ColumnName="Preventable?" />
+                <ScalarProperty Name="Follow_up_Dt" ColumnName="Follow-up Dt" />
+                <ScalarProperty Name="Resolution_or_Resp_Cat" ColumnName="Resolution or Resp Cat" />
+                <ScalarProperty Name="Rcvd_Dt" ColumnName="Rcvd Dt" />
+                <ScalarProperty Name="Acct_Class" ColumnName="Acct Class" />
+                <ScalarProperty Name="Account_ID" ColumnName="Account ID" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
+                <ScalarProperty Name="Account_Location" ColumnName="Account Location" />
+                <ScalarProperty Name="Follow_up_ID" ColumnName="Follow-up ID" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="First_Payor_Rcvd_Dt" ColumnName="First Payor Rcvd Dt" />
+                <ScalarProperty Name="Last_Payor_Rcvd_Dt" ColumnName="Last Payor Rcvd Dt" />
+                <ScalarProperty Name="Clinical_Root_Cause" ColumnName="Clinical Root Cause" />
+                <ScalarProperty Name="Days_Denied" ColumnName="Days Denied" />
+                <ScalarProperty Name="Denial_Cat" ColumnName="Denial Cat" />
+                <ScalarProperty Name="Ext_Rsn_Code_w__Desc" ColumnName="Ext Rsn Code w  Desc" />
+                <ScalarProperty Name="Financial_Class" ColumnName="Financial Class" />
+                <ScalarProperty Name="First_Claim_Dt" ColumnName="First Claim Dt" />
+                <ScalarProperty Name="First_Ext_Claim_Sent_Dt" ColumnName="First Ext Claim Sent Dt" />
+                <ScalarProperty Name="HB_Acct_Bal" ColumnName="HB Acct Bal" />
+                <ScalarProperty Name="Acct_Status" ColumnName="Acct Status" />
+                <ScalarProperty Name="Last_Completed_Dt" ColumnName="Last Completed Dt" />
+                <ScalarProperty Name="Last_Reopened_Dt" ColumnName="Last Reopened Dt" />
+                <ScalarProperty Name="Last_User_for_Closed_Rec" ColumnName="Last User for Closed Rec" />
+                <ScalarProperty Name="Paid_Amount" ColumnName="Paid Amount" />
+                <ScalarProperty Name="Rsn_Code" ColumnName="Rsn Code" />
+                <ScalarProperty Name="Reporting_Rsn_Code_w__Desc" ColumnName="Reporting Rsn Code w  Desc" />
+                <ScalarProperty Name="Rev_Code_Desc" ColumnName="Rev Code Desc" />
+                <ScalarProperty Name="Service_Area" ColumnName="Service Area" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Source_Dept" ColumnName="Source Dept" />
+                <ScalarProperty Name="Src_Pmt_Tx" ColumnName="Src Pmt Tx" />
+                <ScalarProperty Name="Stage" ColumnName="Stage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_AR_Info_for_Balance_Range" FunctionName="TCG_DataModel.Store.Get_AR_Info_for_Balance_Range">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCG_DataModel.Get_AR_Info_for_Balance_Range_Result">
+                <ScalarProperty Name="Account_Date" ColumnName="Account_Date" />
+                <ScalarProperty Name="Admission_Date" ColumnName="Admission_Date" />
+                <ScalarProperty Name="Discharge_Date" ColumnName="Discharge_Date" />
+                <ScalarProperty Name="Coding_Date" ColumnName="Coding_Date" />
+                <ScalarProperty Name="First_Billed_Date" ColumnName="First_Billed_Date" />
+                <ScalarProperty Name="First_Claim_Date" ColumnName="First_Claim_Date" />
+                <ScalarProperty Name="Most_Recent_Claim_Date" ColumnName="Most_Recent_Claim_Date" />
+                <ScalarProperty Name="Most_Recent_Insurance_Payment_Received_Date" ColumnName="Most_Recent_Insurance_Payment_Received_Date" />
+                <ScalarProperty Name="Most_Recent_SelfPay_Payment_Received_Date" ColumnName="Most_Recent_SelfPay_Payment_Received_Date" />
+                <ScalarProperty Name="Account_Closed_Date" ColumnName="Account_Closed_Date" />
+                <ScalarProperty Name="Zero_Balance_Date" ColumnName="Zero_Balance_Date" />
+                <ScalarProperty Name="Primary_Coverage_Payor_Name" ColumnName="Primary_Coverage_Payor_Name" />
+                <ScalarProperty Name="Primary_Coverage_Payor_Financial_Class" ColumnName="Primary_Coverage_Payor_Financial_Class" />
+                <ScalarProperty Name="Primary_Coverage_Benefit_Plan_Name" ColumnName="Primary_Coverage_Benefit_Plan_Name" />
+                <ScalarProperty Name="Second_Coverage_Financial_Class" ColumnName="Second_Coverage_Financial_Class" />
+                <ScalarProperty Name="Second_Coverage_Benefit_Plan_Name" ColumnName="Second_Coverage_Benefit_Plan_Name" />
+                <ScalarProperty Name="Second_Coverage_Payor_Name" ColumnName="Second_Coverage_Payor_Name" />
+                <ScalarProperty Name="Admitting_Provider_Name" ColumnName="Admitting_Provider_Name" />
+                <ScalarProperty Name="Account_Department_Name" ColumnName="Account_Department_Name" />
+                <ScalarProperty Name="Account_Department_Specialty" ColumnName="Account_Department_Specialty" />
+                <ScalarProperty Name="Account_Location_Name" ColumnName="Account_Location_Name" />
+                <ScalarProperty Name="Account_Service_Area_Name" ColumnName="Account_Service_Area_Name" />
+                <ScalarProperty Name="Billing_DRG_Code" ColumnName="Billing_DRG_Code" />
+                <ScalarProperty Name="Billing_DRG_Code_Set" ColumnName="Billing_DRG_Code_Set" />
+                <ScalarProperty Name="MS_DRG_Code" ColumnName="MS_DRG_Code" />
+                <ScalarProperty Name="Guarantor_Epic_ID" ColumnName="Guarantor_Epic_ID" />
+                <ScalarProperty Name="Guarantor_Name" ColumnName="Guarantor_Name" />
+                <ScalarProperty Name="Encounter_Epic_CSN" ColumnName="Encounter_Epic_CSN" />
+                <ScalarProperty Name="Encounter_Type" ColumnName="Encounter_Type" />
+                <ScalarProperty Name="Account_Patient_Epic_ID" ColumnName="Account_Patient_Epic_ID" />
+                <ScalarProperty Name="Account_Patient_Name" ColumnName="Account_Patient_Name" />
+                <ScalarProperty Name="Hospital_Account_ID" ColumnName="Hospital_Account_ID" />
+                <ScalarProperty Name="Account_Financial_Class" ColumnName="Account_Financial_Class" />
+                <ScalarProperty Name="Account_Source" ColumnName="Account_Source" />
+                <ScalarProperty Name="Account_Bill_Status" ColumnName="Account_Bill_Status" />
+                <ScalarProperty Name="Account_AR_Status" ColumnName="Account_AR_Status" />
+                <ScalarProperty Name="Total_Account_Balance" ColumnName="Total_Account_Balance" />
+                <ScalarProperty Name="Total_Self_Pay_Balance" ColumnName="Total_Self_Pay_Balance" />
+                <ScalarProperty Name="Total_Primary_Insurance_Balance" ColumnName="Total_Primary_Insurance_Balance" />
+                <ScalarProperty Name="Total_Pre_Billed_Balance" ColumnName="Total_Pre_Billed_Balance" />
+                <ScalarProperty Name="Total_Non_Primary_Insurance_Balance" ColumnName="Total_Non_Primary_Insurance_Balance" />
+                <ScalarProperty Name="Total_Undistributed_Balance" ColumnName="Total_Undistributed_Balance" />
+                <ScalarProperty Name="Total_Bad_Debt_Balance" ColumnName="Total_Bad_Debt_Balance" />
+                <ScalarProperty Name="Total_Adjustment_Amount" ColumnName="Total_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Self_Pay_Adjustment_Amount" ColumnName="Total_Self_Pay_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Primary_Insurance_Adjustment_Amount" ColumnName="Total_Primary_Insurance_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Non_Primary_Insurance_Adjustment_Amount" ColumnName="Total_Non_Primary_Insurance_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Undistributed_Adjustment_Amount" ColumnName="Total_Undistributed_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Bad_Debt_Adjustment_Amount" ColumnName="Total_Bad_Debt_Adjustment_Amount" />
+                <ScalarProperty Name="Total_Payment_Amount" ColumnName="Total_Payment_Amount" />
+                <ScalarProperty Name="Total_Self_Pay_Payment_Amount" ColumnName="Total_Self_Pay_Payment_Amount" />
+                <ScalarProperty Name="Total_Primary_Insurance_Payment_Amount" ColumnName="Total_Primary_Insurance_Payment_Amount" />
+                <ScalarProperty Name="Total_Non_Primary_Insurance_Payment_Amount" ColumnName="Total_Non_Primary_Insurance_Payment_Amount" />
+                <ScalarProperty Name="Total_Undistributed_Payment_Amount" ColumnName="Total_Undistributed_Payment_Amount" />
+                <ScalarProperty Name="Total_Bad_Debt_Payment_Amount" ColumnName="Total_Bad_Debt_Payment_Amount" />
+                <ScalarProperty Name="Total_Settlement_Payments" ColumnName="Total_Settlement_Payments" />
+                <ScalarProperty Name="Total_Charge_Amount" ColumnName="Total_Charge_Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Users_Data">
+            <EntityTypeMapping TypeName="TCG_DataModel.Users_Data">
+              <MappingFragment StoreEntitySet="Users_Data">
+                <ScalarProperty Name="otp_time" ColumnName="otp_time" />
+                <ScalarProperty Name="otp_key" ColumnName="otp_key" />
+                <ScalarProperty Name="user_web_pwd" ColumnName="user_web_pwd" />
+                <ScalarProperty Name="user_middle_name" ColumnName="user_middle_name" />
+                <ScalarProperty Name="user_delete_flag" ColumnName="user_delete_flag" />
+                <ScalarProperty Name="user_updated_date" ColumnName="user_updated_date" />
+                <ScalarProperty Name="user_updated_by" ColumnName="user_updated_by" />
+                <ScalarProperty Name="user_add_date" ColumnName="user_add_date" />
+                <ScalarProperty Name="user_added_by" ColumnName="user_added_by" />
+                <ScalarProperty Name="user_email_id" ColumnName="user_email_id" />
+                <ScalarProperty Name="user_phone_number" ColumnName="user_phone_number" />
+                <ScalarProperty Name="user_role_key" ColumnName="user_role_key" />
+                <ScalarProperty Name="user_full_name" ColumnName="user_full_name" />
+                <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+                <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CreateAccount" FunctionName="TCG_DataModel.Store.CreateAccount" />
+          <FunctionImportMapping FunctionImportName="Case_Task_InsUpd" FunctionName="TCG_DataModel.Store.Case_Task_InsUpd" />
+          <FunctionImportMapping FunctionImportName="md_notnull_to_null_fields" FunctionName="TCG_DataModel.Store.md_notnull_to_null_fields" />
+          <FunctionImportMapping FunctionImportName="md_null_blank_fields" FunctionName="TCG_DataModel.Store.md_null_blank_fields" />
+          <FunctionImportMapping FunctionImportName="md_null_to_NULL_fields" FunctionName="TCG_DataModel.Store.md_null_to_NULL_fields" />
+          <EntitySetMapping Name="User_Login">
+            <EntityTypeMapping TypeName="TCG_DataModel.User_Login">
+              <MappingFragment StoreEntitySet="User_Login">
+                <ScalarProperty Name="user_web_pwd" ColumnName="user_web_pwd" />
+                <ScalarProperty Name="user_web_login" ColumnName="user_web_login" />
+                <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+                <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+                <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,118 @@
+﻿
+@model PagedList.IPagedList<HealthcareAnalytics.Models.Get_AR_Info_for_Balance_Range_Result>  
+ @using PagedList.Mvc;
+ 
+    
+   @{
+    ViewBag.Title = "priority";
+}
+    
+
+ 
+
+<html>
+<head>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/font-awesome.css")
+    @Styles.Render("~/Content/font-awesome")
+    @Styles.Render("~/Content/fontawesome")
+    <script>
+        $(document).ready(function () {
+            var oTable = $('#myDatatable').Datatable({
+                "processing": true,
+                "serverSide": true,
+
+                "ajax": {
+                    "url": 'home/priority',
+                    "type": "get",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Account ID", "autoWidth": true },
+                    { "data": "Admission Date", "autoWidth": true },
+                    { "data": "Primary Payor Name", "autoWidth": true },
+                    { "data": "Primary Financial Class", "autoWidth": true },
+                    { "data": " Total Account Balance", "autoWidth": true },
+                    { "data": "Admitting Provider Name", "autoWidth": true },
+                    { "data": "Service Area", "autoWidth": true },
+                    { "data": "Location", "autoWidth": true }
+
+
+                ]
+
+
+            });
+               });
+    </script>
+
+    </head>
+<body>
+    <div style=" width: 90%; margin: 10px auto">
+      @using (Html.BeginForm("priority", "Home", FormMethod.Get, new { @class = "search-wrapper cf" }))
+      {
+        <p>         
+
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" class="btn btn-primary" value="Search" />
+        </p>
+      }
+
+        
+        <table id="myDatatable" class="paleBlueRows">
+            <tr>
+                <th>Account ID</th>
+                <th>Admission Date</th>
+                <th>Primary Payor Name </th>
+                <th>Primary Financial Class</th>
+                <th>Total Account Balance</th>
+                <th>Admitting Provider Name</th>
+                <th>Service Area</th>
+                <th>Location</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr >
+                    <td>                       
+                       @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "priority", "Home", new { id = item.Hospital_Account_ID})
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admission_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Financial_Class)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total_Account_Balance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admitting_Provider_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Account_Service_Area_Name)
+                    </td>
+                      <td>
+                        @Html.DisplayFor(modelItem => item.Account_Location_Name)
+                    </td>
+
+                </tr>
+            }  
+
+        </table>             
+        <br />
+        <div class="paging-wrapper">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("priority",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+    </div>
+
+</body>
+
+</html>
