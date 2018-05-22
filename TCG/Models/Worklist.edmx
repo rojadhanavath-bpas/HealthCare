@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TCG_Data_Worklist.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account_AR_Status">
+          <Key>
+            <PropertyRef Name="ARSts_ID" />
+          </Key>
+          <Property Name="ARSts_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ARSts_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Account_Bill_Status">
+          <Key>
+            <PropertyRef Name="BillSts_ID" />
+          </Key>
+          <Property Name="BillSts_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BillSts_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Account_Case_Details">
+          <Key>
+            <PropertyRef Name="ACD_ID" />
+          </Key>
+          <Property Name="ACD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACD_HspAccID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_Amount" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_Owner" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_SubType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_PayerReason" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_PrimaryReason" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_SecondaryReason" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_PrinDiag" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_PrinProc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_Comments" Type="varchar(max)" />
+          <Property Name="ACD_CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ACD_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ACD_UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ACD_Updateddate" Type="datetime" Nullable="false" />
+          <Property Name="ACD_UpdatedBy_DB" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Account_Case_Detials_History">
+          <Key>
+            <PropertyRef Name="ACDH_ID" />
+          </Key>
+          <Property Name="ACDH_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACDH_ACD_ID" Type="int" Nullable="false" />
+          <Property Name="ACDH_HspAccID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_Amount" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_Owner" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_SubType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_PayerReason" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_PrimaryReason" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_SecondaryReason" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_PrinDiag" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_PrinProc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_Comments" Type="varchar(max)" />
+          <Property Name="ACDH_CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ACDH_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ACDH_UpdatedBy_DB" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Account_Case_Task">
+          <Key>
+            <PropertyRef Name="ACT_ID" />
+          </Key>
+          <Property Name="ACT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACT_HspAccID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACT_ACD_ID" Type="int" Nullable="false" />
+          <Property Name="ACT_Completed" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACT_Priority" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACT_Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACT_Owner" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACT_Comment" Type="varchar(max)" />
+          <Property Name="ACT_DueDate" Type="datetime" Nullable="false" />
+          <Property Name="ACT_CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ACT_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ACT_UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ACT_Updateddate" Type="datetime" Nullable="false" />
+          <Property Name="ACT_UpdatedBy_DB" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Account_Case_Task_History">
+          <Key>
+            <PropertyRef Name="ACTH_ID" />
+          </Key>
+          <Property Name="ACTH_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACTH_ACT_ID" Type="int" Nullable="false" />
+          <Property Name="ACTH_ACD_ID" Type="int" Nullable="false" />
+          <Property Name="ACTH_HspAccID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACTH_Completed" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACTH_Priority" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACTH_Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACTH_Owner" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACTH_Comment" Type="varchar(max)" />
+          <Property Name="ACTH_DueDate" Type="datetime" Nullable="false" />
+          <Property Name="ACTH_CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ACTH_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ACTH_UpdatedBy_DB" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Account_Source">
+          <Key>
+            <PropertyRef Name="AccSrc_ID" />
+          </Key>
+          <Property Name="AccSrc_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccSrc_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Encounter_Type">
+          <Key>
+            <PropertyRef Name="EncType_ID" />
+          </Key>
+          <Property Name="EncType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EncType_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Insurance_Company_Name">
+          <Key>
+            <PropertyRef Name="InsCmp_ID" />
+          </Key>
+          <Property Name="InsCmp_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InsCmp_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payor_Financial_Class">
+          <Key>
+            <PropertyRef Name="PyrFC_ID" />
+          </Key>
+          <Property Name="PyrFC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PyrFC_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrimaryReason_Master">
+          <Key>
+            <PropertyRef Name="PRM_ID" />
+          </Key>
+          <Property Name="PRM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRM_Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status_Master">
+          <Key>
+            <PropertyRef Name="SM_ID" />
+          </Key>
+          <Property Name="SM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SM_Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Task_Master">
+          <Key>
+            <PropertyRef Name="TM_ID" />
+          </Key>
+          <Property Name="TM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TM_Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Account_C__ACDH___40F9A68C">
+          <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
+          <End Role="Account_Case_Detials_History" Type="Self.Account_Case_Detials_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Details">
+              <PropertyRef Name="ACD_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Detials_History">
+              <PropertyRef Name="ACDH_ACD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account_C__ACT_A__44CA3770">
+          <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
+          <End Role="Account_Case_Task" Type="Self.Account_Case_Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Details">
+              <PropertyRef Name="ACD_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Task">
+              <PropertyRef Name="ACT_ACD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account_C__ACTH___489AC854">
+          <End Role="Account_Case_Task" Type="Self.Account_Case_Task" Multiplicity="1" />
+          <End Role="Account_Case_Task_History" Type="Self.Account_Case_Task_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Task">
+              <PropertyRef Name="ACT_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Task_History">
+              <PropertyRef Name="ACTH_ACT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account_C__ACTH___498EEC8D">
+          <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
+          <End Role="Account_Case_Task_History" Type="Self.Account_Case_Task_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Details">
+              <PropertyRef Name="ACD_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Task_History">
+              <PropertyRef Name="ACTH_ACD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Case_Task_InsUpd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ACD_ID" Type="int" Mode="In" />
+          <Parameter Name="ACT_ID" Type="int" Mode="In" />
+          <Parameter Name="ACD_HspAccID" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_Amount" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_Status" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_Owner" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_Type" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_SubType" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_PayerReason" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_PrimaryReason" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_SecondaryReason" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_PrinDiag" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_PrinProc" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_Comments" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ACT_ACD_ID" Type="int" Mode="In" />
+          <Parameter Name="ACT_Completed" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_Priority" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_Description" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_Owner" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_Comment" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ACT_DueDate" Type="datetime" Mode="In" />
+          <Parameter Name="ACT_CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="ACT_UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_Updateddate" Type="datetime" Mode="In" />
+          <Parameter Name="ACT_UpdatedBy_DB" Type="varchar" Mode="In" />
+          <Parameter Name="new_ACD_ACT_ID" Type="int" Mode="In" />
+          <Parameter Name="new_recordNumber" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="TCG_Data_WorklistStoreContainer">
+          <EntitySet Name="Account_AR_Status" EntityType="Self.Account_AR_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account_Bill_Status" EntityType="Self.Account_Bill_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account_Case_Details" EntityType="Self.Account_Case_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account_Case_Detials_History" EntityType="Self.Account_Case_Detials_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account_Case_Task" EntityType="Self.Account_Case_Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account_Case_Task_History" EntityType="Self.Account_Case_Task_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account_Source" EntityType="Self.Account_Source" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Encounter_Type" EntityType="Self.Encounter_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insurance_Company_Name" EntityType="Self.Insurance_Company_Name" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payor_Financial_Class" EntityType="Self.Payor_Financial_Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrimaryReason_Master" EntityType="Self.PrimaryReason_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status_Master" EntityType="Self.Status_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task_Master" EntityType="Self.Task_Master" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Account_C__ACDH___40F9A68C" Association="Self.FK__Account_C__ACDH___40F9A68C">
+            <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+            <End Role="Account_Case_Detials_History" EntitySet="Account_Case_Detials_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Account_C__ACT_A__44CA3770" Association="Self.FK__Account_C__ACT_A__44CA3770">
+            <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+            <End Role="Account_Case_Task" EntitySet="Account_Case_Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Account_C__ACTH___489AC854" Association="Self.FK__Account_C__ACTH___489AC854">
+            <End Role="Account_Case_Task" EntitySet="Account_Case_Task" />
+            <End Role="Account_Case_Task_History" EntitySet="Account_Case_Task_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Account_C__ACTH___498EEC8D" Association="Self.FK__Account_C__ACTH___498EEC8D">
+            <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+            <End Role="Account_Case_Task_History" EntitySet="Account_Case_Task_History" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TCG_Data_Worklist" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account_AR_Status">
+          <Key>
+            <PropertyRef Name="ARSts_ID" />
+          </Key>
+          <Property Name="ARSts_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ARSts_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Account_Bill_Status">
+          <Key>
+            <PropertyRef Name="BillSts_ID" />
+          </Key>
+          <Property Name="BillSts_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillSts_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Account_Case_Details">
+          <Key>
+            <PropertyRef Name="ACD_ID" />
+          </Key>
+          <Property Name="ACD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACD_HspAccID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_Owner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_SubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_PayerReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_PrimaryReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_SecondaryReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_PrinDiag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_PrinProc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACD_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACD_UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Updateddate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACD_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account_Case_Detials_History" Relationship="Self.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Details" ToRole="Account_Case_Detials_History" />
+          <NavigationProperty Name="Account_Case_Task" Relationship="Self.FK__Account_C__ACT_A__44CA3770" FromRole="Account_Case_Details" ToRole="Account_Case_Task" />
+          <NavigationProperty Name="Account_Case_Task_History" Relationship="Self.FK__Account_C__ACTH___498EEC8D" FromRole="Account_Case_Details" ToRole="Account_Case_Task_History" />
+        </EntityType>
+        <EntityType Name="Account_Case_Detials_History">
+          <Key>
+            <PropertyRef Name="ACDH_ID" />
+          </Key>
+          <Property Name="ACDH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACDH_ACD_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACDH_HspAccID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_Owner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_SubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_PayerReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_PrimaryReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_SecondaryReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_PrinDiag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_PrinProc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACDH_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACDH_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account_Case_Details" Relationship="Self.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Detials_History" ToRole="Account_Case_Details" />
+        </EntityType>
+        <EntityType Name="Account_Case_Task">
+          <Key>
+            <PropertyRef Name="ACT_ID" />
+          </Key>
+          <Property Name="ACT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACT_HspAccID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACT_ACD_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACT_Completed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACT_Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACT_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACT_Owner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACT_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_DueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACT_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACT_UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_Updateddate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACT_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account_Case_Details" Relationship="Self.FK__Account_C__ACT_A__44CA3770" FromRole="Account_Case_Task" ToRole="Account_Case_Details" />
+          <NavigationProperty Name="Account_Case_Task_History" Relationship="Self.FK__Account_C__ACTH___489AC854" FromRole="Account_Case_Task" ToRole="Account_Case_Task_History" />
+        </EntityType>
+        <EntityType Name="Account_Case_Task_History">
+          <Key>
+            <PropertyRef Name="ACTH_ID" />
+          </Key>
+          <Property Name="ACTH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACTH_ACT_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACTH_ACD_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACTH_HspAccID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACTH_Completed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACTH_Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACTH_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACTH_Owner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACTH_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACTH_DueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACTH_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTH_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACTH_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account_Case_Details" Relationship="Self.FK__Account_C__ACTH___498EEC8D" FromRole="Account_Case_Task_History" ToRole="Account_Case_Details" />
+          <NavigationProperty Name="Account_Case_Task" Relationship="Self.FK__Account_C__ACTH___489AC854" FromRole="Account_Case_Task_History" ToRole="Account_Case_Task" />
+        </EntityType>
+        <EntityType Name="Account_Source">
+          <Key>
+            <PropertyRef Name="AccSrc_ID" />
+          </Key>
+          <Property Name="AccSrc_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccSrc_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Encounter_Type">
+          <Key>
+            <PropertyRef Name="EncType_ID" />
+          </Key>
+          <Property Name="EncType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EncType_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Insurance_Company_Name">
+          <Key>
+            <PropertyRef Name="InsCmp_ID" />
+          </Key>
+          <Property Name="InsCmp_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InsCmp_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payor_Financial_Class">
+          <Key>
+            <PropertyRef Name="PyrFC_ID" />
+          </Key>
+          <Property Name="PyrFC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PyrFC_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrimaryReason_Master">
+          <Key>
+            <PropertyRef Name="PRM_ID" />
+          </Key>
+          <Property Name="PRM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRM_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status_Master">
+          <Key>
+            <PropertyRef Name="SM_ID" />
+          </Key>
+          <Property Name="SM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SM_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Task_Master">
+          <Key>
+            <PropertyRef Name="TM_ID" />
+          </Key>
+          <Property Name="TM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TM_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Account_C__ACDH___40F9A68C">
+          <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
+          <End Role="Account_Case_Detials_History" Type="Self.Account_Case_Detials_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Details">
+              <PropertyRef Name="ACD_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Detials_History">
+              <PropertyRef Name="ACDH_ACD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account_C__ACT_A__44CA3770">
+          <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
+          <End Role="Account_Case_Task" Type="Self.Account_Case_Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Details">
+              <PropertyRef Name="ACD_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Task">
+              <PropertyRef Name="ACT_ACD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account_C__ACTH___498EEC8D">
+          <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
+          <End Role="Account_Case_Task_History" Type="Self.Account_Case_Task_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Details">
+              <PropertyRef Name="ACD_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Task_History">
+              <PropertyRef Name="ACTH_ACD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account_C__ACTH___489AC854">
+          <End Role="Account_Case_Task" Type="Self.Account_Case_Task" Multiplicity="1" />
+          <End Role="Account_Case_Task_History" Type="Self.Account_Case_Task_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Task">
+              <PropertyRef Name="ACT_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Task_History">
+              <PropertyRef Name="ACTH_ACT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TCG_Worklist" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account_AR_Status" EntityType="Self.Account_AR_Status" />
+          <EntitySet Name="Account_Bill_Status" EntityType="Self.Account_Bill_Status" />
+          <EntitySet Name="Account_Case_Details" EntityType="Self.Account_Case_Details" />
+          <EntitySet Name="Account_Case_Detials_History" EntityType="Self.Account_Case_Detials_History" />
+          <EntitySet Name="Account_Case_Task" EntityType="Self.Account_Case_Task" />
+          <EntitySet Name="Account_Case_Task_History" EntityType="Self.Account_Case_Task_History" />
+          <EntitySet Name="Account_Source" EntityType="Self.Account_Source" />
+          <EntitySet Name="Encounter_Type" EntityType="Self.Encounter_Type" />
+          <EntitySet Name="Insurance_Company_Name" EntityType="Self.Insurance_Company_Name" />
+          <EntitySet Name="Payor_Financial_Class" EntityType="Self.Payor_Financial_Class" />
+          <EntitySet Name="PrimaryReason_Master" EntityType="Self.PrimaryReason_Master" />
+          <EntitySet Name="Status_Master" EntityType="Self.Status_Master" />
+          <EntitySet Name="Task_Master" EntityType="Self.Task_Master" />
+          <AssociationSet Name="FK__Account_C__ACDH___40F9A68C" Association="Self.FK__Account_C__ACDH___40F9A68C">
+            <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+            <End Role="Account_Case_Detials_History" EntitySet="Account_Case_Detials_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Account_C__ACT_A__44CA3770" Association="Self.FK__Account_C__ACT_A__44CA3770">
+            <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+            <End Role="Account_Case_Task" EntitySet="Account_Case_Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Account_C__ACTH___498EEC8D" Association="Self.FK__Account_C__ACTH___498EEC8D">
+            <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+            <End Role="Account_Case_Task_History" EntitySet="Account_Case_Task_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Account_C__ACTH___489AC854" Association="Self.FK__Account_C__ACTH___489AC854">
+            <End Role="Account_Case_Task" EntitySet="Account_Case_Task" />
+            <End Role="Account_Case_Task_History" EntitySet="Account_Case_Task_History" />
+          </AssociationSet>
+          <FunctionImport Name="Case_Task_InsUpd">
+            <Parameter Name="ACD_ID" Mode="In" Type="Int32" />
+            <Parameter Name="ACT_ID" Mode="In" Type="Int32" />
+            <Parameter Name="ACD_HspAccID" Mode="In" Type="String" />
+            <Parameter Name="ACD_Amount" Mode="In" Type="String" />
+            <Parameter Name="ACD_Status" Mode="In" Type="String" />
+            <Parameter Name="ACD_Owner" Mode="In" Type="String" />
+            <Parameter Name="ACD_Type" Mode="In" Type="String" />
+            <Parameter Name="ACD_SubType" Mode="In" Type="String" />
+            <Parameter Name="ACD_PayerReason" Mode="In" Type="String" />
+            <Parameter Name="ACD_PrimaryReason" Mode="In" Type="String" />
+            <Parameter Name="ACD_SecondaryReason" Mode="In" Type="String" />
+            <Parameter Name="ACD_PrinDiag" Mode="In" Type="String" />
+            <Parameter Name="ACD_PrinProc" Mode="In" Type="String" />
+            <Parameter Name="ACD_Comments" Mode="In" Type="String" />
+            <Parameter Name="ACT_ACD_ID" Mode="In" Type="Int32" />
+            <Parameter Name="ACT_Completed" Mode="In" Type="String" />
+            <Parameter Name="ACT_Priority" Mode="In" Type="String" />
+            <Parameter Name="ACT_Description" Mode="In" Type="String" />
+            <Parameter Name="ACT_Owner" Mode="In" Type="String" />
+            <Parameter Name="ACT_Comment" Mode="In" Type="String" />
+            <Parameter Name="ACT_DueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ACT_CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ACT_CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ACT_UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ACT_Updateddate" Mode="In" Type="DateTime" />
+            <Parameter Name="ACT_UpdatedBy_DB" Mode="In" Type="String" />
+            <Parameter Name="new_ACD_ACT_ID" Mode="In" Type="Int32" />
+            <Parameter Name="new_recordNumber" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TCG_Data_WorklistStoreContainer" CdmEntityContainer="TCG_Worklist">
+          <EntitySetMapping Name="Account_AR_Status">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_AR_Status">
+              <MappingFragment StoreEntitySet="Account_AR_Status">
+                <ScalarProperty Name="ARSts_ID" ColumnName="ARSts_ID" />
+                <ScalarProperty Name="ARSts_Name" ColumnName="ARSts_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Bill_Status">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Bill_Status">
+              <MappingFragment StoreEntitySet="Account_Bill_Status">
+                <ScalarProperty Name="BillSts_ID" ColumnName="BillSts_ID" />
+                <ScalarProperty Name="BillSts_Name" ColumnName="BillSts_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Case_Details">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Details">
+              <MappingFragment StoreEntitySet="Account_Case_Details">
+                <ScalarProperty Name="ACD_ID" ColumnName="ACD_ID" />
+                <ScalarProperty Name="ACD_HspAccID" ColumnName="ACD_HspAccID" />
+                <ScalarProperty Name="ACD_Amount" ColumnName="ACD_Amount" />
+                <ScalarProperty Name="ACD_Status" ColumnName="ACD_Status" />
+                <ScalarProperty Name="ACD_Owner" ColumnName="ACD_Owner" />
+                <ScalarProperty Name="ACD_Type" ColumnName="ACD_Type" />
+                <ScalarProperty Name="ACD_SubType" ColumnName="ACD_SubType" />
+                <ScalarProperty Name="ACD_PayerReason" ColumnName="ACD_PayerReason" />
+                <ScalarProperty Name="ACD_PrimaryReason" ColumnName="ACD_PrimaryReason" />
+                <ScalarProperty Name="ACD_SecondaryReason" ColumnName="ACD_SecondaryReason" />
+                <ScalarProperty Name="ACD_PrinDiag" ColumnName="ACD_PrinDiag" />
+                <ScalarProperty Name="ACD_PrinProc" ColumnName="ACD_PrinProc" />
+                <ScalarProperty Name="ACD_Comments" ColumnName="ACD_Comments" />
+                <ScalarProperty Name="ACD_CreatedBy" ColumnName="ACD_CreatedBy" />
+                <ScalarProperty Name="ACD_CreatedDate" ColumnName="ACD_CreatedDate" />
+                <ScalarProperty Name="ACD_UpdatedBy" ColumnName="ACD_UpdatedBy" />
+                <ScalarProperty Name="ACD_Updateddate" ColumnName="ACD_Updateddate" />
+                <ScalarProperty Name="ACD_UpdatedBy_DB" ColumnName="ACD_UpdatedBy_DB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Case_Detials_History">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Detials_History">
+              <MappingFragment StoreEntitySet="Account_Case_Detials_History">
+                <ScalarProperty Name="ACDH_ID" ColumnName="ACDH_ID" />
+                <ScalarProperty Name="ACDH_ACD_ID" ColumnName="ACDH_ACD_ID" />
+                <ScalarProperty Name="ACDH_HspAccID" ColumnName="ACDH_HspAccID" />
+                <ScalarProperty Name="ACDH_Amount" ColumnName="ACDH_Amount" />
+                <ScalarProperty Name="ACDH_Status" ColumnName="ACDH_Status" />
+                <ScalarProperty Name="ACDH_Owner" ColumnName="ACDH_Owner" />
+                <ScalarProperty Name="ACDH_Type" ColumnName="ACDH_Type" />
+                <ScalarProperty Name="ACDH_SubType" ColumnName="ACDH_SubType" />
+                <ScalarProperty Name="ACDH_PayerReason" ColumnName="ACDH_PayerReason" />
+                <ScalarProperty Name="ACDH_PrimaryReason" ColumnName="ACDH_PrimaryReason" />
+                <ScalarProperty Name="ACDH_SecondaryReason" ColumnName="ACDH_SecondaryReason" />
+                <ScalarProperty Name="ACDH_PrinDiag" ColumnName="ACDH_PrinDiag" />
+                <ScalarProperty Name="ACDH_PrinProc" ColumnName="ACDH_PrinProc" />
+                <ScalarProperty Name="ACDH_Comments" ColumnName="ACDH_Comments" />
+                <ScalarProperty Name="ACDH_CreatedBy" ColumnName="ACDH_CreatedBy" />
+                <ScalarProperty Name="ACDH_CreatedDate" ColumnName="ACDH_CreatedDate" />
+                <ScalarProperty Name="ACDH_UpdatedBy_DB" ColumnName="ACDH_UpdatedBy_DB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Case_Task">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Task">
+              <MappingFragment StoreEntitySet="Account_Case_Task">
+                <ScalarProperty Name="ACT_ID" ColumnName="ACT_ID" />
+                <ScalarProperty Name="ACT_HspAccID" ColumnName="ACT_HspAccID" />
+                <ScalarProperty Name="ACT_ACD_ID" ColumnName="ACT_ACD_ID" />
+                <ScalarProperty Name="ACT_Completed" ColumnName="ACT_Completed" />
+                <ScalarProperty Name="ACT_Priority" ColumnName="ACT_Priority" />
+                <ScalarProperty Name="ACT_Description" ColumnName="ACT_Description" />
+                <ScalarProperty Name="ACT_Owner" ColumnName="ACT_Owner" />
+                <ScalarProperty Name="ACT_Comment" ColumnName="ACT_Comment" />
+                <ScalarProperty Name="ACT_DueDate" ColumnName="ACT_DueDate" />
+                <ScalarProperty Name="ACT_CreatedBy" ColumnName="ACT_CreatedBy" />
+                <ScalarProperty Name="ACT_CreatedDate" ColumnName="ACT_CreatedDate" />
+                <ScalarProperty Name="ACT_UpdatedBy" ColumnName="ACT_UpdatedBy" />
+                <ScalarProperty Name="ACT_Updateddate" ColumnName="ACT_Updateddate" />
+                <ScalarProperty Name="ACT_UpdatedBy_DB" ColumnName="ACT_UpdatedBy_DB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Case_Task_History">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Task_History">
+              <MappingFragment StoreEntitySet="Account_Case_Task_History">
+                <ScalarProperty Name="ACTH_ID" ColumnName="ACTH_ID" />
+                <ScalarProperty Name="ACTH_ACT_ID" ColumnName="ACTH_ACT_ID" />
+                <ScalarProperty Name="ACTH_ACD_ID" ColumnName="ACTH_ACD_ID" />
+                <ScalarProperty Name="ACTH_HspAccID" ColumnName="ACTH_HspAccID" />
+                <ScalarProperty Name="ACTH_Completed" ColumnName="ACTH_Completed" />
+                <ScalarProperty Name="ACTH_Priority" ColumnName="ACTH_Priority" />
+                <ScalarProperty Name="ACTH_Description" ColumnName="ACTH_Description" />
+                <ScalarProperty Name="ACTH_Owner" ColumnName="ACTH_Owner" />
+                <ScalarProperty Name="ACTH_Comment" ColumnName="ACTH_Comment" />
+                <ScalarProperty Name="ACTH_DueDate" ColumnName="ACTH_DueDate" />
+                <ScalarProperty Name="ACTH_CreatedBy" ColumnName="ACTH_CreatedBy" />
+                <ScalarProperty Name="ACTH_CreatedDate" ColumnName="ACTH_CreatedDate" />
+                <ScalarProperty Name="ACTH_UpdatedBy_DB" ColumnName="ACTH_UpdatedBy_DB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Source">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Source">
+              <MappingFragment StoreEntitySet="Account_Source">
+                <ScalarProperty Name="AccSrc_ID" ColumnName="AccSrc_ID" />
+                <ScalarProperty Name="AccSrc_Name" ColumnName="AccSrc_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Encounter_Type">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Encounter_Type">
+              <MappingFragment StoreEntitySet="Encounter_Type">
+                <ScalarProperty Name="EncType_ID" ColumnName="EncType_ID" />
+                <ScalarProperty Name="EncType_Name" ColumnName="EncType_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insurance_Company_Name">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Insurance_Company_Name">
+              <MappingFragment StoreEntitySet="Insurance_Company_Name">
+                <ScalarProperty Name="InsCmp_ID" ColumnName="InsCmp_ID" />
+                <ScalarProperty Name="InsCmp_Name" ColumnName="InsCmp_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payor_Financial_Class">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Payor_Financial_Class">
+              <MappingFragment StoreEntitySet="Payor_Financial_Class">
+                <ScalarProperty Name="PyrFC_ID" ColumnName="PyrFC_ID" />
+                <ScalarProperty Name="PyrFC_Name" ColumnName="PyrFC_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrimaryReason_Master">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.PrimaryReason_Master">
+              <MappingFragment StoreEntitySet="PrimaryReason_Master">
+                <ScalarProperty Name="PRM_ID" ColumnName="PRM_ID" />
+                <ScalarProperty Name="PRM_Name" ColumnName="PRM_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status_Master">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Status_Master">
+              <MappingFragment StoreEntitySet="Status_Master">
+                <ScalarProperty Name="SM_ID" ColumnName="SM_ID" />
+                <ScalarProperty Name="SM_Name" ColumnName="SM_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task_Master">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Task_Master">
+              <MappingFragment StoreEntitySet="Task_Master">
+                <ScalarProperty Name="TM_ID" ColumnName="TM_ID" />
+                <ScalarProperty Name="TM_Name" ColumnName="TM_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Case_Task_InsUpd" FunctionName="TCG_Data_Worklist.Store.Case_Task_InsUpd" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

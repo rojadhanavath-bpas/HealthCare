@@ -16,8 +16,7 @@ using PagedList;
 using PagedList.Mvc;
 using System.Security.Cryptography;
 using System.Data.Entity.Core.Objects.DataClasses;
-
-
+using System.Data;
 
 namespace HealthcareAnalytics.Controllers
 {
@@ -28,7 +27,24 @@ namespace HealthcareAnalytics.Controllers
         readonly string tableauServer = "http://tableau.bpa.services/trusted/";
 
         //private healthcareEntities db = new healthcareEntities();
-       private TCG_DataEntities db2 = new TCG_DataEntities();
+        public TCG_Worklist TCG_WL = new TCG_Worklist();
+        private User_Login UL = new User_Login();
+        private TCG_DataEntities db2 = new TCG_DataEntities();
+        private Account_AR_Status AARS = new Account_AR_Status();
+        private Account_Bill_Status ABS = new Account_Bill_Status();
+        private Account_Case_Details ACS = new Account_Case_Details();
+        private Account_Case_Detials_History ACDH = new Account_Case_Detials_History();
+        private Account_Case_Task ACT = new Account_Case_Task();
+        private Account_Case_Task_History ACTH = new Account_Case_Task_History();        
+        private Account_Source AS = new Account_Source();
+        private Encounter_Type ECT = new Encounter_Type();
+        private Insurance_Company_Name ICN = new Insurance_Company_Name();
+        private Payor_Financial_Class PFC = new Payor_Financial_Class();
+        private PrimaryReason_Master PRM = new PrimaryReason_Master();
+        private Status_Master SM = new Status_Master();
+        private Task_Master TM = new Task_Master();
+
+        public string editOpenTask_id ;
 
         public ActionResult Login()
         {
@@ -362,31 +378,295 @@ namespace HealthcareAnalytics.Controllers
             return View(Role);
         }
 
-     
-       //private static Byte[] convertGetSHA512(Byte[] strInput)
-       // {
 
-       //     byte[] data = Encoding.GetEncoding(1252).GetBytes(Convert.ToString(strInput));
-          
-       //     SHA512 shaM = new SHA512Managed();
+        //private static Byte[] convertGetSHA512(Byte[] strInput)
+        // {
 
-       //     byte[] arrHash = shaM.ComputeHash(strInput);
+        //     byte[] data = Encoding.GetEncoding(1252).GetBytes(Convert.ToString(strInput));
 
+        //     SHA512 shaM = new SHA512Managed();
 
-       //     return arrHash;
+        //     byte[] arrHash = shaM.ComputeHash(strInput);
 
 
-       // }
+        //     return arrHash;
 
-       // private static string convertString(Byte[] input) {
 
-       //     string hashedpassword = Convert.ToBase64String(input);
-       //     return hashedpassword;
-       // }
+        // }
+
+        // private static string convertString(Byte[] input) {
+
+        //     string hashedpassword = Convert.ToBase64String(input);
+        //     return hashedpassword;
+        // }
+
+
+        private static List<SelectListItem> populateStatus()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Status_Master.Select(x => new SelectListItem { Text = x.SM_Name, Value = x.SM_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populateAccount_ARStatus()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Account_AR_Status.Select(x => new SelectListItem { Text = x.ARSts_Name, Value = x.ARSts_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_BillStatus()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Account_Bill_Status.Select(x => new SelectListItem { Text = x.BillSts_Name, Value = x.BillSts_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_AccountSource()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Account_Source.Select(x => new SelectListItem { Text = x.AccSrc_Name, Value = x.AccSrc_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_EncounterType()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Encounter_Type.Select(x => new SelectListItem { Text = x.EncType_Name, Value = x.EncType_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_Insurance()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Insurance_Company_Name.Select(x => new SelectListItem { Text = x.InsCmp_Name, Value = x.InsCmp_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_PayorFC()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Payor_Financial_Class.Select(x => new SelectListItem { Text = x.PyrFC_Name, Value = x.PyrFC_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_PrimaryReason()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.PrimaryReason_Master.Select(x => new SelectListItem { Text = x.PRM_Name, Value = x.PRM_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_Task()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Task_Master.Select(x => new SelectListItem { Text = x.TM_Name, Value = x.TM_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_UserLogin()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_DataEntities context = new TCG_DataEntities();
+            return context.User_Login.Select(x => new SelectListItem { Text = x.user_web_login, Value = x.user_Id.ToString() }).ToList();
+
+        }
+
+
+        public ActionResult TCG_CaseDetails_Modified(string id)
+        {
+            List<Get_Account_Info_for_ARandDenial_Result> caseResult;
+            AARS = new Account_AR_Status();
+            ABS = new Account_Bill_Status();
+            ACS = new Account_Case_Details();
+            ACDH = new Account_Case_Detials_History();
+            ACT = new Account_Case_Task();
+            ACTH = new Account_Case_Task_History();
+            AS = new Account_Source();
+            ECT = new Encounter_Type();
+            ICN = new Insurance_Company_Name();
+            PFC = new Payor_Financial_Class();
+            PRM = new PrimaryReason_Master();
+            SM = new Status_Master();
+            TM = new Task_Master();
+            UL = new User_Login();
+
+            ViewBag.SM = populateStatus();
+            ViewBag.AARS = populateAccount_ARStatus();
+            ViewBag.ABS = populate_BillStatus();
+            ViewBag.AS = populate_AccountSource();
+            ViewBag.ECT = populate_EncounterType();
+            ViewBag.ICN = populate_Insurance();
+            ViewBag.PFC = populate_PayorFC();
+            ViewBag.PRM = populate_PrimaryReason();           
+            ViewBag.TM = populate_Task();
+            ViewBag.UL = populate_UserLogin();
+
+
+            Session["AccountID"] = id;
+
+            try
+            {
+                using (TCG_DataEntities tcg_CaseDetails = new TCG_DataEntities())
+                {
+                    caseResult = tcg_CaseDetails.Get_Account_Info_for_ARandDenial(id).ToList();
+
+                    if (caseResult.Count > 0 || caseResult != null)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return View(caseResult);
+
+        }
+
+
+        [HttpGet]
+        public ActionResult EditOpenTask_Details(string id)
+        {
+            editOpenTask_id = id;
+            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+            try
+            {
+               
+                    if (id != null)
+
+                    {
+
+                        ViewBag.IsUpdate = true;
+
+                        //Account_Case_Task AccCaseTask = db.Account_Case_Task.Where(m => m.StudentID == id).FirstOrDefault();
+
+                        using (TCG_DataEntities caseResult = new TCG_DataEntities())
+                        {
+
+                            taskDetails = caseResult.Get_Account_Info_for_ARandDenial(id).ToList();
+                        }
+
+
+                    }
+                    //ViewBag.IsUpdate = false;
+
+                    //return PartialView("_EditOpenTask");            
+                
+            }
+            catch
+            {
+
+            }
+
+            return PartialView("EditOpenTask", taskDetails);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditOpenTask_Details(List<Get_Account_Info_for_ARandDenial_Result> taskDetails)
+        {
+            using (TCG_DataEntities caseResult = new TCG_DataEntities())
+            {
+
+                taskDetails = caseResult.Get_Account_Info_for_ARandDenial(editOpenTask_id).ToList();
+            }
+
+            if (ModelState.IsValid)
+
+            {
+
+                try
+
+                {                   
+
+                    return RedirectToAction("TCG_CaseDetails_Modified", editOpenTask_id);
+
+                }
+
+                catch
+                {
+
+                }
+
+
+            }
+
+            return PartialView("_EditOpenTask", taskDetails);
+
+        }
+
+
+        public ActionResult DeleteRecord(string id)
+        {
+            List<Get_Account_Info_for_ARandDenial_Result> taskDetails;
+            using (TCG_DataEntities caseResult = new TCG_DataEntities())
+            {
+
+                taskDetails = caseResult.Get_Account_Info_for_ARandDenial(editOpenTask_id).ToList();
+            }
+            
+
+            return RedirectToAction("TCG_CaseDetails_Modified");
+
+        }
+
+        public ActionResult CreateNewTask(string id)
+        {
+            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+            try
+            {
+
+                if (id != null)
+
+                {
+
+                    ViewBag.IsUpdate = true;
+
+                    //Account_Case_Task AccCaseTask = db.Account_Case_Task.Where(m => m.StudentID == id).FirstOrDefault();
+
+                    using (TCG_DataEntities caseResult = new TCG_DataEntities())
+                    {
+
+                        taskDetails = caseResult.Get_Account_Info_for_ARandDenial(id).ToList();
+                    }
+
+
+                }
+                //ViewBag.IsUpdate = false;
+
+                //return PartialView("_EditOpenTask");            
+
+            }
+            catch
+            {
+
+            }
+
+            return PartialView("EditOpenTask", taskDetails);
+        }
+
+
+
     }
 
 
-   
+
+
+
+
+
 
 
 }

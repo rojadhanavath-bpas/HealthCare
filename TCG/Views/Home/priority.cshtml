@@ -76,7 +76,7 @@
             {
                 <tr >
                     <td>                       
-                       @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "priority", "Home", new { id = item.Hospital_Account_ID})
+                       @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "TCG_CaseDetails_Modified", "Home", new { id = item.Hospital_Account_ID}, null)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Admission_Date)

@@ -1,0 +1,90 @@
+﻿@model List<HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result>
+@{
+    ViewBag.Title = "TCG - Case Details EDIT";
+
+}
+
+
+
+<div>
+
+
+    @using (Html.BeginForm("EditOpenTask_Details", "Home", FormMethod.Post))
+
+    {
+        @Html.ValidationSummary(true)
+
+
+        foreach (var item in Model)
+        {
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        Edit Open Task
+                        <a href="#close" title="Close" class="close" data-dismiss="modal">X</a>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <label>COMPLETED</label>
+                                @Html.TextBoxFor(Model => item.Coding_Date, new { @class = "form-control datepicker" })
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <label>DUE DATE</label>
+                                @Html.TextBoxFor(Model => item.Coding_Date, new { @class = "form-control datepicker" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <label>PRIORITY</label>
+                                @*@Html.EditorFor(Model => item.Account_Bill_Status, new { @class = "form-control " })*@
+                                @Html.TextBox(" ", "", new { @class = "form-control " })
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <label>DESCRIPTION</label>
+                                @*@Html.EditorFor(Model => item.Reporting_Rsn_Code_w__Desc, new { @class = "form-control " })*@
+                                @Html.TextBox(" ", "", new { @class = "form-control " })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <label>OWNER</label>
+                                @Html.TextBoxFor(Model => item.Account_Patient_Name, new { @class = "form-control " })
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <label>COMMENT</label>
+                                @*@Html.TextBoxFor(Model => item.Ext_Rsn_Code_w__Desc, new { @class = "form-control " })*@
+                                @Html.TextBox(" ", "", new { @class = "form-control " })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnSave">Save</button>
+                    </div>
+                    
+                </div>
+            </div>
+        }
+    }
+
+
+
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#btnSave').click(function () {
+                $('#modal-container').modal('hide');
+            });
+        });
+    </script>
+
+
+
+

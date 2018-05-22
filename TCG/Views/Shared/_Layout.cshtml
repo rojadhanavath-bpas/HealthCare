@@ -9,13 +9,15 @@
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/font-awesome.css")
     @Styles.Render("~/Content/font-awesome")
-    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/fontawesome")    
+    @Scripts.Render("~/bundles/datetime")
+
     <script>
         $(document).ready(function () {
-               $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+            $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
 
-             
-         
+
+
         });
     </script>
 
