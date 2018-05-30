@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TCG_DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="role_key" />
+          </Key>
+          <Property Name="role_key" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="role_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="role_code_short" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="role_designation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="role_createdBy_user" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="role_created_date" Type="smalldatetime" Nullable="false" />
+          <Property Name="role_delete_flag" Type="tinyint" Nullable="false" />
+        </EntityType>
         <EntityType Name="User_Login">
           <Key>
             <PropertyRef Name="user_Id" />
@@ -37,32 +49,21 @@
           <Property Name="otp_time" Type="smalldatetime" />
         </EntityType>
         <Function Name="Case_Task_InsUpd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="AccCase_ID" Type="int" Mode="In" />
-          <Parameter Name="AccTsk_ID" Type="int" Mode="In" />
-          <Parameter Name="AccCase_HspAccID" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_Amount" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_Status" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_Owner" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_Type" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_SubType" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_PayerReason" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_PrimaryReason" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_SecondaryReason" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_PrinDiag" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_PrinProc" Type="varchar" Mode="In" />
-          <Parameter Name="AccCase_Comments" Type="varchar(max)" Mode="In" />
-          <Parameter Name="AccTsk_AccCase_ID" Type="int" Mode="In" />
-          <Parameter Name="AccTsk_Completed" Type="varchar" Mode="In" />
-          <Parameter Name="AccTsk_Priority" Type="varchar" Mode="In" />
-          <Parameter Name="AccTsk_Description" Type="varchar" Mode="In" />
-          <Parameter Name="AccTsk_Owner" Type="varchar" Mode="In" />
-          <Parameter Name="AccTsk_Comment" Type="varchar(max)" Mode="In" />
-          <Parameter Name="AccTsk_DueDate" Type="datetime" Mode="In" />
-          <Parameter Name="AccTsk_CreatedBy_User" Type="varchar" Mode="In" />
-          <Parameter Name="AccTsk_CreatedDate" Type="datetime" Mode="In" />
-          <Parameter Name="AccTsk_UpdatedBy_User" Type="varchar" Mode="In" />
-          <Parameter Name="AccTsk_Updateddate" Type="datetime" Mode="In" />
-          <Parameter Name="AccTsk_UpdatedBy_DB" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_ID" Type="int" Mode="In" />
+          <Parameter Name="ACT_HspAccID" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_ACD_ID" Type="int" Mode="In" />
+          <Parameter Name="ACT_Completed" Type="bit" Mode="In" />
+          <Parameter Name="ACT_Priority" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_Description" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_Owner" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_Comment" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ACT_DueDate" Type="datetime" Mode="In" />
+          <Parameter Name="ACT_DeleteFlag" Type="int" Mode="In" />
+          <Parameter Name="ACT_CreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="ACT_UpdatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="ACT_Updateddate" Type="datetime" Mode="In" />
+          <Parameter Name="ACT_UpdatedBy_DB" Type="varchar" Mode="In" />
           <Parameter Name="new_recordNumber" Type="int" Mode="InOut" />
         </Function>
         <Function Name="CreateAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -110,6 +111,7 @@
           <Parameter Name="tablename" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="TCG_DataModelStoreContainer">
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_Login" EntityType="Self.User_Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users_Data" EntityType="Self.Users_Data" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -142,32 +144,21 @@
             <Parameter Name="pwd" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Case_Task_InsUpd">
-            <Parameter Name="AccCase_ID" Mode="In" Type="Int32" />
-            <Parameter Name="AccTsk_ID" Mode="In" Type="Int32" />
-            <Parameter Name="AccCase_HspAccID" Mode="In" Type="String" />
-            <Parameter Name="AccCase_Amount" Mode="In" Type="String" />
-            <Parameter Name="AccCase_Status" Mode="In" Type="String" />
-            <Parameter Name="AccCase_Owner" Mode="In" Type="String" />
-            <Parameter Name="AccCase_Type" Mode="In" Type="String" />
-            <Parameter Name="AccCase_SubType" Mode="In" Type="String" />
-            <Parameter Name="AccCase_PayerReason" Mode="In" Type="String" />
-            <Parameter Name="AccCase_PrimaryReason" Mode="In" Type="String" />
-            <Parameter Name="AccCase_SecondaryReason" Mode="In" Type="String" />
-            <Parameter Name="AccCase_PrinDiag" Mode="In" Type="String" />
-            <Parameter Name="AccCase_PrinProc" Mode="In" Type="String" />
-            <Parameter Name="AccCase_Comments" Mode="In" Type="String" />
-            <Parameter Name="AccTsk_AccCase_ID" Mode="In" Type="Int32" />
-            <Parameter Name="AccTsk_Completed" Mode="In" Type="String" />
-            <Parameter Name="AccTsk_Priority" Mode="In" Type="String" />
-            <Parameter Name="AccTsk_Description" Mode="In" Type="String" />
-            <Parameter Name="AccTsk_Owner" Mode="In" Type="String" />
-            <Parameter Name="AccTsk_Comment" Mode="In" Type="String" />
-            <Parameter Name="AccTsk_DueDate" Mode="In" Type="DateTime" />
-            <Parameter Name="AccTsk_CreatedBy_User" Mode="In" Type="String" />
-            <Parameter Name="AccTsk_CreatedDate" Mode="In" Type="DateTime" />
-            <Parameter Name="AccTsk_UpdatedBy_User" Mode="In" Type="String" />
-            <Parameter Name="AccTsk_Updateddate" Mode="In" Type="DateTime" />
-            <Parameter Name="AccTsk_UpdatedBy_DB" Mode="In" Type="String" />
+            <Parameter Name="ACT_ID" Mode="In" Type="Int32" />
+            <Parameter Name="ACT_HspAccID" Mode="In" Type="String" />
+            <Parameter Name="ACT_ACD_ID" Mode="In" Type="Int32" />
+            <Parameter Name="ACT_Completed" Mode="In" Type="Boolean" />
+            <Parameter Name="ACT_Priority" Mode="In" Type="String" />
+            <Parameter Name="ACT_Description" Mode="In" Type="String" />
+            <Parameter Name="ACT_Owner" Mode="In" Type="String" />
+            <Parameter Name="ACT_Comment" Mode="In" Type="String" />
+            <Parameter Name="ACT_DueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ACT_DeleteFlag" Mode="In" Type="Int32" />
+            <Parameter Name="ACT_CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="ACT_CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ACT_UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="ACT_Updateddate" Mode="In" Type="DateTime" />
+            <Parameter Name="ACT_UpdatedBy_DB" Mode="In" Type="String" />
             <Parameter Name="new_recordNumber" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="md_notnull_to_null_fields">
@@ -180,6 +171,7 @@
           <Parameter Name="tablename" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="User_Login" EntityType="TCG_DataModel.User_Login" />
+          <EntitySet Name="Roles" EntityType="TCG_DataModel.Role" />
         </EntityContainer>
         <ComplexType Name="Get_Account_Info_for_ARandDenial_Result">
           <Property Type="DateTime" Name="Account_Date" Nullable="true" />
@@ -377,6 +369,18 @@
           <Property Name="user_last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="user_web_login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="user_web_pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="role_key" />
+          </Key>
+          <Property Name="role_key" Type="Guid" Nullable="false" />
+          <Property Name="role_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role_code_short" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role_designation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role_createdBy_user" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role_created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="role_delete_flag" Type="Byte" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -593,6 +597,19 @@
                 <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
                 <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
                 <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="TCG_DataModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="role_delete_flag" ColumnName="role_delete_flag" />
+                <ScalarProperty Name="role_created_date" ColumnName="role_created_date" />
+                <ScalarProperty Name="role_createdBy_user" ColumnName="role_createdBy_user" />
+                <ScalarProperty Name="role_designation" ColumnName="role_designation" />
+                <ScalarProperty Name="role_code_short" ColumnName="role_code_short" />
+                <ScalarProperty Name="role_code" ColumnName="role_code" />
+                <ScalarProperty Name="role_key" ColumnName="role_key" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

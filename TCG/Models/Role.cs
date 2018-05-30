@@ -12,12 +12,14 @@ namespace HealthcareAnalytics.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User_Login
+    public partial class Role
     {
-        public System.Guid user_Id { get; set; }
-        public string user_first_name { get; set; }
-        public string user_last_name { get; set; }
-        public string user_web_login { get; set; }
-        public string user_web_pwd { get; set; }
+        public System.Guid role_key { get; set; }
+        public string role_code { get; set; }
+        public string role_code_short { get; set; }
+        public string role_designation { get; set; }
+        public string role_createdBy_user { get; set; }
+        public System.DateTime role_created_date { get; set; }
+        public byte role_delete_flag { get; set; }
     }
 }

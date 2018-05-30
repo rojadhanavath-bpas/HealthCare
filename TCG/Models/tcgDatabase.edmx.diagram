@@ -7,6 +7,7 @@
       <Diagram DiagramId="213f4e3ae88e45968f01e843b4eee881" Name="Diagram1" ZoomLevel="108" >
         <EntityTypeShape EntityType="TCG_DataModel.Users_Data" Width="1.5" PointX="2.75" PointY="1.125" />
         <EntityTypeShape EntityType="TCG_DataModel.User_Login" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TCG_DataModel.Role" Width="1.5" PointX="5.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

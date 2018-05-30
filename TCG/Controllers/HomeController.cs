@@ -53,8 +53,12 @@ namespace HealthcareAnalytics.Controllers
 
             return View();
         }
+        public ActionResult ManageUsers()
+        {
+            log.Debug("Loading Home Page..");
+            return View("~/Views/ManageUsers/View.cshtml");
+        }
 
-        
 
 
         public ActionResult Home()
