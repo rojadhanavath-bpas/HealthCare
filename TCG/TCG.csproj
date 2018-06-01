@@ -681,16 +681,16 @@
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\Home\EditOpenTask.cshtml" />
     <Content Include="Views\Home\CreateNewTask.cshtml" />
-    <Content Include="Views\Home\Testing_page.cshtml" />
-    <Content Include="Views\Home\CreateNewCase.cshtml" />
-    <Content Include="Views\Home\prioirty_CaseList.cshtml" />
-    <Content Include="Views\Home\DeleteOpenTask.cshtml" />
-    <Content Include="Views\Home\Edit_CaseList.cshtml" />
     <Content Include="Views\Users_Data\Create.cshtml" />
     <Content Include="Views\Users_Data\Delete.cshtml" />
     <Content Include="Views\Users_Data\Details.cshtml" />
     <Content Include="Views\Users_Data\Edit.cshtml" />
     <Content Include="Views\Users_Data\Index.cshtml" />
+    <Content Include="Views\Home\Testing_page.cshtml" />
+    <Content Include="Views\Home\CreateNewCase.cshtml" />
+    <Content Include="Views\Home\prioirty_CaseList.cshtml" />
+    <Content Include="Views\Home\DeleteOpenTask.cshtml" />
+    <Content Include="Views\Home\Edit_CaseList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
