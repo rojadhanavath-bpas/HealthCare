@@ -31,8 +31,6 @@ namespace HealthcareAnalytics.Models
         public virtual DbSet<Account_Bill_Status> Account_Bill_Status { get; set; }
         public virtual DbSet<Account_Case_Details> Account_Case_Details { get; set; }
         public virtual DbSet<Account_Case_Detials_History> Account_Case_Detials_History { get; set; }
-        public virtual DbSet<Account_Case_Task> Account_Case_Task { get; set; }
-        public virtual DbSet<Account_Case_Task_History> Account_Case_Task_History { get; set; }
         public virtual DbSet<Account_Source> Account_Source { get; set; }
         public virtual DbSet<Encounter_Type> Encounter_Type { get; set; }
         public virtual DbSet<Insurance_Company_Name> Insurance_Company_Name { get; set; }
@@ -40,16 +38,80 @@ namespace HealthcareAnalytics.Models
         public virtual DbSet<PrimaryReason_Master> PrimaryReason_Master { get; set; }
         public virtual DbSet<Status_Master> Status_Master { get; set; }
         public virtual DbSet<Task_Master> Task_Master { get; set; }
+        public virtual DbSet<Priority_Master> Priority_Master { get; set; }
+        public virtual DbSet<Account_Case_Task> Account_Case_Task { get; set; }
+        public virtual DbSet<Account_Case_Task_History> Account_Case_Task_History { get; set; }
     
-        public virtual int Case_Task_InsUpd(Nullable<int> aCD_ID, Nullable<int> aCT_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, Nullable<int> aCT_ACD_ID, string aCT_Completed, string aCT_Priority, string aCT_Description, string aCT_Owner, string aCT_Comment, Nullable<System.DateTime> aCT_DueDate, string aCT_CreatedBy, Nullable<System.DateTime> aCT_CreatedDate, string aCT_UpdatedBy, Nullable<System.DateTime> aCT_Updateddate, string aCT_UpdatedBy_DB, Nullable<int> new_ACD_ACT_ID, ObjectParameter new_recordNumber)
+        public virtual int Case_Task_InsUpd(Nullable<int> aCT_ID, string aCT_HspAccID, Nullable<int> aCT_ACD_ID, Nullable<bool> aCT_Completed, string aCT_Priority, string aCT_Description, string aCT_Owner, string aCT_Comment, Nullable<System.DateTime> aCT_DueDate, Nullable<int> aCT_DeleteFlag, string aCT_CreatedBy, Nullable<System.DateTime> aCT_CreatedDate, string aCT_UpdatedBy, Nullable<System.DateTime> aCT_Updateddate, string aCT_UpdatedBy_DB, ObjectParameter new_recordNumber)
+        {
+            var aCT_IDParameter = aCT_ID.HasValue ?
+                new ObjectParameter("ACT_ID", aCT_ID) :
+                new ObjectParameter("ACT_ID", typeof(int));
+    
+            var aCT_HspAccIDParameter = aCT_HspAccID != null ?
+                new ObjectParameter("ACT_HspAccID", aCT_HspAccID) :
+                new ObjectParameter("ACT_HspAccID", typeof(string));
+    
+            var aCT_ACD_IDParameter = aCT_ACD_ID.HasValue ?
+                new ObjectParameter("ACT_ACD_ID", aCT_ACD_ID) :
+                new ObjectParameter("ACT_ACD_ID", typeof(int));
+    
+            var aCT_CompletedParameter = aCT_Completed.HasValue ?
+                new ObjectParameter("ACT_Completed", aCT_Completed) :
+                new ObjectParameter("ACT_Completed", typeof(bool));
+    
+            var aCT_PriorityParameter = aCT_Priority != null ?
+                new ObjectParameter("ACT_Priority", aCT_Priority) :
+                new ObjectParameter("ACT_Priority", typeof(string));
+    
+            var aCT_DescriptionParameter = aCT_Description != null ?
+                new ObjectParameter("ACT_Description", aCT_Description) :
+                new ObjectParameter("ACT_Description", typeof(string));
+    
+            var aCT_OwnerParameter = aCT_Owner != null ?
+                new ObjectParameter("ACT_Owner", aCT_Owner) :
+                new ObjectParameter("ACT_Owner", typeof(string));
+    
+            var aCT_CommentParameter = aCT_Comment != null ?
+                new ObjectParameter("ACT_Comment", aCT_Comment) :
+                new ObjectParameter("ACT_Comment", typeof(string));
+    
+            var aCT_DueDateParameter = aCT_DueDate.HasValue ?
+                new ObjectParameter("ACT_DueDate", aCT_DueDate) :
+                new ObjectParameter("ACT_DueDate", typeof(System.DateTime));
+    
+            var aCT_DeleteFlagParameter = aCT_DeleteFlag.HasValue ?
+                new ObjectParameter("ACT_DeleteFlag", aCT_DeleteFlag) :
+                new ObjectParameter("ACT_DeleteFlag", typeof(int));
+    
+            var aCT_CreatedByParameter = aCT_CreatedBy != null ?
+                new ObjectParameter("ACT_CreatedBy", aCT_CreatedBy) :
+                new ObjectParameter("ACT_CreatedBy", typeof(string));
+    
+            var aCT_CreatedDateParameter = aCT_CreatedDate.HasValue ?
+                new ObjectParameter("ACT_CreatedDate", aCT_CreatedDate) :
+                new ObjectParameter("ACT_CreatedDate", typeof(System.DateTime));
+    
+            var aCT_UpdatedByParameter = aCT_UpdatedBy != null ?
+                new ObjectParameter("ACT_UpdatedBy", aCT_UpdatedBy) :
+                new ObjectParameter("ACT_UpdatedBy", typeof(string));
+    
+            var aCT_UpdateddateParameter = aCT_Updateddate.HasValue ?
+                new ObjectParameter("ACT_Updateddate", aCT_Updateddate) :
+                new ObjectParameter("ACT_Updateddate", typeof(System.DateTime));
+    
+            var aCT_UpdatedBy_DBParameter = aCT_UpdatedBy_DB != null ?
+                new ObjectParameter("ACT_UpdatedBy_DB", aCT_UpdatedBy_DB) :
+                new ObjectParameter("ACT_UpdatedBy_DB", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_Task_InsUpd", aCT_IDParameter, aCT_HspAccIDParameter, aCT_ACD_IDParameter, aCT_CompletedParameter, aCT_PriorityParameter, aCT_DescriptionParameter, aCT_OwnerParameter, aCT_CommentParameter, aCT_DueDateParameter, aCT_DeleteFlagParameter, aCT_CreatedByParameter, aCT_CreatedDateParameter, aCT_UpdatedByParameter, aCT_UpdateddateParameter, aCT_UpdatedBy_DBParameter, new_recordNumber);
+        }
+    
+        public virtual int Case_InsUpd(Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber)
         {
             var aCD_IDParameter = aCD_ID.HasValue ?
                 new ObjectParameter("ACD_ID", aCD_ID) :
                 new ObjectParameter("ACD_ID", typeof(int));
-    
-            var aCT_IDParameter = aCT_ID.HasValue ?
-                new ObjectParameter("ACT_ID", aCT_ID) :
-                new ObjectParameter("ACT_ID", typeof(int));
     
             var aCD_HspAccIDParameter = aCD_HspAccID != null ?
                 new ObjectParameter("ACD_HspAccID", aCD_HspAccID) :
@@ -99,59 +161,27 @@ namespace HealthcareAnalytics.Models
                 new ObjectParameter("ACD_Comments", aCD_Comments) :
                 new ObjectParameter("ACD_Comments", typeof(string));
     
-            var aCT_ACD_IDParameter = aCT_ACD_ID.HasValue ?
-                new ObjectParameter("ACT_ACD_ID", aCT_ACD_ID) :
-                new ObjectParameter("ACT_ACD_ID", typeof(int));
+            var aCD_CreatedByParameter = aCD_CreatedBy != null ?
+                new ObjectParameter("ACD_CreatedBy", aCD_CreatedBy) :
+                new ObjectParameter("ACD_CreatedBy", typeof(string));
     
-            var aCT_CompletedParameter = aCT_Completed != null ?
-                new ObjectParameter("ACT_Completed", aCT_Completed) :
-                new ObjectParameter("ACT_Completed", typeof(string));
+            var aCD_CreatedDateParameter = aCD_CreatedDate.HasValue ?
+                new ObjectParameter("ACD_CreatedDate", aCD_CreatedDate) :
+                new ObjectParameter("ACD_CreatedDate", typeof(System.DateTime));
     
-            var aCT_PriorityParameter = aCT_Priority != null ?
-                new ObjectParameter("ACT_Priority", aCT_Priority) :
-                new ObjectParameter("ACT_Priority", typeof(string));
+            var aCD_UpdatedByParameter = aCD_UpdatedBy != null ?
+                new ObjectParameter("ACD_UpdatedBy", aCD_UpdatedBy) :
+                new ObjectParameter("ACD_UpdatedBy", typeof(string));
     
-            var aCT_DescriptionParameter = aCT_Description != null ?
-                new ObjectParameter("ACT_Description", aCT_Description) :
-                new ObjectParameter("ACT_Description", typeof(string));
+            var aCD_UpdateddateParameter = aCD_Updateddate.HasValue ?
+                new ObjectParameter("ACD_Updateddate", aCD_Updateddate) :
+                new ObjectParameter("ACD_Updateddate", typeof(System.DateTime));
     
-            var aCT_OwnerParameter = aCT_Owner != null ?
-                new ObjectParameter("ACT_Owner", aCT_Owner) :
-                new ObjectParameter("ACT_Owner", typeof(string));
+            var aCTD_UpdatedBy_DBParameter = aCTD_UpdatedBy_DB != null ?
+                new ObjectParameter("ACTD_UpdatedBy_DB", aCTD_UpdatedBy_DB) :
+                new ObjectParameter("ACTD_UpdatedBy_DB", typeof(string));
     
-            var aCT_CommentParameter = aCT_Comment != null ?
-                new ObjectParameter("ACT_Comment", aCT_Comment) :
-                new ObjectParameter("ACT_Comment", typeof(string));
-    
-            var aCT_DueDateParameter = aCT_DueDate.HasValue ?
-                new ObjectParameter("ACT_DueDate", aCT_DueDate) :
-                new ObjectParameter("ACT_DueDate", typeof(System.DateTime));
-    
-            var aCT_CreatedByParameter = aCT_CreatedBy != null ?
-                new ObjectParameter("ACT_CreatedBy", aCT_CreatedBy) :
-                new ObjectParameter("ACT_CreatedBy", typeof(string));
-    
-            var aCT_CreatedDateParameter = aCT_CreatedDate.HasValue ?
-                new ObjectParameter("ACT_CreatedDate", aCT_CreatedDate) :
-                new ObjectParameter("ACT_CreatedDate", typeof(System.DateTime));
-    
-            var aCT_UpdatedByParameter = aCT_UpdatedBy != null ?
-                new ObjectParameter("ACT_UpdatedBy", aCT_UpdatedBy) :
-                new ObjectParameter("ACT_UpdatedBy", typeof(string));
-    
-            var aCT_UpdateddateParameter = aCT_Updateddate.HasValue ?
-                new ObjectParameter("ACT_Updateddate", aCT_Updateddate) :
-                new ObjectParameter("ACT_Updateddate", typeof(System.DateTime));
-    
-            var aCT_UpdatedBy_DBParameter = aCT_UpdatedBy_DB != null ?
-                new ObjectParameter("ACT_UpdatedBy_DB", aCT_UpdatedBy_DB) :
-                new ObjectParameter("ACT_UpdatedBy_DB", typeof(string));
-    
-            var new_ACD_ACT_IDParameter = new_ACD_ACT_ID.HasValue ?
-                new ObjectParameter("new_ACD_ACT_ID", new_ACD_ACT_ID) :
-                new ObjectParameter("new_ACD_ACT_ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_Task_InsUpd", aCD_IDParameter, aCT_IDParameter, aCD_HspAccIDParameter, aCD_AmountParameter, aCD_StatusParameter, aCD_OwnerParameter, aCD_TypeParameter, aCD_SubTypeParameter, aCD_PayerReasonParameter, aCD_PrimaryReasonParameter, aCD_SecondaryReasonParameter, aCD_PrinDiagParameter, aCD_PrinProcParameter, aCD_CommentsParameter, aCT_ACD_IDParameter, aCT_CompletedParameter, aCT_PriorityParameter, aCT_DescriptionParameter, aCT_OwnerParameter, aCT_CommentParameter, aCT_DueDateParameter, aCT_CreatedByParameter, aCT_CreatedDateParameter, aCT_UpdatedByParameter, aCT_UpdateddateParameter, aCT_UpdatedBy_DBParameter, new_ACD_ACT_IDParameter, new_recordNumber);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_InsUpd", aCD_IDParameter, aCD_HspAccIDParameter, aCD_AmountParameter, aCD_StatusParameter, aCD_OwnerParameter, aCD_TypeParameter, aCD_SubTypeParameter, aCD_PayerReasonParameter, aCD_PrimaryReasonParameter, aCD_SecondaryReasonParameter, aCD_PrinDiagParameter, aCD_PrinProcParameter, aCD_CommentsParameter, aCD_CreatedByParameter, aCD_CreatedDateParameter, aCD_UpdatedByParameter, aCD_UpdateddateParameter, aCTD_UpdatedBy_DBParameter, new_recordNumber);
         }
     }
 }

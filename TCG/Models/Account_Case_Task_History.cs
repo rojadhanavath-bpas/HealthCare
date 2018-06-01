@@ -18,7 +18,7 @@ namespace HealthcareAnalytics.Models
         public int ACTH_ACT_ID { get; set; }
         public int ACTH_ACD_ID { get; set; }
         public string ACTH_HspAccID { get; set; }
-        public string ACTH_Completed { get; set; }
+        public bool ACTH_Completed { get; set; }
         public string ACTH_Priority { get; set; }
         public string ACTH_Description { get; set; }
         public string ACTH_Owner { get; set; }
@@ -27,6 +27,7 @@ namespace HealthcareAnalytics.Models
         public string ACTH_CreatedBy { get; set; }
         public System.DateTime ACTH_CreatedDate { get; set; }
         public string ACTH_UpdatedBy_DB { get; set; }
+        public Nullable<int> ACTH_DeleteFlag { get; set; }
     
         public virtual Account_Case_Details Account_Case_Details { get; set; }
         public virtual Account_Case_Task Account_Case_Task { get; set; }
