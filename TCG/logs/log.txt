@@ -46,3 +46,19 @@ DEBUG 2018-06-01 16:01:57,539 44705ms HomeController         GetTableauToken    
 DEBUG 2018-06-01 16:01:58,764 45930ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
 DEBUG 2018-06-01 16:03:19,077 126243ms HomeController         GetTableauToken    - Retrieving Tableau token 
 DEBUG 2018-06-01 16:03:19,387 126552ms HomeController         Worklist           - [User:Nirmal]  Loading Debit AR  Page..
+DEBUG 2018-06-01 16:08:27,831 10472ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-06-01 16:09:10,828 53470ms HomeController         Login              - password
+DEBUG 2018-06-01 16:09:10,831 53473ms HomeController         Login              - password
+DEBUG 2018-06-01 16:09:10,833 53475ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-01 16:09:11,327 53969ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-01 16:09:12,346 54988ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-01 16:09:18,741 61382ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-01 16:09:19,010 61652ms HomeController         Worklist           - [User:Nirmal]  Loading Debit AR  Page..
+DEBUG 2018-06-01 16:14:40,211  4349ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-06-01 16:15:33,467 57605ms HomeController         Login              - password
+DEBUG 2018-06-01 16:15:33,470 57608ms HomeController         Login              - password
+DEBUG 2018-06-01 16:15:33,471 57609ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-01 16:15:33,942 58080ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-01 16:15:34,969 59107ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-01 16:15:48,656 72794ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-01 16:15:48,978 73116ms HomeController         Worklist           - [User:Nirmal]  Loading Debit AR  Page..

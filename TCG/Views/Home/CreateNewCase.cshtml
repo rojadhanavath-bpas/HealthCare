@@ -122,10 +122,13 @@
                     </div>
 
                     <div class="modal-footer">
-                        @Html.ActionLink("BACK", "prioirty_CaseList", new { id = Model.ACD_HspAccID })
-                        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+                        <div class="col-sm-1" style="float:right;">
+                            @Html.ActionLink("BACK", "prioirty_CaseList", new { id = Model.ACD_HspAccID }, new { @class = "btn btn-primary" })
+                        </div>
+                        <div class="col-sm-1" style="float:right;">
+                            <button type="submit" class="btn btn-danger" id="btnSave">Save</button></div>
+                        </div>
                     </div>
-                </div>
 
             </div>
         </div>

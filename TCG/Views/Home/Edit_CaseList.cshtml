@@ -20,9 +20,9 @@
                         <h4>
                             <span style=" font-size:large">
                                 EDIT CASE
-                            </span>                            
+                            </span>
                         </h4>
-                    </div>                    
+                    </div>
                     <div id="id_cases_details" style="display:block;">
 
                         <div class="form-row ">
@@ -91,7 +91,7 @@
                                 <label for="DDL_PrinDiagOthers" class="text-info">PRIM DIAG/OTHERS</label>
                                 @Html.DropDownListFor(Model => Model.ACD_PrinDiag, (IEnumerable<SelectListItem>)ViewBag.PD, "Select", new { @class = "form-control dropdown" })
                             </div>
-                            <div class="form-group col-sm-4">                                
+                            <div class="form-group col-sm-4">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="DDL_PrinProcOthers" class="text-info">PRIM PROC/OTHERS</label>
@@ -103,8 +103,12 @@
 
                     </div>
                     <div class="modal-footer">
-                        @Html.ActionLink("BACK", "prioirty_CaseList", new { id = Model.ACD_HspAccID })
-                        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+                        <div class="col-sm-1" style="float:right;">
+                            @Html.ActionLink("BACK", "prioirty_CaseList", new { id = Model.ACD_HspAccID }, new { @class = "btn btn-primary" })
+                        </div>
+                        <div class="col-sm-1" style="float:right;">
+                            <button type="submit" class="btn btn-danger" id="btnSave">Save</button>
+                        </div>
                     </div>
                 </div>
 

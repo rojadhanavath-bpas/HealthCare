@@ -27,7 +27,7 @@
                             @*<span class="col-sm-2" stlye=":right">@Html.Label(Session["AccountID"].ToString(), Session["AccountID"].ToString(), new { @class = "form-control", @readonly = "readonly" })</span>*@
                         </h4>
                     </div>
-                    
+
                     <div id="id_cases_details" style="display:block;">
 
                         <div class="form-row ">
@@ -85,8 +85,12 @@
                     </div>
 
                     <div class="modal-footer">
-                        @Html.ActionLink("BACK", "TCG_CaseDetails_Modified", new { id = Model.ACT_HspAccID, case_ID = Model.ACT_ACD_ID })
-                        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+                        <div class="col-sm-1" style="float:right;">
+                            @Html.ActionLink("BACK", "TCG_CaseDetails_Modified", new { id = Model.ACT_HspAccID, case_ID = Model.ACT_ACD_ID }, new { @class = "btn btn-primary" })
+                        </div>
+                        <div class="col-sm-1" style="float:right;">
+                            <button type="submit" class="btn btn-danger" id="btnSave">Save</button>
+                        </div>
                     </div>
                 </div>
 

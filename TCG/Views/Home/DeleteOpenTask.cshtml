@@ -51,11 +51,12 @@
                         </div>
                     </div>
                     <div class="row">
-
-                        <button type="submit" class="btn btn-danger" id="btnSave" style="float:right;">Delete</button>
-                        <span> </span>
-                        @Html.ActionLink("BACK", "TCG_CaseDetails_Modified", new { id = Model.ACT_HspAccID, case_ID = Model.ACT_ACD_ID }, new { @class = "btn btn-primary" })
-
+                        <div class="col-sm-1" style="float:right;">
+                            <button type="submit" class="btn btn-danger" id="btnSave" style="float:right;">Delete</button>
+                        </div>
+                        <div class="col-sm-1" style="float:right;">
+                            @Html.ActionLink("BACK", "TCG_CaseDetails_Modified", new { id = Model.ACT_HspAccID, case_ID = Model.ACT_ACD_ID }, new { @class = "btn btn-primary", @style = "float:right" })
+                        </div>
 
                     </div>
                 </div>
