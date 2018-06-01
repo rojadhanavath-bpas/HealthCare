@@ -1,0 +1,114 @@
+﻿
+@model HealthcareAnalytics.Models.Account_Case_Details
+@{
+    ViewBag.Title = "TCG - Case Details EDIT";
+
+}
+
+
+@using (Html.BeginForm("Edit_CaseList", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <form>
+
+        <div class="container">
+            <div class="panel panel-body">
+
+                <div id="id_cases" class="panel-body">
+                    <div style="border:3px solid #fcbf49; background-color:#fcbf49">
+                        <h4>
+                            <span style=" font-size:large">
+                                EDIT CASE
+                            </span>                            
+                        </h4>
+                    </div>                    
+                    <div id="id_cases_details" style="display:block;">
+
+                        <div class="form-row ">
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_Status">ACCOUNT ID</label>
+                                @Html.TextBoxFor(Model => Model.ACD_HspAccID, new { @class = "form-control ", @readonly = "readonly" })
+                            </div>
+                            <div class="form-group col-sm-4">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_Owner">CASE ID</label>
+                                @Html.TextBoxFor(Model => Model.ACD_ID, new { @class = "form-control ", @readonly = "readonly" })
+                            </div>
+                        </div>
+
+                        <div class="form-row ">
+                            <div class="form-group col-sm-4">
+                                <label for="txt_Amount">Amount</label>
+                                @Html.TextBoxFor(Model => Model.ACD_Amount, new { @class = "form-control " })
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_Status">Status</label>
+                                @Html.DropDownListFor(Model => Model.ACD_Status, (IEnumerable<SelectListItem>)ViewBag.SM, "Select", new { @class = "form-control dropdown" })
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_Owner">Owner</label>
+                                @Html.DropDownListFor(Model => Model.ACD_Owner, (IEnumerable<SelectListItem>)ViewBag.UL, "Select", new { @class = "form-control dropdown" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_Type">Type</label>
+                                @Html.DropDownListFor(Model => Model.ACD_Type, (IEnumerable<SelectListItem>)ViewBag.ECT, "Select", new { @class = "form-control dropdown" })
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_SubType">Sub-Type</label>
+                                @Html.DropDownListFor(Model => Model.ACD_SubType, (IEnumerable<SelectListItem>)ViewBag.SbT, "Select", new { @class = "form-control dropdown" })
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_PayerReason">Payer Reason</label>
+                                @Html.DropDownListFor(Model => Model.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.PR, "Select", new { @class = "form-control dropdown" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_PrimaryReason">Primary Reason</label>
+                                @Html.DropDownListFor(Model => Model.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.PRM, "Select", new { @class = "form-control dropdown" })
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_SecondaryReason">Secondary Reason</label>
+                                @Html.DropDownListFor(Model => Model.ACD_SecondaryReason, (IEnumerable<SelectListItem>)ViewBag.SRM, "Select", new { @class = "form-control dropdown" })
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="txt_Note">Note</label>
+                                @Html.TextAreaFor(Model => Model.ACD_Comments, new { @class = "form-control " })
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_PrinDiagOthers">Prin Diag/Others</label>
+                                @Html.DropDownListFor(Model => Model.ACD_PrinDiag, (IEnumerable<SelectListItem>)ViewBag.PD, "Select", new { @class = "form-control dropdown" })
+                            </div>
+                            <div class="form-group col-sm-4">                                
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="DDL_PrinProcOthers">Prin Proc/Others</label>
+                                @Html.DropDownListFor(Model => Model.ACD_PrinProc, (IEnumerable<SelectListItem>)ViewBag.PP, "Select", new { @class = "form-control dropdown" })
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                    <div class="modal-footer">
+                        @Html.ActionLink("BACK", "prioirty_CaseList", new { id = Model.ACD_HspAccID })
+                        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+}

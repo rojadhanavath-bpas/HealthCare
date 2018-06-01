@@ -1,88 +1,113 @@
-﻿@model List<HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result>
+﻿@*@model List<HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result>*@
+@model HealthcareAnalytics.Models.Account_Case_Task
 @{
     ViewBag.Title = "TCG - Case Details EDIT";
 
 }
 
 
+@using (Html.BeginForm("EditOpenTask_Details", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
 
-<div>
+    @Html.HiddenFor(m => m.ACT_ACD_ID);
+    @Html.HiddenFor(m => m.ACT_ID);
+    @Html.HiddenFor(m => m.ACT_HspAccID);
+    <form>
 
+        <div class="container">
+            <div class="panel panel-body">
 
-    @using (Html.BeginForm("EditOpenTask_Details", "Home", FormMethod.Post))
-
-    {
-        @Html.ValidationSummary(true)
-
-
-        foreach (var item in Model)
-        {
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        Edit Open Task
-                        <a href="#close" title="Close" class="close" data-dismiss="modal">X</a>
+                <div id="id_cases" class="panel-body">
+                    <div style="border:3px solid #fcbf49; background-color:#fcbf49">
+                        <h4>
+                            <span style=" font-size:large">
+                                EDIT OPEN TASk
+                            </span>
+                            @*<span class="col-sm-2" stlye=":right">@Html.Label(Session["AccountID"].ToString(), Session["AccountID"].ToString(), new { @class = "form-control", @readonly = "readonly" })</span>*@
+                        </h4>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-row">
+                    <hr />
+                    <div id="id_cases_details" style="display:block;">
+
+                        <div class="form-row ">
                             <div class="form-group col-sm-6">
                                 <label>COMPLETED</label>
-                                @Html.TextBoxFor(Model => item.Coding_Date, new { @class = "form-control datepicker" })
+                                @Html.CheckBoxFor(item => item.ACT_Completed, new { @class = "form-control" })
                             </div>
 
                             <div class="form-group col-sm-6">
                                 <label>DUE DATE</label>
-                                @Html.TextBoxFor(Model => item.Coding_Date, new { @class = "form-control datepicker" })
+                                @Html.TextBoxFor(item => item.ACT_DueDate, new { @class = "form-control datepicker" })
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-sm-6">
                                 <label>PRIORITY</label>
-                                @*@Html.EditorFor(Model => item.Account_Bill_Status, new { @class = "form-control " })*@
-                                @Html.TextBox(" ", "", new { @class = "form-control " })
+                                @Html.DropDownListFor(item => item.ACT_Priority, (ViewBag.PM as List<SelectListItem>), new { @class = "form-control dropdown" })
+                                @*@Html.DropDownList(" ", ViewBag.PM as List<SelectListItem>, "Select", new { @class = "form-control dropdown is-valid" })*@
+
                             </div>
 
                             <div class="form-group col-sm-6">
                                 <label>DESCRIPTION</label>
                                 @*@Html.EditorFor(Model => item.Reporting_Rsn_Code_w__Desc, new { @class = "form-control " })*@
-                                @Html.TextBox(" ", "", new { @class = "form-control " })
+                                @Html.TextBoxFor(item => item.ACT_Description, new { @class = "form-control " })
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-sm-6">
                                 <label>OWNER</label>
-                                @Html.TextBoxFor(Model => item.Account_Patient_Name, new { @class = "form-control " })
+                                @*@Html.TextBoxFor(item => item.ACT_Owner, new { @class = "form-control " })*@
+                                @Html.DropDownListFor(item => item.ACT_Owner, ViewBag.UL as List<SelectListItem>, "Select", new { @class = "form-control dropdown is-valid" })
                             </div>
 
                             <div class="form-group col-sm-6">
                                 <label>COMMENT</label>
-                                @*@Html.TextBoxFor(Model => item.Ext_Rsn_Code_w__Desc, new { @class = "form-control " })*@
-                                @Html.TextBox(" ", "", new { @class = "form-control " })
+                                @Html.TextAreaFor(item => item.ACT_Comment, new { @class = "form-control" })
                             </div>
                         </div>
+
                     </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="btnSave">Save</button>
+                        @Html.ActionLink("BACK", "TCG_CaseDetails_Modified", new { id = Model.ACT_HspAccID, case_ID = Model.ACT_ACD_ID })
+                        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
                     </div>
-                    
                 </div>
+
             </div>
-        }
-    }
-    
-    </div>
+        </div>
+    </form>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#btnSave').click(function () {
+            $('#modal-container').modal('hide');
+        });
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 
     <script type="text/javascript">
         $(function () {
-            $('#btnSave').click(function () {
-                $('#modal-container').modal('hide');
+            // $.fn.datepicker.defaults.format = "mm/dd/yyyy";
+            $('.datepicker').datepicker({
+                calendarWeeks: true,
+                todayHighlight: true,
+                autoclose: true
             });
         });
-    </script>
 
+
+
+    </script>
+}
 
 
 

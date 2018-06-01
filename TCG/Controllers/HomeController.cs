@@ -17,6 +17,10 @@ using PagedList.Mvc;
 using System.Security.Cryptography;
 using System.Data.Entity.Core.Objects.DataClasses;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
+using System.Runtime.Remoting.Contexts;
+
 
 namespace HealthcareAnalytics.Controllers
 {
@@ -43,6 +47,7 @@ namespace HealthcareAnalytics.Controllers
         private PrimaryReason_Master PRM = new PrimaryReason_Master();
         private Status_Master SM = new Status_Master();
         private Task_Master TM = new Task_Master();
+        private Priority_Master PM = new Priority_Master();
 
         public string editOpenTask_id ;
 
@@ -53,12 +58,8 @@ namespace HealthcareAnalytics.Controllers
 
             return View();
         }
-        public ActionResult ManageUsers()
-        {
-            log.Debug("Loading Home Page..");
-            return View("~/Views/ManageUsers/View.cshtml");
-        }
 
+        
 
 
         public ActionResult Home()
@@ -254,8 +255,13 @@ namespace HealthcareAnalytics.Controllers
             imageRequest.Method = "POST";
             var postData = "url="+pageName;
            
+
+
             imageRequest.ContentType = "application/x-www-form-urlencoded";
-            imageRequest.ContentLength = 0;                 
+            imageRequest.ContentLength = 0;
+
+           
+
 
             WebResponse imageResponse = imageRequest.GetResponse();
 
@@ -400,6 +406,75 @@ namespace HealthcareAnalytics.Controllers
         // }
 
 
+        public string DecryptString(string encrString)
+        {
+            byte[] b;
+            string decrypted;
+            try
+            {
+                b = Convert.FromBase64String(encrString);
+                decrypted = System.Text.ASCIIEncoding.ASCII.GetString(b);
+            }
+            catch (FormatException)
+            {
+                decrypted = "";
+            }
+            return decrypted;
+        }
+
+        public string EnryptString(string strEncrypted)
+        {
+            byte[] b = System.Text.ASCIIEncoding.ASCII.GetBytes(strEncrypted);
+            string encrypted = Convert.ToBase64String(b);
+            return encrypted;
+        }
+
+        public string encrypt(string encryptString)
+        {
+            string EncryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            byte[] clearBytes = Encoding.Unicode.GetBytes(encryptString);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    encryptString = Convert.ToBase64String(ms.ToArray());
+                }
+            }
+            return encryptString;
+        }
+
+        public string Decrypt(string cipherText)
+        {
+            string EncryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            cipherText = cipherText.Replace(" ", "+");
+            byte[] cipherBytes = Convert.FromBase64String(cipherText);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(cipherBytes, 0, cipherBytes.Length);
+                        cs.Close();
+                    }
+                    cipherText = Encoding.Unicode.GetString(ms.ToArray());
+                }
+            }
+            return cipherText;
+        }
+
+
         private static List<SelectListItem> populateStatus()
         {
             List<SelectListItem> items = new List<SelectListItem>();
@@ -477,13 +552,20 @@ namespace HealthcareAnalytics.Controllers
             List<SelectListItem> items = new List<SelectListItem>();
             TCG_DataEntities context = new TCG_DataEntities();
             return context.User_Login.Select(x => new SelectListItem { Text = x.user_web_login, Value = x.user_Id.ToString() }).ToList();
+            
+        }
+
+        private static List<SelectListItem> populate_Priority()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Priority_Master.Select(x => new SelectListItem { Text = x.PM_Name, Value = x.PM_ID.ToString() }).ToList();
 
         }
 
-
-        public ActionResult TCG_CaseDetails_Modified(string id)
+        
+        public ActionResult TCG_CaseDetails_Modified(string id, int case_ID)
         {
-            List<Get_Account_Info_for_ARandDenial_Result> caseResult;
             AARS = new Account_AR_Status();
             ABS = new Account_Bill_Status();
             ACS = new Account_Case_Details();
@@ -498,6 +580,7 @@ namespace HealthcareAnalytics.Controllers
             SM = new Status_Master();
             TM = new Task_Master();
             UL = new User_Login();
+            PM = new Priority_Master();
 
             ViewBag.SM = populateStatus();
             ViewBag.AARS = populateAccount_ARStatus();
@@ -506,21 +589,92 @@ namespace HealthcareAnalytics.Controllers
             ViewBag.ECT = populate_EncounterType();
             ViewBag.ICN = populate_Insurance();
             ViewBag.PFC = populate_PayorFC();
-            ViewBag.PRM = populate_PrimaryReason();           
+            ViewBag.PRM = populate_PrimaryReason();
             ViewBag.TM = populate_Task();
             ViewBag.UL = populate_UserLogin();
-
+            ViewBag.PM = populate_Priority();
 
             Session["AccountID"] = id;
+
+            editOpenTask_id = id;
+            string HospitalAccountID = editOpenTask_id;
+            TCG_Worklist context = new TCG_Worklist();
+            TCG_DataEntities context_tcg = new TCG_DataEntities();
+
+            TCG_WL = new TCG_Worklist();
+            List<Account_Case_Task> ACDT = new List<Account_Case_Task>();
+            List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+            Get_Account_Info_for_ARandDenial_Result AIARDR = new Get_Account_Info_for_ARandDenial_Result();
+            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
 
             try
             {
                 using (TCG_DataEntities tcg_CaseDetails = new TCG_DataEntities())
                 {
-                    caseResult = tcg_CaseDetails.Get_Account_Info_for_ARandDenial(id).ToList();
+                    taskDetails = tcg_CaseDetails.Get_Account_Info_for_ARandDenial(id).ToList();
 
-                    if (caseResult.Count > 0 || caseResult != null)
+                    if (taskDetails.Count > 0 || taskDetails != null)
                     {
+                        ViewBag.ACD_data = get_CaseDetails(HospitalAccountID, case_ID);
+
+                        int a = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_Status);
+                        ViewBag.SM = new SelectList(context.Status_Master.Select(x => new { Value = x.SM_ID.ToString(), Text = x.SM_Name }), "Value", "Text", a);
+                                                
+                        string b = ViewBag.ACD_Data[0].ACD_Owner;
+                        ViewBag.UL = new SelectList(context_tcg.User_Login.Select(x => new { Value = x.user_Id.ToString(), Text = x.user_web_login }), "Value", "Text", b);
+
+                        int c= Convert.ToInt32(ViewBag.ACD_Data[0].ACD_Type);
+                        ViewBag.ECT = new SelectList(context.Encounter_Type.Select(x => new { Value = x.EncType_ID.ToString(), Text = x.EncType_Name }), "Value", "Text", c);
+
+                        int d = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_SubType);
+                        ViewBag.SbT = new SelectList(context.Encounter_Type.Select(x => new { Value = x.EncType_ID.ToString(), Text = x.EncType_Name }), "Value", "Text", d);
+
+                        int e = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_PrimaryReason);
+                        ViewBag.PRM = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", e);
+
+                        int f = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_SecondaryReason);
+                        ViewBag.SRM = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", f);
+
+                        int g = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_PayerReason);
+                        ViewBag.PR = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", g);
+
+                        int h = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_PrinDiag);
+                        ViewBag.PD = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", h);
+
+                        int i = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_PrinProc);
+                        ViewBag.PP = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", i);
+                        
+
+
+                        ViewBag.ACDT_data = get_CaseTaskDetails(HospitalAccountID, case_ID);
+                        ViewBag.OriginalData = taskDetails;
+                        ACDT = get_CaseTaskDetails(HospitalAccountID, case_ID);
+                        string ownerName = "";
+                        if (ACDT.Count > 0)
+                        {
+                            for (int k = 0; k < ACDT.Count; k++)
+                            {
+                                if (ACDT[k].ACT_Priority == "2")
+                                {
+                                    ACDT[k].ACT_Priority = "High";
+                                }
+                                else if (ACDT[k].ACT_Priority == "3")
+                                {
+                                    ACDT[k].ACT_Priority = "Medium";
+                                }
+                                else if (ACDT[k].ACT_Priority == "4")
+                                {
+                                    ACDT[k].ACT_Priority = "Low";
+                                }
+                                else if (ACDT[k].ACT_Priority == "1")
+                                {
+                                    ACDT[k].ACT_Priority = "None";
+                                }
+
+                                ownerName = ACDT[k].ACT_Owner;
+                                ACDT[k].ACT_Owner = get_Owner_dropDownText(ownerName);
+                            }
+                        }
 
                     }
                 }
@@ -530,128 +684,712 @@ namespace HealthcareAnalytics.Controllers
                 throw ex;
             }
 
-            return View(caseResult);
+            return View(ACDT);
+
+        }
+
+
+        public List<Account_Case_Details> get_CaseDetailsList(string HospitalAccountID)
+        {
+
+            List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+            using (var db = new TCG_Worklist())
+            {
+                return (from c in db.Account_Case_Details
+                        where c.ACD_HspAccID == HospitalAccountID 
+                        select c).ToList();
+            }
+        }
+
+
+        public List<Account_Case_Details> get_CaseDetails(string HospitalAccountID, int case_ID)
+        {
+
+            List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+            using (var db = new TCG_Worklist())
+            {
+                return (from c in db.Account_Case_Details
+                        where c.ACD_HspAccID == HospitalAccountID && c.ACD_ID == case_ID
+                        select c).ToList();
+            }
+        }
+
+
+        public List<Account_Case_Task> get_CaseTaskDetails(string HospitalAccountID, int case_ID)
+        {
+
+            List<Account_Case_Task> ACDT = new List<Account_Case_Task>();
+            using (var db = new TCG_Worklist())
+            {
+                ACDT = (from c in db.Account_Case_Task
+                        where c.ACT_HspAccID == HospitalAccountID && c.ACT_ACD_ID == case_ID && c.ACT_DeleteFlag == 0
+                        select c).ToList();
+            }
+            return ACDT;
+            
+        }
+
+        public string get_OnlyOneCaseDetails(string HospitalAccountID)
+        {
+
+            Account_Case_Details  ACD = new Account_Case_Details();
+            
+                ACD = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+           
+
+            return ACD.ACD_HspAccID;
+        }
+
+
+
+        [HttpGet]
+        public ActionResult EditOpenTask_Details(string id, int case_ID, int task_ID)
+        {
+
+            AARS = new Account_AR_Status();
+            ABS = new Account_Bill_Status();
+            ACS = new Account_Case_Details();
+            ACDH = new Account_Case_Detials_History();
+            ACT = new Account_Case_Task();
+            ACTH = new Account_Case_Task_History();
+            AS = new Account_Source();
+            ECT = new Encounter_Type();
+            ICN = new Insurance_Company_Name();
+            PFC = new Payor_Financial_Class();
+            PRM = new PrimaryReason_Master();
+            SM = new Status_Master();
+            TM = new Task_Master();
+            UL = new User_Login();
+            PM = new Priority_Master();
+
+            ViewBag.SM = populateStatus();
+            ViewBag.AARS = populateAccount_ARStatus();
+            ViewBag.ABS = populate_BillStatus();
+            ViewBag.AS = populate_AccountSource();
+            ViewBag.ECT = populate_EncounterType();
+            ViewBag.ICN = populate_Insurance();
+            ViewBag.PFC = populate_PayorFC();
+            ViewBag.PRM = populate_PrimaryReason();
+            ViewBag.TM = populate_Task();
+            ViewBag.UL = populate_UserLogin();
+            ViewBag.PM = populate_Priority();
+
+            editOpenTask_id = id;
+            string HospitalAccountID = editOpenTask_id;
+
+            var checkHospitalAccID = TCG_WL.Account_Case_Task.Where(m => m.ACT_HspAccID == HospitalAccountID).FirstOrDefault();
+
+            Get_Account_Info_for_ARandDenial_Result AIARDR = new Get_Account_Info_for_ARandDenial_Result();
+            TCG_DataEntities caseResult = new TCG_DataEntities();
+            //List<Account_Case_Task> ACT = new List<Account_Case_Task>();            
+            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+
+            taskDetails = caseResult.Get_Account_Info_for_ARandDenial(id).ToList();
+            try
+            {
+                if (checkHospitalAccID != null)
+                {
+                    ViewBag.IsUpdate = true;
+
+                  
+                    ACT = TCG_WL.Account_Case_Task.Where(m => m.ACT_HspAccID == HospitalAccountID && m.ACT_ID == task_ID).FirstOrDefault();
+                    if (ACT.ACT_Priority == "Billed")
+                        ACT.ACT_Priority = "High";
+
+                  
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return View("EditOpenTask", ACT);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditOpenTask_Details(Account_Case_Task taskDetails)
+        {
+            ACT = new Account_Case_Task();
+            ACTH = new Account_Case_Task_History();
+            ViewData["AccountCaseTask"] = ACT;
+
+            editOpenTask_id = taskDetails.ACT_HspAccID;
+            string id = editOpenTask_id;
+            var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+            int new_Case_Task_Value = 0;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    TCG_WL.Case_Task_InsUpd(taskDetails.ACT_ID, taskDetails.ACT_HspAccID, taskDetails.ACT_ACD_ID , taskDetails.ACT_Completed, taskDetails.ACT_Priority, taskDetails.ACT_Description, taskDetails.ACT_Owner,
+                            taskDetails.ACT_Comment, taskDetails.ACT_DueDate, 0, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_TasK_idParameter);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            int case_ID = taskDetails.ACT_ACD_ID;            
+            return RedirectToActionPermanent("TCG_CaseDetails_Modified",new { id, case_ID });
 
         }
 
 
         [HttpGet]
-        public ActionResult EditOpenTask_Details(string id)
+        public ActionResult DeleteOpenTask(string id, int case_ID, int task_ID)
         {
-            editOpenTask_id = id;
-            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+
+            ACT = new Account_Case_Task();
+            ACTH = new Account_Case_Task_History();
+            ViewData["AccountCaseTask"] = ACT;
+
+            editOpenTask_id = ACT.ACT_HspAccID;          
+            var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+            int new_Case_Task_Value = 0;
+
             try
             {
-               
-                    if (id != null)
+                if (ModelState.IsValid)
+                {
+                    ACT = TCG_WL.Account_Case_Task.Where(m => m.ACT_HspAccID == id && m.ACT_ID == task_ID && m.ACT_ACD_ID == case_ID).FirstOrDefault();                    
 
-                    {
-
-                        ViewBag.IsUpdate = true;
-
-                        //Account_Case_Task AccCaseTask = db.Account_Case_Task.Where(m => m.StudentID == id).FirstOrDefault();
-
-                        using (TCG_DataEntities caseResult = new TCG_DataEntities())
-                        {
-
-                            taskDetails = caseResult.Get_Account_Info_for_ARandDenial(id).ToList();
-                        }
-
-
-                    }
-                    //ViewBag.IsUpdate = false;
-
-                    //return PartialView("_EditOpenTask");            
-                
+                }
             }
-            catch
+            catch (Exception ex)
             {
-
+                throw ex;
             }
 
-            return PartialView("EditOpenTask", taskDetails);
-        }
+            return View(ACT);
 
+        }
 
         [HttpPost]
-        public ActionResult EditOpenTask_Details(List<Get_Account_Info_for_ARandDenial_Result> taskDetails)
+        public ActionResult DeleteOpenTask(Account_Case_Task ACT)
         {
-            using (TCG_DataEntities caseResult = new TCG_DataEntities())
+
+           // ACT = new Account_Case_Task();
+            ACTH = new Account_Case_Task_History();
+            ViewData["AccountCaseTask"] = ACT;
+
+            editOpenTask_id = ACT.ACT_HspAccID;
+            var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+            int new_Case_Task_Value = 0;
+
+            try
             {
-
-                taskDetails = caseResult.Get_Account_Info_for_ARandDenial(editOpenTask_id).ToList();
-            }
-
-            if (ModelState.IsValid)
-
-            {
-                try
-                {                
-                    return RedirectToAction("TCG_CaseDetails_Modified", editOpenTask_id);
-                }
-
-                catch
+                if (ModelState.IsValid)
                 {
+                    TCG_WL.Case_Task_InsUpd(ACT.ACT_ID, ACT.ACT_HspAccID, ACT.ACT_ACD_ID, ACT.ACT_Completed, ACT.ACT_Priority, ACT.ACT_Description, ACT.ACT_Owner,
+                            ACT.ACT_Comment, ACT.ACT_DueDate, 1, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_TasK_idParameter);
 
                 }
             }
-            return PartialView("_EditOpenTask", taskDetails);
-        }
-        public ActionResult DeleteRecord(string id)
-        {
-            List<Get_Account_Info_for_ARandDenial_Result> taskDetails;
-            using (TCG_DataEntities caseResult = new TCG_DataEntities())
+            catch (Exception ex)
             {
-                taskDetails = caseResult.Get_Account_Info_for_ARandDenial(editOpenTask_id).ToList();
-            }       
+                throw ex;
+            }
 
-            return RedirectToAction("TCG_CaseDetails_Modified");
+            string id = editOpenTask_id;
+            int case_ID = ACT.ACT_ACD_ID;
+            
+            return RedirectToActionPermanent("TCG_CaseDetails_Modified", new { id, case_ID });
+          
 
         }
-
-        public ActionResult CreateNewTask(string id)
+        
+        [HttpGet]
+        public ActionResult CreateNewTask_Details(string id, int case_ID, int task_ID)
         {
-            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+
+            AARS = new Account_AR_Status();
+            ABS = new Account_Bill_Status();
+            ACS = new Account_Case_Details();
+            ACDH = new Account_Case_Detials_History();
+            ACT = new Account_Case_Task();
+            ACTH = new Account_Case_Task_History();
+            AS = new Account_Source();
+            ECT = new Encounter_Type();
+            ICN = new Insurance_Company_Name();
+            PFC = new Payor_Financial_Class();
+            PRM = new PrimaryReason_Master();
+            SM = new Status_Master();
+            TM = new Task_Master();
+            UL = new User_Login();
+            PM = new Priority_Master();
+
+            ViewBag.SM = populateStatus();
+            ViewBag.AARS = populateAccount_ARStatus();
+            ViewBag.ABS = populate_BillStatus();
+            ViewBag.AS = populate_AccountSource();
+            ViewBag.ECT = populate_EncounterType();
+            ViewBag.ICN = populate_Insurance();
+            ViewBag.PFC = populate_PayorFC();
+            ViewBag.PRM = populate_PrimaryReason();
+            ViewBag.TM = populate_Task();
+            ViewBag.UL = populate_UserLogin();
+            ViewBag.PM = populate_Priority();
+
+
+            editOpenTask_id = id;
             try
             {
 
                 if (id != null)
 
                 {
-
                     ViewBag.IsUpdate = true;
 
-                    //Account_Case_Task AccCaseTask = db.Account_Case_Task.Where(m => m.StudentID == id).FirstOrDefault();
+                    ACT.ACT_ID = 0;
+                    ACT.ACT_HspAccID = editOpenTask_id;
+                    ACT.ACT_ACD_ID = case_ID;
+                    ACT.ACT_Completed = false;
+                    ACT.ACT_Priority = "Select";
+                    ACT.ACT_Description = " ";
+                    ACT.ACT_Owner = " ";
+                    ACT.ACT_Comment = " ";
+                    ACT.ACT_DueDate = DateTime.Now;
+                    ACT.ACT_DeleteFlag = 0;
+                }           
 
-                    using (TCG_DataEntities caseResult = new TCG_DataEntities())
-                    {
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-                        taskDetails = caseResult.Get_Account_Info_for_ARandDenial(id).ToList();
-                    }
+            return View("CreateNewTask", ACT);
+        }
+
+
+        [HttpPost]
+        public ActionResult CreateNewTask_Details(Account_Case_Task taskDetails)
+        {
+            ACTH = new Account_Case_Task_History();
+            ViewData["AccountCaseTask"] = ACT;
+
+            editOpenTask_id = taskDetails.ACT_HspAccID;
+            string id = editOpenTask_id;
+            var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+            int new_Case_Task_Value = 0;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    TCG_WL.Case_Task_InsUpd(taskDetails.ACT_ID, taskDetails.ACT_HspAccID, taskDetails.ACT_ACD_ID, false, taskDetails.ACT_Priority, taskDetails.ACT_Description, Session["username"].ToString(),
+                            taskDetails.ACT_Comment, taskDetails.ACT_DueDate, 0, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_TasK_idParameter);
+
+
+                    new_Case_Task_Value = Convert.ToInt32(case_TasK_idParameter.Value);
+
+
+                    return RedirectToAction("TCG_CaseDetails_Modified", editOpenTask_id);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+            int case_ID = taskDetails.ACT_ACD_ID;
+
+            return RedirectToActionPermanent("TCG_CaseDetails_Modified", new { id, case_ID });
+            
+
+        }
+
+
+        [HttpGet]
+        public ActionResult createNewCase_Details(string id, int case_ID)
+        {
+            AARS = new Account_AR_Status();
+            ABS = new Account_Bill_Status();
+            ACS = new Account_Case_Details();
+            ACDH = new Account_Case_Detials_History();
+            ACT = new Account_Case_Task();
+            ACTH = new Account_Case_Task_History();
+            AS = new Account_Source();
+            ECT = new Encounter_Type();
+            ICN = new Insurance_Company_Name();
+            PFC = new Payor_Financial_Class();
+            PRM = new PrimaryReason_Master();
+            SM = new Status_Master();
+            TM = new Task_Master();
+            UL = new User_Login();
+            PM = new Priority_Master();
+
+            ViewBag.SM = populateStatus();
+            ViewBag.AARS = populateAccount_ARStatus();
+            ViewBag.ABS = populate_BillStatus();
+            ViewBag.AS = populate_AccountSource();
+            ViewBag.ECT = populate_EncounterType();
+            ViewBag.ICN = populate_Insurance();
+            ViewBag.PFC = populate_PayorFC();
+            ViewBag.PRM = populate_PrimaryReason();
+            ViewBag.TM = populate_Task();
+            ViewBag.UL = populate_UserLogin();
+            ViewBag.PM = populate_Priority();
+
+
+            editOpenTask_id = id;
+
+            try
+            {
+                if (id != null)
+
+                {
+                    ViewBag.IsUpdate = true;
+
+                    ACS.ACD_ID = case_ID;
+                    ACS.ACD_HspAccID = editOpenTask_id;
+                    ACS.ACD_Status = "Select";
+                    ACS.ACD_Owner = "Select";
+                    ACS.ACD_Type = "Select";
+                    ACS.ACD_SubType = "Select";
+                    ACS.ACD_PayerReason = "Select";
+                    ACS.ACD_Amount = "0.0";
+                    ACS.ACD_PrimaryReason = "Select";
+                    ACS.ACD_SecondaryReason = "Select";
+                    ACS.ACD_PrinDiag = "Select";
+                    ACS.ACD_PrinProc = "Select";
+                    ACS.ACD_Comments = " ";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return View("CreateNewCase", ACS);
+            
+        }
+
+
+        [HttpPost]
+        public ActionResult createNewCase_Details(Account_Case_Details caseDetails)
+        {
+            ACDH = new Account_Case_Detials_History();
+            ViewData["AccountCaseTask"] = ACT;
+
+            editOpenTask_id = caseDetails.ACD_HspAccID;
+            string id = editOpenTask_id;
+            var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+            int new_Case_Value = 0;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    TCG_WL.Case_InsUpd(caseDetails.ACD_ID, caseDetails.ACD_HspAccID, caseDetails.ACD_Amount, caseDetails.ACD_Status, caseDetails.ACD_Owner,
+                        caseDetails.ACD_Type, caseDetails.ACD_SubType, caseDetails.ACD_PayerReason, caseDetails.ACD_PrimaryReason, caseDetails.ACD_SecondaryReason
+                         , caseDetails.ACD_PrinDiag, caseDetails.ACD_PrinProc, caseDetails.ACD_Comments, Session["username"].ToString(),
+                          DateTime.Now, "", DateTime.Now, "", case_TasK_idParameter);
+
+                  
+                     new_Case_Value = Convert.ToInt32(case_TasK_idParameter.Value);
+
+
 
 
                 }
-                //ViewBag.IsUpdate = false;
-
-                //return PartialView("_EditOpenTask");            
-
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
+            }
+          
+
+            return RedirectToActionPermanent("prioirty_CaseList", new { id });
+
+        }
+
+        [HttpGet]
+        public ActionResult Edit_CaseList(string id, int case_ID)
+        {
+            ACS = new Account_Case_Details();
+            editOpenTask_id = id;
+
+            try
+            {
+                if (id != null)
+
+                {
+                    ViewBag.IsUpdate = true;
+
+                    TCG_Worklist context = new TCG_Worklist();
+                    TCG_DataEntities context_tcg = new TCG_DataEntities();
+
+                    ACS = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == id && m.ACD_ID == case_ID).FirstOrDefault();
+
+                    int a = Convert.ToInt32(ACS.ACD_Status);
+                    ViewBag.SM = new SelectList(context.Status_Master.Select(x => new { Value = x.SM_ID.ToString(), Text = x.SM_Name }), "Value", "Text", a);
+                                        
+                    string b = ACS.ACD_Owner;
+                    ViewBag.UL = new SelectList(context_tcg.User_Login.Select(x => new { Value = x.user_Id.ToString(), Text = x.user_web_login }), "Value", "Text", b);
+
+                    int c = Convert.ToInt32(ACS.ACD_Type);
+                    ViewBag.ECT = new SelectList(context.Encounter_Type.Select(x => new { Value = x.EncType_ID.ToString(), Text = x.EncType_Name }), "Value", "Text", c);
+
+                    int d = Convert.ToInt32(ACS.ACD_SubType);
+                    ViewBag.SbT = new SelectList(context.Encounter_Type.Select(x => new { Value = x.EncType_ID.ToString(), Text = x.EncType_Name }), "Value", "Text", d);
+
+                    int e = Convert.ToInt32(ACS.ACD_PrimaryReason);
+                    ViewBag.PRM = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", e);
+
+                    int f = Convert.ToInt32(ACS.ACD_SecondaryReason);
+                    ViewBag.SRM = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", f);
+
+                    int g = Convert.ToInt32(ACS.ACD_PayerReason);
+                    ViewBag.PR = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", g);
+
+                    int h = Convert.ToInt32(ACS.ACD_PrinDiag);
+                    ViewBag.PD = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", h);
+
+                    int i = Convert.ToInt32(ACS.ACD_PrinProc);
+                    ViewBag.PP = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", i);
+
+                }
 
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-            return PartialView("EditOpenTask", taskDetails);
+            return View("Edit_CaseList", ACS);
+        }
+
+        [HttpPost]
+        public ActionResult Edit_CaseList(Account_Case_Details caseDetails)
+        {
+
+            editOpenTask_id = caseDetails.ACD_HspAccID;
+            string id = editOpenTask_id;
+            var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+            int new_Case_Value = 0;
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    TCG_WL.Case_InsUpd(caseDetails.ACD_ID, caseDetails.ACD_HspAccID, caseDetails.ACD_Amount, caseDetails.ACD_Status, caseDetails.ACD_Owner,
+                        caseDetails.ACD_Type, caseDetails.ACD_SubType, caseDetails.ACD_PayerReason, caseDetails.ACD_PrimaryReason, caseDetails.ACD_SecondaryReason
+                         , caseDetails.ACD_PrinDiag, caseDetails.ACD_PrinProc, caseDetails.ACD_Comments, Session["username"].ToString(),
+                          DateTime.Now, "", DateTime.Now, "", case_idParameter);
+
+
+                    //new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            int case_ID = caseDetails.ACD_ID;
+            return RedirectToActionPermanent("prioirty_CaseList", new { id });            
+        }
+
+
+        public ActionResult prioirty_CaseList(string id)
+        {
+            AARS = new Account_AR_Status();
+            ABS = new Account_Bill_Status();
+            ACS = new Account_Case_Details();
+            ACDH = new Account_Case_Detials_History();
+            ACT = new Account_Case_Task();
+            ACTH = new Account_Case_Task_History();
+            AS = new Account_Source();
+            ECT = new Encounter_Type();
+            ICN = new Insurance_Company_Name();
+            PFC = new Payor_Financial_Class();
+            PRM = new PrimaryReason_Master();
+            SM = new Status_Master();
+            TM = new Task_Master();
+            UL = new User_Login();
+            PM = new Priority_Master();
+
+            ViewBag.SM = populateStatus();
+            ViewBag.AARS = populateAccount_ARStatus();
+            ViewBag.ABS = populate_BillStatus();
+            ViewBag.AS = populate_AccountSource();
+            ViewBag.ECT = populate_EncounterType();
+            ViewBag.ICN = populate_Insurance();
+            ViewBag.PFC = populate_PayorFC();
+            ViewBag.PRM = populate_PrimaryReason();
+            ViewBag.TM = populate_Task();
+            ViewBag.UL = populate_UserLogin();
+            ViewBag.PM = populate_Priority();
+
+            Session["AccountID"] = id;
+
+            editOpenTask_id = id;
+            string HospitalAccountID = editOpenTask_id;
+
+            TCG_WL = new TCG_Worklist();
+            List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+            Get_Account_Info_for_ARandDenial_Result AIARDR = new Get_Account_Info_for_ARandDenial_Result();
+            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+
+            try
+            {
+                using (TCG_DataEntities tcg_CaseDetails = new TCG_DataEntities())
+                {
+                    taskDetails = tcg_CaseDetails.Get_Account_Info_for_ARandDenial(id).ToList();
+
+                    if (taskDetails.Count > 0 || taskDetails != null)
+                    {
+                        var Case_checkHospitalAccID = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                        var CaseTask_checkHospitalAccID = TCG_WL.Account_Case_Task.Where(m => m.ACT_HspAccID == HospitalAccountID).FirstOrDefault();
+
+                        var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+                        var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+                        var model = new TCG_Worklist();
+                        int new_Case_Value;
+                        if (Case_checkHospitalAccID != null)
+                        {
+                            new_Case_Value = Case_checkHospitalAccID.ACD_ID;
+                        }
+                        else
+                        {
+                            new_Case_Value = 0;
+                        }
+                        int new_Case_Task_Value = 0;
+                        string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                        if (Case_checkHospitalAccID == null)
+                        {
+
+                            TCG_WL.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), "1", ownerId, "1",
+                           "2", "2", "1", "2", "3","2", (taskDetails[0].Reporting_Rsn_Code_w__Desc == null) ? "None" : taskDetails[0].Reporting_Rsn_Code_w__Desc, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_idParameter);
+
+
+                            new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+                        }
+
+                        if (CaseTask_checkHospitalAccID == null)
+                        {
+
+                            TCG_WL.Case_Task_InsUpd(0, taskDetails[0].Hospital_Account_ID, new_Case_Value, false, "2", taskDetails[0].Primary_Coverage_Payor_Name, ownerId,
+                            taskDetails[0].Primary_Coverage_Payor_Name, taskDetails[0].Admission_Date, 0, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_TasK_idParameter);
+
+
+                            new_Case_Task_Value = Convert.ToInt32(case_TasK_idParameter.Value);
+
+                        }
+
+                        ViewBag.ACD_data = get_CaseDetails(HospitalAccountID, new_Case_Value);
+                        ViewBag.ACDT_data = get_CaseTaskDetails(HospitalAccountID, new_Case_Value);
+                        ViewBag.One_ACD_data = get_OnlyOneCaseDetails(HospitalAccountID);
+                        ViewBag.OriginalData = taskDetails;
+                        ACD = get_CaseDetailsList(HospitalAccountID);
+
+                       if(ACD.Count > 0)
+                        {
+
+                            for(int x = 0; x<ACD.Count;x++)
+                            {
+                                int a = Convert.ToInt32(ACD[x].ACD_Status);
+                                int b = Convert.ToInt32(ACD[x].ACD_Type);
+                                int c = Convert.ToInt32(ACD[x].ACD_PrimaryReason);
+                                int d = Convert.ToInt32(ACD[x].ACD_PrinDiag);
+                                int e = Convert.ToInt32(ACD[x].ACD_PrinProc);
+
+                                ACD[x].ACD_Status = get_Status_dropDownValue(a);
+                                ACD[x].ACD_Type = get_Type_dropDownValue(b);
+                                ACD[x].ACD_PrimaryReason = get_PrimaryRsn_dropDownValue(c);
+                                ACD[x].ACD_PrinDiag = get_PrimaryRsn_dropDownValue(d);
+                                ACD[x].ACD_PrinProc = get_PrimaryRsn_dropDownValue(e);
+                            }
+                        }
+                                              
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return View(ACD);
+
+        }
+
+        public string get_Status_dropDownValue(int x)
+        {
+
+            Status_Master ACD = new Status_Master();
+
+            ACD = TCG_WL.Status_Master.Where(m => m.SM_ID == x).FirstOrDefault();
+
+            string DDL_Name = ACD.SM_Name;
+            return DDL_Name;
+
+        }
+        
+        public string get_Type_dropDownValue(int x)
+        {
+
+            Encounter_Type ACD = new Encounter_Type();
+
+            ACD = TCG_WL.Encounter_Type.Where(m => m.EncType_ID == x).FirstOrDefault();
+
+            string DDL_Name = ACD.EncType_Name;
+            return DDL_Name;
+
+        }
+
+        public string get_PrimaryRsn_dropDownValue(int x)
+        {
+
+            PrimaryReason_Master ACD = new PrimaryReason_Master();
+
+            ACD = TCG_WL.PrimaryReason_Master.Where(m => m.PRM_ID == x).FirstOrDefault();
+
+            string DDL_Name = ACD.PRM_Name;
+            return DDL_Name;
+
+        }
+
+        public string get_Owner_dropDownText(string x)
+        {
+            TCG_DataEntities context_tcg = new TCG_DataEntities();
+            User_Login ACD = new User_Login();
+
+            ACD = context_tcg.User_Login.Where(m => m.user_Id.ToString() == x).FirstOrDefault();
+
+            string DDL_Name = ACD.user_web_login;
+            return DDL_Name;
+
+        }
+
+        public string get_Owner_dropDownValue(string x)
+        {
+            TCG_DataEntities context_tcg = new TCG_DataEntities();
+            User_Login ACD = new User_Login();
+
+            ACD = context_tcg.User_Login.Where(m => m.user_web_login.ToString() == x).FirstOrDefault();
+
+            string DDL_Name_Value = ACD.user_Id.ToString();
+            return DDL_Name_Value;
+
         }
 
 
 
     }
-
-
-
-
-
 
 
 
