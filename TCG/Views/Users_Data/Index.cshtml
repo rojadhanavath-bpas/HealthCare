@@ -1,0 +1,139 @@
+﻿@model IEnumerable<HealthcareAnalytics.Models.ViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script>
+    $(document).ready(function () {
+        
+  
+    $('.btn-toggle').click(function () {
+        $(this).find('.btn').toggleClass('active');
+
+        if ($(this).find('.btn-primary').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-primary');
+        }
+        if ($(this).find('.btn-danger').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-danger');
+        }
+        if ($(this).find('.btn-success').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-success');
+        }
+        if ($(this).find('.btn-info').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-info');
+        }
+
+        $(this).find('.btn').toggleClass('btn-default');
+
+    });
+    });
+</script>
+<div class="container-fluid">
+    <div class="row">
+        <br />
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-success" })
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+
+
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.user_info.user_first_name)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.user_info.user_last_name)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.user_info.user_middle_name)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.User_roles.role_code_short)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.user_info.user_phone_number)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.user_info.user_email_id)
+                    </th>
+
+                    <th scope="col"> Status</th>
+                    <th scope="col"> Status</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <i class="fa fa-user-circle fa-lg"></i> &nbsp; @Html.DisplayFor(modelItem => item.user_info.user_first_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user_info.user_last_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user_info.user_middle_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User_roles.role_code_short)
+                        </td>
+                        <td>
+                            <i class="fa fa-phone fa-lg"></i> &nbsp;  @Html.DisplayFor(modelItem => item.user_info.user_phone_number)
+                        </td>
+                        <td>
+                            <i class="fa fa-envelope fa-lg"></i> &nbsp;  @Html.DisplayFor(modelItem => item.user_info.user_email_id)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.user_info.user_ID }, new { @class = "badge badge-primary" })  |
+
+                            @Html.ActionLink("Details", "Details", new { id = item.user_info.user_ID }, new { @class = "badge badge-primary" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.user_info.user_ID }, new { @class = "badge badge-danger" }) |
+
+                        </td>
+                        <td>
+                            <div class="btn-group btn-toggle">
+                                <button class="btn btn-xs btn-primary active">Active</button>
+                                <button class="btn btn-xs btn-default">Inactive</button>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+            </div>
+            <div class="col-md-1">
+
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-primary" })
+        </div>
+        
+        <div class="col-md-1">
+
+        </div>
+    </div>
+</div>
+   

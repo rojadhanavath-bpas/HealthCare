@@ -11,7 +11,6 @@ namespace HealthcareAnalytics.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Users_Data
     {
@@ -21,12 +20,7 @@ namespace HealthcareAnalytics.Models
         public string user_full_name { get; set; }
         public System.Guid user_role_key { get; set; }
         public string user_phone_number { get; set; }
-
-        [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessage = "Email address is required.")]
-        [Display(Name = "Email")]
         public string user_email_id { get; set; }
-
         public string user_added_by { get; set; }
         public System.DateTime user_add_date { get; set; }
         public string user_updated_by { get; set; }
@@ -34,7 +28,10 @@ namespace HealthcareAnalytics.Models
         public byte user_delete_flag { get; set; }
         public string user_middle_name { get; set; }
         public string user_web_pwd { get; set; }
+        public string confirm_pwd { get; set; }
+
         public string otp_key { get; set; }
         public Nullable<System.DateTime> otp_time { get; set; }
+        public byte user_active_flag { get; set; }
     }
 }

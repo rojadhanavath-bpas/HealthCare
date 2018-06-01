@@ -208,6 +208,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Users_DataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -274,6 +275,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Registration_SP.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>tcgDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Status_Master.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
@@ -301,6 +305,7 @@
     <Compile Include="Models\User_Login.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Models\Worklist.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -340,6 +345,7 @@
     <Content Include="Content\Gridmvc.css" />
     <Content Include="Content\justified-nav.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\UserManagement.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -680,10 +686,14 @@
     <Content Include="Views\Home\prioirty_CaseList.cshtml" />
     <Content Include="Views\Home\DeleteOpenTask.cshtml" />
     <Content Include="Views\Home\Edit_CaseList.cshtml" />
+    <Content Include="Views\Users_Data\Create.cshtml" />
+    <Content Include="Views\Users_Data\Delete.cshtml" />
+    <Content Include="Views\Users_Data\Details.cshtml" />
+    <Content Include="Views\Users_Data\Edit.cshtml" />
+    <Content Include="Views\Users_Data\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ForgotPwd\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
