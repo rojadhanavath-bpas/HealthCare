@@ -32,19 +32,19 @@
                         <div class="form-row">
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_Owner">Account ID</label>                                
+                                <label for="DDL_Owner" class="text-info">ACCOUNT ID</label>                                
                                 @Html.TextBoxFor(item => item.ACD_HspAccID, new { @class = "form-control", @readonly = "readonly" })
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_Status">Status</label>
+                                <label for="DDL_Status" class="text-info">STATUS</label>
                                 @*@Html.DropDownList("DDL_Status", ViewBag.SM as List<SelectListItem>, "Select", new { @class = "form-control dropdown is-valid" })*@
                                 @*@Html.DropDownListFor(Model => item.Account_AR_Status, ViewBag.org_Mst as List<SelectListItem>, "Select", new { @class = "form-control dropdown is-valid" })*@
                                 @Html.DropDownListFor(item => item.ACD_Status, ViewBag.SM as List<SelectListItem>, new { @class = "form-control dropdown" })
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_Owner">Owner</label>
+                                <label for="DDL_Owner" class="text-info">OWNER</label>
                                 @Html.DropDownListFor(item => item.ACD_Owner, ViewBag.UL as List<SelectListItem>, "Select", new { @class = "form-control dropdown is-valid" })
                                 @*@Html.TextBoxFor(Model => item.Account_Patient_Name, new { @class = "form-control", @readonly = "readonly" })*@
                             </div>
@@ -57,20 +57,20 @@
                         <div class="form-row">
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_Type">Type</label>
+                                <label for="DDL_Type" class="text-info">TYPE</label>
                                 @Html.DropDownListFor(item => item.ACD_Type, ViewBag.ECT as List<SelectListItem>, "Select", new { @class = "form-control dropdown" })
                                 @*@Html.TextBoxFor(Model => item.Encounter_Type, new { @class = "form-control ", @readonly = "readonly" })*@
 
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_SubType">Sub-Type</label>
+                                <label for="DDL_SubType" class="text-info">SUB-TYPE</label>
                                 @Html.DropDownListFor(item => item.ACD_SubType, ViewBag.PRM as List<SelectListItem>, "Select", new { @class = "form-control dropdown" })
                                 @*@Html.TextBox(@item.ACD_SubType, new { @class = "form-control ", @readonly = "readonly" })*@
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_PayerReason">Payer Reason</label>
+                                <label for="DDL_PayerReason" class="text-info">PAYER REASON</label>
                                 @Html.DropDownListFor(item => item.ACD_PayerReason, ViewBag.PRM as List<SelectListItem>, "Select", new { @class = "form-control dropdown" })
                                 @*@Html.TextBoxFor(Model => item.Primary_Coverage_Payor_Name, new { @class = "form-control ", @readonly = "readonly" })*@
                             </div>
@@ -81,20 +81,20 @@
                         <div class="form-row">
 
                             <div class="form-group col-sm-4">
-                                <label for="txt_Amount">Amount</label>
+                                <label for="txt_Amount" class="text-info">AMOUNT</label>
                                 @*<input type="text" class="form-control is-invalid" id="txt_Amount" aria-label="Amount (to the nearest dollar)" />*@
                                 @Html.TextBoxFor(item => item.ACD_Amount, new { @class = "form-control " })
                             </div>
 
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_PrimaryReason">Primary Reason</label>
+                                <label for="DDL_PrimaryReason" class="text-info">PRIMARY REASON</label>
                                 @Html.DropDownListFor(item => item.ACD_PrimaryReason, ViewBag.PRM as List<SelectListItem>, "Select", new { @class = "form-control dropdown" })
                                 @*@Html.TextBoxFor(Model => item.Primary_Coverage_Payor_Financial_Class, new { @class = "form-control ", @readonly = "readonly" })*@
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_SecondaryReason">Secondary Reason</label>
+                                <label for="DDL_SecondaryReason" class="text-info">SECONDARY REASON</label>
                                 @Html.DropDownListFor(item => item.ACD_SecondaryReason, ViewBag.PRM as List<SelectListItem>, "Select", new { @class = "form-control dropdown" })
                             </div>
 
@@ -104,28 +104,31 @@
                         <div class="form-row">
 
                             <div class="form-group col-sm-4">
-                                <label for="txt_Note">Note</label>
+                                <label for="txt_Note" class="text-info">NOTE</label>
                                 @*<textarea id="txt_Note" style="width:800%" class="form-control"></textarea>*@
-                                @Html.TextAreaFor(item => item.ACD_Comments, new { @class = "form-control ", @readonly = "readonly" })
+                                @Html.TextAreaFor(item => item.ACD_Comments, new { @class = "form-control " })
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_PrinDiagOthers">Prin Diag/Others</label>
+                                <label for="DDL_PrinDiagOthers" class="text-info">PRIM DIAG/OTHERS</label>
                                 @Html.DropDownListFor(item => item.ACD_PrinDiag, ViewBag.PRM as List<SelectListItem>, "Select", new { @class = "form-control dropdown" })
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_PrinProcOthers">Prin Proc/Others</label>
+                                <label for="DDL_PrinProcOthers" class="text-info">PRIM PROC/OTHERS</label>
                                 @Html.DropDownListFor(item => item.ACD_PrinProc, ViewBag.PRM as List<SelectListItem>, "Select", new { @class = "form-control dropdown" })
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        @Html.ActionLink("BACK", "prioirty_CaseList", new { id = Model.ACD_HspAccID })
-                        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+                        <div class="col-sm-1" style="float:right;">
+                            @Html.ActionLink("BACK", "prioirty_CaseList", new { id = Model.ACD_HspAccID }, new { @class = "btn btn-primary" })
+                        </div>
+                        <div class="col-sm-1" style="float:right;">
+                            <button type="submit" class="btn btn-danger" id="btnSave">Save</button></div>
+                        </div>
                     </div>
-                </div>
 
             </div>
         </div>

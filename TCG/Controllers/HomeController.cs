@@ -615,7 +615,7 @@ namespace HealthcareAnalytics.Controllers
                         ViewBag.PP = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", i);
                         
 
-
+                        ViewBag.ACD_data= get_CaseDetails(HospitalAccountID, case_ID);
                         ViewBag.ACDT_data = get_CaseTaskDetails(HospitalAccountID, case_ID);
                         ViewBag.OriginalData = taskDetails;
                         ACDT = get_CaseTaskDetails(HospitalAccountID, case_ID);

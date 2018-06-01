@@ -22,50 +22,62 @@
                     <div style="border:3px solid #fcbf49; background-color:#fcbf49">
                         <h4>
                             <span style=" font-size:large">
-                                EDIT OPEN TASk
+                                EDIT OPEN TASK
                             </span>
                             @*<span class="col-sm-2" stlye=":right">@Html.Label(Session["AccountID"].ToString(), Session["AccountID"].ToString(), new { @class = "form-control", @readonly = "readonly" })</span>*@
                         </h4>
                     </div>
-                    <hr />
+                    
                     <div id="id_cases_details" style="display:block;">
 
                         <div class="form-row ">
-                            <div class="form-group col-sm-6">
-                                <label>COMPLETED</label>
+                            <div class="form-group col-sm-3">
+                                <label class="text-info">COMPLETED</label>
+                            </div>
+                            <div class="form-group col-sm-3">
                                 @Html.CheckBoxFor(item => item.ACT_Completed, new { @class = "form-control" })
                             </div>
 
-                            <div class="form-group col-sm-6">
-                                <label>DUE DATE</label>
+                            <div class="form-group col-sm-3">
+                                <label class="text-info">DUE DATE</label>
+                            </div>
+                            <div class="form-group col-sm-3">
                                 @Html.TextBoxFor(item => item.ACT_DueDate, new { @class = "form-control datepicker" })
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-sm-6">
-                                <label>PRIORITY</label>
+                            <div class="form-group col-sm-3">
+                                <label class="text-info">PRIORITY</label>
+                            </div>
+                            <div class="form-group col-sm-3">
                                 @Html.DropDownListFor(item => item.ACT_Priority, (ViewBag.PM as List<SelectListItem>), new { @class = "form-control dropdown" })
                                 @*@Html.DropDownList(" ", ViewBag.PM as List<SelectListItem>, "Select", new { @class = "form-control dropdown is-valid" })*@
 
                             </div>
 
-                            <div class="form-group col-sm-6">
-                                <label>DESCRIPTION</label>
+                            <div class="form-group col-sm-3">
+                                <label class="text-info">DESCRIPTION</label>
+                            </div>
+                            <div class="form-group col-sm-3">
                                 @*@Html.EditorFor(Model => item.Reporting_Rsn_Code_w__Desc, new { @class = "form-control " })*@
                                 @Html.TextBoxFor(item => item.ACT_Description, new { @class = "form-control " })
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-sm-6">
-                                <label>OWNER</label>
+                            <div class="form-group col-sm-3">
+                                <label class="text-info">OWNER</label>
+                            </div>
+                            <div class="form-group col-sm-3">
                                 @*@Html.TextBoxFor(item => item.ACT_Owner, new { @class = "form-control " })*@
                                 @Html.DropDownListFor(item => item.ACT_Owner, ViewBag.UL as List<SelectListItem>, "Select", new { @class = "form-control dropdown is-valid" })
                             </div>
 
-                            <div class="form-group col-sm-6">
-                                <label>COMMENT</label>
+                            <div class="form-group col-sm-3">
+                                <label class="text-info">COMMENT</label>
+                            </div>
+                            <div class="form-group col-sm-3">
                                 @Html.TextAreaFor(item => item.ACT_Comment, new { @class = "form-control" })
                             </div>
                         </div>
@@ -73,10 +85,14 @@
                     </div>
 
                     <div class="modal-footer">
-                        @Html.ActionLink("BACK", "TCG_CaseDetails_Modified", new { id = Model.ACT_HspAccID, case_ID = Model.ACT_ACD_ID })
-                        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+                        <div class="col-sm-1" style="float:right;">
+                            @Html.ActionLink("BACK", "TCG_CaseDetails_Modified", new { id = Model.ACT_HspAccID, case_ID = Model.ACT_ACD_ID }, new { @class = "btn btn-primary" })
+                        </div>
+                        <div class="col-sm-1" style="float:right;">
+                            <button type="submit" class="btn btn-danger" id="btnSave">Save</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
             </div>
         </div>
