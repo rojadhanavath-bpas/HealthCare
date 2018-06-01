@@ -421,3 +421,4 @@ DEBUG 2018-05-31 21:28:42,878 29571ms HomeController         Login              
 DEBUG 2018-05-31 21:28:42,878 29571ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
 DEBUG 2018-05-31 21:28:42,991 29684ms HomeController         GetTableauToken    - Retrieving Tableau token 
 DEBUG 2018-05-31 21:28:43,479 30172ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-01 12:12:55,310  2201ms HomeController         Login              - Loading Login Page..
