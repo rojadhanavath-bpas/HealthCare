@@ -1,4 +1,4 @@
-﻿@model HealthcareAnalytics.Models.Users_Data
+﻿@model HealthcareAnalytics.Models.ViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -12,125 +12,109 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.user_first_name)
+            @Html.DisplayNameFor(model => model.user_info.user_first_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_first_name)
+            @Html.DisplayFor(model => model.user_info.user_first_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_last_name)
+            @Html.DisplayNameFor(model => model.user_info.user_last_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_last_name)
+            @Html.DisplayFor(model => model.user_info.user_last_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_full_name)
+            @Html.DisplayNameFor(model => model.user_info.user_full_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_full_name)
+            @Html.DisplayFor(model => model.user_info.user_full_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_role_key)
+            @Html.DisplayNameFor(model => model.user_info.user_role_key)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_role_key)
+            @Html.DisplayFor(model => model.User_roles.role_code_short)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_phone_number)
+            @Html.DisplayNameFor(model => model.user_info.user_phone_number)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_phone_number)
+            @Html.DisplayFor(model => model.user_info.user_phone_number)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_email_id)
+            @Html.DisplayNameFor(model => model.user_info.user_email_id)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_email_id)
+            @Html.DisplayFor(model => model.user_info.user_email_id)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_added_by)
+            @Html.DisplayNameFor(model => model.user_info.user_added_by)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_added_by)
+            @Html.DisplayFor(model => model.user_info.user_added_by)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_add_date)
+            @Html.DisplayNameFor(model => model.user_info.user_add_date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_add_date)
+            @Html.DisplayFor(model => model.user_info.user_add_date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_updated_by)
+            @Html.DisplayNameFor(model => model.user_info.user_updated_by)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_updated_by)
+            @Html.DisplayFor(model => model.user_info.user_updated_by)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_updated_date)
+            @Html.DisplayNameFor(model => model.user_info.user_updated_date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_updated_date)
+            @Html.DisplayFor(model => model.user_info.user_updated_date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_delete_flag)
+            @Html.DisplayNameFor(model => model.user_info.user_delete_flag)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_delete_flag)
+            @Html.DisplayFor(model => model.user_info.user_delete_flag)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_middle_name)
+            @Html.DisplayNameFor(model => model.user_info.user_middle_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_middle_name)
+            @Html.DisplayFor(model => model.user_info.user_middle_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user_web_pwd)
+            @Html.DisplayNameFor(model => model.user_info.user_web_pwd)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user_web_pwd)
+            @Html.DisplayFor(model => model.user_info.user_web_pwd)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.otp_key)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.otp_key)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.otp_time)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.otp_time)
-        </dd>
-
+               
     </dl>
 
     @using (Html.BeginForm()) {

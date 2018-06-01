@@ -254,13 +254,8 @@ namespace HealthcareAnalytics.Controllers
             imageRequest.Method = "POST";
             var postData = "url="+pageName;
            
-
-
             imageRequest.ContentType = "application/x-www-form-urlencoded";
-            imageRequest.ContentLength = 0;
-
-           
-
+            imageRequest.ContentLength = 0;                 
 
             WebResponse imageResponse = imageRequest.GetResponse();
 
@@ -590,37 +585,25 @@ namespace HealthcareAnalytics.Controllers
             if (ModelState.IsValid)
 
             {
-
                 try
-
-                {                   
-
+                {                
                     return RedirectToAction("TCG_CaseDetails_Modified", editOpenTask_id);
-
                 }
 
                 catch
                 {
 
                 }
-
-
             }
-
             return PartialView("_EditOpenTask", taskDetails);
-
         }
-
-
         public ActionResult DeleteRecord(string id)
         {
             List<Get_Account_Info_for_ARandDenial_Result> taskDetails;
             using (TCG_DataEntities caseResult = new TCG_DataEntities())
             {
-
                 taskDetails = caseResult.Get_Account_Info_for_ARandDenial(editOpenTask_id).ToList();
-            }
-            
+            }       
 
             return RedirectToAction("TCG_CaseDetails_Modified");
 
