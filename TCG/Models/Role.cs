@@ -15,6 +15,7 @@ namespace HealthcareAnalytics.Models
     
     public partial class Role
     {
+        [Display(Name = "Role Type")]
         public System.Guid role_key { get; set; }
 
         [DataType(DataType.Text)]

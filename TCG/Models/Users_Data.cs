@@ -51,9 +51,12 @@ namespace HealthcareAnalytics.Models
         [DataType(DataType.DateTime)]
         public System.DateTime user_add_date { get; set; }
 
+        [Display(Name = "User Updated By")]
+        [DataType(DataType.Text)]
         public string user_updated_by { get; set; }
 
-
+        [Display(Name = "Updated date")]
+        [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> user_updated_date { get; set; }
 
         public byte user_delete_flag { get; set; }
@@ -71,10 +74,11 @@ namespace HealthcareAnalytics.Models
         [Display(Name = "Confirm Password")]
         [Required(ErrorMessage = "Confirm Password is required")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage ="Password and confirm password didn't match")]
+        [Compare("user_web_pwd", ErrorMessage ="Password and confirm password didn't match")]
         public string confirm_pwd { get; set; }
 
-
+        [Display(Name = "OTP ")]
+        [DataType(DataType.Password)]
         public string otp_key { get; set; }
 
         public Nullable<System.DateTime> otp_time { get; set; }
