@@ -27,60 +27,60 @@
 
                         <div class="form-row ">
                             <div class="form-group col-sm-4">
-                                <label for="DDL_Status">ACCOUNT ID</label>
+                                <label for="DDL_Status" class="text-info">ACCOUNT ID</label>
                                 @Html.TextBoxFor(Model => Model.ACD_HspAccID, new { @class = "form-control ", @readonly = "readonly" })
                             </div>
                             <div class="form-group col-sm-4">
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="DDL_Owner">CASE ID</label>
+                                <label for="DDL_Owner" class="text-info">CASE ID</label>
                                 @Html.TextBoxFor(Model => Model.ACD_ID, new { @class = "form-control ", @readonly = "readonly" })
                             </div>
                         </div>
 
                         <div class="form-row ">
                             <div class="form-group col-sm-4">
-                                <label for="txt_Amount">Amount</label>
+                                <label for="txt_Amount" class="text-info">AMOUNT</label>
                                 @Html.TextBoxFor(Model => Model.ACD_Amount, new { @class = "form-control " })
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="DDL_Status">Status</label>
+                                <label for="DDL_Status" class="text-info">STATUS</label>
                                 @Html.DropDownListFor(Model => Model.ACD_Status, (IEnumerable<SelectListItem>)ViewBag.SM, "Select", new { @class = "form-control dropdown" })
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_Owner">Owner</label>
+                                <label for="DDL_Owner" class="text-info">OWNER</label>
                                 @Html.DropDownListFor(Model => Model.ACD_Owner, (IEnumerable<SelectListItem>)ViewBag.UL, "Select", new { @class = "form-control dropdown" })
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-sm-4">
-                                <label for="DDL_Type">Type</label>
+                                <label for="DDL_Type" class="text-info">ENCOUNTER TYPE</label>
                                 @Html.DropDownListFor(Model => Model.ACD_Type, (IEnumerable<SelectListItem>)ViewBag.ECT, "Select", new { @class = "form-control dropdown" })
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="DDL_SubType">Sub-Type</label>
+                                <label for="DDL_SubType" class="text-info">SUB-TYPE</label>
                                 @Html.DropDownListFor(Model => Model.ACD_SubType, (IEnumerable<SelectListItem>)ViewBag.SbT, "Select", new { @class = "form-control dropdown" })
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="DDL_PayerReason">Payer Reason</label>
+                                <label for="DDL_PayerReason" class="text-info">PAYER REASON</label>
                                 @Html.DropDownListFor(Model => Model.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.PR, "Select", new { @class = "form-control dropdown" })
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-sm-4">
-                                <label for="DDL_PrimaryReason">Primary Reason</label>
+                                <label for="DDL_PrimaryReason" class="text-info">PRIMARY REASON</label>
                                 @Html.DropDownListFor(Model => Model.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.PRM, "Select", new { @class = "form-control dropdown" })
                             </div>
 
                             <div class="form-group col-sm-4">
-                                <label for="DDL_SecondaryReason">Secondary Reason</label>
+                                <label for="DDL_SecondaryReason" class="text-info">SECONDARY REASON</label>
                                 @Html.DropDownListFor(Model => Model.ACD_SecondaryReason, (IEnumerable<SelectListItem>)ViewBag.SRM, "Select", new { @class = "form-control dropdown" })
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="txt_Note">Note</label>
+                                <label for="txt_Note" class="text-info">NOTE</label>
                                 @Html.TextAreaFor(Model => Model.ACD_Comments, new { @class = "form-control " })
                             </div>
 
@@ -88,13 +88,13 @@
 
                         <div class="form-row">
                             <div class="form-group col-sm-4">
-                                <label for="DDL_PrinDiagOthers">Prin Diag/Others</label>
+                                <label for="DDL_PrinDiagOthers" class="text-info">PRIM DIAG/OTHERS</label>
                                 @Html.DropDownListFor(Model => Model.ACD_PrinDiag, (IEnumerable<SelectListItem>)ViewBag.PD, "Select", new { @class = "form-control dropdown" })
                             </div>
                             <div class="form-group col-sm-4">                                
                             </div>
                             <div class="form-group col-sm-4">
-                                <label for="DDL_PrinProcOthers">Prin Proc/Others</label>
+                                <label for="DDL_PrinProcOthers" class="text-info">PRIM PROC/OTHERS</label>
                                 @Html.DropDownListFor(Model => Model.ACD_PrinProc, (IEnumerable<SelectListItem>)ViewBag.PP, "Select", new { @class = "form-control dropdown" })
                             </div>
                         </div>
