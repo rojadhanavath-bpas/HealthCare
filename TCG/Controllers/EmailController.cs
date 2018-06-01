@@ -36,10 +36,7 @@ namespace HealthcareAnalytics.Controllers
                 }
                 else {
 
-                    ViewBag.message = "YES";
-
-
-
+                    ViewBag.message = "YES";                                        
                     try
                     {
                         MailMessage mail = new MailMessage();
@@ -79,11 +76,8 @@ namespace HealthcareAnalytics.Controllers
                               }
                 
                             } 
-
-
             else{
-                ViewBag.message = "Error: Contact Admin if problem persists";
-                
+                ViewBag.message = "Error: Contact Admin if problem persists";               
 
             }
 

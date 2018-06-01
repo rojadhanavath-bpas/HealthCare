@@ -1,0 +1,87 @@
+﻿@model IEnumerable<HealthcareAnalytics.Models.ViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <br />
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+            @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-success" })
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <table class="table responstable table-striped">
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.user_info.user_first_name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.user_info.user_last_name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.user_info.user_middle_name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.User_roles.role_code_short)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.user_info.user_phone_number)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.user_info.user_email_id)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <i class="fa fa-user-circle fa-lg"></i> &nbsp; @Html.DisplayFor(modelItem => item.user_info.user_first_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user_info.user_last_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user_info.user_middle_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User_roles.role_code_short)
+                    </td>
+                    <td>
+                        <i class="fa fa-phone fa-lg"></i> &nbsp;  @Html.DisplayFor(modelItem => item.user_info.user_phone_number)
+                    </td>
+                    <td>
+                        <i class="fa fa-envelope fa-lg"></i> &nbsp;  @Html.DisplayFor(modelItem => item.user_info.user_email_id)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.user_info.user_ID }, new { @class = "badge badge-primary" })  |
+                       
+                        @Html.ActionLink("Details", "Details", new { id = item.user_info.user_ID }, new { @class = "badge badge-primary" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.user_info.user_ID }, new { @class = "badge badge-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div class="row">
+        @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-primary" })
+    </div>
+</div>
+   

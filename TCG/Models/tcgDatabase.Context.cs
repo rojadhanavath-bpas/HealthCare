@@ -29,6 +29,7 @@ namespace HealthcareAnalytics.Models
     
         public virtual DbSet<Users_Data> Users_Data { get; set; }
         public virtual DbSet<User_Login> User_Login { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
     
         public virtual ObjectResult<Get_Account_Info_for_ARandDenial_Result> Get_Account_Info_for_ARandDenial(string account_ID)
         {
@@ -106,113 +107,69 @@ namespace HealthcareAnalytics.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateAccount", first_nameParameter, last_nameParameter, middle_nameParameter, emailParameter, phone_numberParameter, pwdParameter);
         }
     
-        public virtual int Case_Task_InsUpd(Nullable<int> accCase_ID, Nullable<int> accTsk_ID, string accCase_HspAccID, string accCase_Amount, string accCase_Status, string accCase_Owner, string accCase_Type, string accCase_SubType, string accCase_PayerReason, string accCase_PrimaryReason, string accCase_SecondaryReason, string accCase_PrinDiag, string accCase_PrinProc, string accCase_Comments, Nullable<int> accTsk_AccCase_ID, string accTsk_Completed, string accTsk_Priority, string accTsk_Description, string accTsk_Owner, string accTsk_Comment, Nullable<System.DateTime> accTsk_DueDate, string accTsk_CreatedBy_User, Nullable<System.DateTime> accTsk_CreatedDate, string accTsk_UpdatedBy_User, Nullable<System.DateTime> accTsk_Updateddate, string accTsk_UpdatedBy_DB, ObjectParameter new_recordNumber)
+        public virtual int Case_Task_InsUpd(Nullable<int> aCT_ID, string aCT_HspAccID, Nullable<int> aCT_ACD_ID, Nullable<bool> aCT_Completed, string aCT_Priority, string aCT_Description, string aCT_Owner, string aCT_Comment, Nullable<System.DateTime> aCT_DueDate, Nullable<int> aCT_DeleteFlag, string aCT_CreatedBy, Nullable<System.DateTime> aCT_CreatedDate, string aCT_UpdatedBy, Nullable<System.DateTime> aCT_Updateddate, string aCT_UpdatedBy_DB, ObjectParameter new_recordNumber)
         {
-            var accCase_IDParameter = accCase_ID.HasValue ?
-                new ObjectParameter("AccCase_ID", accCase_ID) :
-                new ObjectParameter("AccCase_ID", typeof(int));
+            var aCT_IDParameter = aCT_ID.HasValue ?
+                new ObjectParameter("ACT_ID", aCT_ID) :
+                new ObjectParameter("ACT_ID", typeof(int));
     
-            var accTsk_IDParameter = accTsk_ID.HasValue ?
-                new ObjectParameter("AccTsk_ID", accTsk_ID) :
-                new ObjectParameter("AccTsk_ID", typeof(int));
+            var aCT_HspAccIDParameter = aCT_HspAccID != null ?
+                new ObjectParameter("ACT_HspAccID", aCT_HspAccID) :
+                new ObjectParameter("ACT_HspAccID", typeof(string));
     
-            var accCase_HspAccIDParameter = accCase_HspAccID != null ?
-                new ObjectParameter("AccCase_HspAccID", accCase_HspAccID) :
-                new ObjectParameter("AccCase_HspAccID", typeof(string));
+            var aCT_ACD_IDParameter = aCT_ACD_ID.HasValue ?
+                new ObjectParameter("ACT_ACD_ID", aCT_ACD_ID) :
+                new ObjectParameter("ACT_ACD_ID", typeof(int));
     
-            var accCase_AmountParameter = accCase_Amount != null ?
-                new ObjectParameter("AccCase_Amount", accCase_Amount) :
-                new ObjectParameter("AccCase_Amount", typeof(string));
+            var aCT_CompletedParameter = aCT_Completed.HasValue ?
+                new ObjectParameter("ACT_Completed", aCT_Completed) :
+                new ObjectParameter("ACT_Completed", typeof(bool));
     
-            var accCase_StatusParameter = accCase_Status != null ?
-                new ObjectParameter("AccCase_Status", accCase_Status) :
-                new ObjectParameter("AccCase_Status", typeof(string));
+            var aCT_PriorityParameter = aCT_Priority != null ?
+                new ObjectParameter("ACT_Priority", aCT_Priority) :
+                new ObjectParameter("ACT_Priority", typeof(string));
     
-            var accCase_OwnerParameter = accCase_Owner != null ?
-                new ObjectParameter("AccCase_Owner", accCase_Owner) :
-                new ObjectParameter("AccCase_Owner", typeof(string));
+            var aCT_DescriptionParameter = aCT_Description != null ?
+                new ObjectParameter("ACT_Description", aCT_Description) :
+                new ObjectParameter("ACT_Description", typeof(string));
     
-            var accCase_TypeParameter = accCase_Type != null ?
-                new ObjectParameter("AccCase_Type", accCase_Type) :
-                new ObjectParameter("AccCase_Type", typeof(string));
+            var aCT_OwnerParameter = aCT_Owner != null ?
+                new ObjectParameter("ACT_Owner", aCT_Owner) :
+                new ObjectParameter("ACT_Owner", typeof(string));
     
-            var accCase_SubTypeParameter = accCase_SubType != null ?
-                new ObjectParameter("AccCase_SubType", accCase_SubType) :
-                new ObjectParameter("AccCase_SubType", typeof(string));
+            var aCT_CommentParameter = aCT_Comment != null ?
+                new ObjectParameter("ACT_Comment", aCT_Comment) :
+                new ObjectParameter("ACT_Comment", typeof(string));
     
-            var accCase_PayerReasonParameter = accCase_PayerReason != null ?
-                new ObjectParameter("AccCase_PayerReason", accCase_PayerReason) :
-                new ObjectParameter("AccCase_PayerReason", typeof(string));
+            var aCT_DueDateParameter = aCT_DueDate.HasValue ?
+                new ObjectParameter("ACT_DueDate", aCT_DueDate) :
+                new ObjectParameter("ACT_DueDate", typeof(System.DateTime));
     
-            var accCase_PrimaryReasonParameter = accCase_PrimaryReason != null ?
-                new ObjectParameter("AccCase_PrimaryReason", accCase_PrimaryReason) :
-                new ObjectParameter("AccCase_PrimaryReason", typeof(string));
+            var aCT_DeleteFlagParameter = aCT_DeleteFlag.HasValue ?
+                new ObjectParameter("ACT_DeleteFlag", aCT_DeleteFlag) :
+                new ObjectParameter("ACT_DeleteFlag", typeof(int));
     
-            var accCase_SecondaryReasonParameter = accCase_SecondaryReason != null ?
-                new ObjectParameter("AccCase_SecondaryReason", accCase_SecondaryReason) :
-                new ObjectParameter("AccCase_SecondaryReason", typeof(string));
+            var aCT_CreatedByParameter = aCT_CreatedBy != null ?
+                new ObjectParameter("ACT_CreatedBy", aCT_CreatedBy) :
+                new ObjectParameter("ACT_CreatedBy", typeof(string));
     
-            var accCase_PrinDiagParameter = accCase_PrinDiag != null ?
-                new ObjectParameter("AccCase_PrinDiag", accCase_PrinDiag) :
-                new ObjectParameter("AccCase_PrinDiag", typeof(string));
+            var aCT_CreatedDateParameter = aCT_CreatedDate.HasValue ?
+                new ObjectParameter("ACT_CreatedDate", aCT_CreatedDate) :
+                new ObjectParameter("ACT_CreatedDate", typeof(System.DateTime));
     
-            var accCase_PrinProcParameter = accCase_PrinProc != null ?
-                new ObjectParameter("AccCase_PrinProc", accCase_PrinProc) :
-                new ObjectParameter("AccCase_PrinProc", typeof(string));
+            var aCT_UpdatedByParameter = aCT_UpdatedBy != null ?
+                new ObjectParameter("ACT_UpdatedBy", aCT_UpdatedBy) :
+                new ObjectParameter("ACT_UpdatedBy", typeof(string));
     
-            var accCase_CommentsParameter = accCase_Comments != null ?
-                new ObjectParameter("AccCase_Comments", accCase_Comments) :
-                new ObjectParameter("AccCase_Comments", typeof(string));
+            var aCT_UpdateddateParameter = aCT_Updateddate.HasValue ?
+                new ObjectParameter("ACT_Updateddate", aCT_Updateddate) :
+                new ObjectParameter("ACT_Updateddate", typeof(System.DateTime));
     
-            var accTsk_AccCase_IDParameter = accTsk_AccCase_ID.HasValue ?
-                new ObjectParameter("AccTsk_AccCase_ID", accTsk_AccCase_ID) :
-                new ObjectParameter("AccTsk_AccCase_ID", typeof(int));
+            var aCT_UpdatedBy_DBParameter = aCT_UpdatedBy_DB != null ?
+                new ObjectParameter("ACT_UpdatedBy_DB", aCT_UpdatedBy_DB) :
+                new ObjectParameter("ACT_UpdatedBy_DB", typeof(string));
     
-            var accTsk_CompletedParameter = accTsk_Completed != null ?
-                new ObjectParameter("AccTsk_Completed", accTsk_Completed) :
-                new ObjectParameter("AccTsk_Completed", typeof(string));
-    
-            var accTsk_PriorityParameter = accTsk_Priority != null ?
-                new ObjectParameter("AccTsk_Priority", accTsk_Priority) :
-                new ObjectParameter("AccTsk_Priority", typeof(string));
-    
-            var accTsk_DescriptionParameter = accTsk_Description != null ?
-                new ObjectParameter("AccTsk_Description", accTsk_Description) :
-                new ObjectParameter("AccTsk_Description", typeof(string));
-    
-            var accTsk_OwnerParameter = accTsk_Owner != null ?
-                new ObjectParameter("AccTsk_Owner", accTsk_Owner) :
-                new ObjectParameter("AccTsk_Owner", typeof(string));
-    
-            var accTsk_CommentParameter = accTsk_Comment != null ?
-                new ObjectParameter("AccTsk_Comment", accTsk_Comment) :
-                new ObjectParameter("AccTsk_Comment", typeof(string));
-    
-            var accTsk_DueDateParameter = accTsk_DueDate.HasValue ?
-                new ObjectParameter("AccTsk_DueDate", accTsk_DueDate) :
-                new ObjectParameter("AccTsk_DueDate", typeof(System.DateTime));
-    
-            var accTsk_CreatedBy_UserParameter = accTsk_CreatedBy_User != null ?
-                new ObjectParameter("AccTsk_CreatedBy_User", accTsk_CreatedBy_User) :
-                new ObjectParameter("AccTsk_CreatedBy_User", typeof(string));
-    
-            var accTsk_CreatedDateParameter = accTsk_CreatedDate.HasValue ?
-                new ObjectParameter("AccTsk_CreatedDate", accTsk_CreatedDate) :
-                new ObjectParameter("AccTsk_CreatedDate", typeof(System.DateTime));
-    
-            var accTsk_UpdatedBy_UserParameter = accTsk_UpdatedBy_User != null ?
-                new ObjectParameter("AccTsk_UpdatedBy_User", accTsk_UpdatedBy_User) :
-                new ObjectParameter("AccTsk_UpdatedBy_User", typeof(string));
-    
-            var accTsk_UpdateddateParameter = accTsk_Updateddate.HasValue ?
-                new ObjectParameter("AccTsk_Updateddate", accTsk_Updateddate) :
-                new ObjectParameter("AccTsk_Updateddate", typeof(System.DateTime));
-    
-            var accTsk_UpdatedBy_DBParameter = accTsk_UpdatedBy_DB != null ?
-                new ObjectParameter("AccTsk_UpdatedBy_DB", accTsk_UpdatedBy_DB) :
-                new ObjectParameter("AccTsk_UpdatedBy_DB", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_Task_InsUpd", accCase_IDParameter, accTsk_IDParameter, accCase_HspAccIDParameter, accCase_AmountParameter, accCase_StatusParameter, accCase_OwnerParameter, accCase_TypeParameter, accCase_SubTypeParameter, accCase_PayerReasonParameter, accCase_PrimaryReasonParameter, accCase_SecondaryReasonParameter, accCase_PrinDiagParameter, accCase_PrinProcParameter, accCase_CommentsParameter, accTsk_AccCase_IDParameter, accTsk_CompletedParameter, accTsk_PriorityParameter, accTsk_DescriptionParameter, accTsk_OwnerParameter, accTsk_CommentParameter, accTsk_DueDateParameter, accTsk_CreatedBy_UserParameter, accTsk_CreatedDateParameter, accTsk_UpdatedBy_UserParameter, accTsk_UpdateddateParameter, accTsk_UpdatedBy_DBParameter, new_recordNumber);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_Task_InsUpd", aCT_IDParameter, aCT_HspAccIDParameter, aCT_ACD_IDParameter, aCT_CompletedParameter, aCT_PriorityParameter, aCT_DescriptionParameter, aCT_OwnerParameter, aCT_CommentParameter, aCT_DueDateParameter, aCT_DeleteFlagParameter, aCT_CreatedByParameter, aCT_CreatedDateParameter, aCT_UpdatedByParameter, aCT_UpdateddateParameter, aCT_UpdatedBy_DBParameter, new_recordNumber);
         }
     
         public virtual int md_notnull_to_null_fields(string tablename)
@@ -240,6 +197,51 @@ namespace HealthcareAnalytics.Models
                 new ObjectParameter("tablename", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("md_null_to_NULL_fields", tablenameParameter);
+        }
+    
+        public virtual int create_user(string first_name, string last_name, string middle_name, string email, string phone_number, string pwd, string role, string keyword, string admin, Nullable<System.Guid> iD)
+        {
+            var first_nameParameter = first_name != null ?
+                new ObjectParameter("First_name", first_name) :
+                new ObjectParameter("First_name", typeof(string));
+    
+            var last_nameParameter = last_name != null ?
+                new ObjectParameter("last_name", last_name) :
+                new ObjectParameter("last_name", typeof(string));
+    
+            var middle_nameParameter = middle_name != null ?
+                new ObjectParameter("middle_name", middle_name) :
+                new ObjectParameter("middle_name", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var phone_numberParameter = phone_number != null ?
+                new ObjectParameter("Phone_number", phone_number) :
+                new ObjectParameter("Phone_number", typeof(string));
+    
+            var pwdParameter = pwd != null ?
+                new ObjectParameter("pwd", pwd) :
+                new ObjectParameter("pwd", typeof(string));
+    
+            var roleParameter = role != null ?
+                new ObjectParameter("role", role) :
+                new ObjectParameter("role", typeof(string));
+    
+            var keywordParameter = keyword != null ?
+                new ObjectParameter("keyword", keyword) :
+                new ObjectParameter("keyword", typeof(string));
+    
+            var adminParameter = admin != null ?
+                new ObjectParameter("admin", admin) :
+                new ObjectParameter("admin", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("create_user", first_nameParameter, last_nameParameter, middle_nameParameter, emailParameter, phone_numberParameter, pwdParameter, roleParameter, keywordParameter, adminParameter, iDParameter);
         }
     }
 }

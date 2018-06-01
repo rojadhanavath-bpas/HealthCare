@@ -198,6 +198,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Health_Icon.PNG" />
+    <Content Include="Images\Logo_101.png" />
     <Content Include="Images\Logo_New.png" />
     <Content Include="Images\Pulse Logo_FINAL Color.png" />
     <Content Include="Models\DBModel.Context.tt">
