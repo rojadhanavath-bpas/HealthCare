@@ -1,0 +1,97 @@
+﻿@model IEnumerable<HealthcareAnalytics.Models.Account_Case_Details>
+
+
+
+@{
+
+    ViewBag.Title = "CaseList";
+
+}
+
+
+
+
+<div class="container">
+    <div class="panel panel-body">
+        <div id="id_cases" class="panel-body">
+            <div style="border:3px solid #fcbf49; background-color:#fcbf49">
+                <h4>
+                    <span style=" font-size:large">
+                        CASE LIST 
+                    </span>
+                    @*<span class="col-sm-2" stlye=":right">@Html.Label(Session["AccountID"].ToString(), Session["AccountID"].ToString(), new { @class = "form-control", @readonly = "readonly" })</span>*@
+                </h4>
+            </div>
+            <hr />
+            <div id="id_cases_details" style="display:block;">
+                <div class="form-row">
+                    <div class="form-group col-sm-12">
+                       
+                            @Html.ActionLink("CREATE", "createNewCase_Details", new { id = ViewBag.One_ACD_data, case_ID = 0 }, new { @class = "btn btn-danger glyphicon glyphicon-plus-sign", @style = "float:left;" })
+                        
+                        </div>
+                </div>
+                <div class="row">
+
+                    <table class="table table-responsive table-bordered table-striped ">
+
+                        <tr class="success">
+                            <th>Case ID</th>
+                            <th>Created Date</th>
+                            <th>Status</th>
+                            <th>Total Balance</th>
+                            <th>Type</th>
+                            <th>Primary Reason</th>
+                            <th>Prin Diagnositcs</th>
+                            <th>Prin Procedure</th>
+                            <th>Edit</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.ACD_ID)).ToString(), "TCG_CaseDetails_Modified", "Home", new { id = item.ACD_HspAccID, case_ID = item.ACD_ID }, null)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ACD_CreatedDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ACD_Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ACD_Amount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ACD_Type)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ACD_PrimaryReason)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ACD_PrinDiag)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ACD_PrinProc)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(" ", "Edit_CaseList", new { id = item.ACD_HspAccID, case_ID = item.ACD_ID }, new { @class = "btn-sm glyphicon glyphicon-pencil badge badge-primary" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+
+                <div class="row">
+
+                    @*@Html.ActionLink("Back to List", "Priority", new { sortOrder = " ", currentFilter = "", searchString = "", page = "" }, new { @class = "btn btn-primary" })*@
+                    @Html.ActionLink("Back to List", "Priority", new { }, new { @class = "btn btn-primary" ,@style = "float:right" })
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

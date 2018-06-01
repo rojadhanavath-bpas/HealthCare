@@ -1,0 +1,66 @@
+﻿@model HealthcareAnalytics.Models.Account_Case_Task
+
+@{
+
+    ViewBag.Title = "CaseList";
+
+}
+
+
+
+@using (Html.BeginForm("DeleteOpenTask", "Home", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ACT_HspAccID);
+    @Html.HiddenFor(m => m.ACT_ACD_ID);
+    @Html.HiddenFor(m => m.ACT_ID);
+    @Html.HiddenFor(m => m.ACT_Priority);
+    @Html.HiddenFor(m => m.ACT_Completed);
+    @Html.HiddenFor(m => m.ACT_Description);
+    @Html.HiddenFor(m => m.ACT_Owner);
+    @Html.HiddenFor(m => m.ACT_Comment);
+    @Html.HiddenFor(m => m.ACT_DueDate);
+    
+
+    <div class="container">
+        <div class="panel panel-body">
+            <div id="id_cases" class="panel-body">
+                <div style="border:3px solid #fcbf49; background-color:#fcbf49">
+                    <h4>
+                        <span style=" font-size:large">
+                            DELETE TASK
+                        </span>
+                        @*<span class="col-sm-2" stlye=":right">@Html.Label(Session["AccountID"].ToString(), Session["AccountID"].ToString(), new { @class = "form-control", @readonly = "readonly" })</span>*@
+                    </h4>
+                </div>
+                <hr />
+                <div id="id_cases_details" style="display:block;">
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <span style=" font-size:large">Account ID: @Model.ACT_HspAccID</span>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <span style=" font-size:large">Case ID: @Model.ACT_ACD_ID</span>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <span style=" font-size:large">Task ID: @Model.ACT_ID</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-12">
+                            <span> Are you sure you want to delete the task?</span>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <button type="submit" class="btn btn-danger" id="btnSave" style="float:right;">Delete</button>
+                        <span> </span>
+                        @Html.ActionLink("BACK", "TCG_CaseDetails_Modified", new { id = Model.ACT_HspAccID, case_ID = Model.ACT_ACD_ID }, new { @class = "btn btn-primary" })
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
