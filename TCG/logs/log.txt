@@ -409,3 +409,15 @@ DEBUG 2018-05-31 20:58:27,023 20449ms HomeController         Login              
 DEBUG 2018-05-31 20:58:27,024 20450ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
 DEBUG 2018-05-31 20:58:27,138 20564ms HomeController         GetTableauToken    - Retrieving Tableau token 
 DEBUG 2018-05-31 20:58:27,600 21025ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-05-31 21:14:51,159  2310ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-31 21:15:14,737 25888ms HomeController         Login              - password
+DEBUG 2018-05-31 21:15:14,745 25896ms HomeController         Login              - password
+DEBUG 2018-05-31 21:15:14,745 25896ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-05-31 21:15:14,871 26022ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-31 21:15:15,312 26463ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-05-31 21:28:19,211  5904ms HomeController         Login              - Loading Login Page..
+DEBUG 2018-05-31 21:28:42,877 29570ms HomeController         Login              - password
+DEBUG 2018-05-31 21:28:42,878 29571ms HomeController         Login              - password
+DEBUG 2018-05-31 21:28:42,878 29571ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-05-31 21:28:42,991 29684ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-05-31 21:28:43,479 30172ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
