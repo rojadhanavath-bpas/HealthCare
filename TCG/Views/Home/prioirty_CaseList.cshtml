@@ -42,9 +42,9 @@
                                 <th>STAUTS</th>
                                 <th>TOTAL BALANCE</th>
                                 <th>ENCOUNTER TYPE</th>
-                                <th>PRIMARY REASON</th>
-                                <th>PRIM DIAGNOSTICS</th>
-                                <th>PRIM PROCEDURE</th>
+                                <th>DENIAL REASON</th>
+                                <th>PRINCIPLE DIAGNOSIS</th>
+                                <th>PRINCIPLE PROCEDURE</th>
                                 <th></th>
                             </tr>
                             @foreach (var item in Model)
@@ -92,7 +92,10 @@
                     </div>
                 </div>
             </div>
-
     </div>
 </div>
 
+<div id="test">
+    @*@Html.RenderAction("_CaseDetails", );*@
+    @Html.Partial("_CaseDetails");
+</div>

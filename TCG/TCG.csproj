@@ -706,6 +706,7 @@
     <Content Include="Views\Home\prioirty_CaseList.cshtml" />
     <Content Include="Views\Home\DeleteOpenTask.cshtml" />
     <Content Include="Views\Home\Edit_CaseList.cshtml" />
+    <Content Include="Views\Home\_CaseDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
