@@ -58,10 +58,7 @@ namespace HealthcareAnalytics.Controllers
 
             return View();
         }
-
         
-
-
         public ActionResult Home()
         {
             log.Debug("Loading Home Page..");
@@ -80,7 +77,8 @@ namespace HealthcareAnalytics.Controllers
         }
         public ActionResult Priority(string sortOrder, string currentFilter, string searchString, int? page)
         {
-
+            ViewBag.UserFirst = Session["first"];
+            ViewBag.UserLast = Session["last"];
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
@@ -145,30 +143,20 @@ namespace HealthcareAnalytics.Controllers
 
 
         public ActionResult DebitAR()
-
-
         {
-
             ViewBag.UserFirst = Session["first"];
             ViewBag.UserLast = Session["last"];
-
             ViewBag.Message = GetTableauToken();
-
             log.Debug("[User:"+ Session["first"] +"]  "+ "Loading Debit AR  Page..");
             return View();
         }
 
         public ActionResult CreditAR()
-
-
         {
-
             ViewBag.UserFirst = Session["first"];
             ViewBag.UserLast = Session["last"];
-
             ViewBag.Message = GetTableauToken();
             log.Debug("[User:" + Session["first"] + "]  " + "Loading Credit AR  Page..");
-
             return View();
         }
                
@@ -184,17 +172,14 @@ namespace HealthcareAnalytics.Controllers
         }
        
         public ActionResult DenialsManagement()
-        {
-
-            
+        {            
             ViewBag.UserFirst = Session["first"];
             ViewBag.UserLast = Session["last"];
             ViewBag.Message = GetTableauToken();
 
             log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
             return View();
-
-
+            
         }
 
 
@@ -228,18 +213,13 @@ namespace HealthcareAnalytics.Controllers
             using (var stream = request.GetRequestStream())
             {
                 stream.Write(data, 0, data.Length);
-            }
-
-         
-
+            }              
             var response = (HttpWebResponse)request.GetResponse();
            
             return new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            
+                       
         }
-
-        
+                
         [HttpPost]
         public void DispatchPdf(String pageName) {
 
@@ -253,16 +233,11 @@ namespace HealthcareAnalytics.Controllers
             log.Debug("[Home][dispatchPdf]: Creating post request with url : " + imageUrl);
             HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(imageUrl);
             imageRequest.Method = "POST";
-            var postData = "url="+pageName;
-           
-
-
+            var postData = "url="+pageName;         
+            
             imageRequest.ContentType = "application/x-www-form-urlencoded";
-            imageRequest.ContentLength = 0;
-
-           
-
-
+            imageRequest.ContentLength = 0;         
+            
             WebResponse imageResponse = imageRequest.GetResponse();
 
             Stream responseStream = imageResponse.GetResponseStream();
@@ -354,10 +329,7 @@ namespace HealthcareAnalytics.Controllers
                                    logindetails.user_web_pwd,
                                    logindetails.user_first_name,
                                    logindetails.user_last_name
-
-                               }).ToList();
-
-                
+                               }).ToList();                              
 
                 if (details.FirstOrDefault() != null)
                 {
@@ -561,9 +533,7 @@ namespace HealthcareAnalytics.Controllers
             TCG_Worklist context = new TCG_Worklist();
             return context.Priority_Master.Select(x => new SelectListItem { Text = x.PM_Name, Value = x.PM_ID.ToString() }).ToList();
 
-        }
-
-        
+        }        
         public ActionResult TCG_CaseDetails_Modified(string id, int case_ID)
         {
             AARS = new Account_AR_Status();

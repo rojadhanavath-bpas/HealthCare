@@ -16,18 +16,13 @@
     <script>
         $(document).ready(function () {
             $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
-
-
-
-        });
+                    });
     </script>
 
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
-
-
-            @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
+           @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
             {
            
         <ul class="nav navbar-nav">
@@ -43,22 +38,17 @@
             <li class="dmstyle">@Html.ActionLink("Denials Management", "DenialsManagement", "Home")</li>
             <li class="dmstyle">@Html.ActionLink("Worklists", "Worklist", "Home")</li>
             <li class="dmstyle">@Html.ActionLink("Manage Users", "Index", "Users_Data")</li>
-
-
             @*<ul class="nav navbar-nav navbar-right">*@
-            <li class="dropdown userstyle">
+            <li class="dropdown userstyle" style="right:-40%;">
                 <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
                 </ul>
-        </ul>
-                   
+                </ul>                   
                     }
-
                 </div>
-
 
       <div class=" body-content">
         @RenderBody()
