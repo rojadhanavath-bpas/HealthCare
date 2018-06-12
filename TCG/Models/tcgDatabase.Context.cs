@@ -27,9 +27,10 @@ namespace HealthcareAnalytics.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Users_Data> Users_Data { get; set; }
-        public virtual DbSet<User_Login> User_Login { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<User_Login> User_Login { get; set; }
+        public virtual DbSet<Users_Data> Users_Data { get; set; }
+        public virtual DbSet<Denials_Data> Denials_Data { get; set; }
     
         public virtual ObjectResult<Get_Account_Info_for_ARandDenial_Result> Get_Account_Info_for_ARandDenial(string account_ID)
         {
@@ -40,13 +41,17 @@ namespace HealthcareAnalytics.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Account_Info_for_ARandDenial_Result>("Get_Account_Info_for_ARandDenial", account_IDParameter);
         }
     
-        public virtual ObjectResult<Get_AR_Info_for_Balance_Range_Result> Get_AR_Info_for_Balance_Range(Nullable<int> varBalanceRange)
+        public virtual ObjectResult<Get_AR_Info_for_Balance_Range_Result> Get_AR_Info_for_Balance_Range(Nullable<int> varBalanceRange, Nullable<int> varEntity)
         {
             var varBalanceRangeParameter = varBalanceRange.HasValue ?
                 new ObjectParameter("varBalanceRange", varBalanceRange) :
                 new ObjectParameter("varBalanceRange", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_AR_Info_for_Balance_Range_Result>("Get_AR_Info_for_Balance_Range", varBalanceRangeParameter);
+            var varEntityParameter = varEntity.HasValue ?
+                new ObjectParameter("varEntity", varEntity) :
+                new ObjectParameter("varEntity", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_AR_Info_for_Balance_Range_Result>("Get_AR_Info_for_Balance_Range", varBalanceRangeParameter, varEntityParameter);
         }
     
         public virtual int registration(string first_name, string last_name, string middle_name, string email, string phone_number, string pwd)

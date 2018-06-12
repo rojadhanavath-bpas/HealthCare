@@ -49,7 +49,7 @@ namespace HealthcareAnalytics.Models
         public string Account_Source { get; set; }
         public string Account_Bill_Status { get; set; }
         public string Account_AR_Status { get; set; }
-        public Nullable<decimal> Total_Account_Balance { get; set; }
+        public Nullable<Double> Total_Account_Balance { get; set; }
         public Nullable<decimal> Total_Self_Pay_Balance { get; set; }
         public Nullable<decimal> Total_Primary_Insurance_Balance { get; set; }
         public Nullable<decimal> Total_Pre_Billed_Balance { get; set; }

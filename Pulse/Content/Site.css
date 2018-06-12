@@ -1,4 +1,5 @@
-﻿body {
+﻿@import url('Site.css');
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -8,8 +9,7 @@
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
-}
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -40,7 +40,7 @@ span.logo {
 }
 */
 .mainlogo {
-    background-color: #196871 !important;
+    background-color: white !important;
     height: 45px;
     padding-top: 1px;
     display: block;
@@ -56,14 +56,14 @@ span.logo {
 }
 
 .footer {
-    border-top: 5px solid #f39c12;
+   
     bottom: 0px;
     position: fixed;
     height: 35px;
     width: 100%;
     color: white;
     padding-top: 5px;
-    background-color: #196871;
+    background-color: #034EA1;
 }
 
     .footer > span {
@@ -204,31 +204,46 @@ li a.active {
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-    background-color: #2da4b1 !important
+    background-color: #034EA1 !important;
+    color: white !important;
+
 }
 
 ul.dropdown-menu > li > a {
-    color: white !important;
+    color: black !important;
+    font-size: 15px;
+    font-family: Roboto;
+   font-weight:bold;
 }
 
     ul.dropdown-menu > li > a:hover {
-        background-color: #2da4b1 !important;
+        background-color: #034EA1 !important;
+        color: white !important;
     }
 
 
 .navbar-nav {
-    background-color: #196871 !important;
-    border-bottom: 5px solid #f39c12;
+    background-color: white !important;
+    border-bottom: 5px solid #034EA1;
     margin: 0 !important;
     padding: 0 !important;
     width: 100%;
+    
 }
-.navbar-nav>li>a{
-    color: white !important;
-}
+    
+    .navbar-nav > li > a {
+        color: black !important;
+        font-weight: bold;
+        font-size:15px;
+        font-family:Roboto;
+        height: 100px !important;
+        vertical-align: middle !important;
+        padding-top: 43px;
+    }
 
     .navbar-nav > li > a:hover {
-        background-color: #2da4b1 !important;
+        background-color: #034EA1 !important;
+        color: white !important;
     }
 .navbar-fixed-top{
     width: 100%;
@@ -236,16 +251,17 @@ ul.dropdown-menu > li > a {
 
 .dropdown-menu {
     color: white !important;
-    background-color: #196871 !important;
-    border-bottom: 3px solid #f39c12;
+    background-color: white !important;
+    border-bottom: 3px solid #034EA1;
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: #2da4b1 !important;
+    background-color: #034EA1 !important;
 }
 
 ul.nav.navbar-nav > li.active > a {
-    background-color: #2da4b1 !important;  
+    background-color: powderblue !important; 
+    color: black !important;
     
 
 }

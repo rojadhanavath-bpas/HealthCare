@@ -13,25 +13,20 @@
     <script>
         $(document).ready(function () {
                $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
-
-             
-         
-        });
+             });
     </script>
 
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
        
-
-
-            @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
+                    @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
             {
                 
 
                 <ul  class="nav navbar-nav">
-                    <li><span class="logo">&nbsp;<img src="~/Images/.png" style="background-color: white;height: 50px; width:auto; padding-top: 10px;" /></span></li>
-                    <li style="padding-left: 14%;">@Html.ActionLink("Executive Summary", "ExecutiveSummary", "Home")</li>
+                    <li><span class="logo">&nbsp;<img src="~/Images/ADDI_Logo.jpg" style="background-color: white;height: auto; width:250px;" /></span></li>
+                    <li style="padding-left: 5%;">@Html.ActionLink("Executive Summary", "ExecutiveSummary", "Home")</li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" role="button" aria-expanded="false"  data-toggle="dropdown">Financial Management <span class="caret"></span></a>
@@ -40,9 +35,7 @@
                             <li>@Html.ActionLink("Financial RVU", "RVU", "Home")</li>
                         </ul>
                     </li>
-
-
-
+                    
                     <li>@Html.ActionLink("Billing", "Billing", "Home")</li>
 
                     @*<li>@Html.ActionLink("AR Management", "ARManagement", "Home")</li>*@

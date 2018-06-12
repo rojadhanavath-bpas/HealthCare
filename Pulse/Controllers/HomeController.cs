@@ -17,13 +17,14 @@ namespace HealthcareAnalytics.Controllers
 
         private healthcareEntities db = new healthcareEntities();
 
-        public ActionResult login()
+        public ActionResult Login()
         {
-            //will retrun view to the 
-     
+
+           // log.Debug("Loading Login Page..");
+
             return View();
         }
-        public ActionResult home()
+        public ActionResult Home()
         {
             return View();
         }
@@ -212,7 +213,7 @@ namespace HealthcareAnalytics.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult login(role Role)
+        public ActionResult Login(role Role)
         {
             if (ModelState.IsValid)
             {

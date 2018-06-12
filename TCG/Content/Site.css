@@ -478,3 +478,29 @@ table.paleBlueRows {
     padding-left: 35%;
     margin: auto;
 }
+
+
+.list-group-item-info {
+    color: #31708f;
+    background-color: white !important;
+    
+    
+}
+
+.list-group-item-info:hover {
+    
+    background-color: lightgoldenrodyellow !important;
+}
+
+    .list-group-item-info > a:hover {
+        text-decoration:none!important;
+    }
+    .list-group-item-info:hover > .fa  {
+        font-size: medium;
+    }
+    .list-group-item-info:hover > .fa :hover{
+        color:green;
+        
+
+        font-size:small;
+    }

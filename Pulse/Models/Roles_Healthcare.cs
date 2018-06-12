@@ -12,7 +12,7 @@ namespace HealthcareAnalytics.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Roles_Healthcare
     {
         public System.Guid role_key { get; set; }
         public string role_code { get; set; }

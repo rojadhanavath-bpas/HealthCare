@@ -146,11 +146,13 @@ namespace HealthcareAnalytics.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ViewModel users_Data, String role_value)
         {
-            ViewBag.UserFirst = Session["first"];
-            ViewBag.UserLast = Session["last"];
+
+
+            ModelState.Remove("Users_Data");
 
             var res =
          from s in db.Users_Data
@@ -158,6 +160,9 @@ namespace HealthcareAnalytics.Controllers
          on s.user_role_key equals q.role_key
          where s.user_ID == users_Data.user_info.user_ID
          select new ViewModel { user_info = s, User_roles = q };
+
+           
+            
 
 
             var resIndex =
@@ -182,6 +187,12 @@ namespace HealthcareAnalytics.Controllers
                 db.Database.ExecuteSqlCommand("create_user @First_name = {0}, @last_name = {1}, @middle_name = {2}, @Email = {3}, @Phone_number = {4}, @pwd = {5}, @role ={6}, @keyword={7}, @admin={8}, @ID={9}", firstname, lastname, middleName, email, phonenum, pwd, role, keyword, admin, id);
                 return View("Index", resIndex.ToList());
             }
+
+            var errors = ModelState
+                .Where(x => x.Value.Errors.Count > 0)
+                .Select(x => new { x.Key, x.Value.Errors })
+                .ToArray();
+            
             return View(res.First());
         }
 

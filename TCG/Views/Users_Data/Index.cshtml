@@ -4,29 +4,29 @@
     ViewBag.Title = "Index";
 }
 <script>
-    $(document).ready(function () {
+    //$(document).ready(function () {
         
   
-    $('.btn-toggle').click(function () {
-        $(this).find('.btn').toggleClass('active');
+    //$('.btn-toggle').click(function () {
+    //    $(this).find('.btn').toggleClass('active');
 
-        if ($(this).find('.btn-primary').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-primary');
-        }
-        if ($(this).find('.btn-danger').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-danger');
-        }
-        if ($(this).find('.btn-success').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-success');
-        }
-        if ($(this).find('.btn-info').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-info');
-        }
+    //    if ($(this).find('.btn-primary').size() > 0) {
+    //        $(this).find('.btn').toggleClass('btn-primary');
+    //    }
+    //    if ($(this).find('.btn-danger').size() > 0) {
+    //        $(this).find('.btn').toggleClass('btn-danger');
+    //    }
+    //    if ($(this).find('.btn-success').size() > 0) {
+    //        $(this).find('.btn').toggleClass('btn-success');
+    //    }
+    //    if ($(this).find('.btn-info').size() > 0) {
+    //        $(this).find('.btn').toggleClass('btn-info');
+    //    }
 
-        $(this).find('.btn').toggleClass('btn-default');
+    //    $(this).find('.btn').toggleClass('btn-default');
 
-    });
-    });
+    //});
+    //});
 </script>
 <div class="container-fluid">
     <div class="row">
@@ -104,13 +104,13 @@
                             @Html.ActionLink("Edit", "Edit", new { id = item.user_info.user_ID }, new { @class = "badge badge-primary" })  |
 
                             @Html.ActionLink("Details", "Details", new { id = item.user_info.user_ID }, new { @class = "badge badge-primary" }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.user_info.user_ID }, new { @class = "badge badge-danger" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.user_info.user_ID }, new { @class = "badge badge-danger" }) 
 
                         </td>
                         <td>
                             <div class="btn-group btn-toggle">
-                                <button class="btn btn-xs btn-primary active">Active</button>
-                                <button class="btn btn-xs btn-default">Inactive</button>
+                                <button class="btn btn-xs  @(  !Convert.ToBoolean(item.user_info.user_active_flag) ? "active btn-default" : "btn-primary")">Active</button>
+                                <button class="btn btn-xs @(  Convert.ToBoolean(item.user_info.user_active_flag) ? "active btn-default" : "btn-primary")">Inactive</button>
                             </div>
                         </td>
 

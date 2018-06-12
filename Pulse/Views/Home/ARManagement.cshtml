@@ -23,7 +23,7 @@
         h = $(window).height() - 70;
         var vizDiv = document.getElementById("vizDiv");
         var ticket = "@ViewBag.Message";
-        var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/ARM-Comparisons/ARM-Dashboard?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
+        var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/ARM-Comparisons/ARM-Dashboard?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no&:tabs=no";
 
 
   options = {
@@ -238,7 +238,7 @@ width: w,
         }
 
         .container-fluid {
-            padding-top: 3px;
+            padding-top: 0px;
         }
         /* CAUTION: IE hackery ahead */
         select::-ms-expand {
@@ -247,24 +247,12 @@ width: w,
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="navbar-inner">
-            <ul class="nav pull-right">
-                <li>
-                    <div class="row" style="padding-top:10px;">
-                        <div class="col-sm-4"><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>&nbsp; &nbsp;</a></div>
+                        <div class="row" style="position:fixed;z-index:9999;right:1%;width:120px;top:3%;">
+                        <div class="col-sm-4"><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-excel-o fa-3x" aria-hidden="true"></i>&nbsp; &nbsp;</a></div>
                         <div class="col-sm-4">
-                            <a href="#" onclick="exportToPDF()"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>&nbsp; &nbsp;</a>
-
-
-                        </div>
-
+                            <a href="#" onclick="exportToPDF()"><i class="fa fa-file-pdf-o fa-3x" aria-hidden="true"></i>&nbsp; &nbsp;</a>
+                       </div>
                     </div>
-                </li>
-
-            </ul>
-        </div>
-    </div>
 
 
     <!-- Modal -->

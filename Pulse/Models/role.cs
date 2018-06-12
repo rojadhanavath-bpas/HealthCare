@@ -11,27 +11,14 @@ namespace HealthcareAnalytics.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class role
     {
         public string cst_first_name { get; set; }
         public string cst_last_name { get; set; }
         public string cst_url_code { get; set; }
-
         public string cst_eml_address { get; set; }
-
-
-        [Display(Name="User Name")]
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage ="User Name required")]
         public string cst_web_login { get; set; }
-
-
-
-        [Display(Name = "Password")]
-        [DataType(DataType.Password)]
-        [Required(ErrorMessage ="Password Required")]
         public string cst_web_password { get; set; }
     }
 }

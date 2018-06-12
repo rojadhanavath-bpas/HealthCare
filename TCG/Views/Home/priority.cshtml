@@ -10,6 +10,10 @@
 
 <html>
 <head>
+    <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" src="stylesheet">
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
@@ -17,53 +21,46 @@
     @Styles.Render("~/Content/font-awesome.css")
     @Styles.Render("~/Content/font-awesome")
     @Styles.Render("~/Content/fontawesome")
-    <script>
-        $(document).ready(function () {
-            var oTable = $('#myDatatable').Datatable({
-                "processing": true,
-                "serverSide": true,
-
-                "ajax": {
-                    "url": 'home/priority',
-                    "type": "get",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "Account ID", "autoWidth": true },
-                    { "data": "Admission Date", "autoWidth": true },
-                    { "data": "Primary Payor Name", "autoWidth": true },
-                    { "data": "Primary Financial Class", "autoWidth": true },
-                    { "data": " Total Account Balance", "autoWidth": true },
-                    { "data": "Admitting Provider Name", "autoWidth": true },
-                    { "data": "Service Area", "autoWidth": true },
-                    { "data": "Location", "autoWidth": true }
-                    ]
-            });
-               });
+    <script type="text/javascript">
+        $(function () {
+            $("table.tablesorter").tablesorter({ widthFixed: true, sortList: [[0, 0]] })
+                .tablesorterPager({ container: $("#pager"), size: $(".pagesize option:selected").val() });
+        });
     </script>
 
-    </head>
+</head>
 <body>
     <div style=" width: 90%; margin: 10px auto">
         @using (Html.BeginForm("priority", "Home", FormMethod.Get, new { @class = "search-wrapper cf" }))
         {
         <div class="row">
-            
-            <div class="col-md-6"><h2 style="color:#fcbf49; font-weight:bold">User's account list</h2></div>
             <div class="col-sm-2">
-                <select class="form-control" id="StudentGender" name="StudentGender">
-                    <option>Select Organization Name</option>
-                    <option>ADD</option>
-                    <option selected>Hennepin</option>
-                </select>
+                <div class="row"><label for="StudentName">Financial Class</label></div>
+                @*   @Html.DropDownListFor()*@
             </div>
+
+            <div class="col-sm-2">
+                <div class="row"><label for="StudentName">Current Payor</label></div>
+                <div class="row"><label for="StudentName">Name</label></div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="row"><label for="StudentName">Denial Category</label></div>
+                <div class="row"><label for="StudentName">Name</label></div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="row"><label for="StudentName">Encounter Type</label></div>
+                <div class="row"><label for="StudentName">Name</label></div>
+            </div>
+
             <div class="col-sm-2">
                 <p>
                     @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search by payor, or Account ID", @class = "form-control" })
                     <!--  <input type="submit" class="btn btn-primary" value="Search" />-->
                 </p>
             </div>
-           
+
         </div>
            
         }
@@ -72,12 +69,14 @@
             <tr>
                 <th>Account ID</th>
                 <th>Admission Date</th>
-                <th>Primary Payor Name </th>
-                <th>Primary Financial Class</th>
-                <th>Total Account Balance</th>
-                <th>Admitting Provider Name</th>
+               <th>Patient Name</th>
+                <th>Current Financial Class </th>
+                <th>Current Payor</th>
+                <th>Account Balance</th>
+                <th>Admitting Provider</th>
+                <th>Encounter Type</th>               
                 <th>Service Area</th>
-                <th>Location</th>
+                <th># of cases</th>
             </tr>
             @foreach (var item in Model)
             {
@@ -88,24 +87,26 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Admission_Date)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Name)
-                    </td>
+                   <td>@Html.DisplayFor(modelItem => item.Account_Patient_Name)</td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Financial_Class)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Total_Account_Balance)
+                        @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Name)
+                    </td>
+                    <td>
+                       @Html.DisplayFor(modelItem => item.Total_Account_Balance)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Admitting_Provider_Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Account_Service_Area_Name)
+                        @Html.DisplayFor(modelItem => item.Encounter_Type)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Account_Location_Name)
+                        @Html.DisplayFor(modelItem => item.Account_Service_Area_Name)
                     </td>
+                    <td>1</td>
 
                 </tr>
             }

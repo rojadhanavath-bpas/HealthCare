@@ -1,12 +1,7 @@
 ﻿
 @{
-
     ViewBag.Title = "ARManagement";
-
 }
-
-
-
 <html>
 <head>
     <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
@@ -16,18 +11,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.9.2/xlsx.core.min.js"></script>
 
     <script>
-
         $(document).ready(function initViz() {
-
             w = $(window).width() - 20;
-
             h = $(window).height() - 70;
             var vizDiv = document.getElementById("vizDiv");
             var ticket = "@ViewBag.Message";
             var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/AR-ManagementDebitCredit------TodaysDemo/ARBY?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
-
-
-  options = {
+              options = {
 height: h,
 width: w,
             hideToolbar: true,

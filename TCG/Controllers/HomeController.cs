@@ -39,7 +39,7 @@ namespace HealthcareAnalytics.Controllers
         private Account_Case_Details ACS = new Account_Case_Details();
         private Account_Case_Detials_History ACDH = new Account_Case_Detials_History();
         private Account_Case_Task ACT = new Account_Case_Task();
-        private Account_Case_Task_History ACTH = new Account_Case_Task_History();        
+        private Account_Case_Task_History ACTH = new Account_Case_Task_History();
         private Account_Source AS = new Account_Source();
         private Encounter_Type ECT = new Encounter_Type();
         private Insurance_Company_Name ICN = new Insurance_Company_Name();
@@ -48,6 +48,18 @@ namespace HealthcareAnalytics.Controllers
         private Status_Master SM = new Status_Master();
         private Task_Master TM = new Task_Master();
         private Priority_Master PM = new Priority_Master();
+
+        private Get_AR_Info_for_Balance_Range_Result Receivable_M = new Get_AR_Info_for_Balance_Range_Result();
+        private List<String> FC_DD = new List<string>();
+        private List<String> Payor_DD = new List<string>();
+        private List<String> Encounter_DD = new List<string>();
+        private List<String> Denial_DD = new List<string>();
+        private List<String> LName_DD = new List<string>();
+
+        public HomeController(){
+           // FC_DD = db2.;
+
+            }
 
         public string editOpenTask_id ;
 
@@ -103,10 +115,8 @@ namespace HealthcareAnalytics.Controllers
 
             using (TCG_DataEntities db2 = new TCG_DataEntities())
             {
-                List<Get_AR_Info_for_Balance_Range_Result> result  = db2.Get_AR_Info_for_Balance_Range(1).ToList();
-
-
-
+                List<Get_AR_Info_for_Balance_Range_Result> result  = db2.Get_AR_Info_for_Balance_Range(4,2).ToList();
+                
                 if (!String.IsNullOrEmpty(searchString))
                 {
                     result = result.Where(s => s.Hospital_Account_ID.Contains(searchString.ToLower())
@@ -138,6 +148,7 @@ namespace HealthcareAnalytics.Controllers
                // return Json(new {  data = data, recordtotal = totalRecords, recordsfiltered = totalRecords }, JsonRequestBehavior.AllowGet);
 
             }
+            
 
         }        
 

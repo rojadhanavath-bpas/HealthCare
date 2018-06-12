@@ -12,6 +12,8 @@ namespace HealthcareAnalytics.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class healthcareEntities : DbContext
     {
@@ -26,5 +28,82 @@ namespace HealthcareAnalytics.Models
         }
     
         public virtual DbSet<role> roles { get; set; }
+        public virtual DbSet<Roles_Healthcare> Roles_Healthcare { get; set; }
+        public virtual DbSet<User_Login> User_Login { get; set; }
+        public virtual DbSet<Users_Data> Users_Data { get; set; }
+    
+        public virtual int create_user(string first_name, string last_name, string middle_name, string email, string phone_number, string pwd, string role, string keyword, string admin, Nullable<System.Guid> iD)
+        {
+            var first_nameParameter = first_name != null ?
+                new ObjectParameter("First_name", first_name) :
+                new ObjectParameter("First_name", typeof(string));
+    
+            var last_nameParameter = last_name != null ?
+                new ObjectParameter("last_name", last_name) :
+                new ObjectParameter("last_name", typeof(string));
+    
+            var middle_nameParameter = middle_name != null ?
+                new ObjectParameter("middle_name", middle_name) :
+                new ObjectParameter("middle_name", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var phone_numberParameter = phone_number != null ?
+                new ObjectParameter("Phone_number", phone_number) :
+                new ObjectParameter("Phone_number", typeof(string));
+    
+            var pwdParameter = pwd != null ?
+                new ObjectParameter("pwd", pwd) :
+                new ObjectParameter("pwd", typeof(string));
+    
+            var roleParameter = role != null ?
+                new ObjectParameter("role", role) :
+                new ObjectParameter("role", typeof(string));
+    
+            var keywordParameter = keyword != null ?
+                new ObjectParameter("keyword", keyword) :
+                new ObjectParameter("keyword", typeof(string));
+    
+            var adminParameter = admin != null ?
+                new ObjectParameter("admin", admin) :
+                new ObjectParameter("admin", typeof(string));
+    
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("create_user", first_nameParameter, last_nameParameter, middle_nameParameter, emailParameter, phone_numberParameter, pwdParameter, roleParameter, keywordParameter, adminParameter, iDParameter);
+        }
+    
+        public virtual int CreateAccount(string first_name, string last_name, string middle_name, string email, string phone_number, string pwd)
+        {
+            var first_nameParameter = first_name != null ?
+                new ObjectParameter("First_name", first_name) :
+                new ObjectParameter("First_name", typeof(string));
+    
+            var last_nameParameter = last_name != null ?
+                new ObjectParameter("last_name", last_name) :
+                new ObjectParameter("last_name", typeof(string));
+    
+            var middle_nameParameter = middle_name != null ?
+                new ObjectParameter("middle_name", middle_name) :
+                new ObjectParameter("middle_name", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var phone_numberParameter = phone_number != null ?
+                new ObjectParameter("Phone_number", phone_number) :
+                new ObjectParameter("Phone_number", typeof(string));
+    
+            var pwdParameter = pwd != null ?
+                new ObjectParameter("pwd", pwd) :
+                new ObjectParameter("pwd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateAccount", first_nameParameter, last_nameParameter, middle_nameParameter, emailParameter, phone_numberParameter, pwdParameter);
+        }
     }
 }

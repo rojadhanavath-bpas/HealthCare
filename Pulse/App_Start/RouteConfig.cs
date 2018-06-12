@@ -16,7 +16,7 @@ namespace HealthcareAnalytics
             routes.MapRoute(
                 name: "default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "login", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "",
