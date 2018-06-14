@@ -13,7 +13,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
-   
+
 </head>
 <body>
     @using (Html.BeginForm(null, null, FormMethod.Get))
@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group col-sm-9">
                                 <div class="panel-body">
-                                    <table id="assets-data-table" class="table table-sm table-condensed table-striped table-bordered " style="width:100%">
+                                    <table id="assets-data-table" class="table pre-scrollable table-sm table-condensed table-striped table-bordered " style="width:100%">
                                         <thead class="text-sm-center">
                                             <tr>
                                                 <th>Measure ID</th>
@@ -80,17 +80,17 @@
                                         <tbody>
                                             @*@foreach (var asset in Model)
                                                 {*@
-                                            @for (var i = 1; i <= 20; i++)
+                                            @for (var i = 1; i <= 15; i++)
                                             {
                                                 <tr>
-                                                    <td>@Html.DisplayText(" ")</td>
-                                                    <td>@Html.TextArea(" ", new { @readonly = "readonly" })</td>
-                                                    <td>@Html.DisplayText(" ")</td>
-                                                    <td>@Html.DisplayText(" ")</td>
-                                                    <td>@Html.TextBox(" ")</td>
-                                                    <td>@Html.TextBox(" ", " ", new { @class = "form-control", @readonly = "readonly" })</td>
-                                                    <td>@Html.DisplayText(" ")</td>
-                                                    <td>@Html.DisplayText(" ")</td>
+                                                    <td class="table-active">@Html.DisplayText(" ")</td>
+                                                    <td class="table-secondary">@Html.TextArea(" ", new { @readonly = "readonly" })</td>
+                                                    <td class="table-secondary">@Html.DisplayText(" ")</td>
+                                                    <td class="table-secondary">@Html.DisplayText(" ")</td>
+                                                    <td class="table-active">@Html.TextBox(" ")</td>
+                                                    <td class="border-info">@Html.DisplayText(" ")</td>
+                                                    <td class="table-secondary">@Html.DisplayText(" ")</td>
+                                                    <td class="table-secondary">@Html.DisplayText(" ")</td>
                                                 </tr>
                                                 @*}*@
                                             }
@@ -277,7 +277,7 @@
                                                     <td class="btn-link">
                                                         <a href="https://qpp.cms.gov/measures/quality">   https://qpp.cms.gov/measures/quality </a>
                                                     </td>
-                                                    <td>  (Measures listed within tab 'QPP Measures')</td>
+                                                    <td> (Measures listed within tab 'QPP Measures')</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="btn-link">
