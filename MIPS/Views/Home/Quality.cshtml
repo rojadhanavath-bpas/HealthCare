@@ -13,24 +13,12 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
-    <!-- jQuery UI CSS Reference -->
-    <link href="@Url.Content("~/Content/themes/base/minified/jquery-ui.min.css")" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- Required jQuery and jQuery UI Javascript references -->
-    <script src="~/scripts/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="~/scripts/bootstrap.min.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
-    <script src="~/scripts/twitter-bootstrap.js" type="text/javascript"></script>
-
-
-
+   
 </head>
 <body>
     @using (Html.BeginForm(null, null, FormMethod.Get))
     {
-        <div class="container border border-secondary rounded" >
+        <div class="container-fluid border border-secondary rounded">
             <div class="panel panel-body">
                 <div class="tab-content small">
                     <div class="panel panel-body">
@@ -76,7 +64,7 @@
                             </div>
                             <div class="form-group col-sm-9">
                                 <div class="panel-body">
-                                    <table id="assets-data-table" class="table table-sm table-condensed table-striped table-bordered" style="width:100%">
+                                    <table id="assets-data-table" class="table table-sm table-condensed table-striped table-bordered " style="width:100%">
                                         <thead class="text-sm-center">
                                             <tr>
                                                 <th>Measure ID</th>
@@ -121,149 +109,147 @@
                                 </div>
                                 <div class="form-row">
                                     <div class=" form-group col-sm-12">
-                                        <div class="table-responsive">
-                                          
-                                                <table class="table table-sm table-condensed table-borderless">
-                                                    <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240">     https://www.federalregister.gov/d/2016-25240</a>
-                                                            </td>
-                                                            <td> (Final rule with comment period)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-7041">      https://www.federalregister.gov/d/2016-25240/p-7041</a>
-                                                            </td>
-                                                            <td>(Appendix, Table A: Finalized Individual Quality Measures Available for MIPS Reporting in 2017)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href=" https://www.federalregister.gov/d/2016-25240/p-1341">          https://www.federalregister.gov/d/2016-25240/p-1341 </a>
-                                                            </td>
-                                                            <td> (High priority measure definition)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-131">       https://www.federalregister.gov/d/2016-25240/p-131 </a>
-                                                            </td>
-                                                            <td> (Participation for this category)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-1098">       https://www.federalregister.gov/d/2016-25240/p-1098 </a>
-                                                            </td>
-                                                            <td> (One submission mechanism per performance category)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-1342">              https://www.federalregister.gov/d/2016-25240/p-1342 </a>
-                                                            </td>
-                                                            <td> (No requirement to submit cross-cutting measure)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3367">       https://www.federalregister.gov/d/2016-25240/p-3367 </a>
-                                                            </td>
-                                                            <td> (During transitional year, submitted measures not meeting case minimum or data completion requirements receive the global minimum of 3 points)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3431">           https://www.federalregister.gov/d/2016-25240/p-3431 </a>
-                                                            </td>
-                                                            <td> (A 3-point floor will be awarded to new quality measures and measures without a benchmark for the transitional and subsequent years)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3458">           https://www.federalregister.gov/d/2016-25240/p-3458 </a>
-                                                            </td>
-                                                            <td> (During transitional year, all benchmarked measures will be scaled the same regardless if they are considered "topped out")</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3493">           https://www.federalregister.gov/d/2016-25240/p-3493 </a>
-                                                            </td>
-                                                            <td> (During transitional year, all reported measures will receive minimumally 3 points regardless of data indications of nonactivity)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3529">        https://www.federalregister.gov/d/2016-25240/p-3529 </a>
-                                                            </td>
-                                                            <td> (Any measure submitted with the required case minimum and data completeness can go towards high priority bonus points as long as the performance rate shows measure activity)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3550">       https://www.federalregister.gov/d/2016-25240/p-3550 </a>
-                                                            </td>
-                                                            <td> (Bonus points awarded only after six measures, or all available applicable measures, are submitted)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3553">       https://www.federalregister.gov/d/2016-25240/p-3553 </a>
-                                                            </td>
-                                                            <td>(Possible bonus points for submitted measures)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3561">          https://www.federalregister.gov/d/2016-25240/p-3561 </a>
-                                                            </td>
-                                                            <td>  (High priority bonus cap at 10% of the denominator for the first 2 years)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3569">           https://www.federalregister.gov/d/2016-25240/p-3569 </a>
-                                                            </td>
-                                                            <td> (Separate bonus caps for high priority bonus and CEHRT "end-to-end electronic reporting" bonus)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3598">           https://www.federalregister.gov/d/2016-25240/p-3598 </a>
-                                                            </td>
-                                                            <td> (Possible bonus points for CEHRT "end-to-end electronic reporting" measures)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3594">           https://www.federalregister.gov/d/2016-25240/p-3594 </a>
-                                                            </td>
-                                                            <td>  (Claim submissions can not receive CEHRT "end-to-end electronic reporting" bonus)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3623">           https://www.federalregister.gov/d/2016-25240/p-3623 </a>
-                                                            </td>
-                                                            <td>  (Quality scoring will only occur once the first outcome measure is score, or if not available, once another high priority measure is scored)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3818">            https://www.federalregister.gov/d/2016-25240/p-3818 </a>
-                                                            </td>
-                                                            <td> (Any required measures that are not submitted receives a score of 0 points)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-3868">        https://www.federalregister.gov/d/2016-25240/p-3868 </a>
-                                                            </td>
-                                                            <td>  (Scoring on multiple performance categories is required to obtain a final score above the neutral performance threshold)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="btn-link">
-                                                                <a href="https://www.federalregister.gov/d/2016-25240/p-1606">          https://www.federalregister.gov/d/2016-25240/p-1606 </a>
-                                                            </td>
-                                                            <td>
-                                                                (All-cause Hospital Readmission measure usage for group of 16 or more with at least 200 claims)
-                                                            </td>
-                                                        </tr>
 
-                                                    </tbody>
-                                                </table>
-                                          
-                                        </div>
+                                        <table class="table table-sm table-condensed table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240">     https://www.federalregister.gov/d/2016-25240</a>
+                                                    </td>
+                                                    <td> (Final rule with comment period)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-7041">      https://www.federalregister.gov/d/2016-25240/p-7041</a>
+                                                    </td>
+                                                    <td>(Appendix, Table A: Finalized Individual Quality Measures Available for MIPS Reporting in 2017)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href=" https://www.federalregister.gov/d/2016-25240/p-1341">          https://www.federalregister.gov/d/2016-25240/p-1341 </a>
+                                                    </td>
+                                                    <td> (High priority measure definition)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-131">       https://www.federalregister.gov/d/2016-25240/p-131 </a>
+                                                    </td>
+                                                    <td> (Participation for this category)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-1098">       https://www.federalregister.gov/d/2016-25240/p-1098 </a>
+                                                    </td>
+                                                    <td> (One submission mechanism per performance category)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-1342">              https://www.federalregister.gov/d/2016-25240/p-1342 </a>
+                                                    </td>
+                                                    <td> (No requirement to submit cross-cutting measure)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3367">       https://www.federalregister.gov/d/2016-25240/p-3367 </a>
+                                                    </td>
+                                                    <td> (During transitional year, submitted measures not meeting case minimum or data completion requirements receive the global minimum of 3 points)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3431">           https://www.federalregister.gov/d/2016-25240/p-3431 </a>
+                                                    </td>
+                                                    <td> (A 3-point floor will be awarded to new quality measures and measures without a benchmark for the transitional and subsequent years)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3458">           https://www.federalregister.gov/d/2016-25240/p-3458 </a>
+                                                    </td>
+                                                    <td> (During transitional year, all benchmarked measures will be scaled the same regardless if they are considered "topped out")</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3493">           https://www.federalregister.gov/d/2016-25240/p-3493 </a>
+                                                    </td>
+                                                    <td> (During transitional year, all reported measures will receive minimumally 3 points regardless of data indications of nonactivity)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3529">        https://www.federalregister.gov/d/2016-25240/p-3529 </a>
+                                                    </td>
+                                                    <td> (Any measure submitted with the required case minimum and data completeness can go towards high priority bonus points as long as the performance rate shows measure activity)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3550">       https://www.federalregister.gov/d/2016-25240/p-3550 </a>
+                                                    </td>
+                                                    <td> (Bonus points awarded only after six measures, or all available applicable measures, are submitted)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3553">       https://www.federalregister.gov/d/2016-25240/p-3553 </a>
+                                                    </td>
+                                                    <td>(Possible bonus points for submitted measures)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3561">          https://www.federalregister.gov/d/2016-25240/p-3561 </a>
+                                                    </td>
+                                                    <td>  (High priority bonus cap at 10% of the denominator for the first 2 years)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3569">           https://www.federalregister.gov/d/2016-25240/p-3569 </a>
+                                                    </td>
+                                                    <td> (Separate bonus caps for high priority bonus and CEHRT "end-to-end electronic reporting" bonus)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3598">           https://www.federalregister.gov/d/2016-25240/p-3598 </a>
+                                                    </td>
+                                                    <td> (Possible bonus points for CEHRT "end-to-end electronic reporting" measures)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3594">           https://www.federalregister.gov/d/2016-25240/p-3594 </a>
+                                                    </td>
+                                                    <td>  (Claim submissions can not receive CEHRT "end-to-end electronic reporting" bonus)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3623">           https://www.federalregister.gov/d/2016-25240/p-3623 </a>
+                                                    </td>
+                                                    <td>  (Quality scoring will only occur once the first outcome measure is score, or if not available, once another high priority measure is scored)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3818">            https://www.federalregister.gov/d/2016-25240/p-3818 </a>
+                                                    </td>
+                                                    <td> (Any required measures that are not submitted receives a score of 0 points)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-3868">        https://www.federalregister.gov/d/2016-25240/p-3868 </a>
+                                                    </td>
+                                                    <td>  (Scoring on multiple performance categories is required to obtain a final score above the neutral performance threshold)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://www.federalregister.gov/d/2016-25240/p-1606">          https://www.federalregister.gov/d/2016-25240/p-1606 </a>
+                                                    </td>
+                                                    <td>
+                                                        (All-cause Hospital Readmission measure usage for group of 16 or more with at least 200 claims)
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -273,41 +259,36 @@
                                 </div>
                                 <div class="form-row">
                                     <div class=" form-group col-sm-12">
-                                        <div class="table-responsive">
-                                            
-                                            <table class="table table-sm table-condensed table-borderless">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="btn-link">
-                                                            <a href="https://qpp.cms.gov/docs/QPP_Quality_Benchmarks_Overview.zip">  https://qpp.cms.gov/docs/QPP_Quality_Benchmarks_Overview.zip </a>
-                                                        </td>
-                                                        <td> (Zip file contains MIPS 2017 benchmarks, table provided in 'Quality Benchmarks' tab)</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="btn-link">
-                                                            <a href="https://qpp.cms.gov/measures/quality">   https://qpp.cms.gov/measures/quality </a>
-                                                        </td>
-                                                        <td>  (Measures listed within tab 'QPP Measures')</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="btn-link">
-                                                            <a href="https://qpp.cms.gov/resources/education">   https://qpp.cms.gov/resources/education </a>
-                                                        </td>
-                                                        <td>
-                                                            (Quality Payment Program Educational Resources)
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                            
-                                        </div>
+                                        <table class="table table-sm table-condensed table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://qpp.cms.gov/docs/QPP_Quality_Benchmarks_Overview.zip">  https://qpp.cms.gov/docs/QPP_Quality_Benchmarks_Overview.zip </a>
+                                                    </td>
+                                                    <td> (Zip file contains MIPS 2017 benchmarks, table provided in 'Quality Benchmarks' tab)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://qpp.cms.gov/measures/quality">   https://qpp.cms.gov/measures/quality </a>
+                                                    </td>
+                                                    <td>  (Measures listed within tab 'QPP Measures')</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="btn-link">
+                                                        <a href="https://qpp.cms.gov/resources/education">   https://qpp.cms.gov/resources/education </a>
+                                                    </td>
+                                                    <td>
+                                                        (Quality Payment Program Educational Resources)
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
