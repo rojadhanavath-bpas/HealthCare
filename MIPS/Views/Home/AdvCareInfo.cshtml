@@ -5,7 +5,7 @@
 <h1 class="heading">Advancing Care Information</h1>
 
 
-    <div style="float: left; width: 50%">
+    <div style="float: left; width: 30%">
         <p>
             In 2017 there are two measure options for reporting based upon your certified EHR Technology
             edition. By choosing either 2014 or 2015 from the edition dropdown list, your appropriate measure
@@ -41,8 +41,8 @@
     </div>
 
     
-    <div style="float: right; width: 50%">
-        <div class="vl" style="border-left: 1px solid black;height: 900px;">
+    <div style="float: right; width: 70%">
+        <div class="vl" style="border-left: 1px solid black;height: 1800px;">
 
             <div class="row">
                 <div class="col-md-6">
@@ -52,16 +52,16 @@
                     @Html.DropDownList("year", new List<SelectListItem>
                {
                    new SelectListItem{Text="2014", Value="1"},
-                   new SelectListItem{Text="2015", Value="2"}
+                   new SelectListItem{Text="2015", Value="2"},
 
-               })
+               }, new { @class = "dropdown" })
                 </div>
             </div>
-            <h3 class="lines">Required Measures and Objectives</h3>
+            <h4 class="lines">Required Measures and Objectives</h4>
 
             <div class="row" id="line">
                 <div class="col-md-9">
-                    <p>Have you followed the proper steps to secure your patient's ePHI data in CEHRT?</p>
+                    <h6>Have you followed the proper steps to secure your patient's ePHI data in CEHRT?</h6>
                 </div>
                 <div class="col-md-3">
                     <label>@Html.RadioButton("ABC", "1")Yes</label>
@@ -69,76 +69,353 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="line">
                 <div class="col-md-9">
-                    
                     <div class="row">
-                        <div class="col-md-11">
-                            <p>e-Prescribing: Using CEHRT to electronically transmit permissible prescriptions.</p>
-                        </div>
-                        <div class="col-md-1">
-
-
-
+                        <div class="col-md-12">
+                            <h6>e-Prescribing: Using CEHRT to electronically transmit permissible prescriptions.</h6>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-11">
+                        <div class="col-md-12">
                             <p>Denominator: Number of prescriptions written(other than the controlled  substances).</p>
                         </div>
-                        <div class="col-md-1">
-
-
-
-                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-11">
-                            <p>Numerator: Number provided online ability to view, download, and transmit their PHI to a third party.</p>
-                        </div>
-                        <div class="col-md-1">
-
+                        <div class="col-md-12">
+                            <p>Numerator: Number of prescriptions electronically transmitted.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Num</th>
                                 <th>Den</th>
-
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>  @Html.TextBox("n", "", new { @class = "css-class" })</td>
+                                <td> @Html.TextBox("n", "", new { @class = "css-class" })</td>
                                 <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
-
                             </tr>
-
                             <tr>
                                 <td>@Html.Label("Rate", new { @class = "mycl" })</td>
                                 <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
-
                             </tr>
-
                         </tbody>
                     </table>
-
                 </div>
             </div>
 
+
+            <div class="row" id="line">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Patient Access: Providing patients timely online access to their PHI.</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Denominator: Number of unique patients.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Numerator: Number provided online ability to view, download, and transmit their PHI to a third party.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Num</th>
+                                <th>Den</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> @Html.TextBox("n", "", new { @class = "css-class" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.Label("Rate", new { @class = "mycl" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <div class="row" id="line">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Health Information Exchange: Electronically exchanges summaries of care created within CHERT.</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Denominator: Number of patients care transitions as the transferring or referring chain.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Numerator: Numbe of CEHRT created summaries of care that were also elctronically exchanged.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Num</th>
+                                <th>Den</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> @Html.TextBox("n", "", new { @class = "css-class" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.Label("Rate", new { @class = "mycl" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <br />
+            <!-- second section -->
+            <h4 class="lines">Optional Measures and Objectives</h4>
+            <div class="row" id="line">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>View, Download, Transmit(VDT): Patient access provided online PHI.</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Denominator: Number of unique patients.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Numerator: Number of patients(or authorized rep.) accessing their online PHI to view, download, or transmit to third party.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Num</th>
+                                <th>Den</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> @Html.TextBox("n", "", new { @class = "css-class" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.Label("Rate", new { @class = "mycl" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row" id="line">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Patient-Specific Education. Using CEHRT to identify resources through clinically relevant data.</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Denominator: Number of unique patients.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Numerator: Number of patients provided access to education materials is identified by CEHRT.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Num</th>
+                                <th>Den</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> @Html.TextBox("n", "", new { @class = "css-class" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.Label("Rate", new { @class = "mycl" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row" id="line">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Secure Messag: Using CEHRT's electronic messaging function to contact or respond to patients.</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Denominator: Number of unique patients.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Numerator: Number of patients(or authorized rep.) sent or responded to using a secure electronic message.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Num</th>
+                                <th>Den</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> @Html.TextBox("n", "", new { @class = "css-class" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.Label("Rate", new { @class = "mycl" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-9">
+                    <h6>Immunization Registry Reporting: Actively engaged with public healthy agency to submit immunization data</h6>
+                </div>
+                <div class="col-md-3">
+                    <label>@Html.RadioButton("ABC", "1")Yes</label>
+                    <label>@Html.RadioButton("ABC", "2")No</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row" id="line">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Medication Reconciliation: Performing reconciliations for received transitions of care.</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Denominator: Number of received patient care transitions (or unencountered patient).</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                Numerator: Number of those received where clinical information reconciliation of medication list, medication allergy list and
+                                current problem list were performed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Num</th>
+                                <th>Den</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> @Html.TextBox("n", "", new { @class = "css-class" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.Label("Rate", new { @class = "mycl" })</td>
+                                <td> @Html.TextBox("a", "", new { @class = "css-class" })</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <br />
+
+            <h4 class="lines">Bonus Measures and Objectives</h4>
+
+            <div class="row" id="line">
+                <div class="col-md-10">
+                    <h6>Are you reporting improvement activities using CEHRT?</h6>
+                </div>
+                <div class="col-md-2">
+                    <label>@Html.RadioButton("ABC", "2")No</label>
+                </div>
+            </div>
+
+            <div class="row" id="line">
+                <div class="col-md-10">
+                    <h6>are you in active participation with a public health agency(or clinical data agency) beyond the one
+                    referenced above for any of the activities listed below?</h6>
+                </div>
+                <div class="col-md-2">
+                    <label>@Html.RadioButton("ABC", "1")Yes</label>
+                    <label>@Html.RadioButton("ABC", "2")No</label>
+                </div>
+                <ul>
+                    <li>submitting syndrome surveillance data</li>
+                    <li>submitting data to a specilized registry.</li>
+                </ul>
+            </div>
+
             
-
-
-<div>
-           
-        </div>
-
-
+            <!-- end tags for div floating right and vertical line and -->
 
 
         </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <a href="https://www.federalregister.gov/d/2016-25240">https://www.federalregister.gov/d/2016-25240</a>
+    </div>
+    <div class="col-md-6">
+       (fine rule with comment period)
+    </div>
+
 </div>
