@@ -1,5 +1,66 @@
-﻿@{
+﻿@model System.Data.DataTable
+@using System.Data
+@{
     Layout = null;
 }
 
-<h2>Quality Bench Markss</h2>
+<h2>Quality Benchmarks</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <!-- jQuery UI CSS Reference -->
+    <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Required jQuery and jQuery UI Javascript references -->
+    <script src="~/scripts/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="~/scripts/bootstrap.min.js" type="text/javascript"></script>
+    @*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>*@
+    <script src="~/scripts/twitter-bootstrap.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+    @using (Html.BeginForm(null, null, FormMethod.Get))
+    {
+        if (Model != null)
+        {
+            <div class="container">
+                <div class="panel panel-body">
+                    <div class="tab-content">
+                       
+                                <table class="table table-sm table-striped table-bordered table-condensed table-responsive  pre-scrollable table-hover ">
+                                    <thead style="align-content:center; align-items:center; text-align:center">
+                                        <tr style="align-content:center; align-items:center">
+                                            @foreach (DataColumn column in Model.Columns)
+                                            {
+                                                <th>@column.ColumnName</th>
+                                            }
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (DataRow row in Model.Rows)
+                                        {
+                                            <tr>
+                                                @foreach (DataColumn col in Model.Columns)
+                                                {
+                                                    <td>@row[col.ColumnName]</td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                           
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</body>
+
+</html>

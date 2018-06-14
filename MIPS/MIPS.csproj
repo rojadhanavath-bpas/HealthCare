@@ -48,10 +48,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\DocumentFormat.OpenXml\v4.0_2.5.5631.0__31bf3856ad364e35\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.4.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.4.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.4.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.4.0\lib\net45\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -113,6 +124,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Diagnostics.DiagnosticSource">
@@ -163,7 +175,97 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\FlatUI\bootstrap.css" />
+    <Content Include="Content\FlatUI\custom.css" />
+    <Content Include="Content\FlatUI\flat-ui.css" />
+    <Content Include="Content\FlatUI\fonts\Flat-UI-Icons.dev.svg" />
+    <Content Include="Content\FlatUI\fonts\Flat-UI-Icons.svg" />
+    <Content Include="Content\FlatUI\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\FlatUI\images\icons\png\Book.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Calendar.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Chat.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Clipboard.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Compas.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Gift-Box.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Infinity-Loop.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Mail.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Map.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Pensils.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Pocket.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Retina-Ready.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Toilet-Paper.png" />
+    <Content Include="Content\FlatUI\images\icons\png\Watches.png" />
+    <Content Include="Content\FlatUI\images\icons\svg\book.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\calendar.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\chat.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\clipboard.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\clocks.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\compas.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\gift-box.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\loop.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\mail.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\map.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\paper-bag.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\pencils.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\retina.svg" />
+    <Content Include="Content\FlatUI\images\icons\svg\toilet-paper.svg" />
+    <Content Include="Content\FlatUI\images\login\icon.png" />
+    <Content Include="Content\FlatUI\images\login\imac-2x.png" />
+    <Content Include="Content\FlatUI\images\login\imac.png" />
+    <Content Include="Content\FlatUI\images\switch\mask-square.png" />
+    <Content Include="Content\FlatUI\images\switch\mask.png" />
+    <Content Include="Content\FlatUI\images\todo\done-2x.png" />
+    <Content Include="Content\FlatUI\images\todo\done.png" />
+    <Content Include="Content\FlatUI\images\todo\search-2x.png" />
+    <Content Include="Content\FlatUI\images\todo\search.png" />
+    <Content Include="Content\FlatUI\images\todo\todo-2x.png" />
+    <Content Include="Content\FlatUI\images\todo\todo.png" />
+    <Content Include="Content\FlatUI\sticky-footer.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config">
@@ -191,12 +293,31 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\FlatUI\fonts\Flat-UI-Icons.eot" />
+    <Content Include="Content\FlatUI\fonts\Flat-UI-Icons.ttf" />
+    <Content Include="Content\FlatUI\fonts\Flat-UI-Icons.woff" />
+    <Content Include="Content\FlatUI\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\FlatUI\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\FlatUI\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\FlatUI\fonts\icomoon-session.json" />
+    <Content Include="Excel Files\2018 MIPS Quality Benchmarks.xlsx" />
+    <Content Include="Excel Files\2018-Measure-List_v2.2.xlsx" />
+    <Content Include="Excel Files\2018-Measure-List-EditedVersion.xlsx" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Flat-UI\bootstrap.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery-ui.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -241,6 +362,7 @@
     <Content Include="Views\Home\MIPS.cshtml" />
     <Content Include="Views\Home\QPPMeasures.cshtml" />
     <Content Include="Views\Home\Quality.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
