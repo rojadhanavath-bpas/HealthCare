@@ -20,5 +20,40 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 40px;
+}
+.heading {
+    color: #273c75 !important;
+}
+.footer {
+    border-top: 3px solid #f39c12;
+    bottom: 0px;
+    position: fixed;
+    height: 35px;
+    width: 100%;
+    font-weight: bold;
+    color: black;
+    padding-top: 5px;
+    background-color: white !important;
+}
+.nav nav-tabs {
+    border-top: 3px solid #f39c12;
+}
+.lines {    
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    
+}
+#line {
+    border-bottom: 1px solid black;
+    margin-left: 8px;
+}
+.css-class{
+    width: 80px;
+}
+.image_class{
+    margin: 0 30%;
+    max-height:400px;
+    max-width:300px;
+
 }
