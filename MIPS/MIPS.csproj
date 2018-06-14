@@ -310,6 +310,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Excel Files\2018 MIPS Quality Benchmarks-EditedVersion.xlsx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Flat-UI\bootstrap.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

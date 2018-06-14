@@ -11,12 +11,12 @@
 
     <div class="container body-content">
         @RenderBody()
-        
-        <footer class="footer">
-            <p>&copy; @DateTime.Now.Year - MIPS Calculator</p>
-        </footer>
-    </div>
 
+
+    </div>
+    <footer class="footer">
+        <p>&copy; @DateTime.Now.Year - MIPS Calculator</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
