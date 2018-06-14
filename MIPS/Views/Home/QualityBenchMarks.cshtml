@@ -33,9 +33,10 @@
             <div class="container">
                 <div class="panel panel-body">
                     <div class="tab-content">
-                       
-                                <table class="table table-sm table-striped table-bordered table-condensed table-responsive  pre-scrollable table-hover ">
-                                    <thead style="align-content:center; align-items:center; text-align:center">
+                        <div class="form-row">
+                            <div class="form-group col-lg-12 ">
+                                <table class="table table-sm table-info table-striped table-bordered table-condensed table-responsive pre-scrollable mh-100 " style="height:800px;">
+                                    <thead style="align-content:center; align-items:center; text-align:center" class="thead-dark">
                                         <tr style="align-content:center; align-items:center">
                                             @foreach (DataColumn column in Model.Columns)
                                             {
@@ -55,7 +56,8 @@
                                         }
                                     </tbody>
                                 </table>
-                           
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
