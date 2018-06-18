@@ -166,12 +166,6 @@
     <None Include="Scripts\umd\popper.min.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MIPS\MIPS.csproj">
-      <Project>{E8A50AC5-007B-4600-B021-B862670C88A7}</Project>
-      <Name>MIPS</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

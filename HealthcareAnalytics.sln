@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pulse", "Pulse\Pulse.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCG", "TCG\TCG.csproj", "{BAF77A02-40FF-4160-84C1-D87361A8CB05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIPS", "MIPS\MIPS.csproj", "{E8A50AC5-007B-4600-B021-B862670C88A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIPS", "..\..\..\..\Desktop\BPAS - Projects\HealthCare-New BkUp June18th\HealthCare\MIPS\MIPS.csproj", "{E8A50AC5-007B-4600-B021-B862670C88A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIPS.Tests", "MIPS.Tests\MIPS.Tests.csproj", "{AB57ED84-61A2-4E9E-A5FF-4C3BFBB937E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIPS.Tests", "..\..\..\..\Desktop\BPAS - Projects\HealthCare-New BkUp June18th\HealthCare\MIPS.Tests\MIPS.Tests.csproj", "{AB57ED84-61A2-4E9E-A5FF-4C3BFBB937E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
