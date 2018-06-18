@@ -32,7 +32,7 @@ namespace MIPS.Controllers
         }
 
                
-        public ActionResult QualityBenchMarks()
+        public ActionResult Quality()
         {
 
             string path = Server.MapPath("../Excel Files/2018 MIPS Quality Benchmarks-EditedVersion.xlsx");
