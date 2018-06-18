@@ -712,8 +712,8 @@
     <Content Include="Views\Home\_CaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\New_CaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\ViewClosed_CaseDetails.cshtml" />
-    <Content Include="Views\WorkDriver\worklist.cshtml" />
-    <Content Include="Views\WorkDriver\priority.cshtml" />
+    <Content Include="Views\WorkDriver\worklist_Home.cshtml" />
+    <Content Include="Views\WorkDriver\UserAcc_List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
