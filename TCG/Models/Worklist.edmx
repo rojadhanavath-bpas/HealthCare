@@ -41,6 +41,13 @@
           <Property Name="ACD_UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="ACD_Updateddate" Type="datetime" Nullable="false" />
           <Property Name="ACD_UpdatedBy_DB" Type="varchar" MaxLength="50" />
+          <Property Name="ACD_Completed" Type="varchar" MaxLength="50" />
+          <Property Name="ACD_Priority" Type="varchar" MaxLength="50" />
+          <Property Name="ACD_Description" Type="varchar" MaxLength="50" />
+          <Property Name="ACD_TaskFollowUp" Type="varchar" MaxLength="50" />
+          <Property Name="ACD_DueDate" Type="datetime" />
+          <Property Name="ACD_FollowUpDate" Type="datetime" />
+          <Property Name="ACD_DeleteFlag" Type="bit" />
         </EntityType>
         <EntityType Name="Account_Case_Detials_History">
           <Key>
@@ -63,6 +70,13 @@
           <Property Name="ACDH_CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="ACDH_CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ACDH_UpdatedBy_DB" Type="varchar" MaxLength="50" />
+          <Property Name="ACDH_Completed" Type="varchar" MaxLength="50" />
+          <Property Name="ACDH_Priority" Type="varchar" MaxLength="50" />
+          <Property Name="ACDH_Description" Type="varchar" MaxLength="50" />
+          <Property Name="ACDH_TaskFollowUp" Type="varchar" MaxLength="50" />
+          <Property Name="ACDH_DueDate" Type="datetime" />
+          <Property Name="ACDH_FollowUpDate" Type="datetime" />
+          <Property Name="ACDH_DeleteFlag" Type="bit" />
         </EntityType>
         <EntityType Name="Account_Case_Task">
           <Key>
@@ -221,6 +235,13 @@
           <Parameter Name="ACD_PrinDiag" Type="varchar" Mode="In" />
           <Parameter Name="ACD_PrinProc" Type="varchar" Mode="In" />
           <Parameter Name="ACD_Comments" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ACD_Completed" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_Priority" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_Description" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_TaskFollowUp" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_DueDate" Type="datetime" Mode="In" />
+          <Parameter Name="ACD_FollowUpDate" Type="datetime" Mode="In" />
+          <Parameter Name="ACD_DeleteFlag" Type="bit" Mode="In" />
           <Parameter Name="ACD_CreatedBy" Type="varchar" Mode="In" />
           <Parameter Name="ACD_CreatedDate" Type="datetime" Mode="In" />
           <Parameter Name="ACD_UpdatedBy" Type="varchar" Mode="In" />
@@ -246,6 +267,7 @@
           <Parameter Name="ACT_UpdatedBy_DB" Type="varchar" Mode="In" />
           <Parameter Name="new_recordNumber" Type="int" Mode="InOut" />
         </Function>
+        <Function Name="Get_Under_Paymnent_Accounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="TCG_Data_WorklistStoreContainer">
           <EntitySet Name="Account_AR_Status" EntityType="Self.Account_AR_Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Account_Bill_Status" EntityType="Self.Account_Bill_Status" Schema="dbo" store:Type="Tables" />
@@ -321,6 +343,13 @@
           <NavigationProperty Name="Account_Case_Detials_History" Relationship="Self.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Details" ToRole="Account_Case_Detials_History" />
           <NavigationProperty Name="Account_Case_Task" Relationship="TCG_Data_Worklist.FK__Account_C__ACT_A__44CA3770" FromRole="Account_Case_Details" ToRole="Account_Case_Task" />
           <NavigationProperty Name="Account_Case_Task_History" Relationship="TCG_Data_Worklist.FK__Account_C__ACTH___498EEC8D" FromRole="Account_Case_Details" ToRole="Account_Case_Task_History" />
+          <Property Name="ACD_Completed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_TaskFollowUp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ACD_FollowUpDate" Type="DateTime" Precision="3" />
+          <Property Name="ACD_DeleteFlag" Type="Boolean" />
         </EntityType>
         <EntityType Name="Account_Case_Detials_History">
           <Key>
@@ -344,6 +373,13 @@
           <Property Name="ACDH_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ACDH_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Account_Case_Details" Relationship="Self.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Detials_History" ToRole="Account_Case_Details" />
+          <Property Name="ACDH_Completed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_TaskFollowUp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ACDH_FollowUpDate" Type="DateTime" Precision="3" />
+          <Property Name="ACDH_DeleteFlag" Type="Boolean" />
         </EntityType>
         <EntityType Name="Account_Source">
           <Key>
@@ -455,6 +491,13 @@
             <Parameter Name="ACD_PrinDiag" Mode="In" Type="String" />
             <Parameter Name="ACD_PrinProc" Mode="In" Type="String" />
             <Parameter Name="ACD_Comments" Mode="In" Type="String" />
+            <Parameter Name="ACD_Completed" Mode="In" Type="String" />
+            <Parameter Name="ACD_Priority" Mode="In" Type="String" />
+            <Parameter Name="ACD_Description" Mode="In" Type="String" />
+            <Parameter Name="ACD_TaskFollowUp" Mode="In" Type="String" />
+            <Parameter Name="ACD_DueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ACD_FollowUpDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ACD_DeleteFlag" Mode="In" Type="Boolean" />
             <Parameter Name="ACD_CreatedBy" Mode="In" Type="String" />
             <Parameter Name="ACD_CreatedDate" Mode="In" Type="DateTime" />
             <Parameter Name="ACD_UpdatedBy" Mode="In" Type="String" />
@@ -476,6 +519,7 @@
             <End Role="Account_Case_Task" EntitySet="Account_Case_Task" />
             <End Role="Account_Case_Task_History" EntitySet="Account_Case_Task_History" />
           </AssociationSet>
+          <FunctionImport Name="Get_Under_Paymnent_Accounts" ReturnType="Collection(TCG_Data_Worklist.Get_Under_Paymnent_Accounts_Result)" />
         </EntityContainer>
         <EntityType Name="Priority_Master">
           <Key>
@@ -563,6 +607,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="Get_Under_Paymnent_Accounts_Result">
+          <Property Type="String" Name="Deferral_Due" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Account" Nullable="true" />
+          <Property Type="String" Name="Acct_Class" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Acct_Status" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Account_Name" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="Disch_Date" Nullable="true" Precision="23" />
+          <Property Type="Double" Name="Acct_Bal" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Diagnosis_Codes" Nullable="true" />
+          <Property Type="String" Name="Plan_Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Payor_Name" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Allowed_Amount_Difference" Nullable="true" />
+          <Property Type="String" Name="Expected_Allowed_Amount" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Allowed_Amount_Difference_Payor_Specified" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -588,6 +648,13 @@
           <EntitySetMapping Name="Account_Case_Details">
             <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Details">
               <MappingFragment StoreEntitySet="Account_Case_Details">
+                <ScalarProperty Name="ACD_DeleteFlag" ColumnName="ACD_DeleteFlag" />
+                <ScalarProperty Name="ACD_FollowUpDate" ColumnName="ACD_FollowUpDate" />
+                <ScalarProperty Name="ACD_DueDate" ColumnName="ACD_DueDate" />
+                <ScalarProperty Name="ACD_TaskFollowUp" ColumnName="ACD_TaskFollowUp" />
+                <ScalarProperty Name="ACD_Description" ColumnName="ACD_Description" />
+                <ScalarProperty Name="ACD_Priority" ColumnName="ACD_Priority" />
+                <ScalarProperty Name="ACD_Completed" ColumnName="ACD_Completed" />
                 <ScalarProperty Name="ACD_ID" ColumnName="ACD_ID" />
                 <ScalarProperty Name="ACD_HspAccID" ColumnName="ACD_HspAccID" />
                 <ScalarProperty Name="ACD_Amount" ColumnName="ACD_Amount" />
@@ -612,6 +679,13 @@
           <EntitySetMapping Name="Account_Case_Detials_History">
             <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Detials_History">
               <MappingFragment StoreEntitySet="Account_Case_Detials_History">
+                <ScalarProperty Name="ACDH_DeleteFlag" ColumnName="ACDH_DeleteFlag" />
+                <ScalarProperty Name="ACDH_FollowUpDate" ColumnName="ACDH_FollowUpDate" />
+                <ScalarProperty Name="ACDH_DueDate" ColumnName="ACDH_DueDate" />
+                <ScalarProperty Name="ACDH_TaskFollowUp" ColumnName="ACDH_TaskFollowUp" />
+                <ScalarProperty Name="ACDH_Description" ColumnName="ACDH_Description" />
+                <ScalarProperty Name="ACDH_Priority" ColumnName="ACDH_Priority" />
+                <ScalarProperty Name="ACDH_Completed" ColumnName="ACDH_Completed" />
                 <ScalarProperty Name="ACDH_ID" ColumnName="ACDH_ID" />
                 <ScalarProperty Name="ACDH_ACD_ID" ColumnName="ACDH_ACD_ID" />
                 <ScalarProperty Name="ACDH_HspAccID" ColumnName="ACDH_HspAccID" />
@@ -739,6 +813,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Get_Under_Paymnent_Accounts" FunctionName="TCG_Data_Worklist.Store.Get_Under_Paymnent_Accounts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCG_Data_Worklist.Get_Under_Paymnent_Accounts_Result">
+                <ScalarProperty Name="Deferral_Due" ColumnName="Deferral Due" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Acct_Class" ColumnName="Acct Class" />
+                <ScalarProperty Name="Acct_Status" ColumnName="Acct Status" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
+                <ScalarProperty Name="Disch_Date" ColumnName="Disch Date" />
+                <ScalarProperty Name="Acct_Bal" ColumnName="Acct Bal" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Diagnosis_Codes" ColumnName="Diagnosis_Codes" />
+                <ScalarProperty Name="Plan_Name" ColumnName="Plan Name" />
+                <ScalarProperty Name="Payor_Name" ColumnName="Payor Name" />
+                <ScalarProperty Name="Allowed_Amount_Difference" ColumnName="Allowed_Amount_Difference" />
+                <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected Allowed Amount" />
+                <ScalarProperty Name="Allowed_Amount_Difference_Payor_Specified" ColumnName="Allowed_Amount_Difference_Payor_Specified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

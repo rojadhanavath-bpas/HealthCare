@@ -31,6 +31,13 @@ namespace HealthcareAnalytics.Models
         public string ACDH_CreatedBy { get; set; }
         public System.DateTime ACDH_CreatedDate { get; set; }
         public string ACDH_UpdatedBy_DB { get; set; }
+        public string ACDH_Completed { get; set; }
+        public string ACDH_Priority { get; set; }
+        public string ACDH_Description { get; set; }
+        public string ACDH_TaskFollowUp { get; set; }
+        public Nullable<System.DateTime> ACDH_DueDate { get; set; }
+        public Nullable<System.DateTime> ACDH_FollowUpDate { get; set; }
+        public Nullable<bool> ACDH_DeleteFlag { get; set; }
     
         public virtual Account_Case_Details Account_Case_Details { get; set; }
     }

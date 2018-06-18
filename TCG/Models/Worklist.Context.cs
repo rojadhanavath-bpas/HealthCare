@@ -107,7 +107,7 @@ namespace HealthcareAnalytics.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_Task_InsUpd", aCT_IDParameter, aCT_HspAccIDParameter, aCT_ACD_IDParameter, aCT_CompletedParameter, aCT_PriorityParameter, aCT_DescriptionParameter, aCT_OwnerParameter, aCT_CommentParameter, aCT_DueDateParameter, aCT_DeleteFlagParameter, aCT_CreatedByParameter, aCT_CreatedDateParameter, aCT_UpdatedByParameter, aCT_UpdateddateParameter, aCT_UpdatedBy_DBParameter, new_recordNumber);
         }
     
-        public virtual int Case_InsUpd(Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber)
+        public virtual int Case_InsUpd(Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber)
         {
             var aCD_IDParameter = aCD_ID.HasValue ?
                 new ObjectParameter("ACD_ID", aCD_ID) :
@@ -161,6 +161,34 @@ namespace HealthcareAnalytics.Models
                 new ObjectParameter("ACD_Comments", aCD_Comments) :
                 new ObjectParameter("ACD_Comments", typeof(string));
     
+            var aCD_CompletedParameter = aCD_Completed != null ?
+                new ObjectParameter("ACD_Completed", aCD_Completed) :
+                new ObjectParameter("ACD_Completed", typeof(string));
+    
+            var aCD_PriorityParameter = aCD_Priority != null ?
+                new ObjectParameter("ACD_Priority", aCD_Priority) :
+                new ObjectParameter("ACD_Priority", typeof(string));
+    
+            var aCD_DescriptionParameter = aCD_Description != null ?
+                new ObjectParameter("ACD_Description", aCD_Description) :
+                new ObjectParameter("ACD_Description", typeof(string));
+    
+            var aCD_TaskFollowUpParameter = aCD_TaskFollowUp != null ?
+                new ObjectParameter("ACD_TaskFollowUp", aCD_TaskFollowUp) :
+                new ObjectParameter("ACD_TaskFollowUp", typeof(string));
+    
+            var aCD_DueDateParameter = aCD_DueDate.HasValue ?
+                new ObjectParameter("ACD_DueDate", aCD_DueDate) :
+                new ObjectParameter("ACD_DueDate", typeof(System.DateTime));
+    
+            var aCD_FollowUpDateParameter = aCD_FollowUpDate.HasValue ?
+                new ObjectParameter("ACD_FollowUpDate", aCD_FollowUpDate) :
+                new ObjectParameter("ACD_FollowUpDate", typeof(System.DateTime));
+    
+            var aCD_DeleteFlagParameter = aCD_DeleteFlag.HasValue ?
+                new ObjectParameter("ACD_DeleteFlag", aCD_DeleteFlag) :
+                new ObjectParameter("ACD_DeleteFlag", typeof(bool));
+    
             var aCD_CreatedByParameter = aCD_CreatedBy != null ?
                 new ObjectParameter("ACD_CreatedBy", aCD_CreatedBy) :
                 new ObjectParameter("ACD_CreatedBy", typeof(string));
@@ -181,7 +209,12 @@ namespace HealthcareAnalytics.Models
                 new ObjectParameter("ACTD_UpdatedBy_DB", aCTD_UpdatedBy_DB) :
                 new ObjectParameter("ACTD_UpdatedBy_DB", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_InsUpd", aCD_IDParameter, aCD_HspAccIDParameter, aCD_AmountParameter, aCD_StatusParameter, aCD_OwnerParameter, aCD_TypeParameter, aCD_SubTypeParameter, aCD_PayerReasonParameter, aCD_PrimaryReasonParameter, aCD_SecondaryReasonParameter, aCD_PrinDiagParameter, aCD_PrinProcParameter, aCD_CommentsParameter, aCD_CreatedByParameter, aCD_CreatedDateParameter, aCD_UpdatedByParameter, aCD_UpdateddateParameter, aCTD_UpdatedBy_DBParameter, new_recordNumber);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_InsUpd", aCD_IDParameter, aCD_HspAccIDParameter, aCD_AmountParameter, aCD_StatusParameter, aCD_OwnerParameter, aCD_TypeParameter, aCD_SubTypeParameter, aCD_PayerReasonParameter, aCD_PrimaryReasonParameter, aCD_SecondaryReasonParameter, aCD_PrinDiagParameter, aCD_PrinProcParameter, aCD_CommentsParameter, aCD_CompletedParameter, aCD_PriorityParameter, aCD_DescriptionParameter, aCD_TaskFollowUpParameter, aCD_DueDateParameter, aCD_FollowUpDateParameter, aCD_DeleteFlagParameter, aCD_CreatedByParameter, aCD_CreatedDateParameter, aCD_UpdatedByParameter, aCD_UpdateddateParameter, aCTD_UpdatedBy_DBParameter, new_recordNumber);
+        }
+    
+        public virtual ObjectResult<Get_Under_Paymnent_Accounts_Result> Get_Under_Paymnent_Accounts()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_Result>("Get_Under_Paymnent_Accounts");
         }
     }
 }

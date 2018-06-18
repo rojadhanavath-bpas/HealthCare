@@ -209,6 +209,7 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Users_DataController.cs" />
+    <Compile Include="Controllers\WorkDriverController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -248,6 +249,9 @@
     </Compile>
     <Compile Include="Models\Get_AR_Info_for_Balance_Range_Result.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Get_Under_Paymnent_Accounts_Result.cs">
+      <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Insurance_Company_Name.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
@@ -701,12 +705,15 @@
     <Content Include="Views\Users_Data\Details.cshtml" />
     <Content Include="Views\Users_Data\Edit.cshtml" />
     <Content Include="Views\Users_Data\Index.cshtml" />
-    <Content Include="Views\Home\Testing_page.cshtml" />
     <Content Include="Views\Home\CreateNewCase.cshtml" />
     <Content Include="Views\Home\prioirty_CaseList.cshtml" />
     <Content Include="Views\Home\DeleteOpenTask.cshtml" />
     <Content Include="Views\Home\Edit_CaseList.cshtml" />
     <Content Include="Views\Home\_CaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\New_CaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\ViewClosed_CaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\worklist.cshtml" />
+    <Content Include="Views\WorkDriver\priority.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

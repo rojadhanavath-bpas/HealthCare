@@ -40,6 +40,13 @@ namespace HealthcareAnalytics.Models
         public string ACD_UpdatedBy { get; set; }
         public System.DateTime ACD_Updateddate { get; set; }
         public string ACD_UpdatedBy_DB { get; set; }
+        public string ACD_Completed { get; set; }
+        public string ACD_Priority { get; set; }
+        public string ACD_Description { get; set; }
+        public string ACD_TaskFollowUp { get; set; }
+        public Nullable<System.DateTime> ACD_DueDate { get; set; }
+        public Nullable<System.DateTime> ACD_FollowUpDate { get; set; }
+        public Nullable<bool> ACD_DeleteFlag { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account_Case_Detials_History> Account_Case_Detials_History { get; set; }
