@@ -1,5 +1,58 @@
-﻿@{
+﻿@model System.Data.DataTable
+@using System.Data
+@{
     Layout = null;
 }
 
 <h2>QPP Measures</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+   
+</head>
+<body>
+    @using (Html.BeginForm(null, null, FormMethod.Get))
+    {
+        if (Model != null)
+        {
+            <div class="container-fluid ">
+                <div class="panel panel-body">
+                    <div class="tab-content">
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+
+                                <table class="table table-sm table-light table-striped table-bordered table-condensed table-responsive pre-scrollable mh-100 " style="height:800px;">
+                                    <thead style="align-content:center; align-items:center; text-align:center" class="thead-dark">
+                                        <tr style="align-content:center; align-items:center">
+                                            @foreach (DataColumn column in Model.Columns)
+                                            {
+                                                <th>@column.ColumnName</th>
+                                            }
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (DataRow row in Model.Rows)
+                                        {
+                                            <tr>
+                                                @foreach (DataColumn col in Model.Columns)
+                                                {
+                                                    <td>@row[col.ColumnName]</td>
+                                                }
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</body>
+
+</html>

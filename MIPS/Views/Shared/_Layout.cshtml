@@ -7,16 +7,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body class="bg-dark">
 
-    <div class="container body-content">
+    <div class="container-fluid body-content bg-light w-75" >
         @RenderBody()
-        
-        <footer class="footer">
-            <p>&copy; @DateTime.Now.Year - MIPS Calculator</p>
-        </footer>
     </div>
-
+    <footer class="footer">
+        <p class="text-center text-muted">&copy; @DateTime.Now.Year - MIPS Calculator</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
