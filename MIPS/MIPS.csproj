@@ -273,6 +273,7 @@
     </Content>
     <Content Include="Images\ADDI_Logo.jpg" />
     <Content Include="Images\ADDI_New_MockUp.PNG" />
+    <Content Include="Images\MIPS_Cal.JPG" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -310,6 +311,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Flat-UI\bootstrap.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

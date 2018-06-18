@@ -62,3 +62,24 @@ textarea {
 .dropdown {
     max-width: 100px;
 }
+.form-control-css{
+    max-width: 300px !important;
+}
+.form-control-orange {
+    background-color: #fdcb6e;
+    max-width: 300px !important;
+}
+.form-control-textarea {
+    
+    line-height: 1 !important;
+    max-width: 300px !important;
+}
+
+.form-control-purple {
+    background-color: #D6A2E8;
+    max-width: 300px !important;
+}
+.form-control-blue{
+    background-color: deepskyblue !important;
+    max-width: 300px !important;
+}
