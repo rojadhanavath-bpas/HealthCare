@@ -1,0 +1,318 @@
+﻿@{
+    Layout = null;
+}
+
+<h2>MIPS</h2>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+</head>
+<body>
+    @using (Html.BeginForm(null, null, FormMethod.Get))
+    {
+        <div class="container-fluid border border-secondary rounded">
+            <div class="panel panel-body">
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <table class="table table-sm bg-light table-bordered table-condensed table-responsive mh-100 ">
+                            <thead style="align-content:center; align-items:center; text-align:center" class="table-active font-weight-light text-sm-center">
+                                <tr style="align-content:center; align-items:center">
+                                    <th>Number of MIPS eligible clinicians</th>
+                                    <th>Total Annual Medicare Part B Allowable Charges</th>
+                                    <th>Total Case Volumes</th>
+                                    <th>Charges represent 100 or less beneficiaries per clinician</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@Html.Display(" ")</td>
+                                    <td>@Html.Display(" ")</td>
+                                    <td>@Html.Display(" ")</td>
+                                    <td class="center-block text-center">
+                                        <div class="radio-inline center-block">
+
+                                            @Html.RadioButton("table1", "Yes",
+
+                                                new { id = "IsYes" }) YES
+
+
+                                            @Html.RadioButton("table1", "No", true,
+
+                                                 new { id = "IsNo" }) NO
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="col-sm-5">
+                        <table class="table table-responsive-md bg-light table-bordered table-condensed mh-100 ">
+
+                            <tbody>
+                                <tr>
+                                    <td class="table-active font-weight-bold">Practice is a rural practice or is a small practice or is located in a geograpic health professional shortage area <a href=" https://datawarehouse.hrsa.gov/tools/analyzers/geo/ShortageArea.aspx"><b>(HPSA)</b></a>?</td>
+                                    <td class="center-block text-center small">
+                                        <div class="radio-inline center-block">
+
+                                            @Html.RadioButton("table2", "Yes",
+
+                                                new { id = "IsYes_tbl2" }) YES
+
+                                            @*</div>
+
+                                                <div class="radio-inline">*@
+
+                                            @Html.RadioButton("table2", "No", true,
+
+                                                 new { id = "IsNo_tbl2" }) NO
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="container border table-responsive">
+                                <div class="row border-bottom">
+                                    <div class="col-sm-3 border-right">
+                                        <span>Performance Categories</span>
+                                    </div>
+                                    <div class="col-sm-1 border-right">
+                                        <span>Weight</span>
+                                    </div>
+                                    <div class="col-sm-7 border-right">
+                                        <span>Input for Category Estimates</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <span>Final Points</span>
+                                    </div>
+                                </div>
+
+                                <div class="row border-bottom small">
+                                    <div class="col-sm-3 border-right">
+                                        <a href="#">Quality</a><br />
+                                        <ul><li>Quality Measures</li></ul>
+                                    </div>
+                                    <div class="col-sm-1 border-right ">
+                                        <span>60%</span>
+                                    </div>
+                                    <div class="col-sm-7 border-bottom">
+                                        <div class="row ">
+                                            <div class="col-sm-4 border-right">
+                                                <div class="row">
+                                                    <div class="col-sm-9 border-right">
+                                                        <span>  <a href="#">Points (Out of 60) </a><br /><br /><br /><br /></span>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 border-right">
+                                                <div class="row ">
+                                                    <div class="col-sm-9 border-right">
+                                                        End-to-end electronically reported quality measures using CEHRT<br />
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 border-right">
+                                                <div class="row ">
+                                                    <div class="col-sm-9 border-right">
+                                                        <span>  <a href="#">High Priority Bonus</a><br /><br /><br /></span>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 border-right">
+                                        <span>0.00</span>
+                                    </div>
+                                </div>
+                                <div class="row border-bottom small">
+                                    <div class="col-sm-3 border-right">
+                                        <a href="#">Quality</a><br />
+                                        <ul><li>Quality Measures</li></ul>
+                                    </div>
+                                    <div class="col-sm-1 border-right ">
+                                        <span>60%</span>
+                                    </div>
+                                    <div class="col-sm-7 border-bottom">
+                                        <div class="row ">
+                                            <div class="col-sm-4 border-right">
+                                                <div class="row">
+                                                    <div class="col-sm-9 border-right">
+                                                        <span>  <a href="#">Points (Out of 60)</a><br /><br /><br /><br /></span>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 border-right">
+                                                <div class="row ">
+                                                    <div class="col-sm-9 border-right">
+                                                        End-to-end electronically reported quality measures using CEHRT<br />
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 border-right">
+                                                <div class="row ">
+                                                    <div class="col-sm-9 border-right">
+                                                        <span>  <a href="#">High Priority Bonus</a><br /><br /><br /></span>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 border-right">
+                                        <span>0.00</span>
+                                    </div>
+                                </div>
+                                <div class="row border-bottom small">
+                                    <div class="col-sm-3 border-right">
+                                        <a href="#">Quality</a><br />
+                                        <ul><li>Quality Measures</li></ul>
+                                    </div>
+                                    <div class="col-sm-1 border-right ">
+                                        <span>60%</span>
+                                    </div>
+                                    <div class="col-sm-7 border-bottom">
+                                        <div class="row ">
+                                            <div class="col-sm-4 border-right">
+                                                <div class="row">
+                                                    <div class="col-sm-9 border-right">
+                                                        <span>  <a href="#">Points (Out of 60)</a><br /><br /><br /><br /></span>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 border-right">
+                                                <div class="row ">
+                                                    <div class="col-sm-9 border-right">
+                                                        End-to-end electronically reported quality measures using CEHRT<br />
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 border-right">
+                                                <div class="row ">
+                                                    <div class="col-sm-9 border-right">
+                                                        <span>  <a href="#">High Priority Bonus</a><br /><br /><br /></span>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 border-right">
+                                        <span>0.00</span>
+                                    </div>
+                                </div>
+                                <div class="row border-bottom small">
+                                    <div class="col-sm-3 border-right">
+                                        <a href="#">Quality</a><br />
+                                        <ul><li>Quality Measures</li></ul>
+                                    </div>
+                                    <div class="col-sm-1 border-right ">
+                                        <span>60%</span>
+                                    </div>
+                                    <div class="col-sm-7 border-bottom">
+                                        <div class="row ">
+                                            <div class="col-sm-4 border-right">
+                                                <div class="row">
+                                                    <div class="col-sm-9 border-right">
+                                                        <span>  <a href="#">Points (Out of 60)</a><br /><br /><br /><br /></span>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 border-right">
+                                                <div class="row ">
+                                                    <div class="col-sm-9 border-right">
+                                                        End-to-end electronically reported quality measures using CEHRT<br />
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 border-right">
+                                                <div class="row ">
+                                                    <div class="col-sm-9 border-right">
+                                                        <span>  <a href="#">High Priority Bonus</a><br /><br /><br /></span>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <span>Test</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 border-right">
+                                        <span>0.00</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</body>
+</html>

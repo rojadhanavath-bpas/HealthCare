@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@Styles.Render("~/Content/css")
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-coversheet-tab" data-toggle="tab" href="#nav-coversheet" role="tab" aria-controls="nav-coversheet" aria-selected="true">Coversheet</a>
+        <a class="nav-item nav-link" id="nav-guide-tab" data-toggle="tab" href="#nav-guide" role="tab" aria-controls="nav-guide" aria-selected="false">Guide</a>
+        <a class="nav-item nav-link" id="nav-mips-tab" data-toggle="tab" href="#nav-mips" role="tab" aria-controls="nav-mips" aria-selected="false">MIPS</a>
+        <a class="nav-item nav-link" id="nav-quality-tab" data-toggle="tab" href="#nav-quality" role="tab" aria-controls="nav-quality" aria-selected="true">Quality</a>
+        <a class="nav-item nav-link" id="nav-advcareinfo-tab" data-toggle="tab" href="#nav-advcareinfo" role="tab" aria-controls="nav-advcareinfo" aria-selected="false">Adv Care Info</a>
+        <a class="nav-item nav-link" id="nav-improvement-tab" data-toggle="tab" href="#nav-improvement" role="tab" aria-controls="nav-improvement" aria-selected="false">Improvement</a>
+        <a class="nav-item nav-link" id="nav-cost-tab" data-toggle="tab" href="#nav-cost" role="tab" aria-controls="nav-cost" aria-selected="false">Cost</a>
+        <a class="nav-item nav-link" id="nav-exitreport-tab" data-toggle="tab" href="#nav-exitreport" role="tab" aria-controls="nav-exitreport" aria-selected="true">Exit Report</a>
+        <a class="nav-item nav-link" id="nav-qualitybenchmarks-tab" data-toggle="tab" href="#nav-qualitybenchmarks" role="tab" aria-controls="nav-qualitybenchmarks" aria-selected="false">Quality Benchmarks</a>
+        <a class="nav-item nav-link" id="nav-qppmeasures-tab" data-toggle="tab" href="#nav-qppmeasures" role="tab" aria-controls="nav-qppmeasures" aria-selected="false">QPP Measures</a>
+
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-coversheet" role="tabpanel" aria-labelledby="nav-coversheet-tab">@Html.Partial("~/Views/Home/coversheet.cshtml")</div>
+        <div class="tab-pane fade show" id="nav-advcareinfo" role="tabpanel" aria-labelledby="nav-advcareinfo-tab">@Html.Partial("~/Views/Home/AdvCareInfo.cshtml")</div>
+        <div class="tab-pane fade show" id="nav-cost" role="tabpanel" aria-labelledby="nav-cost-tab">@Html.Partial("~/Views/Home/Cost.cshtml")</div>
+        <div class="tab-pane fade show" id="nav-exitreport" role="tabpanel" aria-labelledby="nav-exitreport-tab">@Html.Partial("~/Views/Home/ExitReport.cshtml")</div>
+        <div class="tab-pane fade show" id="nav-guide" role="tabpanel" aria-labelledby="nav-guide-tab">@Html.Partial("~/Views/Home/Guide.cshtml")</div>
+        <div class="tab-pane fade show" id="nav-improvement" role="tabpanel" aria-labelledby="nav-improvement-tab">@Html.Partial("~/Views/Home/Improvement.cshtml")</div>
+        <div class="tab-pane fade show" id="nav-mips" role="tabpanel" aria-labelledby="nav-mips-tab">@Html.Partial("~/Views/Home/MIPS.cshtml")</div>
+        <div class="tab-pane fade show" id="nav-qppmeasures" role="tabpanel" aria-labelledby="nav-qppmeasures-tab">@Html.Action("QPPMeasures")</div>
+        <div class="tab-pane fade show" id="nav-quality" role="tabpanel" aria-labelledby="nav-quality-tab">@Html.Partial("~/Views/Home/Quality.cshtml")</div>
+        <div class="tab-pane fade show" id="nav-qualitybenchmarks" role="tabpanel" aria-labelledby="nav-qualitybenchmarks-tab">@Html.Action("QualityBenchMarks")</div>
+
+    </div>
