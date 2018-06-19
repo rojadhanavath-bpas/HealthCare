@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Projects\HealthCareAnanlytics\HealthCare\TCG\Models\tcgDatabase.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Nirmal Kumar\source\repos\HealthCare-New\HealthCare\TCG\Models\tcgDatabase.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

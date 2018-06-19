@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - TCG</title>
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
@@ -36,7 +36,14 @@
                 </ul>
             </li>
             <li class="dmstyle">@Html.ActionLink("Denials Management", "DenialsManagement", "Home")</li>
-            <li class="dmstyle">@Html.ActionLink("Receivable Management", "Worklist", "Home")</li>
+            @*<li class="dmstyle">@Html.ActionLink("Receivable Management", "worklist_Home", "WorkDriver")</li>*@
+            <li class="dropdown arstyle">
+                <a href="#" class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">Receivable Management <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>@Html.ActionLink("Old Workdriver", "Worklist", "Home")</li>
+                    <li>@Html.ActionLink("New Workdriver", "worklist_Home", "WorkDriver")</li>
+                </ul>
+            </li>
             <li class="dmstyle">@Html.ActionLink("Manage Users", "Index", "Users_Data")</li>
             @*<ul class="nav navbar-nav navbar-right">*@
             <li class="dropdown userstyle" style="right:-40%;">
@@ -46,7 +53,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
                 </ul>
-                </ul>                   
+        </ul>                   
                     }
                 </div>
 

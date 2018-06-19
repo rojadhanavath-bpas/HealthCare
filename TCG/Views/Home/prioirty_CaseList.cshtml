@@ -85,7 +85,9 @@
                     </div>
                   
                     <div class="row">
-
+                        @*<div class="col-sm-1" style="float:right;">
+                            <button type="submit" class="btn btn-danger" id="btnSave">Save</button>
+                        </div>*@
                         @*@Html.ActionLink("Back to List", "Priority", new { sortOrder = " ", currentFilter = "", searchString = "", page = "" }, new { @class = "btn btn-primary" })*@
                         @Html.ActionLink("Back", "Priority", new { }, new { @class = "btn btn-primary", @style = "float:right" })
 
@@ -95,7 +97,7 @@
     </div>
 </div>
 
-<div id="test">
-    @*@Html.RenderAction("_CaseDetails", );*@
+@*<div id="test">
+   
     @Html.Partial("_CaseDetails");
-</div>
+</div>*@

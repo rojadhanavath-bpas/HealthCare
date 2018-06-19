@@ -50,11 +50,11 @@
     </Reference>
     <Reference Include="MIPS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\MIPS.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\BPAS - Projects\HealthCare-New BkUp June18th\HealthCare\MIPS.Tests\bin\Debug\MIPS.dll</HintPath>
     </Reference>
     <Reference Include="MIPS.Tests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\MIPS.Tests.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\BPAS - Projects\HealthCare-New BkUp June18th\HealthCare\MIPS.Tests\bin\Debug\MIPS.Tests.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

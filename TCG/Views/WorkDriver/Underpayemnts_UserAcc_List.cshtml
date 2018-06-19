@@ -1,5 +1,5 @@
 ﻿
-@model PagedList.IPagedList<HealthcareAnalytics.Models.Get_AR_Info_for_Balance_Range_Result>
+@model PagedList.IPagedList<HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_Result>
 @using PagedList.Mvc;
 
 
@@ -37,7 +37,7 @@
 </head>
 <body>
 
-    @using (Html.BeginForm("UserAcc_List", "WorkDriver", FormMethod.Get, new { @class = "search-wrapper cf" }))
+    @using (Html.BeginForm("Underpayemnts_UserAcc_List", "WorkDriver", FormMethod.Get, new { @class = "search-wrapper cf" }))
     {
         @Html.AntiForgeryToken()
         <form>
@@ -47,8 +47,8 @@
 
                         <div style="border:3px solid #fcbf49; background-color:#fcbf49">
                             <h4>
-                                <span style=" font-size:large">
-                                    User's Account List
+                                <span style=" font-size:large" class="font-weight-bold">
+                                   Underpayments User's Account List
                                 </span>
                             </h4>
                         </div>
@@ -89,21 +89,21 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <table id="myDatatable" class="table pre-scrollable table-sm table-condensed table-striped table-bordered ">
-                                    <thead class="thead-dark bg-dark">
+                                <table id="myDatatable" class="table pre-scrollable table-responsive-md table-condensed table-striped table-bordered table-dark">
+                                    <thead class="text-center large thead-dark">
                                         <tr>
                                             <th>
-                                                @Html.ActionLink("Account ID", "UserAcc_List", new { sortOrder = ViewBag.sort_AccountID })
+                                                @Html.ActionLink("Account ID", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_AccountID })
                                             </th>
-                                            <th>@Html.ActionLink("Admission Date", "  ")</th>
-                                            <th>@Html.ActionLink("Patient Name", "UserAcc_List ", new { sortOrder = ViewBag.sort_PatientName })</th>
-                                            <th>@Html.ActionLink("Current Financial Class", "  " )</th>
-                                            <th>@Html.ActionLink("Payor Name", "UserAcc_List", new { sortOrder = ViewBag.sort_PayorName })</th>
-                                            <th>@Html.ActionLink("Account Balance", "  ")</th>
-                                            <th>@Html.ActionLink("Admitting Provider", "  ")</th>
-                                            <th>@Html.ActionLink("Encounter Type", "  ")</th>
-                                            <th>@Html.ActionLink("Service Area", "  ")</th>
-                                            <th>@Html.ActionLink("# of cases", "  ")</th>
+                                            <th>@Html.ActionLink("Admission Date", " ")</th>
+                                            <th>@Html.ActionLink("Patient Name", "Underpayemnts_UserAcc_List" , new { sortOrder = ViewBag.sort_PatientName })</th>
+                                            @*<th>Current Financial Class </th>*@
+                                            <th>@Html.ActionLink("Payor Name", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_PayorName })</th>
+                                            <th>@Html.ActionLink("Account Balance", " ")</th>
+                                            <th>@Html.ActionLink("Plan Namer", " ")</th>
+                                            <th>@Html.ActionLink("Encounter Type", " ")</th>
+                                            @*<th>Service Area</th>*@
+                                            <th>@Html.ActionLink("# of cases" , " " )</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -111,30 +111,30 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "prioirty_CaseList", "Home", new { id = item.Hospital_Account_ID }, null)
+                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Account)).ToString(), "prioirty_CaseList", "Home", new { id = item.Account }, null)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Admission_Date)
+                                                    @Html.DisplayFor(modelItem => item.Disch_Date)
                                                 </td>
-                                                <td>@Html.DisplayFor(modelItem => item.Account_Patient_Name)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Account_Name)</td>
+                                                @*<td>
+                                                    @Html.DisplayFor(modelItem => item.fi)
+                                                </td>*@
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Financial_Class)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Name)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Total_Account_Balance)
+                                                    @Html.DisplayFor(modelItem => item.Payor_Name)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Admitting_Provider_Name)
+                                                    @Html.DisplayFor(modelItem => item.Acct_Bal)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Encounter_Type)
+                                                    @Html.DisplayFor(modelItem => item.Plan_Name)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Account_Service_Area_Name)
+                                                    @Html.DisplayFor(modelItem => item.Acct_Class)
                                                 </td>
+                                                @*<td>
+                                                    @Html.DisplayFor(modelItem => item.)
+                                                </td>*@
                                                 <td>1</td>
 
                                             </tr>
@@ -155,6 +155,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </form>
     }
 </body>
