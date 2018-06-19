@@ -3,3 +3,132 @@
 }
 
 <h2>Guide </h2>
+<h1 class="heading">USER GUIDE</h1>
+<p>This calculator provides you with an estimated based on the Final Rule of the MACRA Legislation. Below</p>
+<div class="row">
+    <div class="col-md-2">
+        @Html.TextArea("Description", null, new { @class = "form-control-textarea" })
+    </div>
+    <div class="col-md-2">
+        <p style="margin-top:-50px;font-size:80px;font-style:normal;"> &#8592;</p>
+    </div>
+    <div class="col-md-6">
+        Hovering over the red-corned shown in some cells will provide you with additional information.
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        @Html.TextBox("StudentName", null, new { @class = "form-control-orange" })
+    </div>
+    <div class="col-md-2">
+        <p style="margin-top:-50px;font-size:80px;font-style:normal;"> &#8592;</p>
+    </div>
+    <div class="col-md-6">
+        Orange cells identify where to input numbers.
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        @Html.TextBox("StudentName", null, new { @class = "form-control-css" })
+    </div>
+    <div class="col-md-2">
+        <p style="margin-top:-50px;font-size:80px;font-style:normal;"> &#8592;</p>
+    </div>
+    <div class="col-md-6">
+        Light grey cell identify where the various calculation results will occur.
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-1"> <p>dropdown</p></div>
+    <div class="col-md-1">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+        </div>
+
+    </div>
+    <div class="col-md-2">
+        <p style="margin-top:-50px;font-size:80px;font-style:normal;"> &#8592;</p>
+    </div>
+    <div class="col-md-6">
+        Use to show listing of appropriate values to be selected.
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        @Html.TextBox("StudentName", null, new { @class = "form-control-blue" })
+    </div>
+    <div class="col-md-2">
+        <p style="margin-top:-50px;font-size:80px;font-style:normal;"> &#8592;</p>
+    </div>
+    <div class="col-md-6">
+        Blue cells contain a drop-down list.
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <label>@Html.RadioButton("ABC", "2")Option Button</label>
+    </div>
+    <div class="col-md-2">
+        <p style="margin-top:-50px;font-size:80px;font-style:normal;"> &#8592;</p>
+    </div>
+    <div class="col-md-6">
+        Use the options to select between available choices.
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        @Html.CheckBox("SomeBooleanProperty", new { @checked = "checked" }) Check Box
+    </div>
+    <div class="col-md-2">
+        <p style="margin-top:-50px;font-size:80px;font-style:normal;"> &#8592;</p>
+    </div>
+    <div class="col-md-6">
+        Use checks to attest "Yes".
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        @Html.TextBox("StudentName", null, new { @class = "form-control-purple" })
+    </div>
+    <div class="col-md-2">
+        <p style="margin-top:-50px;font-size:80px;font-style:normal;"> &#8592;</p>
+    </div>
+    <div class="col-md-6">
+        Purple cells contain option buttons or check boxes.
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <u><a href="~/">Hyperlink</a></u>
+    </div>
+    <div class="col-md-2">
+        <p style="margin-top:-50px;font-size:80px;font-style:normal;"> &#8592;</p>
+    </div>
+    <div class="col-md-6">
+        Click on the hyperlinks to view more information about the associated subject.
+    </div>
+</div>
+
+<p>click on the tabs at the bottom of this sheet to move from one sheet to the other.</p>
+<div class="row">
+
+    <div class="col-md-11 ">
+        <img src="~/Images/MIPS_Cal.JPG" />
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<p>
+    Calculation of the quality performance does not account for measure sets that are less than 6 applicable measures for the clinician or those
+    without an applicable high priority measure.
+</p>
