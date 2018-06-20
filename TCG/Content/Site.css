@@ -239,7 +239,7 @@ ul.dropdown-menu > li > a {
         color: black !important;
         font-weight: bold;
         font-size: 15px;
-        height: 58px !important;
+        height: 59px !important;
         font-family: Roboto;
         vertical-align: middle !important;
     }
@@ -520,3 +520,16 @@ table.paleBlueRows {
 
         font-size:small;
     }
+
+
+
+    div.form-control span.glyphicon {
+        position: absolute!important;
+        right: 0!important;
+        padding: 8px 27px!important;
+    }
+
+.form-group > .glyphicon {
+    top: -30px !important;
+    left: 78% !important;
+}

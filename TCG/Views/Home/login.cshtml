@@ -7,7 +7,6 @@
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -20,37 +19,34 @@
                 <h4 style="text-align:center"> Login to your Account</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+               
+                    <div class="form-group" style="padding-left:10%;">
+                        @*@Html.LabelFor(model => model.user_web_login, htmlAttributes: new { @class = "control-label" })*@
 
-                <div class="form-group">
-                    @*@Html.LabelFor(model => model.user_web_login, htmlAttributes: new { @class = "control-label col-md-4" })*@
-                    <div class="col-md-12">
-                        <div class="wrath-content-box">
-                            <div class="input-group">
-                                <span class="input-group-addon btn-primary"><i class="glyphicon glyphicon-user"></i></span>
-                                @Html.EditorFor(model => model.user_web_login, new { htmlAttributes = new { @class = "form-control", placeholder = "User Name" } })
 
-                                @Html.ValidationMessageFor(model => model.user_web_login, " ", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                              
-                <div class="form-group">
-                    @*@Html.LabelFor(model => model.user_web_pwd, htmlAttributes: new { @class = "control-label col-md-4" })*@
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            <span class="input-group-addon btn-primary"><i class="glyphicon glyphicon-lock"></i></span>
+                        @Html.EditorFor(model => model.user_web_login, new { htmlAttributes = new { @class = "form-control", placeholder = "User Name" } })
 
-                            @Html.EditorFor(model => model.user_web_pwd, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
-
-                            @Html.ValidationMessageFor(model => model.user_web_pwd, " ", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                        @Html.ValidationMessageFor(model => model.user_web_login, " ", new { @class = "text-danger" })
+                        <span class="glyphicon glyphicon-user"></span>
+                  
                 </div>
 
-                <hr />
+                    <div class="form-group" style="padding-left:10%;">
+                        @*@Html.LabelFor(model => model.user_web_pwd, htmlAttributes: new { @class = "control-label col-md-4" })*@
+
+                        
+
+                        @Html.EditorFor(model => model.user_web_pwd, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+
+                        @Html.ValidationMessageFor(model => model.user_web_pwd, " ", new { @class = "text-danger" })
+                        <span class="glyphicon glyphicon-lock"></span>
+                 
+                    
+                </div>
+
+                
                 <div class="form-group">
-                    <div style="width:100%;margin-top:100px;padding-left:30px;">
+                    <div style="width:100%;margin-top:20px;padding-left:30px;">
                         <input type="submit" style="width:360px!important;" value="Login " class="btn btn-primary">
                         <br />
                         <br />

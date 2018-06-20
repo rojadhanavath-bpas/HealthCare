@@ -362,3 +362,130 @@ DEBUG 2018-06-19 17:15:59,768 114227ms HomeController         ARManagement      
 DEBUG 2018-06-19 17:18:06,051 240511ms HomeController         LogOff             - Cleared session..
 DEBUG 2018-06-19 17:18:06,053 240513ms HomeController         LogOff             - Signing out user
 DEBUG 2018-06-19 17:18:06,056 240516ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-19 20:53:45,945 40666ms HomeController         Login              - password
+DEBUG 2018-06-19 20:53:45,985 40706ms HomeController         Login              - password
+DEBUG 2018-06-19 20:53:45,986 40707ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-06-19 20:53:46,150 40870ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-19 20:53:46,802 41522ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-19 20:53:58,587 53308ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-19 20:53:58,589 53310ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-19 20:53:58,636 53357ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-19 20:54:07,832 62553ms HomeController         Login              - password
+DEBUG 2018-06-19 20:54:07,832 62553ms HomeController         Login              - password
+DEBUG 2018-06-19 20:54:07,833 62554ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-06-19 20:54:07,850 62571ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-19 20:54:08,045 62765ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-19 20:54:19,176 73897ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-19 20:54:19,178 73899ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-19 20:54:19,180 73901ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-19 20:54:32,213 86934ms HomeController         Login              - password
+DEBUG 2018-06-19 20:54:32,217 86938ms HomeController         Login              - password
+DEBUG 2018-06-19 20:54:32,219 86940ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-06-19 20:54:32,280 87001ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-19 20:54:32,456 87176ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-19 20:54:38,864 93584ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-19 20:54:38,972 93692ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-19 20:54:42,023 96744ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-19 20:54:42,025 96746ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-19 20:54:42,027 96748ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-19 21:04:33,828 37297ms HomeController         Login              - password
+DEBUG 2018-06-19 21:04:33,856 37325ms HomeController         Login              - password
+DEBUG 2018-06-19 21:04:33,857 37326ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-06-19 21:04:34,108 37577ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-19 21:04:34,743 38212ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-19 21:04:41,373 44842ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-19 21:04:41,496 44965ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-19 21:04:44,880 48349ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-19 21:04:45,073 48542ms HomeController         Worklist           - [User:Chandra]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:08:33,715 10741066ms HomeController         Login              - password
+DEBUG 2018-06-20 00:08:33,756 10741107ms HomeController         Login              - password
+DEBUG 2018-06-20 00:08:33,759 10741110ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-06-20 00:08:33,931 10741281ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:08:34,506 10741857ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-20 00:08:44,691 10752042ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:08:44,866 10752216ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-20 00:08:48,457 10755808ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-20 00:08:48,458 10755809ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-20 00:08:48,488 10755838ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-20 00:09:00,817 10768168ms HomeController         Login              - password
+DEBUG 2018-06-20 00:09:00,818 10768169ms HomeController         Login              - password
+DEBUG 2018-06-20 00:09:00,819 10768170ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-06-20 00:09:00,837 10768188ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:09:01,011 10768361ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-20 00:09:16,060 10783411ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:09:16,305 10783656ms HomeController         Worklist           - [User:Chandra]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:09:29,986 10797336ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:09:30,332 10797682ms HomeController         DenialsManagement  - [User:Chandra]  Loading Denials Management  Page..
+DEBUG 2018-06-20 00:11:54,696 10942047ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:11:54,888 10942239ms HomeController         DenialsManagement  - [User:Chandra]  Loading Denials Management  Page..
+DEBUG 2018-06-20 00:14:12,941 11080292ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:14:13,154 11080504ms HomeController         DenialsManagement  - [User:Chandra]  Loading Denials Management  Page..
+DEBUG 2018-06-20 00:14:21,582 11088933ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:14:21,697 11089048ms HomeController         Worklist           - [User:Chandra]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:14:26,050 11093401ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:14:26,162 11093513ms HomeController         DenialsManagement  - [User:Chandra]  Loading Denials Management  Page..
+DEBUG 2018-06-20 00:17:02,234 17623ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:17:02,606 17995ms HomeController         Worklist           - [User:]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:19:33,313 168703ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:19:33,597 168987ms HomeController         DenialsManagement  - [User:]  Loading Denials Management  Page..
+DEBUG 2018-06-20 00:19:43,518 178908ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:19:43,751 179140ms HomeController         DebitAR            - [User:]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:19:51,036 186426ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:19:51,150 186540ms HomeController         Worklist           - [User:]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:24:15,263 26228ms HomeController         Login              - password
+DEBUG 2018-06-20 00:24:15,287 26252ms HomeController         Login              - password
+DEBUG 2018-06-20 00:24:15,288 26253ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-06-20 00:24:15,469 26434ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:24:15,930 26896ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-20 00:24:21,239 32204ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:24:21,425 32390ms HomeController         Worklist           - [User:Chandra]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:26:23,662 154628ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:26:23,862 154827ms HomeController         Worklist           - [User:Chandra]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:26:46,168 177133ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:26:46,372 177337ms HomeController         Worklist           - [User:Chandra]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:26:50,310 181275ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:26:50,423 181388ms HomeController         Worklist           - [User:Chandra]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:27:02,598 193563ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-20 00:27:02,599 193564ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-20 00:27:02,619 193584ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-20 00:27:09,503 200468ms HomeController         Login              - password
+DEBUG 2018-06-20 00:27:09,504 200469ms HomeController         Login              - password
+DEBUG 2018-06-20 00:27:09,504 200469ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-06-20 00:27:09,520 200485ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:27:09,685 200650ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-20 00:27:16,753 207718ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-20 00:27:16,754 207719ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-20 00:27:16,755 207720ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-20 00:52:00,924 12741ms HomeController         Login              - password
+DEBUG 2018-06-20 00:52:00,950 12767ms HomeController         Login              - password
+DEBUG 2018-06-20 00:52:00,951 12768ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-06-20 00:52:01,125 12942ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:52:01,617 13435ms HomeController         ARManagement       - [User:Roja]  Loading AR Management Page..
+DEBUG 2018-06-20 00:52:06,796 18613ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-20 00:52:06,797 18614ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-20 00:52:06,815 18632ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-20 00:52:12,843 24660ms HomeController         Login              - password
+DEBUG 2018-06-20 00:52:12,845 24662ms HomeController         Login              - password
+DEBUG 2018-06-20 00:52:12,846 24663ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-06-20 00:52:12,859 24676ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:52:13,033 24850ms HomeController         ARManagement       - [User:Roja]  Loading AR Management Page..
+DEBUG 2018-06-20 00:52:18,563 30380ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:52:18,734 30551ms HomeController         Worklist           - [User:Roja]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:55:33,507 28977ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-20 00:55:33,536 29006ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-20 00:55:33,555 29025ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-20 00:55:39,626 35096ms HomeController         Login              - password
+DEBUG 2018-06-20 00:55:39,627 35097ms HomeController         Login              - password
+DEBUG 2018-06-20 00:55:39,629 35099ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-06-20 00:55:39,775 35244ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:55:40,278 35748ms HomeController         ARManagement       - [User:Roja]  Loading AR Management Page..
+DEBUG 2018-06-20 00:55:44,610 40079ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:55:44,778 40248ms HomeController         Worklist           - [User:Roja]  Loading Debit AR  Page..
+DEBUG 2018-06-20 00:55:48,098 43567ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-20 00:55:48,099 43568ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-20 00:55:48,100 43569ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-06-20 00:55:50,175 45645ms HomeController         Login              - password
+DEBUG 2018-06-20 00:55:50,176 45646ms HomeController         Login              - password
+DEBUG 2018-06-20 00:55:50,178 45648ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-06-20 00:55:50,208 45678ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 00:55:50,323 45793ms HomeController         ARManagement       - [User:Roja]  Loading AR Management Page..

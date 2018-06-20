@@ -11,14 +11,30 @@ namespace HealthcareAnalytics.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Role
     {
         public System.Guid role_key { get; set; }
         public string role_code { get; set; }
+
+
+        [Display(Name = "Role Code")]
+      
+        [DataType(DataType.Text)]
         public string role_code_short { get; set; }
+
+
+
+        [Display(Name = "Role Designation")]
+        [DataType(DataType.Text)]
         public string role_designation { get; set; }
         public string role_createdBy_user { get; set; }
+
+
+
+        [Display(Name = "Created By")]
+        [DataType(DataType.Text)]
         public System.DateTime role_created_date { get; set; }
         public byte role_delete_flag { get; set; }
     }
