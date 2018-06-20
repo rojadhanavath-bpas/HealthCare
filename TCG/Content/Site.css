@@ -119,11 +119,11 @@ span.logo {
 
 
 .login-bg {
-    background: #467a82 no-repeat; /* Old browsers   #02b8d8*/
+    background: #B0E0E6 no-repeat; /* Old browsers   #02b8d8*/
 }
 
 /*.btn-info {
-    color: #fff;
+    color: #86bcb6;
     background-color: #196871 !important;
     border-top: none;
     border-bottom: none;
@@ -207,8 +207,8 @@ li a.active {
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-    background-color: #034EA1 !important;
-    color: white !important;
+    background-color: powderblue !important;
+    color: black !important;
 }
 
 ul.dropdown-menu > li > a {
@@ -217,13 +217,14 @@ ul.dropdown-menu > li > a {
     font-family: Roboto;
     font-weight: bold;
 }
-    ul.dropdown-menu > li > a:active{
-        background-color: powderblue !important;
-        color: black !important;
+    ul.dropdown-menu > li > a:active {
+        background-color: #034EA1 !important;
+        color: white !important;
     }
 
     ul.dropdown-menu > li > a:hover {
-        background-color: #2da4b1 !important;
+        background-color: powderblue !important;
+        color: black !important;
     }
 
 
@@ -245,27 +246,25 @@ ul.dropdown-menu > li > a {
     }
 
         .navbar-nav > li > a:hover {
-            background-color: #034EA1 !important;
-            color: white !important;
+            background-color: powderblue !important;
+            color: black !important;
         }
 
 .navbar-fixed-top {
     width: 100%;
 }
 
-.dropdown-menu {
+.dropdown-menu > .active > a{
     color: white !important;
-    background-color: white !important;
-    border-bottom: 3px solid #034EA1;
 }
-
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: #034EA1 !important;
+    background-color: powderblue !important;
+    color: black !important;
 }
 
 ul.nav.navbar-nav > li.active > a {
-    background-color: powderblue !important;
-    color: black !important;
+    background-color: #034EA1 !important;
+    color: white !important;
 }
 
 ul.nav.navbar-nav > li > a {
