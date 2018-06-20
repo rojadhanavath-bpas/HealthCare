@@ -65,10 +65,16 @@ namespace HealthcareAnalytics.Controllers
 
         public ActionResult Login()
         {
-
-            log.Debug("Loading Login Page..");
-
-            return View();
+            if(Session["username"] != null)
+            {
+                return RedirectToAction("ARManagement", "Home", new { username = Session["username"].ToString() });
+            }
+            //log.Debug("Loading Login Page..");
+            else
+            {
+                return View();
+            }
+            
         }
         
         public ActionResult Home()
