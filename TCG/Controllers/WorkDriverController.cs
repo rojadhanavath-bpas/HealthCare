@@ -59,6 +59,7 @@ namespace HealthcareAnalytics.Controllers
         private List<String> Denial_DD = new List<string>();
         private List<String> LName_DD = new List<string>();
 
+        public string openCaseID;  //editOpenTask_id
 
         // GET: WorkDriver
         public ActionResult Index()
@@ -262,5 +263,364 @@ namespace HealthcareAnalytics.Controllers
 
 
         }
+
+
+        private static List<SelectListItem> populateStatus()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Status_Master.Select(x => new SelectListItem { Text = x.SM_Name, Value = x.SM_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populateAccount_ARStatus()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Account_AR_Status.Select(x => new SelectListItem { Text = x.ARSts_Name, Value = x.ARSts_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_BillStatus()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Account_Bill_Status.Select(x => new SelectListItem { Text = x.BillSts_Name, Value = x.BillSts_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_AccountSource()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Account_Source.Select(x => new SelectListItem { Text = x.AccSrc_Name, Value = x.AccSrc_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_EncounterType()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Encounter_Type.Select(x => new SelectListItem { Text = x.EncType_Name, Value = x.EncType_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_Insurance()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Insurance_Company_Name.Select(x => new SelectListItem { Text = x.InsCmp_Name, Value = x.InsCmp_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_PayorFC()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Payor_Financial_Class.Select(x => new SelectListItem { Text = x.PyrFC_Name, Value = x.PyrFC_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_PrimaryReason()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.PrimaryReason_Master.Select(x => new SelectListItem { Text = x.PRM_Name, Value = x.PRM_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_Task()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Task_Master.Select(x => new SelectListItem { Text = x.TM_Name, Value = x.TM_ID.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_UserLogin()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_DataEntities context = new TCG_DataEntities();
+            return context.User_Login.Select(x => new SelectListItem { Text = x.user_web_login, Value = x.user_Id.ToString() }).ToList();
+
+        }
+
+        private static List<SelectListItem> populate_Priority()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_Worklist context = new TCG_Worklist();
+            return context.Priority_Master.Select(x => new SelectListItem { Text = x.PM_Name, Value = x.PM_ID.ToString() }).ToList();
+
+        }
+
+        public ActionResult New_CaseDetails(string id)
+        {
+            AARS = new Account_AR_Status();
+            ABS = new Account_Bill_Status();
+            ACS = new Account_Case_Details();
+            ACDH = new Account_Case_Detials_History();
+            ACT = new Account_Case_Task();
+            ACTH = new Account_Case_Task_History();
+            AS = new Account_Source();
+            ECT = new Encounter_Type();
+            ICN = new Insurance_Company_Name();
+            PFC = new Payor_Financial_Class();
+            PRM = new PrimaryReason_Master();
+            SM = new Status_Master();
+            TM = new Task_Master();
+            UL = new User_Login();
+            PM = new Priority_Master();
+
+            ViewBag.SM = populateStatus();
+            ViewBag.AARS = populateAccount_ARStatus();
+            ViewBag.ABS = populate_BillStatus();
+            ViewBag.AS = populate_AccountSource();
+            ViewBag.ECT = populate_EncounterType();
+            ViewBag.ICN = populate_Insurance();
+            ViewBag.PFC = populate_PayorFC();
+            ViewBag.PRM = populate_PrimaryReason();
+            ViewBag.TM = populate_Task();
+            ViewBag.UL = populate_UserLogin();
+            ViewBag.PM = populate_Priority();
+
+            Session["AccountID"] = id;
+
+            openCaseID = id;
+            string HospitalAccountID = openCaseID;
+
+            TCG_WL = new TCG_Worklist();
+            List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+            Get_Account_Info_for_ARandDenial_Result AIARDR = new Get_Account_Info_for_ARandDenial_Result();
+            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+
+            try
+            {
+                using (TCG_DataEntities tcg_CaseDetails = new TCG_DataEntities())
+                {
+                    taskDetails = tcg_CaseDetails.Get_Account_Info_for_ARandDenial(id).ToList();
+
+                    if (taskDetails.Count > 0 || taskDetails != null)
+                    {
+                        var Case_checkHospitalAccID = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                        var CaseTask_checkHospitalAccID = TCG_WL.Account_Case_Task.Where(m => m.ACT_HspAccID == HospitalAccountID).FirstOrDefault();
+
+                        var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+                        var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+                        var model = new TCG_Worklist();
+                        int new_Case_Value;
+                        if (Case_checkHospitalAccID != null)
+                        {
+                            new_Case_Value = Case_checkHospitalAccID.ACD_ID;
+                        }
+                        else
+                        {
+                            new_Case_Value = 0;
+                        }
+                        int new_Case_Task_Value = 0;
+                        string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                        if (Case_checkHospitalAccID == null)
+                        {
+
+                            TCG_WL.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), "1", ownerId, "1",
+                           "2", "2", "1", "2", "3", "2", (taskDetails[0].Reporting_Rsn_Code_w__Desc == null) ? "None" : taskDetails[0].Reporting_Rsn_Code_w__Desc, "", "", "", "", DateTime.Now, DateTime.Now, false, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_idParameter);
+
+
+                            new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+                        }
+
+                        if (CaseTask_checkHospitalAccID == null)
+                        {
+
+                            TCG_WL.Case_Task_InsUpd(0, taskDetails[0].Hospital_Account_ID, new_Case_Value, false, "2", taskDetails[0].Primary_Coverage_Payor_Name, ownerId,
+                            taskDetails[0].Primary_Coverage_Payor_Name, taskDetails[0].Admission_Date, 0, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_TasK_idParameter);
+
+
+                            new_Case_Task_Value = Convert.ToInt32(case_TasK_idParameter.Value);
+
+                        }
+
+                        TCG_Worklist context = new TCG_Worklist();
+                        TCG_DataEntities context_tcg = new TCG_DataEntities();
+
+
+                        ViewBag.ACD_data = get_CaseDetails(HospitalAccountID, new_Case_Value);
+                        ViewBag.ACDT_data = get_CaseTaskDetails(HospitalAccountID, new_Case_Value);
+                        ViewBag.One_ACD_data = get_OnlyOneCaseDetails(HospitalAccountID);
+                        ViewBag.OriginalData = taskDetails;
+                        ACD = get_CaseDetailsList(HospitalAccountID);
+
+
+                        int a = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_Status);
+                        ViewBag.SM = new SelectList(context.Status_Master.Select(x => new { Value = x.SM_ID.ToString(), Text = x.SM_Name }), "Value", "Text", a);
+
+                        string b = ViewBag.ACD_Data[0].ACD_Owner;
+                        ViewBag.UL = new SelectList(context_tcg.User_Login.Select(x => new { Value = x.user_Id.ToString(), Text = x.user_web_login }), "Value", "Text", b);
+
+                        int c = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_Type);
+                        ViewBag.ECT = new SelectList(context.Encounter_Type.Select(x => new { Value = x.EncType_ID.ToString(), Text = x.EncType_Name }), "Value", "Text", c);
+
+                        int d = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_SubType);
+                        ViewBag.SbT = new SelectList(context.Encounter_Type.Select(x => new { Value = x.EncType_ID.ToString(), Text = x.EncType_Name }), "Value", "Text", d);
+
+                        int e = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_PrimaryReason);
+                        ViewBag.PRM = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", e);
+
+                        int f = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_SecondaryReason);
+                        ViewBag.SRM = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", f);
+
+                        int g = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_PayerReason);
+                        ViewBag.PR = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", g);
+
+                        int h = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_PrinDiag);
+                        ViewBag.PD = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", h);
+
+                        int i = Convert.ToInt32(ViewBag.ACD_Data[0].ACD_PrinProc);
+                        ViewBag.PP = new SelectList(context.PrimaryReason_Master.Select(x => new { Value = x.PRM_ID.ToString(), Text = x.PRM_Name }), "Value", "Text", i);
+
+
+
+                        if (ACD.Count > 0)
+                        {
+
+                            for (int x = 0; x < ACD.Count; x++)
+                            {
+                                int aa = Convert.ToInt32(ACD[x].ACD_Status);
+                                int bb = Convert.ToInt32(ACD[x].ACD_Type);
+                                int cc = Convert.ToInt32(ACD[x].ACD_PrimaryReason);
+                                int dd = Convert.ToInt32(ACD[x].ACD_PrinDiag);
+                                int ee = Convert.ToInt32(ACD[x].ACD_PrinProc);
+
+                                ACD[x].ACD_Status = get_Status_dropDownValue(aa);
+                                ACD[x].ACD_Type = get_Type_dropDownValue(bb);
+                                ACD[x].ACD_PrimaryReason = get_PrimaryRsn_dropDownValue(cc);
+                                ACD[x].ACD_PrinDiag = get_PrimaryRsn_dropDownValue(dd);
+                                ACD[x].ACD_PrinProc = get_PrimaryRsn_dropDownValue(ee);
+                            }
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return View(ACD);
+
+        }
+
+        public string get_Status_dropDownValue(int x)
+        {
+
+            Status_Master ACD = new Status_Master();
+
+            ACD = TCG_WL.Status_Master.Where(m => m.SM_ID == x).FirstOrDefault();
+
+            string DDL_Name = ACD.SM_Name;
+            return DDL_Name;
+
+        }
+
+        public string get_Type_dropDownValue(int x)
+        {
+
+            Encounter_Type ACD = new Encounter_Type();
+
+            ACD = TCG_WL.Encounter_Type.Where(m => m.EncType_ID == x).FirstOrDefault();
+
+            string DDL_Name = ACD.EncType_Name;
+            return DDL_Name;
+
+        }
+
+        public string get_PrimaryRsn_dropDownValue(int x)
+        {
+
+            PrimaryReason_Master ACD = new PrimaryReason_Master();
+
+            ACD = TCG_WL.PrimaryReason_Master.Where(m => m.PRM_ID == x).FirstOrDefault();
+
+            string DDL_Name = ACD.PRM_Name;
+            return DDL_Name;
+
+        }
+
+        public string get_Owner_dropDownText(string x)
+        {
+            TCG_DataEntities context_tcg = new TCG_DataEntities();
+            User_Login ACD = new User_Login();
+
+            ACD = context_tcg.User_Login.Where(m => m.user_Id.ToString() == x).FirstOrDefault();
+
+            string DDL_Name = ACD.user_web_login;
+            return DDL_Name;
+
+        }
+
+        public string get_Owner_dropDownValue(string x)
+        {
+            TCG_DataEntities context_tcg = new TCG_DataEntities();
+            User_Login ACD = new User_Login();
+
+            ACD = context_tcg.User_Login.Where(m => m.user_web_login.ToString() == x).FirstOrDefault();
+
+            string DDL_Name_Value = ACD.user_Id.ToString();
+            return DDL_Name_Value;
+
+        }
+
+        public List<Account_Case_Details> get_CaseDetailsList(string HospitalAccountID)
+        {
+
+            List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+            using (var db = new TCG_Worklist())
+            {
+                return (from c in db.Account_Case_Details
+                        where c.ACD_HspAccID == HospitalAccountID
+                        select c).ToList();
+            }
+        }
+
+
+        public List<Account_Case_Details> get_CaseDetails(string HospitalAccountID, int case_ID)
+        {
+
+            List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+            using (var db = new TCG_Worklist())
+            {
+                return (from c in db.Account_Case_Details
+                        where c.ACD_HspAccID == HospitalAccountID && c.ACD_ID == case_ID
+                        select c).ToList();
+            }
+        }
+
+
+        public List<Account_Case_Task> get_CaseTaskDetails(string HospitalAccountID, int case_ID)
+        {
+
+            List<Account_Case_Task> ACDT = new List<Account_Case_Task>();
+            using (var db = new TCG_Worklist())
+            {
+                ACDT = (from c in db.Account_Case_Task
+                        where c.ACT_HspAccID == HospitalAccountID && c.ACT_ACD_ID == case_ID && c.ACT_DeleteFlag == 0
+                        select c).ToList();
+            }
+            return ACDT;
+
+        }
+
+        public string get_OnlyOneCaseDetails(string HospitalAccountID)
+        {
+
+            Account_Case_Details ACD = new Account_Case_Details();
+
+            ACD = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+
+
+            return ACD.ACD_HspAccID;
+        }
+
     }
 }
