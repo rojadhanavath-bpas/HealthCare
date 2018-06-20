@@ -489,3 +489,10 @@ DEBUG 2018-06-20 00:55:50,176 45646ms HomeController         Login              
 DEBUG 2018-06-20 00:55:50,178 45648ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
 DEBUG 2018-06-20 00:55:50,208 45678ms HomeController         GetTableauToken    - Retrieving Tableau token 
 DEBUG 2018-06-20 00:55:50,323 45793ms HomeController         ARManagement       - [User:Roja]  Loading AR Management Page..
+DEBUG 2018-06-20 04:18:05,474 41040ms HomeController         Login              - password
+DEBUG 2018-06-20 04:18:05,554 41119ms HomeController         Login              - password
+DEBUG 2018-06-20 04:18:05,556 41121ms HomeController         Login              - [Home][login]: Succesfully logged in  Chandra.Edara
+DEBUG 2018-06-20 04:18:06,027 41593ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 04:18:07,026 42592ms HomeController         ARManagement       - [User:Chandra]  Loading AR Management Page..
+DEBUG 2018-06-20 05:20:50,580 551726ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-20 05:20:51,669 552815ms HomeController         DenialsManagement  - [User:]  Loading Denials Management  Page..
