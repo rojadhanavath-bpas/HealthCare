@@ -153,9 +153,10 @@ namespace HealthcareAnalytics.Controllers
                 int pageNumber = (page ?? 1);
                 for (int i = 0; i < result.Count; i++)
                 {
-                    //result[i].Admission_Date = Convert.ToDateTime(Convert.ToDateTime(result[i].Admission_Date).ToString("d"));
-                    result[i].Admission_Date = Convert.ToDateTime(result[i].Admission_Date.ToString()).Date;
-                    //result[i].Admission_Date = DateTime.ParseExact(result[i].Admission_Date.ToString(), "mm/dd/yyyy", CultureInfo.InvariantCulture);
+                    if (result[i].Discharge_Date.HasValue)
+                    {
+                        result[i].New_DischargeDate = result[i].Discharge_Date.Value.ToShortDateString();
+                    }
                 }
                 return View(result.ToPagedList(pageNumber, pageSize));
 
@@ -247,9 +248,10 @@ namespace HealthcareAnalytics.Controllers
                 int pageNumber = (page ?? 1);
                 for (int i = 0; i < result.Count; i++)
                 {
-
-                    result[i].Disch_Date = Convert.ToDateTime(result[i].Disch_Date.ToString()).Date;
-                    //result[i].Disch_Date = DateTime.ParseExact(result[i].Disch_Date.ToString(), "mm/dd/yyyy", CultureInfo.InvariantCulture);
+                    if (result[i].Disch_Date.HasValue)
+                    {                        
+                        result[i].DischargeDate = result[i].Disch_Date.Value.ToShortDateString();
+                    }                    
                 }
                 return View(result.ToPagedList(pageNumber, pageSize));
 

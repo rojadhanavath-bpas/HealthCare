@@ -70,5 +70,7 @@ namespace HealthcareAnalytics.Models
         public Nullable<decimal> Total_Bad_Debt_Payment_Amount { get; set; }
         public Nullable<decimal> Total_Settlement_Payments { get; set; }
         public Nullable<decimal> Total_Charge_Amount { get; set; }
+
+        public string New_DischargeDate { get; set; }
     }
 }
