@@ -32,6 +32,7 @@ textarea {
     font-size: 17px !important;
     padding-left: 15px;
     margin-top: 5px !important;
+    
 }
 /*
 span.logo {
@@ -57,14 +58,14 @@ span.logo {
 }
 
 .footer {
-    border-top: 5px solid #f39c12;
+    
     bottom: 0px;
     position: fixed;
     height: 35px;
     width: 100%;
     color: white;
     padding-top: 5px;
-    background-color: #467a82 !important;
+    background-color: #034EA1 !important;
 }
 
     .footer > span {
@@ -206,12 +207,20 @@ li a.active {
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-    background-color: #2da4b1 !important
+    background-color: #034EA1 !important;
+    color: white !important;
 }
 
 ul.dropdown-menu > li > a {
-    color: white !important;
+    color: black !important;
+    font-size: 15px;
+    font-family: Roboto;
+    font-weight: bold;
 }
+    ul.dropdown-menu > li > a:active{
+        background-color: powderblue !important;
+        color: black !important;
+    }
 
     ul.dropdown-menu > li > a:hover {
         background-color: #2da4b1 !important;
@@ -219,19 +228,25 @@ ul.dropdown-menu > li > a {
 
 
 .navbar-nav {
-    background-color: #467a82 !important;
-    border-bottom: 5px solid #f39c12;
+    background-color: white !important;
+    border-bottom: 5px solid #034EA1;
     margin: 0 !important;
     padding: 0 !important;
     width: 100%;
 }
 
     .navbar-nav > li > a {
-        color: white !important;
+        color: black !important;
+        font-weight: bold;
+        font-size: 15px;
+        height: 58px !important;
+        font-family: Roboto;
+        vertical-align: middle !important;
     }
 
         .navbar-nav > li > a:hover {
-            background-color: #2da4b1 !important;
+            background-color: #034EA1 !important;
+            color: white !important;
         }
 
 .navbar-fixed-top {
@@ -240,16 +255,17 @@ ul.dropdown-menu > li > a {
 
 .dropdown-menu {
     color: white !important;
-    background-color: #467a82 !important;
-    border-bottom: 3px solid #f39c12;
+    background-color: white !important;
+    border-bottom: 3px solid #034EA1;
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: #2da4b1 !important;
+    background-color: #034EA1 !important;
 }
 
 ul.nav.navbar-nav > li.active > a {
-    background-color: #2da4b1 !important;
+    background-color: powderblue !important;
+    color: black !important;
 }
 
 ul.nav.navbar-nav > li > a {
