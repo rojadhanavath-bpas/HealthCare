@@ -6,67 +6,6 @@
     <edmx:StorageModels>
     <Schema Namespace="TCG_DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6013: The table/view 'TCG_Data.dbo.Account_Receivable' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Account_Receivable">
-          <Property Name="Account_Date" Type="date" />
-          <Property Name="Admission_Date" Type="date" />
-          <Property Name="Discharge_Date" Type="date" />
-          <Property Name="Coding_Date" Type="date" />
-          <Property Name="First_Billed_Date" Type="date" />
-          <Property Name="First_Claim_Date" Type="date" />
-          <Property Name="Most_Recent_Claim_Date" Type="date" />
-          <Property Name="Most_Recent_Insurance_Payment_Received_Date" Type="date" />
-          <Property Name="Most_Recent_SelfPay_Payment_Received_Date" Type="date" />
-          <Property Name="Account_Closed_Date" Type="date" />
-          <Property Name="Zero_Balance_Date" Type="date" />
-          <Property Name="Primary_Coverage_Payor_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Primary_Coverage_Payor_Financial_Class" Type="varchar" MaxLength="50" />
-          <Property Name="Primary_Coverage_Benefit_Plan_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Second_Coverage_Financial_Class" Type="varchar" MaxLength="50" />
-          <Property Name="Second_Coverage_Benefit_Plan_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Second_Coverage_Payor_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Admitting_Provider_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Account_Department_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Account_Department_Specialty" Type="varchar" MaxLength="150" />
-          <Property Name="Account_Location_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Account_Service_Area_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Billing_DRG_Code" Type="varchar" MaxLength="50" />
-          <Property Name="Billing_DRG_Code_Set" Type="varchar" MaxLength="50" />
-          <Property Name="MS_DRG_Code" Type="varchar" MaxLength="50" />
-          <Property Name="Guarantor_Epic_ID" Type="varchar" MaxLength="50" />
-          <Property Name="Guarantor_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Encounter_Epic_CSN" Type="varchar" MaxLength="50" />
-          <Property Name="Encounter_Type" Type="varchar" MaxLength="50" />
-          <Property Name="Account_Patient_Epic_ID" Type="varchar" MaxLength="50" />
-          <Property Name="Account_Patient_Name" Type="varchar" MaxLength="150" />
-          <Property Name="Hospital_Account_ID" Type="varchar" MaxLength="50" />
-          <Property Name="Account_Financial_Class" Type="varchar" MaxLength="50" />
-          <Property Name="Account_Source" Type="varchar" MaxLength="50" />
-          <Property Name="Account_Bill_Status" Type="varchar" MaxLength="50" />
-          <Property Name="Account_AR_Status" Type="varchar" MaxLength="50" />
-          <Property Name="Total_Account_Balance" Type="money" />
-          <Property Name="Total_Self_Pay_Balance" Type="money" />
-          <Property Name="Total_Primary_Insurance_Balance" Type="money" />
-          <Property Name="Total_Pre_Billed_Balance" Type="money" />
-          <Property Name="Total_Non_Primary_Insurance_Balance" Type="money" />
-          <Property Name="Total_Undistributed_Balance" Type="money" />
-          <Property Name="Total_Bad_Debt_Balance" Type="money" />
-          <Property Name="Total_Adjustment_Amount" Type="money" />
-          <Property Name="Total_Self_Pay_Adjustment_Amount" Type="money" />
-          <Property Name="Total_Primary_Insurance_Adjustment_Amount" Type="money" />
-          <Property Name="Total_Non_Primary_Insurance_Adjustment_Amount" Type="money" />
-          <Property Name="Total_Undistributed_Adjustment_Amount" Type="money" />
-          <Property Name="Total_Bad_Debt_Adjustment_Amount" Type="money" />
-          <Property Name="Total_Payment_Amount" Type="money" />
-          <Property Name="Total_Self_Pay_Payment_Amount" Type="money" />
-          <Property Name="Total_Primary_Insurance_Payment_Amount" Type="money" />
-          <Property Name="Total_Non_Primary_Insurance_Payment_Amount" Type="money" />
-          <Property Name="Total_Undistributed_Payment_Amount" Type="money" />
-          <Property Name="Total_Bad_Debt_Payment_Amount" Type="money" />
-          <Property Name="Total_Settlement_Payments" Type="money" />
-          <Property Name="Total_Charge_Amount" Type="money" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'TCG_Data.dbo.Denials_Data' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Denials_Data">
           <Key>
@@ -247,6 +186,7 @@ warning 6002: The table/view 'TCG_Data.dbo.Denials_Data' does not have a primary
         <Function Name="Get_Denial_Aging_Bucket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
           <Parameter Name="LastPayorRcvdDate" Type="date" Mode="In" />
         </Function>
+        <Function Name="Get_Under_Paymnent_Accounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="IsCollectable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="varAccountID" Type="varchar" Mode="In" />
         </Function>
@@ -387,6 +327,7 @@ warning 6002: The table/view 'TCG_Data.dbo.Denials_Data' does not have a primary
           <EntitySet Name="User_Login" EntityType="TCG_DataModel.User_Login" />
           <EntitySet Name="Users_Data" EntityType="TCG_DataModel.Users_Data" />
           <EntitySet Name="Denials_Data" EntityType="TCG_DataModel.Denials_Data" />
+          <FunctionImport Name="Get_Under_Paymnent_Accounts" ReturnType="Collection(TCG_DataModel.Get_Under_Paymnent_Accounts_Result)" />
         </EntityContainer>
         <ComplexType Name="Get_Account_Info_for_ARandDenial_Result">
           <Property Type="DateTime" Name="Account_Date" Nullable="true" />
@@ -670,6 +611,22 @@ warning 6002: The table/view 'TCG_Data.dbo.Denials_Data' does not have a primary
           <Property Name="First_Ext_Claim_Sent_Date" Type="DateTime" Precision="0" />
           <Property Name="Src_Pmt_Tx" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="Get_Under_Paymnent_Accounts_Result">
+          <Property Type="String" Name="Deferral_Due" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Account" Nullable="true" />
+          <Property Type="String" Name="Acct_Class" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Acct_Status" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Account_Name" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="Disch_Date" Nullable="true" Precision="23" />
+          <Property Type="Double" Name="Acct_Bal" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Diagnosis_Codes" Nullable="true" />
+          <Property Type="String" Name="Plan_Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Payor_Name" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Allowed_Amount_Difference" Nullable="true" />
+          <Property Type="String" Name="Expected_Allowed_Amount" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Allowed_Amount_Difference_Payor_Specified" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -957,6 +914,26 @@ warning 6002: The table/view 'TCG_Data.dbo.Denials_Data' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Get_Under_Paymnent_Accounts" FunctionName="TCG_DataModel.Store.Get_Under_Paymnent_Accounts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCG_DataModel.Get_Under_Paymnent_Accounts_Result">
+                <ScalarProperty Name="Deferral_Due" ColumnName="Deferral Due" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Acct_Class" ColumnName="Acct Class" />
+                <ScalarProperty Name="Acct_Status" ColumnName="Acct Status" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
+                <ScalarProperty Name="Disch_Date" ColumnName="Disch Date" />
+                <ScalarProperty Name="Acct_Bal" ColumnName="Acct Bal" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Diagnosis_Codes" ColumnName="Diagnosis_Codes" />
+                <ScalarProperty Name="Plan_Name" ColumnName="Plan Name" />
+                <ScalarProperty Name="Payor_Name" ColumnName="Payor Name" />
+                <ScalarProperty Name="Allowed_Amount_Difference" ColumnName="Allowed_Amount_Difference" />
+                <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected Allowed Amount" />
+                <ScalarProperty Name="Allowed_Amount_Difference_Payor_Specified" ColumnName="Allowed_Amount_Difference_Payor_Specified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

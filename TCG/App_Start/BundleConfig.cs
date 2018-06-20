@@ -23,10 +23,10 @@ namespace HealthcareAnalytics
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/justified-nav.css"));
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //          "~/Content/bootstrap.css",
+            //          "~/Content/site.css",
+            //          "~/Content/justified-nav.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                  "~/Scripts/bootstrap.js",
@@ -36,6 +36,7 @@ namespace HealthcareAnalytics
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-datepicker3.css",  // ** NEW for Bootstrap Datepicker
+                      "~/Content/justified-nav.css",
                       "~/Content/site.css"));
         }
     }
