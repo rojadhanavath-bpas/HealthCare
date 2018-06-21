@@ -12,7 +12,9 @@
     @Styles.Render("~/Content/fontawesome")
     <script>
         $(document).ready(function () {
-               $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+            $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+            $('a[href="' + this.location.pathname + '"]').parent().parent().parent().addClass('active');
+
              });
     </script>
 
@@ -20,13 +22,13 @@
 <body>
     <div class="navbar navbar-fixed-top">
        
-                    @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
+                    @if (Request.Url.PathAndQuery != "/addi" || Request.Url.PathAndQuery != "/addi/")
             {
                 
 
                 <ul  class="nav navbar-nav">
-                    <li><span class="logo">&nbsp;<img src="~/Images/ADDI_Logo.jpg" style="background-color: white;height: auto; width:250px;" /></span></li>
-                    <li style="padding-left: 5%;">@Html.ActionLink("Executive Summary", "ExecutiveSummary", "Home")</li>
+                    <li><span class="logo">&nbsp;<img src="~/Images/ADDI_Logo.jpg" style="background-color: white;height: auto; width:20%;" /></span></li>
+                    <li>@Html.ActionLink("Executive Summary", "ExecutiveSummary", "Home")</li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" role="button" aria-expanded="false"  data-toggle="dropdown">Financial Management <span class="caret"></span></a>
@@ -42,7 +44,7 @@
 
 
                     <li class="dropdown">
-                        <a href="@Url.Action("Coding", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
+                        <a href="@Url.Action("ARManagement", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
                            <ul class="dropdown-menu" role="menu">
                            <li>@Html.ActionLink("AR Management", "ARManagement", "Home")</li>
                             <li>@Html.ActionLink("Debit AR", "debitAR", "Home")</li>
@@ -77,8 +79,9 @@
                             <ul class="dropdown-menu">
                                 <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
                             </ul>
-                          </ul>
-                
+                          </li>
+                </ul>
+
             }
 
                 </div>
