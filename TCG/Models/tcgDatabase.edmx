@@ -91,6 +91,30 @@ warning 6002: The table/view 'TCG_Data.dbo.Denials_Data' does not have a primary
           <Property Name="role_created_date" Type="smalldatetime" Nullable="false" />
           <Property Name="role_delete_flag" Type="tinyint" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TCG_Data.dbo.Underpayment_Reason' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Underpayment_Reason">
+          <Property Name="Reason_Code" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Underpayments">
+          <Property Name="Deferral Due" Type="nvarchar" MaxLength="255" />
+          <Property Name="Account" Type="float" />
+          <Property Name="Acct Class" Type="nvarchar" MaxLength="255" />
+          <Property Name="Acct Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="Account Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Disch Date" Type="datetime" />
+          <Property Name="Acct Bal" Type="float" />
+          <Property Name="Message" Type="nvarchar" MaxLength="255" />
+          <Property Name="Diagnosis Codes (Mapped : CMS ICD-10-CM &gt; ICD-9-CM)" Type="float" />
+          <Property Name="Plan Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Payor Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Allowed Amount Difference (Current NAA Posted To Bucket)" Type="float" />
+          <Property Name="Expected Allowed Amount" Type="nvarchar" MaxLength="255" />
+          <Property Name="Allowed Amount Difference (Payor-Specified)" Type="float" />
+        </EntityType>-->
         <EntityType Name="User_Login">
           <Key>
             <PropertyRef Name="user_Id" />

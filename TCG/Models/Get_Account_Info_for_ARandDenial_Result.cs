@@ -118,5 +118,7 @@ namespace HealthcareAnalytics.Models
         public string Source_Dept { get; set; }
         public string Src_Pmt_Tx { get; set; }
         public string Stage { get; set; }
+
+        public int isLinkOther { get; set; }
     }
 }

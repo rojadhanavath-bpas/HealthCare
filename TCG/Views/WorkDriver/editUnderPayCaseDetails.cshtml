@@ -1,5 +1,4 @@
-﻿@*@model List<HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result>*@
-@model List<HealthcareAnalytics.Models.Account_Case_Task>
+﻿@model List<HealthcareAnalytics.Models.Account_Case_Details>
 @using GridMvc.Html
 @using HealthcareAnalytics.Models
 @{
@@ -100,7 +99,7 @@
             <div class="container">
                 <div class="panel panel-body">
                     <div class="form-row">
-                        @foreach (Account_Case_Details item in ViewBag.ACD_data)
+                        @foreach (Account_Case_Details item in ViewBag.OtherLinkData)
                         {
                             <div class="form-group col-sm-4">
                                 @Html.ActionLink("BACK", "prioirty_CaseList", new { id = @item.ACD_HspAccID }, new { @class = "btn btn-primary" })
@@ -130,6 +129,7 @@
 
                                 <div id="id_cases_main" class="panel-body tab-pane fade in active">
 
+
                                     <div id="id_cases" class="panel-body">
                                         <div style="border:3px solid #fcbf49; background-color:#fcbf49">
                                             <h4>
@@ -138,12 +138,14 @@
                                                 </span>
                                             </h4>
                                         </div>
+
+
                                         <hr />
                                         <div id="id_cases_details" style="display:block;">
 
 
                                             <div class="form-row">
-                                                @foreach (Account_Case_Details item in ViewBag.ACD_data)
+                                                @foreach (Account_Case_Details item in ViewBag.OtherLinkData)
                                                 {
                                                     <div class="form-group col-sm-4">
                                                         <label for="DDL_Status" class="text-info">STATUS</label>
@@ -179,7 +181,7 @@
                                                         @Html.TextBoxFor(Model => s.Coding_Date, new { @Value = s.Coding_Date.ToString(), @class = "form-control", @readonly = "readonly" })
                                                     </div>
                                                 }
-                                                @foreach (Account_Case_Details item in ViewBag.ACD_data)
+                                                @foreach (Account_Case_Details item in ViewBag.OtherLinkData)
                                                 {
                                                     <div class="form-group col-sm-4">
                                                         <label for="DDL_Type" class="text-info">ENCOUNTER TYPE</label>
@@ -195,7 +197,7 @@
 
 
                                             <div class="form-row">
-                                                @foreach (Account_Case_Details item in ViewBag.ACD_data)
+                                                @foreach (Account_Case_Details item in ViewBag.OtherLinkData)
                                                 {
                                                     <div class="form-group col-sm-4">
                                                         <label for="txt_Amount" class="text-info">AMOUNT</label>
@@ -216,7 +218,7 @@
 
 
                                             <div class="form-row">
-                                                @foreach (Account_Case_Details item in ViewBag.ACD_data)
+                                                @foreach (Account_Case_Details item in ViewBag.OtherLinkData)
                                                 {
                                                     <div class="form-group col-sm-8">
                                                         <label for="txt_Note" class="text-info">NOTE</label>
@@ -229,56 +231,6 @@
                                                     </div>
                                                 }
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div id="id_openTask" class="panel-body ">
-                                        <div style="border:3px solid #fcbf49; background-color:#fcbf49">
-
-                                            <h4>
-                                                <span style=" font-size:large">
-                                                    OPEN TASKS <button class="btn glyphicon glyphicon-forward" id="btn_openTask" OnClick="myFunction('id_OpenTask_Detials');return false;"></button>
-                                                </span>
-                                            </h4>
-
-                                        </div>
-                                        <hr />
-                                        <div id="id_OpenTask_Detials" style="display:block;">
-
-                                            <div class="panel panel-default">
-                                                @foreach (Account_Case_Details item in ViewBag.ACD_data)
-                                                {
-                                                    @Html.ActionLink("CREATE", "CreateNewTask_Details", new { id = item.ACD_HspAccID, case_ID = item.ACD_ID, task_ID = 0 }, new { @class = "btn btn-danger glyphicon glyphicon-plus-sign", @style = "float:left;" })
-                                                }
-                                                <div>
-                                                    @Html.Grid(Model).Columns(columns =>
-                                               {
-                                                   columns.Add(m => m.ACT_ID).Titled(" ID ").Sortable(true).SortInitialDirection(GridMvc.Sorting.GridSortDirection.Ascending).Filterable(true);
-                                                   columns.Add(m => m.ACT_DueDate).Titled("DUE DATE").Format("{0:dd MMM yyyy}").Sortable(true).Filterable(true);
-                                                   columns.Add(m => m.ACT_Priority).Titled("PRIORITY").Sortable(true).Filterable(true);
-                                                   columns.Add(m => m.ACT_Description).Titled("DESCRIPTION").Sortable(true).Filterable(true);
-                                                   columns.Add(m => m.ACT_Owner).Titled("OWNER").Sortable(true).Filterable(true);
-                                                   columns.Add(m => m.ACT_Comment).Titled("COMMENT").Sortable(true).Filterable(true);
-                                                   columns.Add().Titled("COMPLETED")
-                                                   .Encoded(false)
-                                                   .Sanitized(false).SetWidth(30)
-                                                   .RenderValueAs(o => Html.CheckBox("Selected", o.ACT_Completed, new { disabled = "disabled" }));
-                                                   columns.Add().Titled("EDIT")
-                                                   .Sanitized(false)
-                                                   .Encoded(false)
-                                                   .RenderValueAs(m => Html.ActionLink(" ", "EditOpenTask_Details","Home", new { id = m.ACT_HspAccID, case_ID = m.ACT_ACD_ID, task_ID = m.ACT_ID }, new { @class = ".modal-link btn-sm glyphicon glyphicon-pencil" }));
-                                                   columns.Add().Titled("DELETE")
-                                                   .Sanitized(false)
-                                                   .Encoded(false)
-                                                   .RenderValueAs(m => Html.ActionLink(" ", "DeleteOpenTask", new { id = m.ACT_HspAccID, case_ID = m.ACT_ACD_ID, task_ID = m.ACT_ID }, new { @class = " btn-sm glyphicon glyphicon-trash" }));
-
-                                               }).WithPaging(3).Sortable(true)
-                                                </div>
-
-
-                                            </div>
-
-
                                         </div>
                                     </div>
 
@@ -353,7 +305,7 @@
                                                                 <input class="form-control" type="text" id="Txt_SSN" readonly />
                                                             </div>
                                                         }
-                                                        @foreach (Account_Case_Details item in ViewBag.ACD_data)
+                                                        @foreach (Account_Case_Details item in ViewBag.OtherLinkData)
                                                         {
                                                             <div class="form-group col-sm-4">
                                                                 <label for="DDL_PrinDiagOthers" class="text-info">PRIM DIAG/OTHERS</label>

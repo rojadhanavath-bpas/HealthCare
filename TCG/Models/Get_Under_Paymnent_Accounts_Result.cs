@@ -18,7 +18,7 @@ namespace HealthcareAnalytics.Models
         public string Acct_Class { get; set; }
         public string Acct_Status { get; set; }
         public string Account_Name { get; set; }
-        public DateTime? Disch_Date { get; set; }
+        public Nullable<System.DateTime> Disch_Date { get; set; }
         public Nullable<double> Acct_Bal { get; set; }
         public string Message { get; set; }
         public Nullable<double> Diagnosis_Codes { get; set; }
@@ -27,6 +27,5 @@ namespace HealthcareAnalytics.Models
         public Nullable<double> Allowed_Amount_Difference { get; set; }
         public string Expected_Allowed_Amount { get; set; }
         public Nullable<double> Allowed_Amount_Difference_Payor_Specified { get; set; }
-        public string DischargeDate { get; set; }
     }
 }

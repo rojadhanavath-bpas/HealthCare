@@ -96,15 +96,15 @@
                                             <th>
                                                 @Html.ActionLink("Account ID", "UserAcc_List", new { sortOrder = ViewBag.sort_AccountID })
                                             </th>
-                                            <th>@Html.ActionLink("Admission Date", "  ")</th>
+                                            <th>@Html.ActionLink("Admission Date", "UserAcc_List")</th>
                                             <th>@Html.ActionLink("Patient Name", "UserAcc_List ", new { sortOrder = ViewBag.sort_PatientName })</th>
-                                            <th>@Html.ActionLink("Current Financial Class", "  ")</th>
+                                            <th>@Html.ActionLink("Current Financial Class", "UserAcc_List")</th>
                                             <th>@Html.ActionLink("Payor Name", "UserAcc_List", new { sortOrder = ViewBag.sort_PayorName })</th>
-                                            <th>@Html.ActionLink("Account Balance", "  ")</th>
-                                            <th>@Html.ActionLink("Admitting Provider", "  ")</th>
-                                            <th>@Html.ActionLink("Encounter Type", "  ")</th>
-                                            <th>@Html.ActionLink("Service Area", "  ")</th>
-                                            <th>@Html.ActionLink("# of cases", "  ")</th>
+                                            <th>@Html.ActionLink("Account Balance", "UserAcc_List")</th>
+                                            <th>@Html.ActionLink("Admitting Provider", "UserAcc_List")</th>
+                                            <th>@Html.ActionLink("Encounter Type", "UserAcc_List")</th>
+                                            <th>@Html.ActionLink("Service Area", "UserAcc_List")</th>
+                                            <th>@Html.ActionLink("# of cases", "UserAcc_List")</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -112,7 +112,7 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "prioirty_CaseList", "Home", new { id = item.Hospital_Account_ID }, null)
+                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "New_CaseDetails", "WorkDriver", new { id = item.Hospital_Account_ID, linkName = "Other" }, null)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.New_DischargeDate)
@@ -148,7 +148,7 @@
                                     <div class=" center-block align-self-md-center paging-wrapper">
                                         <span class="text-primary center-block align-self-md-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</span>
 
-                                        @Html.PagedListPager(Model, page => Url.Action("priority",
+                                        @Html.PagedListPager(Model, page => Url.Action("UserAcc_List",
                          new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                                     </div>
                                 </div>

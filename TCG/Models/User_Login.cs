@@ -11,28 +11,13 @@ namespace HealthcareAnalytics.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class User_Login
     {
         public System.Guid user_Id { get; set; }
-
-       
         public string user_first_name { get; set; }
-
-       
         public string user_last_name { get; set; }
-
-        [Display(Name = "User Name")]
-        [Required(ErrorMessage = "User Name is required")]
-        [DataType(DataType.Text)]
         public string user_web_login { get; set; }
-
-
-
-        [Display(Name = "Password")]
-        [Required(ErrorMessage = "Password is required")]
-        [DataType(DataType.Password)]
         public string user_web_pwd { get; set; }
     }
 }

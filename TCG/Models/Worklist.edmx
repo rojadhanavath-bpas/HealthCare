@@ -173,6 +173,30 @@
           <Property Name="TM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TM_Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TCG_Data.dbo.Underpayment_Reason' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Underpayment_Reason">
+          <Property Name="Reason_Code" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Underpayments">
+          <Property Name="Deferral Due" Type="nvarchar" MaxLength="255" />
+          <Property Name="Account" Type="float" />
+          <Property Name="Acct Class" Type="nvarchar" MaxLength="255" />
+          <Property Name="Acct Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="Account Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Disch Date" Type="datetime" />
+          <Property Name="Acct Bal" Type="float" />
+          <Property Name="Message" Type="nvarchar" MaxLength="255" />
+          <Property Name="Diagnosis Codes (Mapped : CMS ICD-10-CM &gt; ICD-9-CM)" Type="float" />
+          <Property Name="Plan Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Payor Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Allowed Amount Difference (Current NAA Posted To Bucket)" Type="float" />
+          <Property Name="Expected Allowed Amount" Type="nvarchar" MaxLength="255" />
+          <Property Name="Allowed Amount Difference (Payor-Specified)" Type="float" />
+        </EntityType>-->
         <Association Name="FK__Account_C__ACDH___40F9A68C">
           <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
           <End Role="Account_Case_Detials_History" Type="Self.Account_Case_Detials_History" Multiplicity="*" />
