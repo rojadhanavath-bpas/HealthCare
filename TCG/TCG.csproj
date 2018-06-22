@@ -243,6 +243,9 @@
     <Compile Include="Models\DenialCat_Master.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DenialStatus_Master.cs">
+      <DependentUpon>Worklist.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Denials_Data.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
@@ -728,8 +731,6 @@
     <Content Include="Views\WorkDriver\Underpayemnts_UserAcc_List.cshtml" />
     <Content Include="Views\WorkDriver\editUnderPayCaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\viewUnderPayCaseDetails.cshtml" />
-    <Content Include="Views\WorkDriver\editDenialCaseDetails.cshtml" />
-    <Content Include="Views\WorkDriver\viewDenialCaseDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -789,3 +789,36 @@ DEBUG 2018-06-21 21:31:52,642 73182ms HomeController         GetTableauToken    
 DEBUG 2018-06-21 21:31:53,719 74259ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
 DEBUG 2018-06-21 21:36:54,661 375201ms HomeController         GetTableauToken    - Retrieving Tableau token 
 DEBUG 2018-06-21 21:36:55,059 375599ms HomeController         Worklist           - [User:Nirmal]  Loading Debit AR  Page..
+DEBUG 2018-06-22 07:08:31,804 91443ms HomeController         Login              - password
+DEBUG 2018-06-22 07:08:31,845 91484ms HomeController         Login              - password
+DEBUG 2018-06-22 07:08:31,846 91485ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-22 07:08:32,261 91900ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-22 07:08:33,390 93029ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-22 09:02:02,759 35889ms HomeController         Login              - password
+DEBUG 2018-06-22 09:02:02,845 35974ms HomeController         Login              - password
+DEBUG 2018-06-22 09:02:02,848 35977ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-22 09:02:03,297 36426ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-22 09:02:04,386 37515ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-22 09:27:53,241 217657ms HomeController         Login              - password
+DEBUG 2018-06-22 09:27:53,296 217712ms HomeController         Login              - password
+DEBUG 2018-06-22 09:27:53,298 217714ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-22 09:27:53,775 218192ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-22 09:27:54,855 219272ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-22 09:32:13,232 36248ms HomeController         Login              - password
+DEBUG 2018-06-22 09:32:13,310 36327ms HomeController         Login              - password
+DEBUG 2018-06-22 09:32:13,312 36329ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-22 09:32:13,802 36819ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-22 09:32:14,879 37895ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-22 09:39:39,612 84563ms HomeController         Login              - password
+DEBUG 2018-06-22 09:39:39,667 84617ms HomeController         Login              - password
+DEBUG 2018-06-22 09:39:39,669 84619ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-22 09:39:40,158 85109ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-22 09:39:41,268 86219ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-22 09:48:25,333 35976ms HomeController         Login              - password
+DEBUG 2018-06-22 09:48:25,333 35976ms HomeController         Login              - password
+DEBUG 2018-06-22 09:48:25,385 36028ms HomeController         Login              - password
+DEBUG 2018-06-22 09:48:25,386 36029ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-22 09:48:25,383 36026ms HomeController         Login              - password
+DEBUG 2018-06-22 09:48:25,396 36039ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-22 09:48:25,877 36519ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-22 09:48:26,910 37553ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..

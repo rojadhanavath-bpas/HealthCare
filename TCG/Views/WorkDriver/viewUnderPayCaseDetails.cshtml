@@ -114,7 +114,7 @@
                         <div class="form-group col-sm-2 " style="border:3px solid #034EA1 ; background-color:#034EA1; color:#d9edf7;">
                             <h4>
                                 <span>
-                                    @Html.ActionLink("EDIT", "EditUnderPayCaseDetails", new { id = Model.ACD_HspAccID }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+                                    @Html.ActionLink("EDIT", "EditUnderPayCaseDetails", new { id = Model.ACD_HspAccID , linkName = "underPay"}, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
 
                                 </span>
                             </h4>
@@ -127,7 +127,7 @@
                                 <li class="active"><a data-toggle="tab" class="nav_link" data_id="1" href="#id_cases_main">CASES</a></li>
                                 @*<li class="nav-item"><a data-toggle="tab" class="nav_link" data_id="2" href="#id_openTask">OPEN TASK</a></li>
                                     <li class="nav-item"><a data-toggle="tab" class="nav_link" data_id="3" href="#id_account">ACCOUNT</a></li>*@
-                                <li class="nav-item"><a data-toggle="tab" class="nav_link" data_id="3" href="#id_insuranceBuckets">INSURANCE BUCKETS</a></li>
+                                @*<li class="nav-item"><a data-toggle="tab" class="nav_link" data_id="3" href="#id_insuranceBuckets">INSURANCE BUCKETS</a></li>*@
                                 <li class="nav-item"><a data-toggle="tab" class="nav_link" data_id="3" href="#id_caseHistory">CASE HISTORY</a></li>
                                 <li class="nav-item"><a data-toggle="tab" class="nav_link" data_id="3" href="#id_Contacts">CONTACTS</a></li>
                             </ul>
@@ -194,8 +194,18 @@
 
                                                 </div>
                                                 <div class="form-group col-sm-4">
-                                                    <label for="DDL_PayerReason" class="text-info">ROOT CAUSE</label>
-                                                    @Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.RC, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                    @if (Model.link == 1)
+                                                    {
+                                                        <label for="DDL_PayerReason" class="text-info">ROOT CAUSE</label>
+                                                        @Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.RC, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                        @Html.HiddenFor(m => m.link)
+                                                    }
+                                                    @if (Model.link == 2)
+                                                    {
+                                                        <label for="DDL_PayerReason" class="text-info">PAYER DENIAL</label>
+                                                        @Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.RC, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                        @Html.HiddenFor(m => m.link)
+                                                    }
                                                 </div>
 
                                             </div>
@@ -214,8 +224,16 @@
                                                 </div>
 
                                                 <div class="form-group col-sm-4">
-                                                    <label for="DDL_PrimaryReason" class="text-info">UNDERPAYMENT/PRIMARY REASON</label>
-                                                    @Html.DropDownListFor(m => m.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.UP, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                    @if (Model.link == 1)
+                                                    {
+                                                        <label for="DDL_PrimaryReason" class="text-info">UNDERPAYMENT/PRIMARY REASON</label>
+                                                        @Html.DropDownListFor(m => m.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.UP, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                    }
+                                                    @if (Model.link == 2)
+                                                    {
+                                                        <label for="DDL_PrimaryReason" class="text-info">PRIMARY REASON</label>
+                                                        @Html.DropDownListFor(m => m.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.DS, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                    }
                                                 </div>
 
                                             </div>
@@ -234,8 +252,16 @@
                                                 </div>
 
                                                 <div class="form-group col-sm-4">
-                                                    <label for="DDL_Type" class="text-info">ENCOUNTER TYPE</label>
-                                                    @Html.DropDownListFor(m => m.ACD_SecondaryReason, (IEnumerable<SelectListItem>)ViewBag.ECT, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                    @if(Model.link == 1)
+                                                    {
+                                                        <label for="DDL_Type" class="text-info">ENCOUNTER TYPE</label>
+                                                        @Html.DropDownListFor(m => m.ACD_SecondaryReason, (IEnumerable<SelectListItem>)ViewBag.ECT, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                    }
+                                                     @if(Model.link == 2)
+                                                    {
+                                                        <label for="DDL_Type" class="text-info">ACTUAL DENIAL REASON</label>
+                                                        @Html.DropDownListFor(m => m.ACD_SecondaryReason, (IEnumerable<SelectListItem>)ViewBag.DC, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                    }
 
                                                 </div>
 
@@ -560,7 +586,7 @@
                                 </div>
 
 
-                                <div id="id_insuranceBuckets" class="panel-body tab-pane fade">
+                                <div id="id_insuranceBuckets" class="panel-body tab-pane fade" style="display:none;">
                                     <div style="border:1px solid #ECF6F7; ; background-color:#ECF6F7; color:#034EA1;">
                                         <h4>
                                             <span style="color:#034EA1;" class="font-weight-bold large">INSURANCE BUCKETS <button class="small center-block text-center btn-sm  glyphicon glyphicon-forward" style="float:right;" id="btn_InsuranceBkt" OnClick="myFunction('id_InsuranceBuckets_detials');return false;"></button></span>

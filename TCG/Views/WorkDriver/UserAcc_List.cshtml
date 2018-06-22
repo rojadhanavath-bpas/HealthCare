@@ -106,7 +106,7 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "New_CaseDetails", "WorkDriver", new { id = item.Hospital_Account_ID }, null)
+                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "viewUnderPayCaseDetails", "WorkDriver", new { id = item.Hospital_Account_ID, linkName ="Other" }, new { })
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.New_DischargeDate)

@@ -144,6 +144,16 @@ warning 6002: The table/view 'TCG_Data.dbo.DenialCat_Master' does not have a pri
           <Property Name="DC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DC_Name" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TCG_Data.dbo.DenialStatus_Master' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DenialStatus_Master">
+          <Key>
+            <PropertyRef Name="DS_ID" />
+            <PropertyRef Name="DS_Name" />
+          </Key>
+          <Property Name="DS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DS_Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="Encounter_Type">
           <Key>
             <PropertyRef Name="EncType_ID" />
@@ -332,6 +342,12 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
     [DenialCat_Master].[DC_ID] AS [DC_ID], 
     [DenialCat_Master].[DC_Name] AS [DC_Name]
     FROM [dbo].[DenialCat_Master] AS [DenialCat_Master]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DenialStatus_Master" EntityType="Self.DenialStatus_Master" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DenialStatus_Master].[DS_ID] AS [DS_ID], 
+    [DenialStatus_Master].[DS_Name] AS [DS_Name]
+    FROM [dbo].[DenialStatus_Master] AS [DenialStatus_Master]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="RootCause_Master" EntityType="Self.RootCause_Master" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -580,6 +596,7 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
           <EntitySet Name="RootCause_Master" EntityType="TCG_Data_Worklist.RootCause_Master" />
           <EntitySet Name="Underpayment_Reason" EntityType="TCG_Data_Worklist.Underpayment_Reason" />
           <EntitySet Name="CaseCompleted_Master" EntityType="TCG_Data_Worklist.CaseCompleted_Master" />
+          <EntitySet Name="DenialStatus_Master" EntityType="TCG_Data_Worklist.DenialStatus_Master" />
         </EntityContainer>
         <EntityType Name="Priority_Master">
           <Key>
@@ -713,6 +730,14 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
           </Key>
           <Property Name="CC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CC_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DenialStatus_Master">
+          <Key>
+            <PropertyRef Name="DS_ID" />
+            <PropertyRef Name="DS_Name" />
+          </Key>
+          <Property Name="DS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DS_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -953,6 +978,14 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
               <MappingFragment StoreEntitySet="CaseCompleted_Master">
                 <ScalarProperty Name="CC_Name" ColumnName="CC_Name" />
                 <ScalarProperty Name="CC_ID" ColumnName="CC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DenialStatus_Master">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.DenialStatus_Master">
+              <MappingFragment StoreEntitySet="DenialStatus_Master">
+                <ScalarProperty Name="DS_Name" ColumnName="DS_Name" />
+                <ScalarProperty Name="DS_ID" ColumnName="DS_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

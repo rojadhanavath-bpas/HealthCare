@@ -94,7 +94,7 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Account)).ToString(), "viewUnderPayCaseDetails", "WorkDriver", new { id = item.Account }, null)
+                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Account)).ToString(), "viewUnderPayCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.DischargeDate)

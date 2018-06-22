@@ -27,6 +27,7 @@
         <EntityTypeShape EntityType="TCG_Data_Worklist.RootCause_Master" Width="1.5" PointX="8.875" PointY="12.5" />
         <EntityTypeShape EntityType="TCG_Data_Worklist.Underpayment_Reason" Width="1.5" PointX="12.375" PointY="0.75" />
         <EntityTypeShape EntityType="TCG_Data_Worklist.CaseCompleted_Master" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="TCG_Data_Worklist.DenialStatus_Master" Width="1.5" PointX="12.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
