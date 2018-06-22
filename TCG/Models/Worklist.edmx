@@ -124,6 +124,26 @@
           <Property Name="AccSrc_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AccSrc_Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TCG_Data.dbo.CaseCompleted_Master' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CaseCompleted_Master">
+          <Key>
+            <PropertyRef Name="CC_ID" />
+            <PropertyRef Name="CC_Name" />
+          </Key>
+          <Property Name="CC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CC_Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TCG_Data.dbo.DenialCat_Master' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DenialCat_Master">
+          <Key>
+            <PropertyRef Name="DC_ID" />
+            <PropertyRef Name="DC_Name" />
+          </Key>
+          <Property Name="DC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DC_Name" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
         <EntityType Name="Encounter_Type">
           <Key>
             <PropertyRef Name="EncType_ID" />
@@ -159,6 +179,16 @@
           <Property Name="PM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PM_Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RootCause_Master">
+          <Key>
+            <PropertyRef Name="RC_ID" />
+            <PropertyRef Name="RC_Name" />
+          </Key>
+          <Property Name="RC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RC_Name" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
         <EntityType Name="Status_Master">
           <Key>
             <PropertyRef Name="SM_ID" />
@@ -173,30 +203,13 @@
           <Property Name="TM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TM_Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TCG_Data.dbo.Underpayment_Reason' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Underpayment_Reason">
-          <Property Name="Reason_Code" Type="int" />
+          <Key>
+            <PropertyRef Name="Reason_Code" />
+          </Key>
+          <Property Name="Reason_Code" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Underpayments">
-          <Property Name="Deferral Due" Type="nvarchar" MaxLength="255" />
-          <Property Name="Account" Type="float" />
-          <Property Name="Acct Class" Type="nvarchar" MaxLength="255" />
-          <Property Name="Acct Status" Type="nvarchar" MaxLength="255" />
-          <Property Name="Account Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Disch Date" Type="datetime" />
-          <Property Name="Acct Bal" Type="float" />
-          <Property Name="Message" Type="nvarchar" MaxLength="255" />
-          <Property Name="Diagnosis Codes (Mapped : CMS ICD-10-CM &gt; ICD-9-CM)" Type="float" />
-          <Property Name="Plan Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Payor Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Allowed Amount Difference (Current NAA Posted To Bucket)" Type="float" />
-          <Property Name="Expected Allowed Amount" Type="nvarchar" MaxLength="255" />
-          <Property Name="Allowed Amount Difference (Payor-Specified)" Type="float" />
-        </EntityType>-->
+        </EntityType>
         <Association Name="FK__Account_C__ACDH___40F9A68C">
           <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
           <End Role="Account_Case_Detials_History" Type="Self.Account_Case_Detials_History" Multiplicity="*" />
@@ -307,6 +320,25 @@ warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primar
           <EntitySet Name="Priority_Master" EntityType="Self.Priority_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status_Master" EntityType="Self.Status_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task_Master" EntityType="Self.Task_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Underpayment_Reason" EntityType="Self.Underpayment_Reason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaseCompleted_Master" EntityType="Self.CaseCompleted_Master" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CaseCompleted_Master].[CC_ID] AS [CC_ID], 
+    [CaseCompleted_Master].[CC_Name] AS [CC_Name]
+    FROM [dbo].[CaseCompleted_Master] AS [CaseCompleted_Master]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DenialCat_Master" EntityType="Self.DenialCat_Master" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DenialCat_Master].[DC_ID] AS [DC_ID], 
+    [DenialCat_Master].[DC_Name] AS [DC_Name]
+    FROM [dbo].[DenialCat_Master] AS [DenialCat_Master]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RootCause_Master" EntityType="Self.RootCause_Master" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RootCause_Master].[RC_ID] AS [RC_ID], 
+    [RootCause_Master].[RC_Name] AS [RC_Name]
+    FROM [dbo].[RootCause_Master] AS [RootCause_Master]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Account_C__ACDH___40F9A68C" Association="Self.FK__Account_C__ACDH___40F9A68C">
             <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
             <End Role="Account_Case_Detials_History" EntitySet="Account_Case_Detials_History" />
@@ -544,6 +576,10 @@ warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primar
             <End Role="Account_Case_Task_History" EntitySet="Account_Case_Task_History" />
           </AssociationSet>
           <FunctionImport Name="Get_Under_Paymnent_Accounts" ReturnType="Collection(TCG_Data_Worklist.Get_Under_Paymnent_Accounts_Result)" />
+          <EntitySet Name="DenialCat_Master" EntityType="TCG_Data_Worklist.DenialCat_Master" />
+          <EntitySet Name="RootCause_Master" EntityType="TCG_Data_Worklist.RootCause_Master" />
+          <EntitySet Name="Underpayment_Reason" EntityType="TCG_Data_Worklist.Underpayment_Reason" />
+          <EntitySet Name="CaseCompleted_Master" EntityType="TCG_Data_Worklist.CaseCompleted_Master" />
         </EntityContainer>
         <EntityType Name="Priority_Master">
           <Key>
@@ -647,6 +683,37 @@ warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primar
           <Property Type="String" Name="Expected_Allowed_Amount" Nullable="true" MaxLength="255" />
           <Property Type="Double" Name="Allowed_Amount_Difference_Payor_Specified" Nullable="true" />
         </ComplexType>
+        <EntityType Name="DenialCat_Master">
+          <Key>
+            <PropertyRef Name="DC_ID" />
+            <PropertyRef Name="DC_Name" />
+          </Key>
+          <Property Name="DC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DC_Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RootCause_Master">
+          <Key>
+            <PropertyRef Name="RC_ID" />
+            <PropertyRef Name="RC_Name" />
+          </Key>
+          <Property Name="RC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RC_Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Underpayment_Reason">
+          <Key>
+            <PropertyRef Name="Reason_Code" />
+          </Key>
+          <Property Name="Reason_Code" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CaseCompleted_Master">
+          <Key>
+            <PropertyRef Name="CC_ID" />
+            <PropertyRef Name="CC_Name" />
+          </Key>
+          <Property Name="CC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CC_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -857,6 +924,38 @@ warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primar
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="DenialCat_Master">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.DenialCat_Master">
+              <MappingFragment StoreEntitySet="DenialCat_Master">
+                <ScalarProperty Name="DC_Name" ColumnName="DC_Name" />
+                <ScalarProperty Name="DC_ID" ColumnName="DC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RootCause_Master">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.RootCause_Master">
+              <MappingFragment StoreEntitySet="RootCause_Master">
+                <ScalarProperty Name="RC_Name" ColumnName="RC_Name" />
+                <ScalarProperty Name="RC_ID" ColumnName="RC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Underpayment_Reason">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Underpayment_Reason">
+              <MappingFragment StoreEntitySet="Underpayment_Reason">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Reason_Code" ColumnName="Reason_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseCompleted_Master">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.CaseCompleted_Master">
+              <MappingFragment StoreEntitySet="CaseCompleted_Master">
+                <ScalarProperty Name="CC_Name" ColumnName="CC_Name" />
+                <ScalarProperty Name="CC_ID" ColumnName="CC_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -871,8 +970,8 @@ warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primar
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

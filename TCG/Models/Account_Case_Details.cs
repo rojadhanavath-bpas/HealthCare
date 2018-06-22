@@ -47,7 +47,11 @@ namespace HealthcareAnalytics.Models
         public Nullable<System.DateTime> ACD_DueDate { get; set; }
         public Nullable<System.DateTime> ACD_FollowUpDate { get; set; }
         public Nullable<bool> ACD_DeleteFlag { get; set; }
-    
+
+        public string dateConvert { get; set; }
+        public string dateFollowUp { get; set; }
+        public double convertAmount { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account_Case_Detials_History> Account_Case_Detials_History { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

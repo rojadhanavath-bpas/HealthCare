@@ -79,7 +79,7 @@
 <body>
 
 
-    @using (Html.BeginForm("EditUnderPayCaseDetails", "WorkDriver", FormMethod.Post))
+    @using (Html.BeginForm("EditUnderPayCaseDetails", "WorkDriver", FormMethod.Get))
     {
         @Html.AntiForgeryToken()
         <form>
@@ -103,18 +103,19 @@
                                 @Html.HiddenFor(m => m.ACD_ID)
                             </h4>
                         </div>
-                        <div class="form-group col-sm-4 " style="border:3px solid #034EA1; background-color:#034EA1; color:#d9edf7;">
+                        <div class="form-group col-sm-2 " style="border:3px solid #034EA1; background-color:#034EA1; color:#d9edf7;">
                             <h4>
                                 <span>
-                                    @Html.ActionLink("BACK", "Underpayemnts_UserAcc_List", new {  }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+                                    @Html.ActionLink("BACK", "Underpayemnts_UserAcc_List", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
 
-                                    @*</span>
-                                </h4>
-                            </div>
-                            <div class="form-group col-sm-2 " style="border:3px solid #034EA1 ; background-color:#034EA1; color:#d9edf7;">
-                                <h4>
-                                    <span>
-                                        @Html.ActionLink("BACK", "Underpayemnts_UserAcc_List", new { id = Model.ACD_HspAccID }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })*@
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="form-group col-sm-2 " style="border:3px solid #034EA1 ; background-color:#034EA1; color:#d9edf7;">
+                            <h4>
+                                <span>
+                                    @Html.ActionLink("EDIT", "EditUnderPayCaseDetails", new { id = Model.ACD_HspAccID }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+
                                 </span>
                             </h4>
                         </div>
@@ -155,12 +156,12 @@
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_Status" class="text-info">STATUS</label>
-                                                    @Html.DropDownListFor(m => m.ACD_Status, (IEnumerable<SelectListItem>)ViewBag.SM, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_Status, (IEnumerable<SelectListItem>)ViewBag.SM, new { @class = "form-control dropdown", @disabled ="disabled" })
                                                 </div>
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_Owner" class="text-info">OWNER</label>
-                                                    @Html.DropDownListFor(m => m.ACD_Owner, (IEnumerable<SelectListItem>)ViewBag.UL, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_Owner, (IEnumerable<SelectListItem>)ViewBag.UL, new { @class = "form-control dropdown", @disabled = "disabled" })
                                                 </div>
 
                                                 @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
@@ -189,12 +190,12 @@
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_Type" class="text-info">ACCOUNT BILL STATUS</label>
-                                                    @Html.DropDownListFor(m => m.ACD_Type, (IEnumerable<SelectListItem>)ViewBag.ABS, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_Type, (IEnumerable<SelectListItem>)ViewBag.ABS, new { @class = "form-control dropdown", @disabled = "disabled" })
 
                                                 </div>
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_PayerReason" class="text-info">ROOT CAUSE</label>
-                                                    @Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.RC, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.RC, new { @class = "form-control dropdown", @disabled = "disabled" })
                                                 </div>
 
                                             </div>
@@ -204,17 +205,17 @@
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="txt_Amount" class="text-info">AMOUNT</label>
-                                                    @Html.TextBoxFor(m => m.ACD_Amount, new { @Value = Model.convertAmount, @class = "form-control " })
+                                                    @Html.TextBoxFor(m => m.ACD_Amount, new { @Value = Model.convertAmount, @class = "form-control ", @readonly = "readonly" })
                                                 </div>
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_SubType" class="text-info">ACCOUNT CLASS</label>
-                                                    @Html.DropDownListFor(m => m.ACD_SubType, (IEnumerable<SelectListItem>)ViewBag.AS, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_SubType, (IEnumerable<SelectListItem>)ViewBag.AS, new { @class = "form-control dropdown", @disabled = "disabled" })
                                                 </div>
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_PrimaryReason" class="text-info">UNDERPAYMENT/PRIMARY REASON</label>
-                                                    @Html.DropDownListFor(m => m.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.UP, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.UP, new { @class = "form-control dropdown", @disabled = "disabled" })
                                                 </div>
 
                                             </div>
@@ -224,17 +225,17 @@
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_PrinDiagOthers" class="text-info">PRIM DIAG/OTHERS</label>
-                                                    @Html.DropDownListFor(m => m.ACD_PrinDiag, (IEnumerable<SelectListItem>)ViewBag.PRM, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_PrinDiag, (IEnumerable<SelectListItem>)ViewBag.PRM, new { @class = "form-control dropdown", @disabled = "disabled" })
                                                 </div>
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_PrinProcOthers" class="text-info">PRIM PROC/OTHERS</label>
-                                                    @Html.DropDownListFor(m => m.ACD_PrinProc, (IEnumerable<SelectListItem>)ViewBag.PRM, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_PrinProc, (IEnumerable<SelectListItem>)ViewBag.PRM, new { @class = "form-control dropdown", @disabled = "disabled" })
                                                 </div>
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_Type" class="text-info">ENCOUNTER TYPE</label>
-                                                    @Html.DropDownListFor(m => m.ACD_SecondaryReason, (IEnumerable<SelectListItem>)ViewBag.ECT, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_SecondaryReason, (IEnumerable<SelectListItem>)ViewBag.ECT, new { @class = "form-control dropdown", @disabled = "disabled" })
 
                                                 </div>
 
@@ -243,15 +244,15 @@
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_Type" class="text-info">PRIORITY</label>
-                                                    @Html.DropDownListFor(m => m.ACD_Priority, (IEnumerable<SelectListItem>)ViewBag.PM, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_Priority, (IEnumerable<SelectListItem>)ViewBag.PM, new { @class = "form-control dropdown", @disabled = "disabled" })
                                                 </div>
                                                 <div class="form-group col-sm-4">
                                                     <label for="dt_Date" class="text-info">FOLLOW-UP DATE</label>
-                                                    @Html.TextBoxFor(m => m.ACD_FollowUpDate, new { @Value = Model.dateFollowUp.ToString(), @class = "form-control" })
+                                                    @Html.TextBoxFor(m => m.ACD_FollowUpDate, new { @Value = Model.dateFollowUp.ToString(), @class = "form-control", @readonly = "readonly" })
                                                 </div>
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_Type" class="text-info">TASK DESCRIPTION</label>
-                                                    @Html.DropDownListFor(m => m.ACD_TaskFollowUp, (IEnumerable<SelectListItem>)ViewBag.TM, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_TaskFollowUp, (IEnumerable<SelectListItem>)ViewBag.TM, new { @class = "form-control dropdown", @disabled = "disabled" })
                                                 </div>
 
                                             </div>
@@ -260,12 +261,12 @@
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_Type" class="text-info">COMPLETED</label>
-                                                    @Html.DropDownListFor(m => m.ACD_Completed, (IEnumerable<SelectListItem>)ViewBag.CC, new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(m => m.ACD_Completed, (IEnumerable<SelectListItem>)ViewBag.CC, new { @class = "form-control dropdown", @disabled = "disabled" })
 
                                                 </div>
                                                 <div class="form-group col-sm-8">
                                                     <label for="txt_Note" class="text-info">ACCOUNT NOTES</label>
-                                                    @Html.TextAreaFor(m => m.ACD_Comments, new { @class = "form-control ", @style = "width:250px;" })
+                                                    @Html.TextAreaFor(m => m.ACD_Comments, new { @class = "form-control ", @style = "width:250px;", @readonly = "readonly" })
                                                 </div>
 
 
@@ -653,14 +654,7 @@
                                     </div>
                                 </div>
 
-                                <div class="modal-footer">
-                                    <div class="col-sm-1" style="float:right;">
-                                        @Html.ActionLink("BACK", "Underpayemnts_UserAcc_List", "WorkDriver", new { }, new { @class = "btn btn-primary" })
-                                    </div>
-                                    <div class="col-sm-1" style="float:right;">
-                                        <button type="submit" class="btn btn-danger" id="btnSave">Save</button>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
