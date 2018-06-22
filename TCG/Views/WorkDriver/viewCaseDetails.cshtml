@@ -79,7 +79,7 @@
 <body>
 
 
-    @using (Html.BeginForm("EditUnderPayCaseDetails", "WorkDriver", FormMethod.Get))
+    @using (Html.BeginForm("editCaseDetails", "WorkDriver", FormMethod.Get))
     {
         @Html.AntiForgeryToken()
         <form>
@@ -106,15 +106,28 @@
                         <div class="form-group col-sm-2 " style="border:3px solid #034EA1; background-color:#034EA1; color:#d9edf7;">
                             <h4>
                                 <span>
-                                    @Html.ActionLink("BACK", "Underpayemnts_UserAcc_List", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
-
-                                </span>
+                                    @if (Model.link == 1)
+                                    {
+                                        @Html.ActionLink("BACK", "Underpayemnts_UserAcc_List", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+                                    }
+                                    @if (Model.link == 2)
+                                    {
+                                        @Html.ActionLink("BACK", "UserAcc_List", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+                                    }
+                                    </span>
                             </h4>
                         </div>
                         <div class="form-group col-sm-2 " style="border:3px solid #034EA1 ; background-color:#034EA1; color:#d9edf7;">
                             <h4>
                                 <span>
-                                    @Html.ActionLink("EDIT", "EditUnderPayCaseDetails", new { id = Model.ACD_HspAccID , linkName = "underPay"}, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+                                    @if (Model.link == 1)
+                                    {
+                                        @Html.ActionLink("EDIT", "editCaseDetails", new { id = Model.ACD_HspAccID, linkName = "underPay" }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+                                    }
+                                    @if (Model.link == 2)
+                                    {
+                                        @Html.ActionLink("EDIT", "editCaseDetails", new { id = Model.ACD_HspAccID, linkName = "Other" }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+                                    }
 
                                 </span>
                             </h4>

@@ -729,8 +729,8 @@
     <Content Include="Views\WorkDriver\worklist_Home.cshtml" />
     <Content Include="Views\WorkDriver\UserAcc_List.cshtml" />
     <Content Include="Views\WorkDriver\Underpayemnts_UserAcc_List.cshtml" />
-    <Content Include="Views\WorkDriver\editUnderPayCaseDetails.cshtml" />
-    <Content Include="Views\WorkDriver\viewUnderPayCaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\editCaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\viewCaseDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
