@@ -332,7 +332,7 @@ namespace HealthcareAnalytics.Controllers
             if (ModelState.IsValid)
             {
                 var details = (from logindetails in db2.User_Login 
-                               where logindetails.user_web_login == Role.user_web_login && logindetails.user_web_pwd == Role.user_web_pwd
+                               where logindetails.user_web_login == Role.user_web_login && logindetails.user_web_pwd.ToUpper() == Role.user_web_pwd
                                //&& logindetails.user_password == Role.user_password
                                select new
                                {

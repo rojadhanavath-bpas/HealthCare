@@ -173,6 +173,12 @@
           <Property Name="TM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TM_Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TCG_Data.dbo.Underpayment_Reason' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Underpayment_Reason">
+          <Property Name="Reason_Code" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
         <Association Name="FK__Account_C__ACDH___40F9A68C">
           <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
           <End Role="Account_Case_Detials_History" Type="Self.Account_Case_Detials_History" Multiplicity="*" />
@@ -848,7 +854,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

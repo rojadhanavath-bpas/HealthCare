@@ -32,6 +32,7 @@ namespace HealthcareAnalytics.Models
 
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Password is required")]
+        
         [DataType(DataType.Password)]
         public string user_web_pwd { get; set; }
     }

@@ -251,7 +251,7 @@
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Get_Under_Paymnent_Accounts_Result.cs">
-      <DependentUpon>tcgDatabase.tt</DependentUpon>
+      <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Insurance_Company_Name.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
