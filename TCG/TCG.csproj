@@ -237,6 +237,15 @@
     <Compile Include="Models\Account_Source.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CaseCompleted_Master.cs">
+      <DependentUpon>Worklist.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DenialCat_Master.cs">
+      <DependentUpon>Worklist.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DenialStatus_Master.cs">
+      <DependentUpon>Worklist.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Denials_Data.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
@@ -285,6 +294,9 @@
     <Compile Include="Models\Role.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RootCause_Master.cs">
+      <DependentUpon>Worklist.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Status_Master.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
@@ -305,6 +317,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>tcgDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Underpayment_Reason.cs">
+      <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users_Data.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
@@ -537,13 +552,10 @@
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
     <Content Include="Scripts\gridmvc.min.js" />
-    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
-    <Content Include="Scripts\jquery-3.0.0.js" />
-    <Content Include="Scripts\jquery-3.0.0.min.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <None Include="Scripts\jquery-2.2.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.4.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.js" />
+    <Content Include="Scripts\jquery-2.2.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.tablesorter.min.js" />
     <Content Include="Scripts\jquery.tablesorter.pager.js" />
@@ -713,11 +725,12 @@
     <Content Include="Views\Home\DeleteOpenTask.cshtml" />
     <Content Include="Views\Home\Edit_CaseList.cshtml" />
     <Content Include="Views\Home\_CaseDetails.cshtml" />
-    <Content Include="Views\WorkDriver\New_CaseDetails.cshtml" />
-    <Content Include="Views\WorkDriver\ViewClosed_CaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\TestPage_CaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\worklist_Home.cshtml" />
     <Content Include="Views\WorkDriver\UserAcc_List.cshtml" />
     <Content Include="Views\WorkDriver\Underpayemnts_UserAcc_List.cshtml" />
+    <Content Include="Views\WorkDriver\editCaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\viewCaseDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

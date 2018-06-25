@@ -27,5 +27,10 @@ namespace HealthcareAnalytics.Models
         public Nullable<double> Allowed_Amount_Difference { get; set; }
         public string Expected_Allowed_Amount { get; set; }
         public Nullable<double> Allowed_Amount_Difference_Payor_Specified { get; set; }
+
+        public string DischargeDate { get; set; }
+        public decimal convertAmount { get; set; }
+        public string convertBal { get; set; }
+        public string AccId { get; set; }
     }
 }
