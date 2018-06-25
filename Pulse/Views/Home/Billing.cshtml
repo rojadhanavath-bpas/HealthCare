@@ -227,6 +227,7 @@
 
         .container-fluid {
             padding-top: 0px;
+            padding-bottom: 50px;
         }
         /* CAUTION: IE hackery ahead */
         select::-ms-expand {
@@ -236,12 +237,12 @@
 </head>
 <body>
 
-                        <div class="row" style="position:fixed;z-index:9999;right:1%;width:120px;top:3%;">
-                        <div class="col-sm-4"><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-excel-o fa-3x" aria-hidden="true"></i>&nbsp; &nbsp;</a></div>
-                        <div class="col-sm-4">
-                            <a href="#" onclick="exportToPDF()"><i class="fa fa-file-pdf-o fa-3x" aria-hidden="true"></i>&nbsp; &nbsp;</a>
-                       </div>
-                    </div>
+    <div class="row" style="position:fixed;z-index:9800;right:1%;width:120px;top:14%;">
+        <div class="col-sm-4"><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-excel-o fa-2x" aria-hidden="true"></i>&nbsp; &nbsp;</a></div>
+        <div class="col-sm-4">
+            <a href="#" onclick="exportToPDF()"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>&nbsp; &nbsp;</a>
+        </div>
+    </div>
 
 
 
@@ -268,7 +269,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <div id="vizDiv" style="height:690px!important;"></div>
+                <div id="vizDiv" style="height:670px!important;"></div>
             </div>
         </div>
     </div>
