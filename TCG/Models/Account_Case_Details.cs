@@ -50,7 +50,7 @@ namespace HealthcareAnalytics.Models
 
         public string dateConvert { get; set; }
         public string dateFollowUp { get; set; }
-        public double convertAmount { get; set; }
+        public decimal convertAmount { get; set; }
         public int link { get; set; }
 
 

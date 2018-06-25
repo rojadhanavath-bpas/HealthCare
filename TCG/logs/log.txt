@@ -45,3 +45,28 @@ DEBUG 2018-06-25 07:26:39,756 31932ms HomeController         Login              
 DEBUG 2018-06-25 07:26:39,758 31934ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
 DEBUG 2018-06-25 07:26:40,238 32414ms HomeController         GetTableauToken    - Retrieving Tableau token 
 DEBUG 2018-06-25 07:26:41,365 33541ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-25 08:34:17,407 48457ms HomeController         Login              - password
+DEBUG 2018-06-25 08:34:17,494 48544ms HomeController         Login              - password
+DEBUG 2018-06-25 08:34:17,496 48546ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-25 08:34:18,011 49061ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-25 08:34:19,037 50087ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-25 09:42:56,210 102730ms HomeController         Login              - password
+DEBUG 2018-06-25 09:42:56,309 102828ms HomeController         Login              - password
+DEBUG 2018-06-25 09:42:56,311 102830ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-25 09:42:56,828 103348ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-25 09:42:57,956 104476ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-25 11:22:19,504 45421ms HomeController         Login              - password
+DEBUG 2018-06-25 11:22:19,573 45491ms HomeController         Login              - password
+DEBUG 2018-06-25 11:22:19,576 45494ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-25 11:22:20,046 45963ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-25 11:22:21,237 47154ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-25 11:28:56,596 34178ms HomeController         Login              - password
+DEBUG 2018-06-25 11:28:56,702 34285ms HomeController         Login              - password
+DEBUG 2018-06-25 11:28:56,704 34287ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-25 11:28:57,246 34829ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-25 11:28:58,531 36114ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-06-25 11:51:11,815 29488ms HomeController         Login              - password
+DEBUG 2018-06-25 11:51:11,932 29605ms HomeController         Login              - password
+DEBUG 2018-06-25 11:51:11,936 29609ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-25 11:51:12,442 30115ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-25 11:51:13,990 31663ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
