@@ -83,8 +83,11 @@ namespace HealthcareAnalytics.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.sort_AccountID = String.IsNullOrEmpty(sortOrder) ? "accID_Sorting" : "";
             ViewBag.DateSortParm = sortOrder == "date_Sorting" ? "date_DesSorting" : "date_Sorting";
-            ViewBag.sort_PayorName = sortOrder == "payorName_Asc" ? "payorName_Des" : "payorName_Asc";
             ViewBag.sort_PatientName = sortOrder == "patientName_Asc" ? "patientName_Des" : "patientName_Asc";
+            ViewBag.sort_PayorName = sortOrder == "payorName_Asc" ? "payorName_Des" : "payorName_Asc";
+            ViewBag.sort_Bal = sortOrder == "Bal_Asc" ? "Bal_Des" : "Bal_Asc";
+            ViewBag.sort_FC = sortOrder == "FC_Asc" ? "FC_Des" : "FC_Asc";
+            ViewBag.sort_Provider = sortOrder == "Provider_Asc" ? "Provider_Des" : "Provider_Asc";
 
 
             if (searchString != null)
@@ -105,16 +108,17 @@ namespace HealthcareAnalytics.Controllers
             //int skip = start != null ? Convert.ToInt32(start) : 0;
             //int totalRecords = 0;
 
-           
-                using (TCG_DataEntities db2 = new TCG_DataEntities())
-                {
-                     List<Get_AR_Info_for_Balance_Range_Result>  result = db2.Get_AR_Info_for_Balance_Range(4, 1).ToList();
 
-                    if (!String.IsNullOrEmpty(searchString))
-                    {
-                        result = result.Where(s => s.Hospital_Account_ID.Contains(searchString.ToLower())
-                                               || s.Primary_Coverage_Payor_Name.ToLower().Contains(searchString.ToLower())).ToList();
-                    }
+            using (TCG_DataEntities db2 = new TCG_DataEntities())
+            {
+                List<Get_AR_Info_for_Balance_Range_Result> result = db2.Get_AR_Info_for_Balance_Range(4, 1).ToList();
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    result = result.Where(s => s.Hospital_Account_ID.Contains(searchString.ToLower())
+                                           || s.Primary_Coverage_Payor_Name.ToLower().Contains(searchString.ToLower())
+                                           ).ToList();
+                }
 
                 switch (sortOrder)
                 {
@@ -139,6 +143,24 @@ namespace HealthcareAnalytics.Controllers
                     case "patientName_Des":
                         result = result.OrderByDescending(s => s.Account_Patient_Name).ToList();
                         break;
+                    case "Bal_Asc":
+                        result = result.OrderBy(s => s.convertAmount).ToList();
+                        break;
+                    case "Bal_Des":
+                        result = result.OrderByDescending(s => s.convertAmount).ToList();
+                        break;
+                    case "FC_Asc":
+                        result = result.OrderBy(s => s.Primary_Coverage_Payor_Financial_Class).ToList();
+                        break;
+                    case "FC_Des":
+                        result = result.OrderByDescending(s => s.Primary_Coverage_Payor_Financial_Class).ToList();
+                        break;
+                    case "Provider_Asc":
+                        result = result.OrderByDescending(s => s.Admitting_Provider_Name).ToList();
+                        break;
+                    case "Provider_Des":
+                        result = result.OrderBy(s => s.Admitting_Provider_Name).ToList();
+                        break;
                     default:  // Name Descending 
                         result = result.OrderByDescending(s => s.Total_Account_Balance).ToList();
                         break;
@@ -158,15 +180,21 @@ namespace HealthcareAnalytics.Controllers
                     {
                         result[i].New_DischargeDate = result[i].Discharge_Date.Value.ToShortDateString();
                     }
+
+                    result[i].Total_Account_Balance = result[i].Total_Account_Balance.HasValue ? Decimal.Round(result[i].Total_Account_Balance.Value, 2) : 0;
+                    string testAmt = result[i].Total_Account_Balance.Value.ToString("0.00");
+                    Decimal testDecimal = Convert.ToDecimal(testAmt);
+                    result[i].convertAmount = Math.Round(testDecimal, 2);
+                    result[i].convertBal = "$" + result[i].convertAmount.ToString();
                 }
                 return View(result.ToPagedList(pageNumber, pageSize));
 
 
 
-                }
+            }
 
-          
-           
+
+
         }
 
 
@@ -177,8 +205,11 @@ namespace HealthcareAnalytics.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.sort_AccountID = String.IsNullOrEmpty(sortOrder) ? "accID_Sorting" : "";
             ViewBag.DateSortParm = sortOrder == "date_Sorting" ? "date_DesSorting" : "date_Sorting";
-            ViewBag.sort_PayorName = sortOrder == "payorName_Asc" ? "payorName_Des" : "payorName_Asc";
             ViewBag.sort_PatientName = sortOrder == "patientName_Asc" ? "patientName_Des" : "patientName_Asc";
+            ViewBag.sort_PayorName = sortOrder == "payorName_Asc" ? "payorName_Des" : "payorName_Asc";
+            ViewBag.sort_Bal = sortOrder == "Bal_Asc" ? "Bal_Des" : "Bal_Asc";
+            ViewBag.sort_Plan = sortOrder == "Plan_Asc" ? "Plan_Des" : "Plan_Asc";
+            ViewBag.sort_AccClass = sortOrder == "AccClass_Asc" ? "AccClass_Des" : "AccClass_Asc";
 
 
 
@@ -204,12 +235,22 @@ namespace HealthcareAnalytics.Controllers
             using (TCG_DataEntities db2 = new TCG_DataEntities())
             {
                 List<Get_Under_Paymnent_Accounts_Result> result = db2.Get_Under_Paymnent_Accounts().ToList();
+                for (int i = 0; i < result.Count; i++)
+                {
+                    if (result[i].Account.HasValue)
+                    {
+                        result[i].AccId = Convert.ToString(result[i].Account);                        
+                    }
+                }
 
-                //if (!String.IsNullOrEmpty(searchString))
-                //{
-                //    result = result.Where(s => s.Account.Contains(searchString.ToLower())
-                //                           || s.Payor_Name.ToLower().Contains(searchString.ToLower())).ToList();
-                //}
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    result = result.Where(s => s.AccId.Contains(searchString.Trim().ToString())
+                                           || s.Payor_Name.ToLower().Contains(searchString.Trim().ToLower())
+                                           || s.Account_Name.ToLower().Contains(searchString.Trim().ToLower())
+                                           || s.Acct_Class.ToLower().Contains(searchString.Trim().ToLower())
+                                           || s.Plan_Name.ToLower().Contains(searchString.Trim().ToLower())).ToList();
+                }
 
                 switch (sortOrder)
                 {
@@ -234,17 +275,30 @@ namespace HealthcareAnalytics.Controllers
                     case "patientName_Des":
                         result = result.OrderByDescending(s => s.Account_Name).ToList();
                         break;
+                    case "Bal_Asc":
+                        result = result.OrderBy(s => s.Acct_Bal).ToList();
+                        break;
+                    case "Bal_Des":
+                        result = result.OrderByDescending(s => s.Acct_Bal).ToList();
+                        break;
+                    case "Plan_Asc":
+                        result = result.OrderBy(s => s.Plan_Name).ToList();
+                        break;
+                    case "Plan_Des":
+                        result = result.OrderByDescending(s => s.Plan_Name).ToList();
+                        break;
+                    case "AccClass_Asc":
+                        result = result.OrderByDescending(s => s.Acct_Class).ToList();
+                        break;
+                    case "AccClass_Des":
+                        result = result.OrderBy(s => s.Acct_Class).ToList();
+                        break;
                     default:  // Name Descending 
                         result = result.OrderByDescending(s => s.Acct_Bal).ToList();
                         break;
                 }
 
-                //totalRecords = result.Count();
-                //var data = result.Skip(skip).Take(pageSize).ToList();
-                //// var pagedData = Pagination.PagedResult(result, pagenumber, pagesize);
-                // return View(pagedData);
-
-                // return Json(new {  data = data, recordtotal = totalRecords, recordsfiltered = totalRecords }, JsonRequestBehavior.AllowGet);
+                
                 int pageSize = 13;
                 int pageNumber = (page ?? 1);
                 for (int i = 0; i < result.Count; i++)
@@ -252,7 +306,12 @@ namespace HealthcareAnalytics.Controllers
                     if (result[i].Disch_Date.HasValue)
                     {                        
                         result[i].DischargeDate = result[i].Disch_Date.Value.ToShortDateString();
-                    }                    
+                    }
+                                    
+                    string testAmt = result[i].Acct_Bal.Value.ToString("0.00");
+                    Decimal testDecimal = Convert.ToDecimal(testAmt);
+                    result[i].convertAmount = Math.Round(testDecimal, 2);
+                    result[i].convertBal = "$" + result[i].convertAmount.ToString();
                 }
                 return View(result.ToPagedList(pageNumber, pageSize));
 
@@ -568,7 +627,9 @@ namespace HealthcareAnalytics.Controllers
 
             TCG_WL = new TCG_Worklist();
             Account_Case_Details acdDetails = new Account_Case_Details();
+            Account_Case_Detials_History acdhDetails = new Account_Case_Detials_History();
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+            List<Account_Case_Detials_History> ACDH = new List<Account_Case_Detials_History>();
 
             List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
             List<Get_Under_Paymnent_Accounts_Result> underPaymentsListByID = getUnderPaymentsDetailsList(openCaseID);
@@ -612,7 +673,7 @@ namespace HealthcareAnalytics.Controllers
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
                                 TCG_WL.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), "9", ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
-                                    "1", "0", "22", "49", "49", "",
+                                     "0", " ", "22", "49", "49", "",
                                     "2", "1", "", "40", underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
                                     "", DateTime.Now, "", case_idParameter);
@@ -704,7 +765,30 @@ namespace HealthcareAnalytics.Controllers
                             acdDetails.link = 2;
                         }
 
+
+                        //CASE DETAILS HISTORY
+                        ACDH = getCaseDetailsHistoryList(HospitalAccountID);
+                        if (ACDH.Count > 0)
+                        {
+                            for (int j = 0; j < ACDH.Count; j++)
+                            {
+                                ACDH[j].ACDH_Status = get_Status_dropDownValue(Convert.ToInt32(ACDH[j].ACDH_Status.ToString()));
+                                ACDH[j].ACDH_PayerReason = ACDH[j].ACDH_PayerReason;
+                                Double amt = Convert.ToDouble(ACDH[j].ACDH_Amount);
+                                amt = Math.Round(amt, 2);
+                                ACDH[j].ACDH_Amount = "$" + Convert.ToString(amt);
+                                ACDH[j].ACDH_Owner = get_Owner_dropDownText(ACDH[j].ACDH_Owner);
+                                ACDH[j].convertDate = ACDH[j].ACDH_CreatedDate.ToShortDateString();
+                                ACDH[j].ACDH_Priority = getPrioritydropDownText(Convert.ToInt32(ACDH[j].ACDH_Priority));
+                                ACDH[j].convertFollowUpDate = ACDH[j].ACDH_FollowUpDate.Value.ToShortDateString();
+                                ACDH[j].ACDH_TaskFollowUp = getTaskdropDownText(Convert.ToInt32(ACDH[j].ACDH_TaskFollowUp));
+                            }
+
+                        }
+
                         ViewBag.underPaymentsLinkData = underPaymentsListByID;
+                        ViewBag.caseDetailsHistory = ACDH;
+                       
 
                     }
                 }
@@ -774,8 +858,8 @@ namespace HealthcareAnalytics.Controllers
                     else
                     { desc= ACD.ACD_Description; }
                     TCG_WL.Case_InsUpd(ACD.ACD_ID, ACD.ACD_HspAccID, ACD.ACD_Amount, ACD.ACD_Status, ACD.ACD_Owner, ACD.ACD_Type, ACD.ACD_SubType,
-                        ACD.ACD_PayerReason, ACD.ACD_PrimaryReason, ACD.ACD_SecondaryReason, ACD.ACD_PrinDiag, ACD.ACD_PrinProc, ACD.ACD_Comments,
-                        ACD.ACD_Completed, ACD.ACD_Priority, desc, ACD.ACD_TaskFollowUp, ACD.ACD_DueDate,
+                        ACD.ACD_PayerReason, ACD.ACD_PrimaryReason, "22", "49", "49", ACD.ACD_Comments,
+                        "2", ACD.ACD_Priority, desc, ACD.ACD_TaskFollowUp, ACD.ACD_DueDate,
                         ACD.ACD_FollowUpDate, false, Session["username"].ToString(), DateTime.Now,
                         "", DateTime.Now, "", case_idParameter);
 
@@ -821,7 +905,9 @@ namespace HealthcareAnalytics.Controllers
 
             TCG_WL = new TCG_Worklist();
             Account_Case_Details acdDetails = new Account_Case_Details();
+            Account_Case_Detials_History acdhDetails = new Account_Case_Detials_History();
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+            List<Account_Case_Detials_History> ACDH = new List<Account_Case_Detials_History>();
 
             List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
             List<Get_Under_Paymnent_Accounts_Result> underPaymentsListByID = getUnderPaymentsDetailsList(openCaseID);
@@ -865,7 +951,7 @@ namespace HealthcareAnalytics.Controllers
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
                                 TCG_WL.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), "9", ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
-                                    "1", "0", "22", "49", "49", "",
+                                    "0", " ", "22", "49", "49", "",
                                     "2", "1", "", "40", underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
                                     "", DateTime.Now, "", case_idParameter);
@@ -945,6 +1031,7 @@ namespace HealthcareAnalytics.Controllers
                         ACD = get_CaseDetailsList(HospitalAccountID);
                         ACD[0].dateConvert = ACD[0].ACD_DueDate.Value.ToShortDateString();
 
+                        //CASE DETAILS
                         acdDetails = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
                         acdDetails.dateConvert = acdDetails.ACD_DueDate.Value.ToShortDateString();
                         acdDetails.dateFollowUp = acdDetails.ACD_FollowUpDate.Value.ToShortDateString();
@@ -959,7 +1046,28 @@ namespace HealthcareAnalytics.Controllers
                             acdDetails.link = 2;
                         }
 
+                        //CASE DETAILS HISTORY
+                        ACDH = getCaseDetailsHistoryList(HospitalAccountID);
+                        if(ACDH.Count > 0)
+                        {
+                            for (int j = 0; j < ACDH.Count; j++)
+                            {
+                                ACDH[j].ACDH_Status = get_Status_dropDownValue(Convert.ToInt32(ACDH[j].ACDH_Status.ToString()));
+                                ACDH[j].ACDH_PayerReason = ACDH[j].ACDH_PayerReason;
+                                Double amt = Convert.ToDouble(ACDH[j].ACDH_Amount);
+                                amt = Math.Round(amt, 2);
+                                ACDH[j].ACDH_Amount = "$" + Convert.ToString(amt);
+                                ACDH[j].ACDH_Owner = get_Owner_dropDownText(ACDH[j].ACDH_Owner);                                
+                                ACDH[j].convertDate = ACDH[j].ACDH_CreatedDate.ToShortDateString();
+                                ACDH[j].ACDH_Priority = getPrioritydropDownText(Convert.ToInt32(ACDH[j].ACDH_Priority));
+                                ACDH[j].convertFollowUpDate = ACDH[j].ACDH_FollowUpDate.Value.ToShortDateString();
+                                ACDH[j].ACDH_TaskFollowUp  = getTaskdropDownText(Convert.ToInt32(ACDH[j].ACDH_TaskFollowUp));
+                            }
+
+                        }
+
                         ViewBag.underPaymentsLinkData = underPaymentsListByID;
+                        ViewBag.caseDetailsHistory = ACDH;
 
                     }
                 }
@@ -1049,6 +1157,30 @@ namespace HealthcareAnalytics.Controllers
 
         }
 
+        public string getTaskdropDownText(int x)
+        {
+
+            Task_Master ACD = new Task_Master();
+
+            ACD = TCG_WL.Task_Master.Where(m => m.TM_ID == x).FirstOrDefault();
+
+            string DDL_Name = ACD.TM_Name;
+            return DDL_Name;
+
+        }
+
+        public string getPrioritydropDownText(int x)
+        {
+
+            Priority_Master ACD = new Priority_Master();
+
+            ACD = TCG_WL.Priority_Master.Where(m => m.PM_ID == x).FirstOrDefault();
+
+            string DDL_Name = ACD.PM_Name;
+            return DDL_Name;
+
+        }
+
         public string get_Type_dropDownValue(int x)
         {
 
@@ -1106,6 +1238,19 @@ namespace HealthcareAnalytics.Controllers
             {
                 return (from c in db.Account_Case_Details
                         where c.ACD_HspAccID == HospitalAccountID
+                        select c).ToList();
+            }
+        }
+
+
+        public List<Account_Case_Detials_History> getCaseDetailsHistoryList(string HospitalAccountID)
+        {
+
+            List<Account_Case_Detials_History> ACD = new List<Account_Case_Detials_History>();
+            using (var db = new TCG_Worklist())
+            {
+                return (from c in db.Account_Case_Detials_History
+                        where c.ACDH_HspAccID == HospitalAccountID orderby c.ACDH_CreatedDate descending
                         select c).ToList();
             }
         }

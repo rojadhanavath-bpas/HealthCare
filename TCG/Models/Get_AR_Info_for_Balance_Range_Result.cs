@@ -72,5 +72,7 @@ namespace HealthcareAnalytics.Models
         public Nullable<decimal> Total_Charge_Amount { get; set; }
 
         public string New_DischargeDate { get; set; }
+        public decimal convertAmount { get; set; }
+        public string convertBal { get; set; }
     }
 }

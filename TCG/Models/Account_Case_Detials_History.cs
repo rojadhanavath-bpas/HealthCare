@@ -38,7 +38,11 @@ namespace HealthcareAnalytics.Models
         public Nullable<System.DateTime> ACDH_DueDate { get; set; }
         public Nullable<System.DateTime> ACDH_FollowUpDate { get; set; }
         public Nullable<bool> ACDH_DeleteFlag { get; set; }
-    
+
+        public string convertDate { get; set; }
+        public string convertFollowUpDate { get; set; }
+
+
         public virtual Account_Case_Details Account_Case_Details { get; set; }
     }
 }

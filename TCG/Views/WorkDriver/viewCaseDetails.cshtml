@@ -151,7 +151,7 @@
 
 
                                     <div id="id_cases" class="panel-body">
-                                        <div style="border:1px solid #ECF6F7; ; background-color:#ECF6F7; color:#034EA1;">
+                                        <div style="border:1px solid #ECF6F7; background-color:#ECF6F7; color:#034EA1;">
                                             <h4>
                                                 <span style="color:#034EA1;" class="font-weight-bold large">
                                                     CASE <button class="small center-block text-center btn-sm glyphicon glyphicon-forward" style="float:right;" id="btn_CaseDetails" OnClick="myFunction('id_cases_details');return false;"></button>
@@ -210,7 +210,8 @@
                                                     @if (Model.link == 1)
                                                     {
                                                         <label for="DDL_PayerReason" class="text-info">ROOT CAUSE</label>
-                                                        @Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.RC, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                        @*@Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.RC, new { @class = "form-control dropdown", @disabled = "disabled" })*@
+                                                        @Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.UP, new { @class = "form-control dropdown", @disabled = "disabled" })
                                                         @Html.HiddenFor(m => m.link)
                                                     }
                                                     @if (Model.link == 2)
@@ -227,7 +228,7 @@
                                             <div class="form-row">
 
                                                 <div class="form-group col-sm-4">
-                                                    <label for="txt_Amount" class="text-info">AMOUNT</label>
+                                                    <label for="txt_Amount" class="text-info">ACCOUNT BALANCE</label>
                                                     @Html.TextBoxFor(m => m.ACD_Amount, new { @Value = Model.convertAmount, @class = "form-control ", @readonly = "readonly" })
                                                 </div>
 
@@ -240,7 +241,8 @@
                                                     @if (Model.link == 1)
                                                     {
                                                         <label for="DDL_PrimaryReason" class="text-info">UNDERPAYMENT/PRIMARY REASON</label>
-                                                        @Html.DropDownListFor(m => m.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.UP, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                        @*@Html.DropDownListFor(m => m.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.UP, new { @class = "form-control dropdown", @disabled = "disabled" })*@
+                                                        @Html.TextBoxFor(m => m.ACD_PrimaryReason , new { @value= Model.ACD_PrimaryReason.ToString(), @class = "form-control", @readonly = "readonly" })
                                                     }
                                                     @if (Model.link == 2)
                                                     {
@@ -252,7 +254,7 @@
                                             </div>
 
 
-                                            <div class="form-row">
+                                            @*<div class="form-row">
 
                                                 <div class="form-group col-sm-4">
                                                     <label for="DDL_PrinDiagOthers" class="text-info">PRIM DIAG/OTHERS</label>
@@ -278,7 +280,8 @@
 
                                                 </div>
 
-                                            </div>
+                                            </div>*@
+
                                             <div class="form-row">
 
                                                 <div class="form-group col-sm-4">
@@ -297,15 +300,14 @@
                                             </div>
                                             <div class="form-row">
 
-
-                                                <div class="form-group col-sm-4">
+                                                @*<div class="form-group col-sm-4">
                                                     <label for="DDL_Type" class="text-info">COMPLETED</label>
                                                     @Html.DropDownListFor(m => m.ACD_Completed, (IEnumerable<SelectListItem>)ViewBag.CC, new { @class = "form-control dropdown", @disabled = "disabled" })
 
-                                                </div>
-                                                <div class="form-group col-sm-8">
+                                                </div>*@
+                                                <div class="form-group col-sm-12 ">
                                                     <label for="txt_Note" class="text-info">ACCOUNT NOTES</label>
-                                                    @Html.TextAreaFor(m => m.ACD_Comments, new { @class = "form-control ", @style = "width:250px;", @readonly = "readonly" })
+                                                    @Html.TextAreaFor(m => m.ACD_Comments, new { @class = "form-control ", @style = "min-width: 100%;", @readonly = "readonly" })
                                                 </div>
 
 
@@ -315,7 +317,7 @@
                                     </div>
 
                                     <div id="id_account" class="panel-body">
-                                        <div style="border:1px solid #ECF6F7; ; background-color:#ECF6F7; color:#034EA1;">
+                                        <div style="border:1px solid #ECF6F7;  background-color:#ECF6F7; color:#034EA1;">
                                             <h4>
                                                 <span style="color:#034EA1;" class="font-weight-bold large">ACCOUNT <button class="small center-block text-center btn-sm  glyphicon glyphicon-forward" style="float:right;" id="btn_Account" OnClick="myFunction('id_Accout_Detials');return false;"></button></span>
                                             </h4>
@@ -476,56 +478,49 @@
 
                                             <div class="form-row">
 
-                                                <div class="form-group col-sm-6">
-                                                    @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
-                                                    {
-                                                        <div class="panel panel-default pre-scrollable">
-                                                            <table class="table table-striped table-bordered table-responsive table-condensed table-hover">
+                                                <div class="form-group col-sm-8">
+                                                    
+                                                        <div class="panel panel-default ">
+                                                            <table class="table table-striped table-bordered table-responsive table-condensed table-hover pre-scrollable">
                                                                 <thead style="align-content:center; align-items:center; text-align:center">
                                                                     <tr colspan="7" style="align-content:center; align-items:center">
                                                                         <th colspan="7" style="background-color:#fcbf49; align-content:center; align-items:center"> TRANSACTIONS</th>
                                                                     </tr>
                                                                     <tr style="align-content:center; align-items:center">
-                                                                        <th></th>
                                                                         <th>DATE</th>
+                                                                        <th>STATUS</th>
+                                                                        <th>ACCOUNT BALANCE</th>
+                                                                        <th>ROOT CAUSE CODE</th>
                                                                         <th>USER</th>
-                                                                        <th>TYPE</th>
-                                                                        <th>CODE</th>
-                                                                        <th>AMOUNT</th>
-                                                                        <th>W/O</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody data-bind="foreach:Persons">
+                                                                <tbody>
+                                                                    @foreach (HealthcareAnalytics.Models.Account_Case_Detials_History item in ViewBag.caseDetailsHistory)
+                                                                    {
                                                                     <tr>
                                                                         <td>
-                                                                            <input name="chkbox" type="checkbox" />
+                                                                            @Html.DisplayFor(modelItem => item.convertDate)
                                                                         </td>
                                                                         <td>
-                                                                            @Html.DisplayFor(Model => @s.Last_Completed_Dt, new { @class = "form-control ", @readonly = "readonly" })
+                                                                            @Html.DisplayFor(modelItem => item.ACDH_Status)
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            @Html.DisplayFor(modelItem => item.ACDH_Amount)
                                                                         </td>
                                                                         <td>
-                                                                            @Html.DisplayFor(Model => @s.Account_Patient_Name, new { @class = "form-control ", @readonly = "readonly" })
+                                                                            @Html.DisplayFor(modelItem => item.ACDH_PayerReason)
                                                                         </td>
                                                                         <td>
-                                                                            @Html.DisplayFor(Model => @s.Encounter_Type, new { @class = "form-control ", @readonly = "readonly" })
-                                                                        </td>
-                                                                        <td>
-                                                                            @*@Html.TextBoxFor(Model => @s.CPT_R__Code, new { @class = "form-control ", @readonly = "readonly" })*@
-                                                                            @Html.Display(" ", " ", new { @class = "form-control ", @readonly = "readonly" })
-                                                                        </td>
-                                                                        <td>
-                                                                            @Html.DisplayFor(Model => @s.Total_Account_Balance, new { @class = "form-control ", @readonly = "readonly" })
-                                                                        </td>
-                                                                        <td>
-                                                                            <span data-bind="text:W/O"></span>
+                                                                            @Html.DisplayFor(modelItem => item.ACDH_Owner)
                                                                         </td>
                                                                     </tr>
+                                                                    }
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                    }
+                                                    
                                                 </div>
-                                                <div class="form-group col-sm-6">
+                                                <div class="form-group col-sm-4">
                                                     @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                     {
                                                         <table class="table table-striped table-bordered table-responsive table-condensed table-hover">
@@ -600,7 +595,7 @@
 
 
                                 <div id="id_insuranceBuckets" class="panel-body tab-pane fade" style="display:none;">
-                                    <div style="border:1px solid #ECF6F7; ; background-color:#ECF6F7; color:#034EA1;">
+                                    <div style="border:1px solid #ECF6F7; background-color:#ECF6F7; color:#034EA1;">
                                         <h4>
                                             <span style="color:#034EA1;" class="font-weight-bold large">INSURANCE BUCKETS <button class="small center-block text-center btn-sm  glyphicon glyphicon-forward" style="float:right;" id="btn_InsuranceBkt" OnClick="myFunction('id_InsuranceBuckets_detials');return false;"></button></span>
                                         </h4>
@@ -663,7 +658,7 @@
 
 
                                 <div id="id_caseHistory" class="panel-body tab-pane fade">
-                                    <div style="border:1px solid #ECF6F7; ; background-color:#ECF6F7; color:#034EA1;">
+                                    <div style="border:1px solid #ECF6F7; background-color:#ECF6F7; color:#034EA1;">
                                         <h4>
                                             <span style="color:#034EA1;" class="font-weight-bold large">CASE HISTORY <button class="small center-block text-center btn-sm  glyphicon glyphicon-forward" style="float:right;" id="btn_CaseHistory" OnClick="myFunction('id_CaseHistory_detials');return false;"></button></span>
                                         </h4>
@@ -671,12 +666,69 @@
                                     <hr />
                                     <div id="id_CaseHistory_detials">
 
+                                        <table class="table table-striped table-bordered table-responsive table-condensed table-hover pre-scrollable">
+                                            <thead style="align-content:center; align-items:center; text-align:center">
+                                                @*<tr colspan="7" style="align-content:center; align-items:center">
+                                                    <th colspan="7" style="background-color:#fcbf49; align-content:center; align-items:center"> TRANSACTIONS</th>
+                                                </tr>*@
+                                                <tr style="align-content:center; align-items:center">
+                                                    <th>DATE</th>
+                                                    <th>STATUS</th>
+                                                    <th>ACCOUNT BALANCE</th>
+                                                    <th>ROOT CAUSE CODE</th>
+                                                    <th>UNDERPAYMENT REASON</th>
+                                                    <th>PRIORITY</th>
+                                                    <th>FOLLOW-UP DATE</th>
+                                                    <th>TASK DESCRIPTION</th>
+                                                    <th>NOTES</th>
+                                                    <th>USER</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (HealthcareAnalytics.Models.Account_Case_Detials_History item in ViewBag.caseDetailsHistory)
+                                                {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.convertDate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ACDH_Status)
+                                                    </td>
+                                                    <td class="text-right">
+                                                        @Html.DisplayFor(modelItem => item.ACDH_Amount)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ACDH_PayerReason)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ACDH_PrimaryReason)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ACDH_Priority)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.convertFollowUpDate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ACDH_TaskFollowUp)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ACDH_Comments)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ACDH_Owner)
+                                                    </td>
+                                                </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+
                                     </div>
                                 </div>
 
 
                                 <div id="id_Contacts" class="panel-body tab-pane fade">
-                                    <div style="border:1px solid #ECF6F7; ; background-color:#ECF6F7; color:#034EA1;">
+                                    <div style="border:1px solid #ECF6F7; background-color:#ECF6F7; color:#034EA1;">
                                         <h4>
                                             <span style="color:#034EA1;" class="font-weight-bold large">CONTACTS <button class="small center-block text-center btn-sm  glyphicon glyphicon-forward" style="float:right;" id="btn_Contacts" OnClick="myFunction('id_contacts_detials');return false;"></button></span>
                                         </h4>

@@ -16,12 +16,12 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-  
+
     <!-- Required jQuery and jQuery UI Javascript references -->
     <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")"></script>
-   
-     <script type="text/javascript">
+
+    <script type="text/javascript">
         $(function () {
             $("table.tablesorter").tablesorter({ widthFixed: true, sortList: [[0, 0]] })
                 .tablesorterPager({ container: $("#pager"), size: $(".pagesize option:selected").val() });
@@ -40,10 +40,10 @@
                     <div id="id_cases" class="panel-body tab-pane fade in active">
 
                         @*<div style="border:3px solid #fcbf49; background-color:#fcbf49" style="border:3px solid #d9edf7; color:#034EA1;">*@
-                        <div style="border:3px solid #034EA1 ; background-color:#034EA1; color:#d9edf7;" >
+                        <div style="border:3px solid #034EA1 ; background-color:#034EA1; color:#d9edf7;">
                             <h4>
                                 <span style="color:#d9edf7;" class="font-weight-bold large">
-                                    User's Account List
+                                    User Account List
                                 </span>
                             </h4>
                         </div>
@@ -59,17 +59,17 @@
 
                             <div class="col-sm-2">
                                 @*<div class="row"><label for="StudentName">Current Payor</label></div>
-                <div class="row"><label for="StudentName">Name</label></div>*@
+                                    <div class="row"><label for="StudentName">Name</label></div>*@
                             </div>
 
                             <div class="col-sm-2">
                                 @*<div class="row"><label for="StudentName">Denial Category</label></div>
-                <div class="row"><label for="StudentName">Name</label></div>*@
+                                    <div class="row"><label for="StudentName">Name</label></div>*@
                             </div>
 
                             <div class="col-sm-2">
                                 @*<div class="row"><label for="StudentName">Encounter Type</label></div>
-                <div class="row"><label for="StudentName">Name</label></div>*@
+                                    <div class="row"><label for="StudentName">Name</label></div>*@
                             </div>
 
                             <div class="col-sm-2">
@@ -93,7 +93,7 @@
                                             <th>@Html.ActionLink("Admission Date", "UserAcc_List")</th>
                                             <th>@Html.ActionLink("Patient Name", "UserAcc_List ", new { sortOrder = ViewBag.sort_PatientName })</th>
                                             <th>@Html.ActionLink("Current Financial Class", "UserAcc_List")</th>
-                                            <th>@Html.ActionLink("Payor Name", "UserAcc_List", new { sortOrder = ViewBag.sort_PayorName })</th>
+                                            <th>@Html.ActionLink("Payor", "UserAcc_List", new { sortOrder = ViewBag.sort_PayorName })</th>
                                             <th>@Html.ActionLink("Account Balance", "UserAcc_List")</th>
                                             <th>@Html.ActionLink("Admitting Provider", "UserAcc_List")</th>
                                             <th>@Html.ActionLink("Encounter Type", "UserAcc_List")</th>
@@ -102,55 +102,68 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "viewCaseDetails", "WorkDriver", new { id = item.Hospital_Account_ID, linkName ="Other" }, new { })
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.New_DischargeDate)
-                                                </td>
-                                                <td>@Html.DisplayFor(modelItem => item.Account_Patient_Name)</td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Financial_Class)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Name)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Total_Account_Balance)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Admitting_Provider_Name)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Encounter_Type)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Account_Service_Area_Name)
-                                                </td>
-                                                <td>1</td>
+                                        @*@foreach (var item in Model)
+                                                                        {
+                                                                            <tr>
+                                                    <td>
+                                                        @Html.ActionLink((@Html.DisplayFor(modelItem => item.Hospital_Account_ID)).ToString(), "viewCaseDetails", "WorkDriver", new { id = item.Hospital_Account_ID, linkName ="Other" }, new { })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.New_DischargeDate)
+                                                    </td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Account_Patient_Name)</td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Financial_Class)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Primary_Coverage_Payor_Name)
+                                                    </td>
+                                                    <td class="text-right">
+                                                        @Html.DisplayFor(modelItem =>  item.convertBal)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Admitting_Provider_Name)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Encounter_Type)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Account_Service_Area_Name)
+                                                    </td>
+                                                    <td>1</td>
 
-                                            </tr>
-                                        }
+                                                </tr>
+                                            }*@
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-right"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12">
+                                @*<div class="col-sm-12">
                                     <div class=" center-block align-self-md-center paging-wrapper">
                                         <span class="text-primary center-block align-self-md-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</span>
 
                                         @Html.PagedListPager(Model, page => Url.Action("UserAcc_List",
                          new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </form>
     }
 </body>
