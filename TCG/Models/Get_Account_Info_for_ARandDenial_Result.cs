@@ -120,5 +120,14 @@ namespace HealthcareAnalytics.Models
         public string Stage { get; set; }
 
         public int isLinkOther { get; set; }
+        public string convAdmDate { get; set; }
+        public string convDischDate { get; set; }
+        public string convFirstBillDate { get; set; }
+        public string convLastPayDate { get; set; }
+        public string convTotChrgAmt { get; set; }
+        public string convTotPayAmt { get; set; }
+        public string convAdjAmt { get; set; }
+        public string convTotAccBal { get; set; }
+        //public string convTotPayAmt { get; set; }
     }
 }

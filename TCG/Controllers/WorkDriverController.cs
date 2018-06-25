@@ -647,6 +647,75 @@ namespace HealthcareAnalytics.Controllers
                     if (taskDetails.Count > 0 || taskDetails != null)
                     {
 
+                        if (taskDetails[0].Admission_Date.HasValue)
+                            taskDetails[0].convAdmDate = taskDetails[0].Admission_Date.Value.ToShortDateString();
+                        else
+                            taskDetails[0].convAdmDate = " ";
+
+
+                        if (taskDetails[0].Discharge_Date.HasValue)
+                            taskDetails[0].convDischDate = taskDetails[0].Discharge_Date.Value.ToShortDateString();
+                        else
+                            taskDetails[0].convDischDate = " ";
+
+
+                        if (taskDetails[0].First_Billed_Date.HasValue)
+                            taskDetails[0].convFirstBillDate = taskDetails[0].First_Billed_Date.Value.ToShortDateString();
+                        else
+                            taskDetails[0].convFirstBillDate = " ";
+
+
+                        if (!string.IsNullOrEmpty(taskDetails[0].Last_Payor_Rcvd_Dt))
+                        {
+                            DateTime testDate = Convert.ToDateTime(taskDetails[0].Last_Payor_Rcvd_Dt);
+                            taskDetails[0].convLastPayDate = testDate.ToShortDateString();
+                        }
+                        else
+                            taskDetails[0].convLastPayDate = " ";
+
+
+
+                        if (taskDetails[0].Total_Charge_Amount.HasValue)
+                        {
+                            Decimal testAmt1 = Convert.ToDecimal(taskDetails[0].Total_Charge_Amount);
+                            testAmt1 = Math.Round(testAmt1, 2);
+                            taskDetails[0].convTotChrgAmt = "$" + testAmt1.ToString();
+                        }
+                        else
+                            taskDetails[0].convTotChrgAmt = "$0.00";
+
+
+                        if (taskDetails[0].Total_Payment_Amount.HasValue)
+                        {
+                            Decimal testAmt2 = Convert.ToDecimal(taskDetails[0].Total_Payment_Amount);
+                            testAmt2 = Math.Round(testAmt2, 2);
+                            taskDetails[0].convTotPayAmt = "$" + testAmt2.ToString();
+                        }
+                        else
+                            taskDetails[0].convTotPayAmt = "$0.00";
+
+
+                        if (taskDetails[0].Total_Adjustment_Amount.HasValue)
+                        {
+                            Decimal testAmt3 = Convert.ToDecimal(taskDetails[0].Total_Adjustment_Amount);
+                            testAmt3 = Math.Round(testAmt3, 2);
+                            taskDetails[0].convAdjAmt = "$" + testAmt3.ToString();
+                        }
+                        else
+                            taskDetails[0].convAdjAmt = "$0.00";
+
+
+                        if (taskDetails[0].Total_Account_Balance.HasValue)
+                        {
+                            Decimal testAmt4 = Convert.ToDecimal(taskDetails[0].Total_Account_Balance);
+                            testAmt4 = Math.Round(testAmt4, 2);
+                            taskDetails[0].convTotAccBal = "$" + testAmt4.ToString();
+                        }
+                        else
+                            taskDetails[0].convTotAccBal = "$0.00";
+
+
+
                         var Case_checkHospitalAccID = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
 
                         var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
@@ -754,7 +823,7 @@ namespace HealthcareAnalytics.Controllers
                         acdDetails = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
                         acdDetails.dateConvert = acdDetails.ACD_DueDate.Value.ToShortDateString();
                         acdDetails.dateFollowUp = acdDetails.ACD_FollowUpDate.Value.ToShortDateString();
-                        Double AmtConvert = Convert.ToDouble(acdDetails.ACD_Amount);
+                        Decimal AmtConvert = Convert.ToDecimal(acdDetails.ACD_Amount);
                         acdDetails.convertAmount = Math.Round(AmtConvert, 2);
                         if (linkName == "underPay")
                         {
@@ -927,6 +996,75 @@ namespace HealthcareAnalytics.Controllers
 
                         var Case_checkHospitalAccID = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
 
+                        if (taskDetails[0].Admission_Date.HasValue)
+                            taskDetails[0].convAdmDate = taskDetails[0].Admission_Date.Value.ToShortDateString();
+                        else
+                            taskDetails[0].convAdmDate = " ";
+
+
+                        if (taskDetails[0].Discharge_Date.HasValue)
+                            taskDetails[0].convDischDate = taskDetails[0].Discharge_Date.Value.ToShortDateString();
+                        else
+                            taskDetails[0].convDischDate = " ";
+
+
+                        if (taskDetails[0].First_Billed_Date.HasValue)
+                            taskDetails[0].convFirstBillDate = taskDetails[0].First_Billed_Date.Value.ToShortDateString();
+                        else
+                            taskDetails[0].convFirstBillDate = " ";
+
+
+                        if (!string.IsNullOrEmpty(taskDetails[0].Last_Payor_Rcvd_Dt))
+                        {
+                            DateTime testDate = Convert.ToDateTime(taskDetails[0].Last_Payor_Rcvd_Dt);
+                            taskDetails[0].convLastPayDate = testDate.ToShortDateString();
+                        }
+                        else
+                            taskDetails[0].convLastPayDate = " ";
+
+
+
+                        if (taskDetails[0].Total_Charge_Amount.HasValue)
+                        {
+                            Decimal testAmt1 = Convert.ToDecimal(taskDetails[0].Total_Charge_Amount);
+                            testAmt1 = Math.Round(testAmt1, 2);
+                            taskDetails[0].convTotChrgAmt = "$" + testAmt1.ToString();
+                        }
+                        else
+                            taskDetails[0].convTotChrgAmt = "$0.00";
+
+
+                        if (taskDetails[0].Total_Payment_Amount.HasValue)
+                        {
+                            Decimal testAmt2 = Convert.ToDecimal(taskDetails[0].Total_Payment_Amount);
+                            testAmt2 = Math.Round(testAmt2, 2);
+                            taskDetails[0].convTotPayAmt = "$" + testAmt2.ToString();
+                        }
+                        else
+                            taskDetails[0].convTotPayAmt = "$0.00";
+
+
+                        if (taskDetails[0].Total_Adjustment_Amount.HasValue)
+                        {
+                            Decimal testAmt3 = Convert.ToDecimal(taskDetails[0].Total_Adjustment_Amount);
+                            testAmt3 = Math.Round(testAmt3, 2);
+                            taskDetails[0].convAdjAmt = "$" + testAmt3.ToString();
+                        }
+                        else
+                            taskDetails[0].convAdjAmt = "$0.00";
+
+
+                        if (taskDetails[0].Total_Account_Balance.HasValue)
+                        {
+                            Decimal testAmt4 = Convert.ToDecimal(taskDetails[0].Total_Account_Balance);
+                            testAmt4 = Math.Round(testAmt4, 2);
+                            taskDetails[0].convTotAccBal = "$" + testAmt4.ToString();
+                        }
+                        else
+                            taskDetails[0].convTotAccBal = "$0.00";
+
+
+
                         var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
                         var model = new TCG_Worklist();
                         int new_Case_Value;
@@ -1035,7 +1173,7 @@ namespace HealthcareAnalytics.Controllers
                         acdDetails = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
                         acdDetails.dateConvert = acdDetails.ACD_DueDate.Value.ToShortDateString();
                         acdDetails.dateFollowUp = acdDetails.ACD_FollowUpDate.Value.ToShortDateString();
-                        Double AmtConvert = Convert.ToDouble(acdDetails.ACD_Amount);
+                        Decimal AmtConvert = Convert.ToDecimal(acdDetails.ACD_Amount);
                         acdDetails.convertAmount = Math.Round(AmtConvert, 2);
                         if(linkName  == "underPay")
                         {

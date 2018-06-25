@@ -253,6 +253,35 @@
 
                                             </div>
 
+
+                                            @*<div class="form-row">
+
+                                                    <div class="form-group col-sm-4">
+                                                        <label for="DDL_PrinDiagOthers" class="text-info">PRIM DIAG/OTHERS</label>
+                                                        @Html.DropDownListFor(m => m.ACD_PrinDiag, (IEnumerable<SelectListItem>)ViewBag.PRM, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                    </div>
+
+                                                    <div class="form-group col-sm-4">
+                                                        <label for="DDL_PrinProcOthers" class="text-info">PRIM PROC/OTHERS</label>
+                                                        @Html.DropDownListFor(m => m.ACD_PrinProc, (IEnumerable<SelectListItem>)ViewBag.PRM, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                    </div>
+
+                                                    <div class="form-group col-sm-4">
+                                                        @if(Model.link == 1)
+                                                        {
+                                                            <label for="DDL_Type" class="text-info">ENCOUNTER TYPE</label>
+                                                            @Html.DropDownListFor(m => m.ACD_SecondaryReason, (IEnumerable<SelectListItem>)ViewBag.ECT, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                        }
+                                                         @if(Model.link == 2)
+                                                        {
+                                                            <label for="DDL_Type" class="text-info">ACTUAL DENIAL REASON</label>
+                                                            @Html.DropDownListFor(m => m.ACD_SecondaryReason, (IEnumerable<SelectListItem>)ViewBag.DC, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                        }
+
+                                                    </div>
+
+                                                </div>*@
+
                                             <div class="form-row">
 
                                                 <div class="form-group col-sm-4">
@@ -270,10 +299,19 @@
 
                                             </div>
                                             <div class="form-row">
+
+                                                @*<div class="form-group col-sm-4">
+                                                        <label for="DDL_Type" class="text-info">COMPLETED</label>
+                                                        @Html.DropDownListFor(m => m.ACD_Completed, (IEnumerable<SelectListItem>)ViewBag.CC, new { @class = "form-control dropdown", @disabled = "disabled" })
+
+                                                    </div>*@
                                                 <div class="form-group col-sm-12 ">
                                                     <label for="txt_Note" class="text-info">ACCOUNT NOTES</label>
                                                     @Html.TextAreaFor(m => m.ACD_Comments, new { @class = "form-control ", @style = "min-width: 100%;", @readonly = "readonly" })
                                                 </div>
+
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -300,13 +338,14 @@
                                                             <div class="form-group col-sm-4">
                                                                 <label for="Txt_PatientName" class="text-info">PATIENT NAME</label>
                                                                 @Html.TextBoxFor(Model => @s.Account_Patient_Name, new { @class = "form-control ", @readonly = "readonly" })
+
                                                             </div>
 
                                                             <div class="form-group col-sm-4">
                                                                 @*<label for="Txt_AccStatus" class="text-info">ACCOUNT STATUS</label>
                                                                     @Html.TextBoxFor(Model => @s.Account_AR_Status, new { @class = "form-control ", @readonly = "readonly" })*@
                                                                 <label for="Txt_AdmitDate" class="text-info">ADMIT DATE</label>
-                                                                @Html.TextBoxFor(Model => @s.convAdmDate, new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(Model => @s.Admission_Date, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
                                                         </div>
 
@@ -323,30 +362,136 @@
 
                                                             <div class="form-group col-sm-4">
                                                                 <label for="Txt_DischargeDate" class="text-info">DISCHARGE DATE</label>
-                                                                @Html.TextBoxFor(Model => @s.convDischDate, new { @class = "form-control", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(Model => @s.Discharge_Date, new { @Value = s.Discharge_Date.ToString(), @class = "form-control", @readonly = "readonly" })
                                                             </div>
 
 
                                                         </div>
+
+                                                        @*<div class="form-row">
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_MRN" class="text-info">MRN</label>
+                                                                    <input class="form-control" type="text" id="Txt_MRN" readonly />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_AdmitDX" class="text-info">ADMIT DX</label>
+                                                                    @Html.TextBoxFor(Model => @s.MS_DRG_Code, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_Service" class="text-info">SERVICE</label>
+                                                                    @Html.TextBoxFor(Model => @s.Service_Area, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
+                                                            </div>*@
+
+                                                        @*}
+                                                            <div class="form-row">
+                                                                @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                                {
+                                                                    <div class="form-group col-sm-4">
+                                                                        <label for="Txt_SSN" class="text-info">SSN</label>
+                                                                        <input class="form-control" type="text" id="Txt_SSN" readonly />
+                                                                    </div>
+                                                                }
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="DDL_PrinDiagOthers" class="text-info">PRIM DIAG/OTHERS</label>
+                                                                    @Html.DropDownListFor(m => m.ACD_PrinDiag, (IEnumerable<SelectListItem>)ViewBag.PRM, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="DDL_PrinProcOthers" class="text-info">PRIM PROC/OTHERS</label>
+                                                                    @Html.DropDownListFor(m => m.ACD_PrinProc, (IEnumerable<SelectListItem>)ViewBag.PRM, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                                </div>
+
+                                                            </div>
+                                                            @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                            {
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-sm-4">
+                                                                        <label for="Txt_DOB" class="text-info">D.O.B</label>
+                                                                        <input class="form-control" type="text" id="Txt_DOB" readonly />
+                                                                    </div>
+
+                                                                    <div class="form-group col-sm-4">
+                                                                        <label for="Txt_Department" class="text-info">DEPARTMENT</label>
+                                                                        @Html.TextBoxFor(Model => @s.Account_Department_Name, new { @class = "form-control ", @readonly = "readonly" })
+                                                                    </div>
+
+                                                                    <div class="form-group col-sm-4">
+                                                                        <label for="Txt_Registration" class="text-info">REGISTRATION</label>
+                                                                        @Html.TextBoxFor(Model => @s.Source_Area, new { @class = "form-control ", @readonly = "readonly" })
+                                                                    </div>
+                                                                </div>*@
+
+                                                        @*<div class="form-row">
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_Sex" class="text-info">SEX</label>
+                                                                    <input class="form-control" type="text" id="Txt_Sex" readonly />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_DRG" class="text-info">DRG</label>
+                                                                    @Html.TextBoxFor(Model => @s.Billing_DRG_Code, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_RefPhysician" class="text-info">REF. PHYSICIAN</label>
+                                                                    @Html.TextBoxFor(Model => @s.Guarantor_Name, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
+                                                            </div>*@
+
+                                                        @*<div class="form-row">
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_FinancialClass" class="text-info">FINANCIAL CLASS</label>
+                                                                    @Html.TextBoxFor(Model => @s.Primary_Coverage_Payor_Financial_Class, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_ContractID" class="text-info">CONTRACT ID</label>
+                                                                    @Html.TextBoxFor(Model => @s.Follow_up_ID, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_AttdPhysician" class="text-info">ATTD. PHYSICIAN</label>
+                                                                    <input class="form-control" type="text" id="Txt_AttdPhysician" readonly />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-row">
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_CurrentFC" class="text-info">CURRENT F/C</label>
+                                                                    @Html.TextBoxFor(Model => @s.Account_Financial_Class, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_DischargeDispos" class="text-info">DISCHARGE DISPOSITION</label>
+                                                                    <input class="form-control" type="text" id="Txt_DischargeDispos" readonly />
+                                                                </div>
+
+                                                                <div class="form-group col-sm-4">
+                                                                    <label for="Txt_OperPhysician" class="text-info">OPER. PHYSICIAN</label>
+                                                                    <input class="form-control" type="text" id="Txt_OperPhysician" readonly />
+                                                                </div>
+                                                            </div>*@
                                                     }
 
                                                     <div class="form-row">
-                                                        @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_Result v in ViewBag.underPaymentsLinkData)
-                                                        {
-                                                            <div class="form-group col-sm-4">
-                                                                <label for="Txt_DischargeDispos" class="text-info">DIAGNOSIS CODE</label>
-                                                                @Html.TextBoxFor(Model => v.Diagnosis_Codes, new { @class = "form-control ", @readonly = "readonly" })
-                                                            </div>
-                                                            <div class="form-group col-sm-4">
-                                                                <label for="Txt_DischargeDispos" class="text-info">PLAN</label>
-                                                                @Html.TextBoxFor(Model => v.Plan_Name, new { @class = "form-control ", @readonly = "readonly" })
-                                                            </div>
+                                                        <div class="form-group col-sm-4">
+                                                            <label for="Txt_DischargeDispos" class="text-info">PLAN</label>
+                                                            <input class="form-control" type="text" id="Txt_DischargeDispos" readonly />
+                                                        </div>
+                                                        <div class="form-group col-sm-4">
+                                                            <label for="Txt_DischargeDispos" class="text-info">PLAN</label>
+                                                            <input class="form-control" type="text" id="Txt_DischargeDispos" readonly />
+                                                        </div>
 
-                                                            <div class="form-group col-sm-4">
-                                                                <label for="Txt_OperPhysician" class="text-info">PAYOR</label>
-                                                                @Html.TextBoxFor(Model => v.Payor_Name, new { @class = "form-control ", @readonly = "readonly" })
-                                                            </div>
-                                                        }
+                                                        <div class="form-group col-sm-4">
+                                                            <label for="Txt_OperPhysician" class="text-info">PAYOR</label>
+                                                            <input class="form-control" type="text" id="Txt_OperPhysician" readonly />
+                                                        </div>
+
                                                     </div>
 
                                                 </div>
@@ -408,7 +553,7 @@
                                                                         <label for="Txt_FinalBillDate" class="text-info">FIRST BILL DATE</label>
                                                                     </td>
                                                                     <td>
-                                                                        @Html.DisplayFor(Model => @s.convFirstBillDate, new { @class = "form-control ", @readonly = "readonly" })
+                                                                        @Html.TextBoxFor(Model => @s.First_Billed_Date, new { @class = "form-control ", @readonly = "readonly" })
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -416,47 +561,47 @@
                                                                         <label for="Txt_LastPayDate" class="text-info">LAST PAY DATE</label>
                                                                     </td>
                                                                     <td>
-                                                                        @Html.DisplayFor(Model => @s.convLastPayDate, new { @class = "form-control ", @readonly = "readonly" })
+                                                                        @Html.TextBoxFor(Model => @s.Last_Payor_Rcvd_Dt, new { @class = "form-control ", @readonly = "readonly" })
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <label for="Txt_TotalCharges" class="text-info text-right">TOTAL CHARGES</label>
+                                                                        <label for="Txt_TotalCharges" class="text-info">TOTAL CHARGES</label>
                                                                     </td>
-                                                                    <td class="text-right">
-                                                                        @Html.DisplayFor(Model => @s.convTotChrgAmt, new { @class = "form-control text-right", @readonly = "readonly" })
+                                                                    <td>
+                                                                        @Html.TextBoxFor(Model => @s.Total_Charge_Amount, new { @class = "form-control ", @readonly = "readonly" })
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <label for="Txt_TotalPayments" class="text-info text-right">TOAL PAYMENTS</label>
+                                                                        <label for="Txt_TotalPayments" class="text-info">TOAL PAYMENTS</label>
                                                                     </td>
-                                                                    <td class="text-right">
-                                                                        @Html.DisplayFor(Model => @s.convTotPayAmt, new { @class = "form-control text-right", @readonly = "readonly" })
+                                                                    <td>
+                                                                        @Html.TextBoxFor(Model => @s.Total_Payment_Amount, new { @class = "form-control ", @readonly = "readonly" })
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <label for="Txt_TotalAdjustments" class="text-info text-right">TOTAL ADJUSTMENTS</label>
+                                                                        <label for="Txt_TotalAdjustments" class="text-info">TOTAL ADJUSTMENTS</label>
                                                                     </td>
-                                                                    <td class="text-right">
-                                                                        @Html.DisplayFor(Model => @s.convAdjAmt, new { @class = "form-control text-right", @readonly = "readonly" })
+                                                                    <td>
+                                                                        @Html.TextBoxFor(Model => @s.Total_Adjustment_Amount, new { @class = "form-control ", @readonly = "readonly" })
                                                                     </td>
                                                                 </tr>
-                                                                @*<tr>
-                                                                        <td>
-                                                                            <label for="Txt_TotalReferrals" class="text-info">TOTAL REFERALS</label>
-                                                                        </td>
-                                                                        <td>
-                                                                            @Html.TextBoxFor(Model => @s.Total_Undistributed_Adjustment_Amount, new { @class = "form-control ", @readonly = "readonly" })
-                                                                        </td>
-                                                                    </tr>*@
                                                                 <tr>
                                                                     <td>
-                                                                        <label for="Txt_CurrentBalance" class="text-info text-right">CURRENT BALANCE</label>
+                                                                        <label for="Txt_TotalReferrals" class="text-info">TOTAL REFERALS</label>
                                                                     </td>
-                                                                    <td class="text-right">
-                                                                        @Html.DisplayFor(Model => @s.convTotAccBal, new { @class = "form-control text-right", @readonly = "readonly" })
+                                                                    <td>
+                                                                        @Html.TextBoxFor(Model => @s.Total_Undistributed_Adjustment_Amount, new { @class = "form-control ", @readonly = "readonly" })
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label for="Txt_CurrentBalance" class="text-info">CURRENT BALANCE</label>
+                                                                    </td>
+                                                                    <td>
+                                                                        @Html.TextBoxFor(Model => @s.Total_Account_Balance, new { @class = "form-control ", @readonly = "readonly" })
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -630,6 +775,17 @@
                 </div>
             </div>
 
+
+            @*<div class="modal fade" id="modal-container1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>*@<!-- /.modal -->
 
 
 

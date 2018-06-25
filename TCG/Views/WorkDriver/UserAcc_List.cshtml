@@ -44,6 +44,8 @@
                             <h4>
                                 <span style="color:#d9edf7;" class="font-weight-bold large">
                                     User Account List
+
+                                    @Html.ActionLink("BACK", "worklist_Home", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
                                 </span>
                             </h4>
                         </div>
@@ -74,7 +76,7 @@
 
                             <div class="col-sm-2">
                                 <p>
-                                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search by payor, or Account ID", @class = "form-control" })
+                                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Search", @class = "form-control" })
                                     <!--  <input type="submit" class="btn btn-primary" value="Search" />-->
                                 </p>
                             </div>
