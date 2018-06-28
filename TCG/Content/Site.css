@@ -36,7 +36,7 @@ img {
 }
 .dateholder {
     color: deepskyblue;
-    font-size: 15px;
+    font-size: 12px;
     position: fixed;
     right: 120px;
     top: 5px;
@@ -54,6 +54,7 @@ img {
 .footer > span {
         margin-left: 40%;
         color: white;
+        font-size: 0.8vw;
     }
 
 
@@ -177,7 +178,7 @@ button.logout-button > a {
     }
 }
 .nav{
-    padding-left: 100px;
+    padding-left: 50px;
 }
 .modal-dialog {
     display: inline-block;
@@ -192,12 +193,12 @@ button.logout-button > a {
 .navbar-nav > li > a {
     color: black !important;
     font-weight: bold;
-    font-size: 1vw;
+    font-size: 1em;
     font-family: Roboto;
     vertical-align: middle !important;
-    padding-top: 20px;
-    height: 60px;
-    padding-left: 2px;
+    padding-top: 18px;
+    height: 52px;
+   
 }
  .navbar-nav > li > a:hover {
         background-color: powderblue !important;
@@ -224,7 +225,7 @@ button.logout-button > a {
 }
 ul.dropdown-menu > li > a {
     color: black !important;
-    font-size: 1vw;
+    font-size: 1em;
     font-family: Roboto;
     font-weight: bold;
 }
