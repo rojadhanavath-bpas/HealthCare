@@ -76,8 +76,8 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <table id="myDatatable" class="table pre-scrollable table-responsive-md table-condensed table-striped table-bordered table-dark">
-                                    <thead class="text-center large thead-dark">
+                                <table id="myDatatable" class="table  pre-scrollable table-responsive table-condensed table-striped table-bordered table-dark">
+                                    <thead class="text-center thead-dark table-responsive">
                                         <tr>
                                             <th>
                                                 @*@Html.ActionLink("Account ID", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_AccountID })*@
@@ -92,7 +92,7 @@
                                             @*<th>@Html.ActionLink("# of cases" , "Underpayemnts_UserAcc_List")</th>*@
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="table-responsive">
                                         @foreach (var item in Model)
                                         {
                                             <tr>

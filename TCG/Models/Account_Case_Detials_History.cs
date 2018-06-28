@@ -18,11 +18,11 @@ namespace HealthcareAnalytics.Models
         public int ACDH_ACD_ID { get; set; }
         public string ACDH_HspAccID { get; set; }
         public string ACDH_Amount { get; set; }
-        public string ACDH_Status { get; set; }
+        public int ACDH_Status { get; set; }
         public string ACDH_Owner { get; set; }
         public string ACDH_Type { get; set; }
         public string ACDH_SubType { get; set; }
-        public string ACDH_PayerReason { get; set; }
+        public int ACDH_PayerReason { get; set; }
         public string ACDH_PrimaryReason { get; set; }
         public string ACDH_SecondaryReason { get; set; }
         public string ACDH_PrinDiag { get; set; }
@@ -34,14 +34,13 @@ namespace HealthcareAnalytics.Models
         public string ACDH_Completed { get; set; }
         public string ACDH_Priority { get; set; }
         public string ACDH_Description { get; set; }
-        public string ACDH_TaskFollowUp { get; set; }
+        public int ACDH_TaskFollowUp { get; set; }
         public Nullable<System.DateTime> ACDH_DueDate { get; set; }
         public Nullable<System.DateTime> ACDH_FollowUpDate { get; set; }
         public Nullable<bool> ACDH_DeleteFlag { get; set; }
 
         public string convertDate { get; set; }
         public string convertFollowUpDate { get; set; }
-
 
         public virtual Account_Case_Details Account_Case_Details { get; set; }
     }

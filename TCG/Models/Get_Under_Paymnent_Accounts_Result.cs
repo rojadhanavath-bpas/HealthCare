@@ -32,5 +32,6 @@ namespace HealthcareAnalytics.Models
         public decimal convertAmount { get; set; }
         public string convertBal { get; set; }
         public string AccId { get; set; }
+
     }
 }

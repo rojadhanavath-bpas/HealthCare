@@ -29,8 +29,6 @@ namespace HealthcareAnalytics.Models
     
         public virtual DbSet<Account_AR_Status> Account_AR_Status { get; set; }
         public virtual DbSet<Account_Bill_Status> Account_Bill_Status { get; set; }
-        public virtual DbSet<Account_Case_Details> Account_Case_Details { get; set; }
-        public virtual DbSet<Account_Case_Detials_History> Account_Case_Detials_History { get; set; }
         public virtual DbSet<Account_Source> Account_Source { get; set; }
         public virtual DbSet<Encounter_Type> Encounter_Type { get; set; }
         public virtual DbSet<Insurance_Company_Name> Insurance_Company_Name { get; set; }
@@ -39,13 +37,15 @@ namespace HealthcareAnalytics.Models
         public virtual DbSet<Status_Master> Status_Master { get; set; }
         public virtual DbSet<Task_Master> Task_Master { get; set; }
         public virtual DbSet<Priority_Master> Priority_Master { get; set; }
-        public virtual DbSet<Account_Case_Task> Account_Case_Task { get; set; }
-        public virtual DbSet<Account_Case_Task_History> Account_Case_Task_History { get; set; }
         public virtual DbSet<DenialCat_Master> DenialCat_Master { get; set; }
         public virtual DbSet<RootCause_Master> RootCause_Master { get; set; }
         public virtual DbSet<Underpayment_Reason> Underpayment_Reason { get; set; }
         public virtual DbSet<CaseCompleted_Master> CaseCompleted_Master { get; set; }
         public virtual DbSet<DenialStatus_Master> DenialStatus_Master { get; set; }
+        public virtual DbSet<Account_Case_Details> Account_Case_Details { get; set; }
+        public virtual DbSet<Account_Case_Detials_History> Account_Case_Detials_History { get; set; }
+        public virtual DbSet<Account_Case_Task> Account_Case_Task { get; set; }
+        public virtual DbSet<Account_Case_Task_History> Account_Case_Task_History { get; set; }
     
         public virtual int Case_Task_InsUpd(Nullable<int> aCT_ID, string aCT_HspAccID, Nullable<int> aCT_ACD_ID, Nullable<bool> aCT_Completed, string aCT_Priority, string aCT_Description, string aCT_Owner, string aCT_Comment, Nullable<System.DateTime> aCT_DueDate, Nullable<int> aCT_DeleteFlag, string aCT_CreatedBy, Nullable<System.DateTime> aCT_CreatedDate, string aCT_UpdatedBy, Nullable<System.DateTime> aCT_Updateddate, string aCT_UpdatedBy_DB, ObjectParameter new_recordNumber)
         {
@@ -112,7 +112,7 @@ namespace HealthcareAnalytics.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_Task_InsUpd", aCT_IDParameter, aCT_HspAccIDParameter, aCT_ACD_IDParameter, aCT_CompletedParameter, aCT_PriorityParameter, aCT_DescriptionParameter, aCT_OwnerParameter, aCT_CommentParameter, aCT_DueDateParameter, aCT_DeleteFlagParameter, aCT_CreatedByParameter, aCT_CreatedDateParameter, aCT_UpdatedByParameter, aCT_UpdateddateParameter, aCT_UpdatedBy_DBParameter, new_recordNumber);
         }
     
-        public virtual int Case_InsUpd(Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber)
+        public virtual int Case_InsUpd(Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, Nullable<int> aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, Nullable<int> aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, Nullable<int> aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber)
         {
             var aCD_IDParameter = aCD_ID.HasValue ?
                 new ObjectParameter("ACD_ID", aCD_ID) :
@@ -126,9 +126,9 @@ namespace HealthcareAnalytics.Models
                 new ObjectParameter("ACD_Amount", aCD_Amount) :
                 new ObjectParameter("ACD_Amount", typeof(string));
     
-            var aCD_StatusParameter = aCD_Status != null ?
+            var aCD_StatusParameter = aCD_Status.HasValue ?
                 new ObjectParameter("ACD_Status", aCD_Status) :
-                new ObjectParameter("ACD_Status", typeof(string));
+                new ObjectParameter("ACD_Status", typeof(int));
     
             var aCD_OwnerParameter = aCD_Owner != null ?
                 new ObjectParameter("ACD_Owner", aCD_Owner) :
@@ -142,9 +142,9 @@ namespace HealthcareAnalytics.Models
                 new ObjectParameter("ACD_SubType", aCD_SubType) :
                 new ObjectParameter("ACD_SubType", typeof(string));
     
-            var aCD_PayerReasonParameter = aCD_PayerReason != null ?
+            var aCD_PayerReasonParameter = aCD_PayerReason.HasValue ?
                 new ObjectParameter("ACD_PayerReason", aCD_PayerReason) :
-                new ObjectParameter("ACD_PayerReason", typeof(string));
+                new ObjectParameter("ACD_PayerReason", typeof(int));
     
             var aCD_PrimaryReasonParameter = aCD_PrimaryReason != null ?
                 new ObjectParameter("ACD_PrimaryReason", aCD_PrimaryReason) :
@@ -178,9 +178,9 @@ namespace HealthcareAnalytics.Models
                 new ObjectParameter("ACD_Description", aCD_Description) :
                 new ObjectParameter("ACD_Description", typeof(string));
     
-            var aCD_TaskFollowUpParameter = aCD_TaskFollowUp != null ?
+            var aCD_TaskFollowUpParameter = aCD_TaskFollowUp.HasValue ?
                 new ObjectParameter("ACD_TaskFollowUp", aCD_TaskFollowUp) :
-                new ObjectParameter("ACD_TaskFollowUp", typeof(string));
+                new ObjectParameter("ACD_TaskFollowUp", typeof(int));
     
             var aCD_DueDateParameter = aCD_DueDate.HasValue ?
                 new ObjectParameter("ACD_DueDate", aCD_DueDate) :

@@ -26,11 +26,11 @@
           <Property Name="ACD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ACD_HspAccID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACD_Amount" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ACD_Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_Status" Type="int" Nullable="false" />
           <Property Name="ACD_Owner" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACD_Type" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACD_SubType" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ACD_PayerReason" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACD_PayerReason" Type="int" Nullable="false" />
           <Property Name="ACD_PrimaryReason" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACD_SecondaryReason" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACD_PrinDiag" Type="varchar" MaxLength="50" Nullable="false" />
@@ -44,7 +44,7 @@
           <Property Name="ACD_Completed" Type="varchar" MaxLength="50" />
           <Property Name="ACD_Priority" Type="varchar" MaxLength="50" />
           <Property Name="ACD_Description" Type="varchar" MaxLength="50" />
-          <Property Name="ACD_TaskFollowUp" Type="varchar" MaxLength="50" />
+          <Property Name="ACD_TaskFollowUp" Type="int" Nullable="false" />
           <Property Name="ACD_DueDate" Type="datetime" />
           <Property Name="ACD_FollowUpDate" Type="datetime" />
           <Property Name="ACD_DeleteFlag" Type="bit" />
@@ -57,11 +57,11 @@
           <Property Name="ACDH_ACD_ID" Type="int" Nullable="false" />
           <Property Name="ACDH_HspAccID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACDH_Amount" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ACDH_Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_Status" Type="int" Nullable="false" />
           <Property Name="ACDH_Owner" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACDH_Type" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACDH_SubType" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ACDH_PayerReason" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACDH_PayerReason" Type="int" Nullable="false" />
           <Property Name="ACDH_PrimaryReason" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACDH_SecondaryReason" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ACDH_PrinDiag" Type="varchar" MaxLength="50" Nullable="false" />
@@ -73,7 +73,7 @@
           <Property Name="ACDH_Completed" Type="varchar" MaxLength="50" />
           <Property Name="ACDH_Priority" Type="varchar" MaxLength="50" />
           <Property Name="ACDH_Description" Type="varchar" MaxLength="50" />
-          <Property Name="ACDH_TaskFollowUp" Type="varchar" MaxLength="50" />
+          <Property Name="ACDH_TaskFollowUp" Type="int" Nullable="false" />
           <Property Name="ACDH_DueDate" Type="datetime" />
           <Property Name="ACDH_FollowUpDate" Type="datetime" />
           <Property Name="ACDH_DeleteFlag" Type="bit" />
@@ -272,11 +272,11 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
           <Parameter Name="ACD_ID" Type="int" Mode="In" />
           <Parameter Name="ACD_HspAccID" Type="varchar" Mode="In" />
           <Parameter Name="ACD_Amount" Type="varchar" Mode="In" />
-          <Parameter Name="ACD_Status" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_Status" Type="int" Mode="In" />
           <Parameter Name="ACD_Owner" Type="varchar" Mode="In" />
           <Parameter Name="ACD_Type" Type="varchar" Mode="In" />
           <Parameter Name="ACD_SubType" Type="varchar" Mode="In" />
-          <Parameter Name="ACD_PayerReason" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_PayerReason" Type="int" Mode="In" />
           <Parameter Name="ACD_PrimaryReason" Type="varchar" Mode="In" />
           <Parameter Name="ACD_SecondaryReason" Type="varchar" Mode="In" />
           <Parameter Name="ACD_PrinDiag" Type="varchar" Mode="In" />
@@ -285,7 +285,7 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
           <Parameter Name="ACD_Completed" Type="varchar" Mode="In" />
           <Parameter Name="ACD_Priority" Type="varchar" Mode="In" />
           <Parameter Name="ACD_Description" Type="varchar" Mode="In" />
-          <Parameter Name="ACD_TaskFollowUp" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_TaskFollowUp" Type="int" Mode="In" />
           <Parameter Name="ACD_DueDate" Type="datetime" Mode="In" />
           <Parameter Name="ACD_FollowUpDate" Type="datetime" Mode="In" />
           <Parameter Name="ACD_DeleteFlag" Type="bit" Mode="In" />
@@ -390,69 +390,6 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
           <Property Name="BillSts_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BillSts_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="Account_Case_Details">
-          <Key>
-            <PropertyRef Name="ACD_ID" />
-          </Key>
-          <Property Name="ACD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ACD_HspAccID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_Owner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_SubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_PayerReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_PrimaryReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_SecondaryReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_PrinDiag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_PrinProc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACD_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ACD_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACD_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ACD_UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACD_Updateddate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ACD_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Account_Case_Detials_History" Relationship="Self.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Details" ToRole="Account_Case_Detials_History" />
-          <NavigationProperty Name="Account_Case_Task" Relationship="TCG_Data_Worklist.FK__Account_C__ACT_A__44CA3770" FromRole="Account_Case_Details" ToRole="Account_Case_Task" />
-          <NavigationProperty Name="Account_Case_Task_History" Relationship="TCG_Data_Worklist.FK__Account_C__ACTH___498EEC8D" FromRole="Account_Case_Details" ToRole="Account_Case_Task_History" />
-          <Property Name="ACD_Completed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACD_Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACD_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACD_TaskFollowUp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACD_DueDate" Type="DateTime" Precision="3" />
-          <Property Name="ACD_FollowUpDate" Type="DateTime" Precision="3" />
-          <Property Name="ACD_DeleteFlag" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="Account_Case_Detials_History">
-          <Key>
-            <PropertyRef Name="ACDH_ID" />
-          </Key>
-          <Property Name="ACDH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ACDH_ACD_ID" Type="Int32" Nullable="false" />
-          <Property Name="ACDH_HspAccID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_Owner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_SubType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_PayerReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_PrimaryReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_SecondaryReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_PrinDiag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_PrinProc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ACDH_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ACDH_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACDH_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ACDH_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Account_Case_Details" Relationship="Self.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Detials_History" ToRole="Account_Case_Details" />
-          <Property Name="ACDH_Completed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACDH_Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACDH_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACDH_TaskFollowUp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACDH_DueDate" Type="DateTime" Precision="3" />
-          <Property Name="ACDH_FollowUpDate" Type="DateTime" Precision="3" />
-          <Property Name="ACDH_DeleteFlag" Type="Boolean" />
-        </EntityType>
         <EntityType Name="Account_Source">
           <Key>
             <PropertyRef Name="AccSrc_ID" />
@@ -502,23 +439,9 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
           <Property Name="TM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TM_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Account_C__ACDH___40F9A68C">
-          <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
-          <End Role="Account_Case_Detials_History" Type="Self.Account_Case_Detials_History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account_Case_Details">
-              <PropertyRef Name="ACD_ID" />
-            </Principal>
-            <Dependent Role="Account_Case_Detials_History">
-              <PropertyRef Name="ACDH_ACD_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="TCG_Worklist" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Account_AR_Status" EntityType="Self.Account_AR_Status" />
           <EntitySet Name="Account_Bill_Status" EntityType="Self.Account_Bill_Status" />
-          <EntitySet Name="Account_Case_Details" EntityType="Self.Account_Case_Details" />
-          <EntitySet Name="Account_Case_Detials_History" EntityType="Self.Account_Case_Detials_History" />
           <EntitySet Name="Account_Source" EntityType="Self.Account_Source" />
           <EntitySet Name="Encounter_Type" EntityType="Self.Encounter_Type" />
           <EntitySet Name="Insurance_Company_Name" EntityType="Self.Insurance_Company_Name" />
@@ -526,10 +449,6 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
           <EntitySet Name="PrimaryReason_Master" EntityType="Self.PrimaryReason_Master" />
           <EntitySet Name="Status_Master" EntityType="Self.Status_Master" />
           <EntitySet Name="Task_Master" EntityType="Self.Task_Master" />
-          <AssociationSet Name="FK__Account_C__ACDH___40F9A68C" Association="Self.FK__Account_C__ACDH___40F9A68C">
-            <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
-            <End Role="Account_Case_Detials_History" EntitySet="Account_Case_Detials_History" />
-          </AssociationSet>
           <FunctionImport Name="Case_Task_InsUpd">
             <Parameter Name="ACT_ID" Mode="In" Type="Int32" />
             <Parameter Name="ACT_HspAccID" Mode="In" Type="String" />
@@ -553,11 +472,11 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
             <Parameter Name="ACD_ID" Mode="In" Type="Int32" />
             <Parameter Name="ACD_HspAccID" Mode="In" Type="String" />
             <Parameter Name="ACD_Amount" Mode="In" Type="String" />
-            <Parameter Name="ACD_Status" Mode="In" Type="String" />
+            <Parameter Name="ACD_Status" Mode="In" Type="Int32" />
             <Parameter Name="ACD_Owner" Mode="In" Type="String" />
             <Parameter Name="ACD_Type" Mode="In" Type="String" />
             <Parameter Name="ACD_SubType" Mode="In" Type="String" />
-            <Parameter Name="ACD_PayerReason" Mode="In" Type="String" />
+            <Parameter Name="ACD_PayerReason" Mode="In" Type="Int32" />
             <Parameter Name="ACD_PrimaryReason" Mode="In" Type="String" />
             <Parameter Name="ACD_SecondaryReason" Mode="In" Type="String" />
             <Parameter Name="ACD_PrinDiag" Mode="In" Type="String" />
@@ -566,7 +485,7 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
             <Parameter Name="ACD_Completed" Mode="In" Type="String" />
             <Parameter Name="ACD_Priority" Mode="In" Type="String" />
             <Parameter Name="ACD_Description" Mode="In" Type="String" />
-            <Parameter Name="ACD_TaskFollowUp" Mode="In" Type="String" />
+            <Parameter Name="ACD_TaskFollowUp" Mode="In" Type="Int32" />
             <Parameter Name="ACD_DueDate" Mode="In" Type="DateTime" />
             <Parameter Name="ACD_FollowUpDate" Mode="In" Type="DateTime" />
             <Parameter Name="ACD_DeleteFlag" Mode="In" Type="Boolean" />
@@ -577,8 +496,20 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
             <Parameter Name="ACTD_UpdatedBy_DB" Mode="In" Type="String" />
             <Parameter Name="new_recordNumber" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="Get_Under_Paymnent_Accounts" ReturnType="Collection(TCG_Data_Worklist.Get_Under_Paymnent_Accounts_Result)" />
+          <EntitySet Name="DenialCat_Master" EntityType="TCG_Data_Worklist.DenialCat_Master" />
+          <EntitySet Name="RootCause_Master" EntityType="TCG_Data_Worklist.RootCause_Master" />
+          <EntitySet Name="Underpayment_Reason" EntityType="TCG_Data_Worklist.Underpayment_Reason" />
+          <EntitySet Name="CaseCompleted_Master" EntityType="TCG_Data_Worklist.CaseCompleted_Master" />
+          <EntitySet Name="DenialStatus_Master" EntityType="TCG_Data_Worklist.DenialStatus_Master" />
+          <EntitySet Name="Account_Case_Details" EntityType="TCG_Data_Worklist.Account_Case_Details" />
+          <EntitySet Name="Account_Case_Detials_History" EntityType="TCG_Data_Worklist.Account_Case_Detials_History" />
           <EntitySet Name="Account_Case_Task" EntityType="TCG_Data_Worklist.Account_Case_Task" />
           <EntitySet Name="Account_Case_Task_History" EntityType="TCG_Data_Worklist.Account_Case_Task_History" />
+          <AssociationSet Name="FK__Account_C__ACDH___40F9A68C" Association="TCG_Data_Worklist.FK__Account_C__ACDH___40F9A68C">
+            <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+            <End Role="Account_Case_Detials_History" EntitySet="Account_Case_Detials_History" />
+          </AssociationSet>
           <AssociationSet Name="FK__Account_C__ACT_A__44CA3770" Association="TCG_Data_Worklist.FK__Account_C__ACT_A__44CA3770">
             <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
             <End Role="Account_Case_Task" EntitySet="Account_Case_Task" />
@@ -591,13 +522,7 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
             <End Role="Account_Case_Task" EntitySet="Account_Case_Task" />
             <End Role="Account_Case_Task_History" EntitySet="Account_Case_Task_History" />
           </AssociationSet>
-          <FunctionImport Name="Get_Under_Paymnent_Accounts" ReturnType="Collection(TCG_Data_Worklist.Get_Under_Paymnent_Accounts_Result)" />
-          <EntitySet Name="DenialCat_Master" EntityType="TCG_Data_Worklist.DenialCat_Master" />
-          <EntitySet Name="RootCause_Master" EntityType="TCG_Data_Worklist.RootCause_Master" />
-          <EntitySet Name="Underpayment_Reason" EntityType="TCG_Data_Worklist.Underpayment_Reason" />
-          <EntitySet Name="CaseCompleted_Master" EntityType="TCG_Data_Worklist.CaseCompleted_Master" />
-          <EntitySet Name="DenialStatus_Master" EntityType="TCG_Data_Worklist.DenialStatus_Master" />
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Priority_Master">
           <Key>
             <PropertyRef Name="PM_ID" />
@@ -605,85 +530,6 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
           <Property Name="PM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PM_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Account_Case_Task">
-          <Key>
-            <PropertyRef Name="ACT_ID" />
-          </Key>
-          <Property Name="ACT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ACT_HspAccID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACT_ACD_ID" Type="Int32" Nullable="false" />
-          <Property Name="ACT_Completed" Type="Boolean" Nullable="false" />
-          <Property Name="ACT_Priority" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACT_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACT_Owner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACT_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ACT_DueDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ACT_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACT_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ACT_UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACT_Updateddate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ACT_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACT_DeleteFlag" Type="Int32" />
-          <NavigationProperty Name="Account_Case_Details" Relationship="TCG_Data_Worklist.FK__Account_C__ACT_A__44CA3770" FromRole="Account_Case_Task" ToRole="Account_Case_Details" />
-          <NavigationProperty Name="Account_Case_Task_History" Relationship="TCG_Data_Worklist.FK__Account_C__ACTH___489AC854" FromRole="Account_Case_Task" ToRole="Account_Case_Task_History" />
-        </EntityType>
-        <EntityType Name="Account_Case_Task_History">
-          <Key>
-            <PropertyRef Name="ACTH_ID" />
-          </Key>
-          <Property Name="ACTH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ACTH_ACT_ID" Type="Int32" Nullable="false" />
-          <Property Name="ACTH_ACD_ID" Type="Int32" Nullable="false" />
-          <Property Name="ACTH_HspAccID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACTH_Completed" Type="Boolean" Nullable="false" />
-          <Property Name="ACTH_Priority" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACTH_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACTH_Owner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACTH_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ACTH_DueDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ACTH_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACTH_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ACTH_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ACTH_DeleteFlag" Type="Int32" />
-          <NavigationProperty Name="Account_Case_Details" Relationship="TCG_Data_Worklist.FK__Account_C__ACTH___498EEC8D" FromRole="Account_Case_Task_History" ToRole="Account_Case_Details" />
-          <NavigationProperty Name="Account_Case_Task" Relationship="TCG_Data_Worklist.FK__Account_C__ACTH___489AC854" FromRole="Account_Case_Task_History" ToRole="Account_Case_Task" />
-        </EntityType>
-        <Association Name="FK__Account_C__ACT_A__44CA3770">
-          <End Type="TCG_Data_Worklist.Account_Case_Details" Role="Account_Case_Details" Multiplicity="1" />
-          <End Type="TCG_Data_Worklist.Account_Case_Task" Role="Account_Case_Task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account_Case_Details">
-              <PropertyRef Name="ACD_ID" />
-            </Principal>
-            <Dependent Role="Account_Case_Task">
-              <PropertyRef Name="ACT_ACD_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Account_C__ACTH___498EEC8D">
-          <End Type="TCG_Data_Worklist.Account_Case_Details" Role="Account_Case_Details" Multiplicity="1" />
-          <End Type="TCG_Data_Worklist.Account_Case_Task_History" Role="Account_Case_Task_History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account_Case_Details">
-              <PropertyRef Name="ACD_ID" />
-            </Principal>
-            <Dependent Role="Account_Case_Task_History">
-              <PropertyRef Name="ACTH_ACD_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Account_C__ACTH___489AC854">
-          <End Type="TCG_Data_Worklist.Account_Case_Task" Role="Account_Case_Task" Multiplicity="1" />
-          <End Type="TCG_Data_Worklist.Account_Case_Task_History" Role="Account_Case_Task_History" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account_Case_Task">
-              <PropertyRef Name="ACT_ID" />
-            </Principal>
-            <Dependent Role="Account_Case_Task_History">
-              <PropertyRef Name="ACTH_ACT_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="Get_Under_Paymnent_Accounts_Result">
           <Property Type="String" Name="Deferral_Due" Nullable="true" MaxLength="255" />
           <Property Type="Double" Name="Account" Nullable="true" />
@@ -739,7 +585,161 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
           <Property Name="DS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DS_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        <EntityType Name="Account_Case_Details">
+          <Key>
+            <PropertyRef Name="ACD_ID" />
+          </Key>
+          <Property Name="ACD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACD_HspAccID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Amount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Status" Type="Int32" Nullable="false" />
+          <Property Name="ACD_Owner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_SubType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_PayerReason" Type="Int32" Nullable="false" />
+          <Property Name="ACD_PrimaryReason" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_SecondaryReason" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_PrinDiag" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_PrinProc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACD_UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Updateddate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACD_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Completed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_TaskFollowUp" Type="Int32" Nullable="false" />
+          <Property Name="ACD_DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ACD_FollowUpDate" Type="DateTime" Precision="3" />
+          <Property Name="ACD_DeleteFlag" Type="Boolean" />
+          <NavigationProperty Name="Account_Case_Detials_History" Relationship="TCG_Data_Worklist.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Details" ToRole="Account_Case_Detials_History" />
+          <NavigationProperty Name="Account_Case_Task" Relationship="TCG_Data_Worklist.FK__Account_C__ACT_A__44CA3770" FromRole="Account_Case_Details" ToRole="Account_Case_Task" />
+          <NavigationProperty Name="Account_Case_Task_History" Relationship="TCG_Data_Worklist.FK__Account_C__ACTH___498EEC8D" FromRole="Account_Case_Details" ToRole="Account_Case_Task_History" />
+        </EntityType>
+        <EntityType Name="Account_Case_Detials_History">
+          <Key>
+            <PropertyRef Name="ACDH_ID" />
+          </Key>
+          <Property Name="ACDH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACDH_ACD_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACDH_HspAccID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Amount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Status" Type="Int32" Nullable="false" />
+          <Property Name="ACDH_Owner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_SubType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_PayerReason" Type="Int32" Nullable="false" />
+          <Property Name="ACDH_PrimaryReason" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_SecondaryReason" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_PrinDiag" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_PrinProc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACDH_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Completed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Priority" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_TaskFollowUp" Type="Int32" Nullable="false" />
+          <Property Name="ACDH_DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ACDH_FollowUpDate" Type="DateTime" Precision="3" />
+          <Property Name="ACDH_DeleteFlag" Type="Boolean" />
+          <NavigationProperty Name="Account_Case_Details" Relationship="TCG_Data_Worklist.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Detials_History" ToRole="Account_Case_Details" />
+        </EntityType>
+        <EntityType Name="Account_Case_Task">
+          <Key>
+            <PropertyRef Name="ACT_ID" />
+          </Key>
+          <Property Name="ACT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACT_HspAccID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_ACD_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACT_Completed" Type="Boolean" Nullable="false" />
+          <Property Name="ACT_Priority" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_Owner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_DueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACT_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACT_UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_Updateddate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACT_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACT_DeleteFlag" Type="Int32" />
+          <NavigationProperty Name="Account_Case_Details" Relationship="TCG_Data_Worklist.FK__Account_C__ACT_A__44CA3770" FromRole="Account_Case_Task" ToRole="Account_Case_Details" />
+          <NavigationProperty Name="Account_Case_Task_History" Relationship="TCG_Data_Worklist.FK__Account_C__ACTH___489AC854" FromRole="Account_Case_Task" ToRole="Account_Case_Task_History" />
+        </EntityType>
+        <EntityType Name="Account_Case_Task_History">
+          <Key>
+            <PropertyRef Name="ACTH_ID" />
+          </Key>
+          <Property Name="ACTH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACTH_ACT_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACTH_ACD_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACTH_HspAccID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTH_Completed" Type="Boolean" Nullable="false" />
+          <Property Name="ACTH_Priority" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTH_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTH_Owner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTH_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACTH_DueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACTH_CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTH_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ACTH_UpdatedBy_DB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACTH_DeleteFlag" Type="Int32" />
+          <NavigationProperty Name="Account_Case_Details" Relationship="TCG_Data_Worklist.FK__Account_C__ACTH___498EEC8D" FromRole="Account_Case_Task_History" ToRole="Account_Case_Details" />
+          <NavigationProperty Name="Account_Case_Task" Relationship="TCG_Data_Worklist.FK__Account_C__ACTH___489AC854" FromRole="Account_Case_Task_History" ToRole="Account_Case_Task" />
+        </EntityType>
+        <Association Name="FK__Account_C__ACDH___40F9A68C">
+          <End Type="TCG_Data_Worklist.Account_Case_Details" Role="Account_Case_Details" Multiplicity="1" />
+          <End Type="TCG_Data_Worklist.Account_Case_Detials_History" Role="Account_Case_Detials_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Details">
+              <PropertyRef Name="ACD_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Detials_History">
+              <PropertyRef Name="ACDH_ACD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account_C__ACT_A__44CA3770">
+          <End Type="TCG_Data_Worklist.Account_Case_Details" Role="Account_Case_Details" Multiplicity="1" />
+          <End Type="TCG_Data_Worklist.Account_Case_Task" Role="Account_Case_Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Details">
+              <PropertyRef Name="ACD_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Task">
+              <PropertyRef Name="ACT_ACD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account_C__ACTH___498EEC8D">
+          <End Type="TCG_Data_Worklist.Account_Case_Details" Role="Account_Case_Details" Multiplicity="1" />
+          <End Type="TCG_Data_Worklist.Account_Case_Task_History" Role="Account_Case_Task_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Details">
+              <PropertyRef Name="ACD_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Task_History">
+              <PropertyRef Name="ACTH_ACD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Account_C__ACTH___489AC854">
+          <End Type="TCG_Data_Worklist.Account_Case_Task" Role="Account_Case_Task" Multiplicity="1" />
+          <End Type="TCG_Data_Worklist.Account_Case_Task_History" Role="Account_Case_Task_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account_Case_Task">
+              <PropertyRef Name="ACT_ID" />
+            </Principal>
+            <Dependent Role="Account_Case_Task_History">
+              <PropertyRef Name="ACTH_ACT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -758,67 +758,6 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
               <MappingFragment StoreEntitySet="Account_Bill_Status">
                 <ScalarProperty Name="BillSts_ID" ColumnName="BillSts_ID" />
                 <ScalarProperty Name="BillSts_Name" ColumnName="BillSts_Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Account_Case_Details">
-            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Details">
-              <MappingFragment StoreEntitySet="Account_Case_Details">
-                <ScalarProperty Name="ACD_DeleteFlag" ColumnName="ACD_DeleteFlag" />
-                <ScalarProperty Name="ACD_FollowUpDate" ColumnName="ACD_FollowUpDate" />
-                <ScalarProperty Name="ACD_DueDate" ColumnName="ACD_DueDate" />
-                <ScalarProperty Name="ACD_TaskFollowUp" ColumnName="ACD_TaskFollowUp" />
-                <ScalarProperty Name="ACD_Description" ColumnName="ACD_Description" />
-                <ScalarProperty Name="ACD_Priority" ColumnName="ACD_Priority" />
-                <ScalarProperty Name="ACD_Completed" ColumnName="ACD_Completed" />
-                <ScalarProperty Name="ACD_ID" ColumnName="ACD_ID" />
-                <ScalarProperty Name="ACD_HspAccID" ColumnName="ACD_HspAccID" />
-                <ScalarProperty Name="ACD_Amount" ColumnName="ACD_Amount" />
-                <ScalarProperty Name="ACD_Status" ColumnName="ACD_Status" />
-                <ScalarProperty Name="ACD_Owner" ColumnName="ACD_Owner" />
-                <ScalarProperty Name="ACD_Type" ColumnName="ACD_Type" />
-                <ScalarProperty Name="ACD_SubType" ColumnName="ACD_SubType" />
-                <ScalarProperty Name="ACD_PayerReason" ColumnName="ACD_PayerReason" />
-                <ScalarProperty Name="ACD_PrimaryReason" ColumnName="ACD_PrimaryReason" />
-                <ScalarProperty Name="ACD_SecondaryReason" ColumnName="ACD_SecondaryReason" />
-                <ScalarProperty Name="ACD_PrinDiag" ColumnName="ACD_PrinDiag" />
-                <ScalarProperty Name="ACD_PrinProc" ColumnName="ACD_PrinProc" />
-                <ScalarProperty Name="ACD_Comments" ColumnName="ACD_Comments" />
-                <ScalarProperty Name="ACD_CreatedBy" ColumnName="ACD_CreatedBy" />
-                <ScalarProperty Name="ACD_CreatedDate" ColumnName="ACD_CreatedDate" />
-                <ScalarProperty Name="ACD_UpdatedBy" ColumnName="ACD_UpdatedBy" />
-                <ScalarProperty Name="ACD_Updateddate" ColumnName="ACD_Updateddate" />
-                <ScalarProperty Name="ACD_UpdatedBy_DB" ColumnName="ACD_UpdatedBy_DB" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Account_Case_Detials_History">
-            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Detials_History">
-              <MappingFragment StoreEntitySet="Account_Case_Detials_History">
-                <ScalarProperty Name="ACDH_DeleteFlag" ColumnName="ACDH_DeleteFlag" />
-                <ScalarProperty Name="ACDH_FollowUpDate" ColumnName="ACDH_FollowUpDate" />
-                <ScalarProperty Name="ACDH_DueDate" ColumnName="ACDH_DueDate" />
-                <ScalarProperty Name="ACDH_TaskFollowUp" ColumnName="ACDH_TaskFollowUp" />
-                <ScalarProperty Name="ACDH_Description" ColumnName="ACDH_Description" />
-                <ScalarProperty Name="ACDH_Priority" ColumnName="ACDH_Priority" />
-                <ScalarProperty Name="ACDH_Completed" ColumnName="ACDH_Completed" />
-                <ScalarProperty Name="ACDH_ID" ColumnName="ACDH_ID" />
-                <ScalarProperty Name="ACDH_ACD_ID" ColumnName="ACDH_ACD_ID" />
-                <ScalarProperty Name="ACDH_HspAccID" ColumnName="ACDH_HspAccID" />
-                <ScalarProperty Name="ACDH_Amount" ColumnName="ACDH_Amount" />
-                <ScalarProperty Name="ACDH_Status" ColumnName="ACDH_Status" />
-                <ScalarProperty Name="ACDH_Owner" ColumnName="ACDH_Owner" />
-                <ScalarProperty Name="ACDH_Type" ColumnName="ACDH_Type" />
-                <ScalarProperty Name="ACDH_SubType" ColumnName="ACDH_SubType" />
-                <ScalarProperty Name="ACDH_PayerReason" ColumnName="ACDH_PayerReason" />
-                <ScalarProperty Name="ACDH_PrimaryReason" ColumnName="ACDH_PrimaryReason" />
-                <ScalarProperty Name="ACDH_SecondaryReason" ColumnName="ACDH_SecondaryReason" />
-                <ScalarProperty Name="ACDH_PrinDiag" ColumnName="ACDH_PrinDiag" />
-                <ScalarProperty Name="ACDH_PrinProc" ColumnName="ACDH_PrinProc" />
-                <ScalarProperty Name="ACDH_Comments" ColumnName="ACDH_Comments" />
-                <ScalarProperty Name="ACDH_CreatedBy" ColumnName="ACDH_CreatedBy" />
-                <ScalarProperty Name="ACDH_CreatedDate" ColumnName="ACDH_CreatedDate" />
-                <ScalarProperty Name="ACDH_UpdatedBy_DB" ColumnName="ACDH_UpdatedBy_DB" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -888,47 +827,6 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Case_InsUpd" FunctionName="TCG_Data_Worklist.Store.Case_InsUpd" />
-          <EntitySetMapping Name="Account_Case_Task">
-            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Task">
-              <MappingFragment StoreEntitySet="Account_Case_Task">
-                <ScalarProperty Name="ACT_DeleteFlag" ColumnName="ACT_DeleteFlag" />
-                <ScalarProperty Name="ACT_UpdatedBy_DB" ColumnName="ACT_UpdatedBy_DB" />
-                <ScalarProperty Name="ACT_Updateddate" ColumnName="ACT_Updateddate" />
-                <ScalarProperty Name="ACT_UpdatedBy" ColumnName="ACT_UpdatedBy" />
-                <ScalarProperty Name="ACT_CreatedDate" ColumnName="ACT_CreatedDate" />
-                <ScalarProperty Name="ACT_CreatedBy" ColumnName="ACT_CreatedBy" />
-                <ScalarProperty Name="ACT_DueDate" ColumnName="ACT_DueDate" />
-                <ScalarProperty Name="ACT_Comment" ColumnName="ACT_Comment" />
-                <ScalarProperty Name="ACT_Owner" ColumnName="ACT_Owner" />
-                <ScalarProperty Name="ACT_Description" ColumnName="ACT_Description" />
-                <ScalarProperty Name="ACT_Priority" ColumnName="ACT_Priority" />
-                <ScalarProperty Name="ACT_Completed" ColumnName="ACT_Completed" />
-                <ScalarProperty Name="ACT_ACD_ID" ColumnName="ACT_ACD_ID" />
-                <ScalarProperty Name="ACT_HspAccID" ColumnName="ACT_HspAccID" />
-                <ScalarProperty Name="ACT_ID" ColumnName="ACT_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Account_Case_Task_History">
-            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Task_History">
-              <MappingFragment StoreEntitySet="Account_Case_Task_History">
-                <ScalarProperty Name="ACTH_DeleteFlag" ColumnName="ACTH_DeleteFlag" />
-                <ScalarProperty Name="ACTH_UpdatedBy_DB" ColumnName="ACTH_UpdatedBy_DB" />
-                <ScalarProperty Name="ACTH_CreatedDate" ColumnName="ACTH_CreatedDate" />
-                <ScalarProperty Name="ACTH_CreatedBy" ColumnName="ACTH_CreatedBy" />
-                <ScalarProperty Name="ACTH_DueDate" ColumnName="ACTH_DueDate" />
-                <ScalarProperty Name="ACTH_Comment" ColumnName="ACTH_Comment" />
-                <ScalarProperty Name="ACTH_Owner" ColumnName="ACTH_Owner" />
-                <ScalarProperty Name="ACTH_Description" ColumnName="ACTH_Description" />
-                <ScalarProperty Name="ACTH_Priority" ColumnName="ACTH_Priority" />
-                <ScalarProperty Name="ACTH_Completed" ColumnName="ACTH_Completed" />
-                <ScalarProperty Name="ACTH_HspAccID" ColumnName="ACTH_HspAccID" />
-                <ScalarProperty Name="ACTH_ACD_ID" ColumnName="ACTH_ACD_ID" />
-                <ScalarProperty Name="ACTH_ACT_ID" ColumnName="ACTH_ACT_ID" />
-                <ScalarProperty Name="ACTH_ID" ColumnName="ACTH_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Get_Under_Paymnent_Accounts" FunctionName="TCG_Data_Worklist.Store.Get_Under_Paymnent_Accounts">
             <ResultMapping>
               <ComplexTypeMapping TypeName="TCG_Data_Worklist.Get_Under_Paymnent_Accounts_Result">
@@ -986,6 +884,108 @@ warning 6002: The table/view 'TCG_Data.dbo.RootCause_Master' does not have a pri
               <MappingFragment StoreEntitySet="DenialStatus_Master">
                 <ScalarProperty Name="DS_Name" ColumnName="DS_Name" />
                 <ScalarProperty Name="DS_ID" ColumnName="DS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Case_Details">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Details">
+              <MappingFragment StoreEntitySet="Account_Case_Details">
+                <ScalarProperty Name="ACD_DeleteFlag" ColumnName="ACD_DeleteFlag" />
+                <ScalarProperty Name="ACD_FollowUpDate" ColumnName="ACD_FollowUpDate" />
+                <ScalarProperty Name="ACD_DueDate" ColumnName="ACD_DueDate" />
+                <ScalarProperty Name="ACD_TaskFollowUp" ColumnName="ACD_TaskFollowUp" />
+                <ScalarProperty Name="ACD_Description" ColumnName="ACD_Description" />
+                <ScalarProperty Name="ACD_Priority" ColumnName="ACD_Priority" />
+                <ScalarProperty Name="ACD_Completed" ColumnName="ACD_Completed" />
+                <ScalarProperty Name="ACD_UpdatedBy_DB" ColumnName="ACD_UpdatedBy_DB" />
+                <ScalarProperty Name="ACD_Updateddate" ColumnName="ACD_Updateddate" />
+                <ScalarProperty Name="ACD_UpdatedBy" ColumnName="ACD_UpdatedBy" />
+                <ScalarProperty Name="ACD_CreatedDate" ColumnName="ACD_CreatedDate" />
+                <ScalarProperty Name="ACD_CreatedBy" ColumnName="ACD_CreatedBy" />
+                <ScalarProperty Name="ACD_Comments" ColumnName="ACD_Comments" />
+                <ScalarProperty Name="ACD_PrinProc" ColumnName="ACD_PrinProc" />
+                <ScalarProperty Name="ACD_PrinDiag" ColumnName="ACD_PrinDiag" />
+                <ScalarProperty Name="ACD_SecondaryReason" ColumnName="ACD_SecondaryReason" />
+                <ScalarProperty Name="ACD_PrimaryReason" ColumnName="ACD_PrimaryReason" />
+                <ScalarProperty Name="ACD_PayerReason" ColumnName="ACD_PayerReason" />
+                <ScalarProperty Name="ACD_SubType" ColumnName="ACD_SubType" />
+                <ScalarProperty Name="ACD_Type" ColumnName="ACD_Type" />
+                <ScalarProperty Name="ACD_Owner" ColumnName="ACD_Owner" />
+                <ScalarProperty Name="ACD_Status" ColumnName="ACD_Status" />
+                <ScalarProperty Name="ACD_Amount" ColumnName="ACD_Amount" />
+                <ScalarProperty Name="ACD_HspAccID" ColumnName="ACD_HspAccID" />
+                <ScalarProperty Name="ACD_ID" ColumnName="ACD_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Case_Detials_History">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Detials_History">
+              <MappingFragment StoreEntitySet="Account_Case_Detials_History">
+                <ScalarProperty Name="ACDH_DeleteFlag" ColumnName="ACDH_DeleteFlag" />
+                <ScalarProperty Name="ACDH_FollowUpDate" ColumnName="ACDH_FollowUpDate" />
+                <ScalarProperty Name="ACDH_DueDate" ColumnName="ACDH_DueDate" />
+                <ScalarProperty Name="ACDH_TaskFollowUp" ColumnName="ACDH_TaskFollowUp" />
+                <ScalarProperty Name="ACDH_Description" ColumnName="ACDH_Description" />
+                <ScalarProperty Name="ACDH_Priority" ColumnName="ACDH_Priority" />
+                <ScalarProperty Name="ACDH_Completed" ColumnName="ACDH_Completed" />
+                <ScalarProperty Name="ACDH_UpdatedBy_DB" ColumnName="ACDH_UpdatedBy_DB" />
+                <ScalarProperty Name="ACDH_CreatedDate" ColumnName="ACDH_CreatedDate" />
+                <ScalarProperty Name="ACDH_CreatedBy" ColumnName="ACDH_CreatedBy" />
+                <ScalarProperty Name="ACDH_Comments" ColumnName="ACDH_Comments" />
+                <ScalarProperty Name="ACDH_PrinProc" ColumnName="ACDH_PrinProc" />
+                <ScalarProperty Name="ACDH_PrinDiag" ColumnName="ACDH_PrinDiag" />
+                <ScalarProperty Name="ACDH_SecondaryReason" ColumnName="ACDH_SecondaryReason" />
+                <ScalarProperty Name="ACDH_PrimaryReason" ColumnName="ACDH_PrimaryReason" />
+                <ScalarProperty Name="ACDH_PayerReason" ColumnName="ACDH_PayerReason" />
+                <ScalarProperty Name="ACDH_SubType" ColumnName="ACDH_SubType" />
+                <ScalarProperty Name="ACDH_Type" ColumnName="ACDH_Type" />
+                <ScalarProperty Name="ACDH_Owner" ColumnName="ACDH_Owner" />
+                <ScalarProperty Name="ACDH_Status" ColumnName="ACDH_Status" />
+                <ScalarProperty Name="ACDH_Amount" ColumnName="ACDH_Amount" />
+                <ScalarProperty Name="ACDH_HspAccID" ColumnName="ACDH_HspAccID" />
+                <ScalarProperty Name="ACDH_ACD_ID" ColumnName="ACDH_ACD_ID" />
+                <ScalarProperty Name="ACDH_ID" ColumnName="ACDH_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Case_Task">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Task">
+              <MappingFragment StoreEntitySet="Account_Case_Task">
+                <ScalarProperty Name="ACT_DeleteFlag" ColumnName="ACT_DeleteFlag" />
+                <ScalarProperty Name="ACT_UpdatedBy_DB" ColumnName="ACT_UpdatedBy_DB" />
+                <ScalarProperty Name="ACT_Updateddate" ColumnName="ACT_Updateddate" />
+                <ScalarProperty Name="ACT_UpdatedBy" ColumnName="ACT_UpdatedBy" />
+                <ScalarProperty Name="ACT_CreatedDate" ColumnName="ACT_CreatedDate" />
+                <ScalarProperty Name="ACT_CreatedBy" ColumnName="ACT_CreatedBy" />
+                <ScalarProperty Name="ACT_DueDate" ColumnName="ACT_DueDate" />
+                <ScalarProperty Name="ACT_Comment" ColumnName="ACT_Comment" />
+                <ScalarProperty Name="ACT_Owner" ColumnName="ACT_Owner" />
+                <ScalarProperty Name="ACT_Description" ColumnName="ACT_Description" />
+                <ScalarProperty Name="ACT_Priority" ColumnName="ACT_Priority" />
+                <ScalarProperty Name="ACT_Completed" ColumnName="ACT_Completed" />
+                <ScalarProperty Name="ACT_ACD_ID" ColumnName="ACT_ACD_ID" />
+                <ScalarProperty Name="ACT_HspAccID" ColumnName="ACT_HspAccID" />
+                <ScalarProperty Name="ACT_ID" ColumnName="ACT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account_Case_Task_History">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Account_Case_Task_History">
+              <MappingFragment StoreEntitySet="Account_Case_Task_History">
+                <ScalarProperty Name="ACTH_DeleteFlag" ColumnName="ACTH_DeleteFlag" />
+                <ScalarProperty Name="ACTH_UpdatedBy_DB" ColumnName="ACTH_UpdatedBy_DB" />
+                <ScalarProperty Name="ACTH_CreatedDate" ColumnName="ACTH_CreatedDate" />
+                <ScalarProperty Name="ACTH_CreatedBy" ColumnName="ACTH_CreatedBy" />
+                <ScalarProperty Name="ACTH_DueDate" ColumnName="ACTH_DueDate" />
+                <ScalarProperty Name="ACTH_Comment" ColumnName="ACTH_Comment" />
+                <ScalarProperty Name="ACTH_Owner" ColumnName="ACTH_Owner" />
+                <ScalarProperty Name="ACTH_Description" ColumnName="ACTH_Description" />
+                <ScalarProperty Name="ACTH_Priority" ColumnName="ACTH_Priority" />
+                <ScalarProperty Name="ACTH_Completed" ColumnName="ACTH_Completed" />
+                <ScalarProperty Name="ACTH_HspAccID" ColumnName="ACTH_HspAccID" />
+                <ScalarProperty Name="ACTH_ACD_ID" ColumnName="ACTH_ACD_ID" />
+                <ScalarProperty Name="ACTH_ACT_ID" ColumnName="ACTH_ACT_ID" />
+                <ScalarProperty Name="ACTH_ID" ColumnName="ACTH_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
