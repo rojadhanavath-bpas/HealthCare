@@ -15,7 +15,8 @@ namespace HealthcareAnalytics
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             //filterContext.Result = new HttpUnauthorizedResult(); // Try this but i'm not sure
-            filterContext.Result = new RedirectResult("~/Home/ARManagement");
+            //filterContext.Result = new RedirectResult("~/Home/ARManagement");
+            filterContext.Result = new RedirectResult("~/WorkDriver/worklist_Home");
         }
 
         public override void OnAuthorization(AuthorizationContext filterContext)

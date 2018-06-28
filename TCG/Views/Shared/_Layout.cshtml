@@ -77,11 +77,60 @@
             
         }
     </div>
+    <div class="navbar navbar-fixed-top">
+        @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
+        {
 
-      <div class=" body-content">
+            @*<ul class="nav navbar-nav">
+                    <li><span class="logo">&nbsp;<img src="~/Images/hennepin healthcare new logo.png" style="height: 60px; width:auto; padding-top: 1px;" /></span></li>
+                    <li class="dropdown arstyle">
+                        <a href="@Url.Action("Coding", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("AR Management", "ARManagement", "Home")</li>
+                            <li>@Html.ActionLink("Debit AR", "DebitAR", "Home")</li>
+                            <li>@Html.ActionLink("Credit AR", "CreditAR", "Home")</li>
+                        </ul>
+                    </li>
+                    <li class="dmstyle">@Html.ActionLink("Denials Management", "DenialsManagement", "Home")</li>
+                    <li class="dropdown arstyle">
+                        <a href="#" class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">Receivable Management <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Old Workdriver", "Worklist", "Home")</li>
+                            <li>@Html.ActionLink("New Workdriver", "worklist_Home", "WorkDriver")</li>
+                        </ul>
+                    </li>
+                    <li class="dmstyle">@Html.ActionLink("Manage Users", "Index", "Users_Data")</li>
+                    <li class="dropdown userstyle" style="right:-40%;">
+                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
+                        </ul>
+                    </li>
+                </ul>*@
+
+            <ul class="nav navbar-nav">
+                <li><span class="logo">&nbsp;<img src="~/Images/hennepin healthcare new logo.png" style="height: 60px; width:auto; padding-top: 1px;" /></span></li>
+                
+                <li class="dmstyle">@Html.ActionLink("Workdriver", "worklist_Home", "WorkDriver")</li>
+                <li class="dmstyle">@Html.ActionLink("Manage Users", "Index", "Users_Data")</li>
+                <li class="dropdown userstyle" style="right:-60%;">
+                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
+                    </ul>
+                </li>
+            </ul>
+        }
+    </div>
+
+    <div class=" body-content">
         @RenderBody()
 
-       <footer>
+        <footer>
             <div class="footer">
                 <span>All Rights Reserved 2018&reg;</span>
             </div>
