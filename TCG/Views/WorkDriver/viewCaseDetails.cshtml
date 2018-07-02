@@ -173,7 +173,8 @@
 
                                                         <div class="form-group col-sm-3">
                                                             <label for="DDL_Owner" class="text-info small">OWNER</label>
-                                                            @Html.DropDownListFor(m => m.ACD_Owner, (IEnumerable<SelectListItem>)ViewBag.UL, new { @class = "form-control dropdown", @disabled = "disabled" })
+                                                            @*@Html.DropDownListFor(m => m.ACD_Owner, (IEnumerable<SelectListItem>)ViewBag.UL, new { @class = "form-control dropdown", @disabled = "disabled" })*@
+                                                            @Html.TextBoxFor(m => m.userID, new { @Value = Model.userName, @class = "form-control", @readonly = "readonly" })
                                                         </div>
                                                         <div class="form-group col-sm-3">
                                                             <label for="dt_Date" class="text-info small">DISCHARGE DATE</label>

@@ -15,11 +15,7 @@
         <EntityTypeShape EntityType="TCG_Data_Worklist.Status_Master" Width="1.5" PointX="3.375" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TCG_Data_Worklist.Task_Master" Width="1.5" PointX="0.875" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TCG_Data_Worklist.Priority_Master" Width="1.5" PointX="3.25" PointY="7.75" />
-        <EntityTypeShape EntityType="TCG_Data_Worklist.DenialCat_Master" Width="1.5" PointX="20.875" PointY="0.5" />
-        <EntityTypeShape EntityType="TCG_Data_Worklist.RootCause_Master" Width="1.5" PointX="5.875" PointY="7.75" />
         <EntityTypeShape EntityType="TCG_Data_Worklist.Underpayment_Reason" Width="1.5" PointX="8" PointY="1" />
-        <EntityTypeShape EntityType="TCG_Data_Worklist.CaseCompleted_Master" Width="1.5" PointX="8" PointY="3.25" />
-        <EntityTypeShape EntityType="TCG_Data_Worklist.DenialStatus_Master" Width="1.5" PointX="5.75" PointY="3.25" />
         <EntityTypeShape EntityType="TCG_Data_Worklist.Account_Case_Details" Width="1.5" PointX="8.375" PointY="8.625" />
         <EntityTypeShape EntityType="TCG_Data_Worklist.Account_Case_Detials_History" Width="1.5" PointX="10.625" PointY="11.375" />
         <EntityTypeShape EntityType="TCG_Data_Worklist.Account_Case_Task" Width="1.5" PointX="10.625" PointY="6.375" />
@@ -28,6 +24,11 @@
         <AssociationConnector Association="TCG_Data_Worklist.FK__Account_C__ACT_A__44CA3770" />
         <AssociationConnector Association="TCG_Data_Worklist.FK__Account_C__ACTH___498EEC8D" />
         <AssociationConnector Association="TCG_Data_Worklist.FK__Account_C__ACTH___489AC854" />
+        <EntityTypeShape EntityType="TCG_Data_Worklist.CaseCompleted_Master" Width="1.5" PointX="5.875" PointY="3.5" />
+        <EntityTypeShape EntityType="TCG_Data_Worklist.DenialCat_Master" Width="1.5" PointX="5.5" PointY="7.875" />
+        <EntityTypeShape EntityType="TCG_Data_Worklist.DenialStatus_Master" Width="1.5" PointX="7.875" PointY="3.5" />
+        <EntityTypeShape EntityType="TCG_Data_Worklist.RootCause_Master" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TCG_Data_Worklist.Underpayment" Width="1.5" PointX="10.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

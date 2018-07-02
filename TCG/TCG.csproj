@@ -318,6 +318,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>tcgDatabase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Underpayment.cs">
+      <DependentUpon>Worklist.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Underpayment_Reason.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>

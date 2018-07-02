@@ -37,15 +37,16 @@ namespace HealthcareAnalytics.Models
         public virtual DbSet<Status_Master> Status_Master { get; set; }
         public virtual DbSet<Task_Master> Task_Master { get; set; }
         public virtual DbSet<Priority_Master> Priority_Master { get; set; }
-        public virtual DbSet<DenialCat_Master> DenialCat_Master { get; set; }
-        public virtual DbSet<RootCause_Master> RootCause_Master { get; set; }
         public virtual DbSet<Underpayment_Reason> Underpayment_Reason { get; set; }
-        public virtual DbSet<CaseCompleted_Master> CaseCompleted_Master { get; set; }
-        public virtual DbSet<DenialStatus_Master> DenialStatus_Master { get; set; }
         public virtual DbSet<Account_Case_Details> Account_Case_Details { get; set; }
         public virtual DbSet<Account_Case_Detials_History> Account_Case_Detials_History { get; set; }
         public virtual DbSet<Account_Case_Task> Account_Case_Task { get; set; }
         public virtual DbSet<Account_Case_Task_History> Account_Case_Task_History { get; set; }
+        public virtual DbSet<CaseCompleted_Master> CaseCompleted_Master { get; set; }
+        public virtual DbSet<DenialCat_Master> DenialCat_Master { get; set; }
+        public virtual DbSet<DenialStatus_Master> DenialStatus_Master { get; set; }
+        public virtual DbSet<RootCause_Master> RootCause_Master { get; set; }
+        public virtual DbSet<Underpayment> Underpayments { get; set; }
     
         public virtual int Case_Task_InsUpd(Nullable<int> aCT_ID, string aCT_HspAccID, Nullable<int> aCT_ACD_ID, Nullable<bool> aCT_Completed, string aCT_Priority, string aCT_Description, string aCT_Owner, string aCT_Comment, Nullable<System.DateTime> aCT_DueDate, Nullable<int> aCT_DeleteFlag, string aCT_CreatedBy, Nullable<System.DateTime> aCT_CreatedDate, string aCT_UpdatedBy, Nullable<System.DateTime> aCT_Updateddate, string aCT_UpdatedBy_DB, ObjectParameter new_recordNumber)
         {

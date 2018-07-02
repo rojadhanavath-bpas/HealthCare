@@ -14,7 +14,14 @@
         $(function () {
             $("table.tablesorter").tablesorter({ widthFixed: true, sortList: [[0, 0]] })
                 .tablesorterPager({ container: $("#pager"), size: $(".pagesize option:selected").val() });
+
+            $('#btn1').prop('disabled', true);
+            $('#btn2').prop('disabled', true);
+
         });
+        
+      
+        
     </script>
 
 </head>
@@ -76,7 +83,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <table id="myDatatable" class="table  pre-scrollable table-responsive table-condensed table-striped table-bordered table-dark">
+                                <table id="myDatatable" class="table pre-scrollable table-responsive table-condensed table-striped table-bordered table-dark">
                                     <thead class="text-center thead-dark table-responsive">
                                         <tr>
                                             <th>
@@ -90,6 +97,9 @@
                                             <th>@Html.ActionLink("Plan", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_Plan })</th>
                                             <th>@Html.ActionLink("Account Class", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_AccClass })</th>
                                             @*<th>@Html.ActionLink("# of cases" , "Underpayemnts_UserAcc_List")</th>*@
+                                            <th>
+                                                Case Status
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-responsive">
@@ -102,7 +112,7 @@
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.DischargeDate)
                                                 </td>
-                                                <td>@Html.DisplayFor(modelItem => item.Account_Name)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
                                                
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Payor_Name)
@@ -110,14 +120,23 @@
                                                 <td class="text-right">
                                                     @Html.DisplayFor(modelItem => item.convertBal)
                                                 </td>
-                                                <td>
+                                                <td >
                                                     @Html.DisplayFor(modelItem => item.Plan_Name)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Acct_Class)
                                                 </td>
                                                 
-                                                @*<td>1</td>*@
+                                                <td class="small">                                                   
+                                                    @if (item.flagCase)
+                                                    {
+                                                        <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button id="btn2" class="btn-xs active btn-block btn-danger">In-Review</button>
+                                                    }
+                                                </td>
 
                                             </tr>
                                         }
