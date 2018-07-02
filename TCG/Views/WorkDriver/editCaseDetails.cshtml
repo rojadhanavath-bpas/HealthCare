@@ -368,10 +368,11 @@
 
                                                 </div>
                                                 <div class="form-group col-sm-6">
-                                                    @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
-                                                    {
-                                                        <table class="table table-striped table-bordered table-responsive table-condensed table-hover">
-                                                            <tbody>
+
+                                                    <table class="table table-striped table-bordered table-responsive table-condensed table-hover">
+                                                        <tbody>
+                                                            @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                            {
                                                                 <tr>
                                                                     <td>
                                                                         <label for="Txt_FinalBillDate" class="text-info">FIRST BILL DATE</label>
@@ -386,6 +387,31 @@
                                                                         @Html.DisplayFor(Model => @s.convLastPayDate, new { @class = "form-control ", @readonly = "readonly" })
                                                                     </td>
                                                                 </tr>
+                                                            }
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <label for="Txt_FinalBillDate" class="text-info">ALLOWED AMOUNT DIFFERENCE(Current NAA Posted to Bucket)</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label for="Txt_LastPayDate" class="text-info">EXPECTED ALLOWED AMOUNT</label>
+                                                                </td>
+                                                                <td>
+                                                                    <label for="Txt_FinalBillDate" class="text-info">ALLOWED AMOUNT DIFFERENCE(Payor-Specified)</label>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    @Html.DisplayFor(m => m.convAllAmtDiff, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(m => m.convExpAmtDiff, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(m => m.convAllAmtDiffPyr, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </td>
+                                                            </tr>
+                                                            @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                            {
                                                                 <tr>
                                                                     <td>
                                                                         <label for="Txt_TotalCharges" class="text-info text-right">TOTAL CHARGES</label>
@@ -414,8 +440,9 @@
                                                                         @Html.DisplayFor(Model => @s.convTotAccBal, new { @class = "form-control text-right", @readonly = "readonly" })
                                                                     </td>
                                                                 </tr>
-                                                            </tbody>
-                                                        </table>
+                                                            }
+                                                        </tbody>
+                                                    </table>
                                                     }
                                                 </div>
 

@@ -933,6 +933,34 @@ namespace HealthcareAnalytics.Controllers
                         acdDetails.ACD_Comments = underPaymentsListByID[0].Brief_Summary;
                     }
 
+                    if (underPaymentsListByID[0].Allowed_Amount_Difference != null || underPaymentsListByID[0].Allowed_Amount_Difference != 0)
+                    {
+                        Decimal AmtAllowedNAA = Convert.ToDecimal(underPaymentsListByID[0].Allowed_Amount_Difference);
+                        AmtAllowedNAA = Math.Round(AmtAllowedNAA, 2);
+                        acdDetails.convAllAmtDiff = "$" + AmtAllowedNAA.ToString();
+                    }
+                    else
+                        acdDetails.convAllAmtDiff = "$" + "0.00";
+
+                    if (underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified != null || underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified != 0)
+                    {
+                        Decimal AmtAllowedNAA = Convert.ToDecimal(underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified);
+                        AmtAllowedNAA = Math.Round(AmtAllowedNAA, 2);
+                        acdDetails.convAllAmtDiffPyr = "$" + AmtAllowedNAA.ToString();
+                    }
+                    else
+                        acdDetails.convAllAmtDiffPyr = "$" + "0.00";
+
+
+                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Expected_Allowed_Amount) || underPaymentsListByID[0].Expected_Allowed_Amount != "0")
+                    {
+                        Decimal AmtAllowedNAA = Convert.ToDecimal(underPaymentsListByID[0].Expected_Allowed_Amount);
+                        AmtAllowedNAA = Math.Round(AmtAllowedNAA, 2);
+                        acdDetails.convExpAmtDiff = "$" + AmtAllowedNAA.ToString();
+                    }
+                    else
+                        acdDetails.convExpAmtDiff = "$" + "0.00";
+
                     //CASE DETAILS HISTORY
                     ACDH = getCaseDetailsHistoryList(HospitalAccountID);
                     if (ACDH.Count > 0)
@@ -1368,10 +1396,39 @@ namespace HealthcareAnalytics.Controllers
                         acdDetails.userName = " ";
                     }
                     acdDetails.userID = acdDetails.ACD_Owner;
+
                     if(!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
                     {
                         acdDetails.ACD_Comments = underPaymentsListByID[0].Brief_Summary;
                     }
+
+                    if (underPaymentsListByID[0].Allowed_Amount_Difference != null || underPaymentsListByID[0].Allowed_Amount_Difference != 0)
+                    {
+                        Decimal AmtAllowedNAA = Convert.ToDecimal(underPaymentsListByID[0].Allowed_Amount_Difference);
+                        AmtAllowedNAA = Math.Round(AmtAllowedNAA, 2);
+                        acdDetails.convAllAmtDiff = "$" + AmtAllowedNAA.ToString();
+                    }
+                    else
+                        acdDetails.convAllAmtDiff = "$" + "0.00";
+
+                    if (underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified != null || underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified != 0)
+                    {
+                        Decimal AmtAllowedNAA = Convert.ToDecimal(underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified);
+                        AmtAllowedNAA = Math.Round(AmtAllowedNAA, 2);
+                        acdDetails.convAllAmtDiffPyr = "$" + AmtAllowedNAA.ToString();
+                    }
+                    else
+                        acdDetails.convAllAmtDiffPyr = "$" + "0.00";
+
+
+                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Expected_Allowed_Amount) || underPaymentsListByID[0].Expected_Allowed_Amount != "0")
+                    {
+                        Decimal AmtAllowedNAA = Convert.ToDecimal(underPaymentsListByID[0].Expected_Allowed_Amount);
+                        AmtAllowedNAA = Math.Round(AmtAllowedNAA, 2);
+                        acdDetails.convExpAmtDiff = "$" + AmtAllowedNAA.ToString();
+                    }
+                    else
+                        acdDetails.convExpAmtDiff = "$" + "0.00";
 
                     //CASE DETAILS HISTORY
                     ACDH = getCaseDetailsHistoryList(HospitalAccountID);

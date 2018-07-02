@@ -512,8 +512,8 @@
           <EntitySet Name="DenialCat_Master" EntityType="TCG_Data_Worklist.DenialCat_Master" />
           <EntitySet Name="DenialStatus_Master" EntityType="TCG_Data_Worklist.DenialStatus_Master" />
           <EntitySet Name="RootCause_Master" EntityType="TCG_Data_Worklist.RootCause_Master" />
-          <EntitySet Name="Underpayments" EntityType="TCG_Data_Worklist.Underpayment" />
           <FunctionImport Name="Get_Under_Paymnent_Accounts" ReturnType="Collection(TCG_Data_Worklist.Get_Under_Paymnent_Accounts_Result)" />
+          <EntitySet Name="Underpayments" EntityType="TCG_Data_Worklist.Underpayment" />
           </EntityContainer>
         <EntityType Name="Priority_Master">
           <Key>
@@ -711,6 +711,26 @@
           <Property Name="RC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RC_Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="Get_Under_Paymnent_Accounts_Result">
+          <Property Type="Int32" Name="Deferral_Due" Nullable="true" />
+          <Property Type="String" Name="Account" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Acct_Class" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Acct_Status" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Account_Name" Nullable="true" MaxLength="265" />
+          <Property Type="DateTime" Name="Disch_Date" Nullable="true" />
+          <Property Type="Double" Name="Acct_Bal" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Diagnosis_Codes" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Plan_Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Payor_Name" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Allowed_Amount_Difference" Nullable="true" />
+          <Property Type="String" Name="Expected_Allowed_Amount" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Allowed_Amount_Difference_Payor_Specified" Nullable="true" />
+          <Property Type="Int32" Name="Underpayment_Reason_Code" Nullable="true" />
+          <Property Type="String" Name="Brief_Summary" Nullable="true" MaxLength="4000" />
+          <Property Type="DateTime" Name="DateOfUpdate" Nullable="true" />
+          <Property Type="String" Name="Biller" Nullable="true" MaxLength="255" />
+        </ComplexType>
         <EntityType Name="Underpayment">
           <Key>
             <PropertyRef Name="Account" />
@@ -733,26 +753,6 @@
           <Property Name="DateOfUpdate" Type="DateTime" Precision="0" />
           <Property Name="Biller" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
-        <ComplexType Name="Get_Under_Paymnent_Accounts_Result">
-          <Property Type="Int32" Name="Deferral_Due" Nullable="true" />
-          <Property Type="String" Name="Account" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Acct_Class" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Acct_Status" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Account_Name" Nullable="true" MaxLength="265" />
-          <Property Type="DateTime" Name="Disch_Date" Nullable="true" />
-          <Property Type="Double" Name="Acct_Bal" Nullable="true" />
-          <Property Type="String" Name="Message" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Diagnosis_Codes" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Plan_Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Payor_Name" Nullable="true" MaxLength="255" />
-          <Property Type="Double" Name="Allowed_Amount_Difference" Nullable="true" />
-          <Property Type="String" Name="Expected_Allowed_Amount" Nullable="true" MaxLength="255" />
-          <Property Type="Double" Name="Allowed_Amount_Difference_Payor_Specified" Nullable="true" />
-          <Property Type="Int32" Name="Underpayment_Reason_Code" Nullable="true" />
-          <Property Type="String" Name="Brief_Summary" Nullable="true" MaxLength="4000" />
-          <Property Type="DateTime" Name="DateOfUpdate" Nullable="true" />
-          <Property Type="String" Name="Biller" Nullable="true" MaxLength="255" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -983,29 +983,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Underpayments">
-            <EntityTypeMapping TypeName="TCG_Data_Worklist.Underpayment">
-              <MappingFragment StoreEntitySet="Underpayments">
-                <ScalarProperty Name="Biller" ColumnName="Biller" />
-                <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
-                <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
-                <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
-                <ScalarProperty Name="Allowed_Amount_Difference__Payor_Specified_" ColumnName="Allowed Amount Difference (Payor-Specified)" />
-                <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected Allowed Amount" />
-                <ScalarProperty Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" ColumnName="Allowed Amount Difference (Current NAA Posted To Bucket)" />
-                <ScalarProperty Name="Payor_Name" ColumnName="Payor Name" />
-                <ScalarProperty Name="Plan_Name" ColumnName="Plan Name" />
-                <ScalarProperty Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" ColumnName="Diagnosis Codes (Mapped : CMS ICD-10-CM &gt; ICD-9-CM)" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Acct_Bal" ColumnName="Acct Bal" />
-                <ScalarProperty Name="Disch_Date" ColumnName="Disch Date" />
-                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
-                <ScalarProperty Name="Acct_Status" ColumnName="Acct Status" />
-                <ScalarProperty Name="Acct_Class" ColumnName="Acct Class" />
-                <ScalarProperty Name="Account" ColumnName="Account" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Get_Under_Paymnent_Accounts" FunctionName="TCG_Data_Worklist.Store.Get_Under_Paymnent_Accounts">
             <ResultMapping>
               <ComplexTypeMapping TypeName="TCG_Data_Worklist.Get_Under_Paymnent_Accounts_Result">
@@ -1030,6 +1007,29 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Underpayments">
+            <EntityTypeMapping TypeName="TCG_Data_Worklist.Underpayment">
+              <MappingFragment StoreEntitySet="Underpayments">
+                <ScalarProperty Name="Biller" ColumnName="Biller" />
+                <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
+                <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+                <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+                <ScalarProperty Name="Allowed_Amount_Difference__Payor_Specified_" ColumnName="Allowed Amount Difference (Payor-Specified)" />
+                <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected Allowed Amount" />
+                <ScalarProperty Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" ColumnName="Allowed Amount Difference (Current NAA Posted To Bucket)" />
+                <ScalarProperty Name="Payor_Name" ColumnName="Payor Name" />
+                <ScalarProperty Name="Plan_Name" ColumnName="Plan Name" />
+                <ScalarProperty Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" ColumnName="Diagnosis Codes (Mapped : CMS ICD-10-CM &gt; ICD-9-CM)" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Acct_Bal" ColumnName="Acct Bal" />
+                <ScalarProperty Name="Disch_Date" ColumnName="Disch Date" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
+                <ScalarProperty Name="Acct_Status" ColumnName="Acct Status" />
+                <ScalarProperty Name="Acct_Class" ColumnName="Acct Class" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
