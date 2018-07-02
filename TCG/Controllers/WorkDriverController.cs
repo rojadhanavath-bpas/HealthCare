@@ -35,6 +35,7 @@ namespace HealthcareAnalytics.Controllers
 
         //private healthcareEntities db = new healthcareEntities();
         public TCG_Worklist TCG_WL = new TCG_Worklist();
+        public TCG_WorklistModel TCG_WLM = new TCG_WorklistModel();
         private User_Login UL = new User_Login();
         private TCG_DataEntities db2 = new TCG_DataEntities();
         private Account_AR_Status AARS = new Account_AR_Status();
@@ -226,7 +227,7 @@ namespace HealthcareAnalytics.Controllers
             ViewBag.CurrentFilter = searchString;
 
             
-            using (TCG_Worklist db2 = new TCG_Worklist())
+            using (TCG_WorklistModel db2 = new TCG_WorklistModel())
             {
                 List<Get_Under_Paymnent_Accounts_Result> result = db2.Get_Under_Paymnent_Accounts().ToList();
 
@@ -331,7 +332,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populateStatus() // 9 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Status_Master.Select(x => new SelectListItem { Text = x.SM_Name, Value = x.SM_ID.ToString() }).ToList();
 
         }
@@ -339,7 +340,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populateAccount_ARStatus() // 3 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Account_AR_Status.Select(x => new SelectListItem { Text = x.ARSts_Name, Value = x.ARSts_ID.ToString() }).ToList();
 
         }
@@ -347,7 +348,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_BillStatus() // 5 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Account_Bill_Status.Select(x => new SelectListItem { Text = x.BillSts_Name, Value = x.BillSts_ID.ToString() }).ToList();
 
         }
@@ -355,7 +356,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_AccountSource()  // 11 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Account_Source.Select(x => new SelectListItem { Text = x.AccSrc_Name, Value = x.AccSrc_ID.ToString() }).ToList();
 
         }
@@ -363,7 +364,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_EncounterType() // 22 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Encounter_Type.Select(x => new SelectListItem { Text = x.EncType_Name, Value = x.EncType_ID.ToString() }).ToList();
 
         }
@@ -371,7 +372,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_Insurance()  // 151 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Insurance_Company_Name.Select(x => new SelectListItem { Text = x.InsCmp_Name, Value = x.InsCmp_ID.ToString() }).ToList();
 
         }
@@ -379,7 +380,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_PayorFC() // 136 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Payor_Financial_Class.Select(x => new SelectListItem { Text = x.PyrFC_Name, Value = x.PyrFC_ID.ToString() }).ToList();
 
         }
@@ -387,7 +388,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_PrimaryReason() // 49 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.PrimaryReason_Master.Select(x => new SelectListItem { Text = x.PRM_Name, Value = x.PRM_ID.ToString() }).ToList();
 
         }
@@ -395,7 +396,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_Task() // 40 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Task_Master.Select(x => new SelectListItem { Text = x.TM_Name, Value = x.TM_ID.ToString() }).ToList();
 
         }
@@ -411,7 +412,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_Priority()  // 1 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Priority_Master.Select(x => new SelectListItem { Text = x.PM_Name, Value = x.PM_ID.ToString() }).ToList();
 
         }
@@ -419,7 +420,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populateUnderPayReason() // 
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Underpayment_Reason.Select(x => new SelectListItem { Text = x.Description, Value = x.Reason_Code.ToString() }).ToList();
 
         }
@@ -427,7 +428,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populateRootCause() // 1 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.RootCause_Master.Select(x => new SelectListItem { Text = x.RC_Name, Value = x.RC_ID.ToString() }).ToList();
 
         }
@@ -435,7 +436,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populateDenialCategory() //1 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.RootCause_Master.Select(x => new SelectListItem { Text = x.RC_Name, Value = x.RC_ID.ToString() }).ToList();
 
         }
@@ -443,7 +444,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populateCompleted() //2 - No
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.CaseCompleted_Master.Select(x => new SelectListItem { Text = x.CC_Name, Value = x.CC_ID.ToString() }).ToList();
 
         }
@@ -451,7 +452,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populateDenialStatusMaster() //1 - Select
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.DenialStatus_Master.Select(x => new SelectListItem { Text = x.DS_Name, Value = x.DS_ID.ToString() }).ToList();
 
         }
@@ -475,11 +476,11 @@ namespace HealthcareAnalytics.Controllers
             openCaseID = id;
             string HospitalAccountID = openCaseID;
 
-            TCG_WL = new TCG_Worklist();
+            TCG_WLM = new TCG_WorklistModel();
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
             Get_Account_Info_for_ARandDenial_Result GAIFADR = new Get_Account_Info_for_ARandDenial_Result();
             List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
-            List<Get_Under_Paymnent_Accounts_Result> result = TCG_WL.Get_Under_Paymnent_Accounts().ToList();
+            List<Get_Under_Paymnent_Accounts_Result> result = TCG_WLM.Get_Under_Paymnent_Accounts().ToList();
             List<Get_Under_Paymnent_Accounts_Result> underPaymentsListByID = getUnderPaymentsDetailsList(openCaseID);
 
             try
@@ -495,10 +496,10 @@ namespace HealthcareAnalytics.Controllers
                         {
 
                             GAIFADR.isLinkOther = 1;
-                            var Case_checkHospitalAccID = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                            var Case_checkHospitalAccID = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
 
                             var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-                            var model = new TCG_Worklist();
+                            var model = new TCG_WorklistModel();
                             int new_Case_Value;
                             if (Case_checkHospitalAccID != null)
                             {
@@ -512,7 +513,7 @@ namespace HealthcareAnalytics.Controllers
                             if (Case_checkHospitalAccID == null)
                             {
 
-                                TCG_WL.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 1, ownerId, "1",
+                                TCG_WLM.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 1, ownerId, "1",
                                "2", 2, "1", "2", "3", "2", (taskDetails[0].Reporting_Rsn_Code_w__Desc == null) ? "None" : taskDetails[0].Reporting_Rsn_Code_w__Desc, "", "", "", 0, DateTime.Now, DateTime.Now, false, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_idParameter);
 
 
@@ -520,7 +521,7 @@ namespace HealthcareAnalytics.Controllers
                             }
 
 
-                            TCG_Worklist context = new TCG_Worklist();
+                            TCG_WorklistModel context = new TCG_WorklistModel();
                             TCG_DataEntities context_tcg = new TCG_DataEntities();
 
 
@@ -627,7 +628,7 @@ namespace HealthcareAnalytics.Controllers
             string HospitalAccountID = openCaseID;
             int new_Case_Value = 0;
 
-            TCG_WL = new TCG_Worklist();
+            TCG_WLM = new TCG_WorklistModel();
             Account_Case_Details acdDetails = new Account_Case_Details();
             Account_Case_Detials_History acdhDetails = new Account_Case_Detials_History();
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
@@ -649,7 +650,7 @@ namespace HealthcareAnalytics.Controllers
                     if (taskDetails.Count > 0 && taskDetails != null)
                     {
 
-                        var Case_checkHospitalAccID = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                        var Case_checkHospitalAccID = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
 
                         if (taskDetails[0].Admission_Date.HasValue)
                             taskDetails[0].convAdmDate = taskDetails[0].Admission_Date.Value.ToShortDateString();
@@ -721,7 +722,7 @@ namespace HealthcareAnalytics.Controllers
 
 
                         var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-                        var model = new TCG_Worklist();
+                        var model = new TCG_WorklistModel();
                         if (Case_checkHospitalAccID != null)
                         {
                             new_Case_Value = Case_checkHospitalAccID.ACD_ID;
@@ -757,7 +758,7 @@ namespace HealthcareAnalytics.Controllers
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WL.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                    underPay, " ", "22", "49", "49", Cmnt,
                                     "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -812,7 +813,7 @@ namespace HealthcareAnalytics.Controllers
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WL.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                    rootCause, denialStatusReason.ToString(), denialReason.ToString(), "49", "49", "",
                                    "2", "1", "", 40, date,
                                    DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -832,7 +833,7 @@ namespace HealthcareAnalytics.Controllers
                     else if (taskDetails.Count == 0 || taskDetails == null)
                     {
 
-                        var Case_checkHospitalAccID = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                        var Case_checkHospitalAccID = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
 
 
                         Decimal testAmount = Convert.ToDecimal(underPaymentsListByID[0].Acct_Bal);
@@ -842,7 +843,7 @@ namespace HealthcareAnalytics.Controllers
 
 
                         var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-                        var model = new TCG_Worklist();
+                        var model = new TCG_WorklistModel();
 
                         if (Case_checkHospitalAccID != null)
                         {
@@ -878,7 +879,7 @@ namespace HealthcareAnalytics.Controllers
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WL.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                     underPay, " ", "22", "49", "49", Cmnt,
                                     "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -892,7 +893,7 @@ namespace HealthcareAnalytics.Controllers
                         }
                     }
 
-                    TCG_Worklist context = new TCG_Worklist();
+                    TCG_WorklistModel context = new TCG_WorklistModel();
                     TCG_DataEntities context_tcg = new TCG_DataEntities();
 
 
@@ -903,7 +904,7 @@ namespace HealthcareAnalytics.Controllers
                     ACD[0].dateConvert = ACD[0].ACD_DueDate.Value.ToShortDateString();
 
                     //CASE DETAILS
-                    acdDetails = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                    acdDetails = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
                     acdDetails.dateConvert = acdDetails.ACD_DueDate.Value.ToShortDateString();
                     acdDetails.dateFollowUp = acdDetails.ACD_FollowUpDate.Value.ToShortDateString();
                     Decimal AmtConvert = Convert.ToDecimal(acdDetails.ACD_Amount);
@@ -1019,7 +1020,7 @@ namespace HealthcareAnalytics.Controllers
             openCaseID = ACD.ACD_HspAccID;
             string HospitalAccountID = openCaseID;
 
-            TCG_WL = new TCG_Worklist();
+            TCG_WLM = new TCG_WorklistModel();
             string linkName = string.Empty;
             if(ACD.link == 1)
             {
@@ -1032,7 +1033,7 @@ namespace HealthcareAnalytics.Controllers
                        
             try
             {
-                using (TCG_Worklist tcg_CaseDetails = new TCG_Worklist())
+                using (TCG_WorklistModel tcg_CaseDetails = new TCG_WorklistModel())
                 {
                     int new_Case_Value=0;
                     var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
@@ -1049,7 +1050,7 @@ namespace HealthcareAnalytics.Controllers
                     {    desc = " ";     }
                     else
                     { desc= ACD.ACD_Description; }
-                    TCG_WL.Case_InsUpd(ACD.ACD_ID, ACD.ACD_HspAccID, ACD.ACD_Amount, ACD.ACD_Status, ACD.ACD_Owner, ACD.ACD_Type, ACD.ACD_SubType,
+                    TCG_WLM.Case_InsUpd(ACD.ACD_ID, ACD.ACD_HspAccID, ACD.ACD_Amount, ACD.ACD_Status, ACD.ACD_Owner, ACD.ACD_Type, ACD.ACD_SubType,
                         ACD.ACD_PayerReason, ACD.ACD_PrimaryReason, "22", "49", "49", ACD.ACD_Comments,
                         "2", ACD.ACD_Priority, desc, ACD.ACD_TaskFollowUp, ACD.ACD_DueDate,
                         ACD.ACD_FollowUpDate, false, Session["username"].ToString(), DateTime.Now,
@@ -1096,7 +1097,7 @@ namespace HealthcareAnalytics.Controllers
             string HospitalAccountID = openCaseID;
             int new_Case_Value = 0;
 
-            TCG_WL = new TCG_Worklist();
+            TCG_WLM = new TCG_WorklistModel();
             Account_Case_Details acdDetails = new Account_Case_Details();
             Account_Case_Detials_History acdhDetails = new Account_Case_Detials_History();
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
@@ -1118,7 +1119,7 @@ namespace HealthcareAnalytics.Controllers
                     if (taskDetails.Count > 0 && taskDetails != null)
                     {
 
-                        var Case_checkHospitalAccID = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                        var Case_checkHospitalAccID = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
 
                         if (taskDetails[0].Admission_Date.HasValue)
                             taskDetails[0].convAdmDate = taskDetails[0].Admission_Date.Value.ToShortDateString();
@@ -1190,7 +1191,7 @@ namespace HealthcareAnalytics.Controllers
 
 
                         var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-                        var model = new TCG_Worklist();
+                        var model = new TCG_WorklistModel();
                         if (Case_checkHospitalAccID != null)
                         {
                             new_Case_Value = Case_checkHospitalAccID.ACD_ID;
@@ -1226,7 +1227,7 @@ namespace HealthcareAnalytics.Controllers
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WL.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                    underPay, " ", "22", "49", "49", Cmnt,
                                     "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -1281,7 +1282,7 @@ namespace HealthcareAnalytics.Controllers
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WL.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                    rootCause, denialStatusReason.ToString(), denialReason.ToString(), "49", "49", "",
                                    "2", "1", "", 40, date,
                                    DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -1301,7 +1302,7 @@ namespace HealthcareAnalytics.Controllers
                     else if (taskDetails.Count == 0 || taskDetails == null)
                     {
 
-                        var Case_checkHospitalAccID = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                        var Case_checkHospitalAccID = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
 
 
                         Decimal testAmount = Convert.ToDecimal(underPaymentsListByID[0].Acct_Bal);
@@ -1311,7 +1312,7 @@ namespace HealthcareAnalytics.Controllers
 
 
                         var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-                        var model = new TCG_Worklist();
+                        var model = new TCG_WorklistModel();
 
                         if (Case_checkHospitalAccID != null)
                         {
@@ -1347,7 +1348,7 @@ namespace HealthcareAnalytics.Controllers
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WL.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                     underPay, " ", "22", "49", "49", Cmnt,
                                     "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -1361,7 +1362,7 @@ namespace HealthcareAnalytics.Controllers
                         }
                     }
 
-                    TCG_Worklist context = new TCG_Worklist();
+                    TCG_WorklistModel context = new TCG_WorklistModel();
                     TCG_DataEntities context_tcg = new TCG_DataEntities();
 
 
@@ -1372,7 +1373,7 @@ namespace HealthcareAnalytics.Controllers
                     ACD[0].dateConvert = ACD[0].ACD_DueDate.Value.ToShortDateString();
 
                     //CASE DETAILS
-                    acdDetails = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                    acdDetails = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
                     acdDetails.dateConvert = acdDetails.ACD_DueDate.Value.ToShortDateString();
                     acdDetails.dateFollowUp = acdDetails.ACD_FollowUpDate.Value.ToShortDateString();
                     Decimal AmtConvert = Convert.ToDecimal(acdDetails.ACD_Amount);
@@ -1469,7 +1470,7 @@ namespace HealthcareAnalytics.Controllers
 
             RootCause_Master ABS = new RootCause_Master();
 
-            ABS = TCG_WL.RootCause_Master.Where(m => m.RC_Name == x).FirstOrDefault();
+            ABS = TCG_WLM.RootCause_Master.Where(m => m.RC_Name == x).FirstOrDefault();
 
             int ddlID = ABS.RC_ID;
             return ddlID;
@@ -1481,7 +1482,7 @@ namespace HealthcareAnalytics.Controllers
 
             DenialStatus_Master ABS = new DenialStatus_Master();
 
-            ABS = TCG_WL.DenialStatus_Master.Where(m => m.DS_Name == x).FirstOrDefault();
+            ABS = TCG_WLM.DenialStatus_Master.Where(m => m.DS_Name == x).FirstOrDefault();
 
             int ddlID = ABS.DS_ID;
             return ddlID;
@@ -1493,7 +1494,7 @@ namespace HealthcareAnalytics.Controllers
 
             DenialCat_Master ABS = new DenialCat_Master();
 
-            ABS = TCG_WL.DenialCat_Master.Where(m => m.DC_Name == x).FirstOrDefault();
+            ABS = TCG_WLM.DenialCat_Master.Where(m => m.DC_Name == x).FirstOrDefault();
 
             int ddlID = ABS.DC_ID;
             return ddlID;
@@ -1505,7 +1506,7 @@ namespace HealthcareAnalytics.Controllers
 
             Account_Bill_Status ABS = new Account_Bill_Status();
 
-            ABS = TCG_WL.Account_Bill_Status.Where(m => m.BillSts_Name == x).FirstOrDefault();
+            ABS = TCG_WLM.Account_Bill_Status.Where(m => m.BillSts_Name == x).FirstOrDefault();
 
             int ddlID = ABS.BillSts_ID;
             return ddlID;
@@ -1517,7 +1518,7 @@ namespace HealthcareAnalytics.Controllers
 
             Account_Source ABS = new Account_Source();
 
-            ABS = TCG_WL.Account_Source.Where(m => m.AccSrc_Name == x).FirstOrDefault();
+            ABS = TCG_WLM.Account_Source.Where(m => m.AccSrc_Name == x).FirstOrDefault();
 
             int ddlID = ABS.AccSrc_ID;
             return ddlID;
@@ -1529,7 +1530,7 @@ namespace HealthcareAnalytics.Controllers
 
             Status_Master ACD = new Status_Master();
 
-            ACD = TCG_WL.Status_Master.Where(m => m.SM_ID == x).FirstOrDefault();
+            ACD = TCG_WLM.Status_Master.Where(m => m.SM_ID == x).FirstOrDefault();
 
             string DDL_Name = ACD.SM_Name;
             return DDL_Name;
@@ -1541,7 +1542,7 @@ namespace HealthcareAnalytics.Controllers
 
             Task_Master ACD = new Task_Master();
 
-            ACD = TCG_WL.Task_Master.Where(m => m.TM_ID == x).FirstOrDefault();
+            ACD = TCG_WLM.Task_Master.Where(m => m.TM_ID == x).FirstOrDefault();
 
             string DDL_Name = ACD.TM_Name;
             return DDL_Name;
@@ -1553,7 +1554,7 @@ namespace HealthcareAnalytics.Controllers
 
             Priority_Master ACD = new Priority_Master();
 
-            ACD = TCG_WL.Priority_Master.Where(m => m.PM_ID == x).FirstOrDefault();
+            ACD = TCG_WLM.Priority_Master.Where(m => m.PM_ID == x).FirstOrDefault();
 
             string DDL_Name = ACD.PM_Name;
             return DDL_Name;
@@ -1565,7 +1566,7 @@ namespace HealthcareAnalytics.Controllers
 
             Encounter_Type ACD = new Encounter_Type();
 
-            ACD = TCG_WL.Encounter_Type.Where(m => m.EncType_ID == x).FirstOrDefault();
+            ACD = TCG_WLM.Encounter_Type.Where(m => m.EncType_ID == x).FirstOrDefault();
 
             string DDL_Name = ACD.EncType_Name;
             return DDL_Name;
@@ -1577,7 +1578,7 @@ namespace HealthcareAnalytics.Controllers
 
             PrimaryReason_Master ACD = new PrimaryReason_Master();
 
-            ACD = TCG_WL.PrimaryReason_Master.Where(m => m.PRM_ID == x).FirstOrDefault();
+            ACD = TCG_WLM.PrimaryReason_Master.Where(m => m.PRM_ID == x).FirstOrDefault();
 
             string DDL_Name = ACD.PRM_Name;
             return DDL_Name;
@@ -1612,7 +1613,7 @@ namespace HealthcareAnalytics.Controllers
         {
 
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
-            using (var db = new TCG_Worklist())
+            using (var db = new TCG_WorklistModel())
             {
                 return (from c in db.Account_Case_Details
                         where c.ACD_HspAccID == HospitalAccountID
@@ -1625,7 +1626,7 @@ namespace HealthcareAnalytics.Controllers
         {
 
             List<Account_Case_Detials_History> ACD = new List<Account_Case_Detials_History>();
-            using (var db = new TCG_Worklist())
+            using (var db = new TCG_WorklistModel())
             {
                 return (from c in db.Account_Case_Detials_History
                         where c.ACDH_HspAccID == HospitalAccountID orderby c.ACDH_CreatedDate descending
@@ -1638,7 +1639,7 @@ namespace HealthcareAnalytics.Controllers
         {
 
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
-            using (var db = new TCG_Worklist())
+            using (var db = new TCG_WorklistModel())
             {
                 return (from c in db.Account_Case_Details
                         where c.ACD_HspAccID == HospitalAccountID && c.ACD_ID == case_ID
@@ -1651,7 +1652,7 @@ namespace HealthcareAnalytics.Controllers
         {
 
             List<Account_Case_Task> ACDT = new List<Account_Case_Task>();
-            using (var db = new TCG_Worklist())
+            using (var db = new TCG_WorklistModel())
             {
                 ACDT = (from c in db.Account_Case_Task
                         where c.ACT_HspAccID == HospitalAccountID && c.ACT_ACD_ID == case_ID && c.ACT_DeleteFlag == 0
@@ -1666,7 +1667,7 @@ namespace HealthcareAnalytics.Controllers
         {
 
             List<Get_Under_Paymnent_Accounts_Result> UPD = new List<Get_Under_Paymnent_Accounts_Result>();
-            using (var db = new TCG_Worklist())
+            using (var db = new TCG_WorklistModel())
             {
                 return (from c in db.Get_Under_Paymnent_Accounts()
                         where c.Account == HospitalAccountID
@@ -1679,7 +1680,7 @@ namespace HealthcareAnalytics.Controllers
 
             Account_Case_Details ACD = new Account_Case_Details();
 
-            ACD = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+            ACD = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
 
 
             return ACD.ACD_HspAccID;

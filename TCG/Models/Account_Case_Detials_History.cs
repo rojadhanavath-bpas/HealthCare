@@ -42,7 +42,6 @@ namespace HealthcareAnalytics.Models
         public string convertDate { get; set; }
         public string convertFollowUpDate { get; set; }
 
-
         public virtual Account_Case_Details Account_Case_Details { get; set; }
     }
 }
