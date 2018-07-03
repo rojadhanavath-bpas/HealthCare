@@ -20,8 +20,10 @@ namespace HealthcareAnalytics.Controllers
         {
             roles_db = db.Roles.Select(r => r.role_code).Distinct().ToList();
             ViewBag.roles = roles_db;
+            
         }        
         // GET: Users_Data
+        
         public async Task<ActionResult> Index()
         {
             ViewBag.UserFirst = Session["first"];
@@ -35,6 +37,9 @@ namespace HealthcareAnalytics.Controllers
                  select new ViewModel { user_info = s, User_roles = q };
             return View(await res.ToListAsync());
         }       
+
+        
+
 
         // GET: Users_Data/Details/5
         public ActionResult Details(Guid? id)
@@ -91,7 +96,7 @@ namespace HealthcareAnalytics.Controllers
 
             if (ModelState.IsValid)
             {
-                if (users_Data.user_web_pwd == users_Data.confirm_pwd)
+                if (users_Data.user_web_pwd !=null)
                 {
                     var firstname = isNullCheck(users_Data.user_first_name);
                     var lastname = isNullCheck(users_Data.user_last_name);
@@ -160,11 +165,7 @@ namespace HealthcareAnalytics.Controllers
          on s.user_role_key equals q.role_key
          where s.user_ID == users_Data.user_info.user_ID
          select new ViewModel { user_info = s, User_roles = q };
-
-           
-            
-
-
+                       
             var resIndex =
                 from s in db.Users_Data
                 join q in db.Roles

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIPS", "MIPS\MIPS.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIPS.Tests", "MIPS.Tests\MIPS.Tests.csproj", "{AB57ED84-61A2-4E9E-A5FF-4C3BFBB937E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_TCG", "DAL_TCG\DAL_TCG.csproj", "{9BA70CC0-9428-443B-BD94-C0A78E122D96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AB57ED84-61A2-4E9E-A5FF-4C3BFBB937E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB57ED84-61A2-4E9E-A5FF-4C3BFBB937E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB57ED84-61A2-4E9E-A5FF-4C3BFBB937E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA70CC0-9428-443B-BD94-C0A78E122D96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA70CC0-9428-443B-BD94-C0A78E122D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA70CC0-9428-443B-BD94-C0A78E122D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA70CC0-9428-443B-BD94-C0A78E122D96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Reset";
+}
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<div class="login-container login-form">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4 style="text-align:center;">Password has been changes successfully!</h4>
+
+            <div style="text-align:left; color: white;">
+                @Html.ActionLink("Go Back To LogIn!", "Login", "Home")
+            </div>
+        </div>
+    </div>
+</div>
+
+

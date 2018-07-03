@@ -260,11 +260,12 @@
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Get_Under_Paymnent_Accounts_Result.cs">
-      <DependentUpon>Worklist.tt</DependentUpon>
+      <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Insurance_Company_Name.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Models\Payor_Financial_Class.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
@@ -275,6 +276,7 @@
     <Compile Include="Models\Priority_Master.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PwdChange.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\Registration_SP.Context.cs">
       <AutoGen>True</AutoGen>
@@ -321,6 +323,8 @@
     <Compile Include="Models\Underpayment_Reason.cs">
       <DependentUpon>Worklist.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserContext.cs" />
+    <Compile Include="Models\UserDataModel.cs" />
     <Compile Include="Models\Users_Data.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
@@ -679,7 +683,7 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\home.cshtml" />
@@ -732,6 +736,7 @@
     <Content Include="Views\WorkDriver\editCaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\viewCaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\viewTestPage.cshtml" />
+    <Content Include="Views\Email\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

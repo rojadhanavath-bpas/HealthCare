@@ -197,7 +197,7 @@ button.logout-button > a {
     font-family: Roboto;
     vertical-align: middle !important;
     padding-top: 18px;
-    height: 52px;
+    height: 8vh;
    
 }
  .navbar-nav > li > a:hover {
@@ -283,13 +283,6 @@ ul.dropdown-menu > li > a {
         transform: rotate(360deg);
     }
 }
-
-
-
-
-
-
-
 
 table.paleBlueRows {
     font-family: "Times New Roman", Times, serif;
@@ -441,4 +434,7 @@ table.paleBlueRows {
 .form-group > .glyphicon {
     top: -30px !important;
     left: 78% !important;
+}
+.form-horizontal .form-group {
+    margin-right: 0px !important;
 }

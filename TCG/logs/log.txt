@@ -114,3 +114,53 @@ DEBUG 2018-06-25 15:09:07,983 168400ms HomeController         LogOff            
 DEBUG 2018-06-25 15:09:11,217 171633ms HomeController         Login              - password
 DEBUG 2018-06-25 15:09:11,219 171635ms HomeController         Login              - password
 DEBUG 2018-06-25 15:09:11,220 171636ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-06-28 09:26:01,396 13561ms HomeController         Login              - password
+DEBUG 2018-06-28 09:26:01,424 13589ms HomeController         Login              - password
+DEBUG 2018-06-28 09:26:01,425 13590ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-06-28 09:31:28,322 340488ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-28 09:31:28,824 340990ms HomeController         ARManagement       - [User:]  Loading AR Management Page..
+DEBUG 2018-06-28 09:42:57,378 10323ms HomeController         Login              - password
+DEBUG 2018-06-28 09:42:57,395 10340ms HomeController         Login              - password
+DEBUG 2018-06-28 09:42:57,396 10341ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-06-28 09:43:04,452 17397ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-28 09:43:04,932 17877ms HomeController         ARManagement       - [User:Roja]  Loading AR Management Page..
+DEBUG 2018-06-28 09:44:46,320 119265ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-28 09:44:46,538 119483ms HomeController         DenialsManagement  - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-06-28 09:45:31,752 164697ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-28 09:45:31,924 164869ms HomeController         DenialsManagement  - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-06-28 09:48:28,451 40223ms HomeController         Login              - password
+DEBUG 2018-06-28 09:48:28,465 40237ms HomeController         Login              - password
+DEBUG 2018-06-28 09:48:28,465 40237ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-06-28 09:53:34,532 346304ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-06-28 09:53:34,948 346720ms HomeController         DenialsManagement  - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-06-28 09:56:34,979 526751ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-06-28 09:56:34,982 526754ms HomeController         LogOff             - Signing out user
+DEBUG 2018-06-28 09:56:34,997 526769ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-07-01 12:19:26,150 63097ms HomeController         Login              - password
+DEBUG 2018-07-01 12:19:26,193 63140ms HomeController         Login              - password
+DEBUG 2018-07-01 12:19:26,195 63142ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-07-01 12:31:16,702 773649ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-07-01 12:31:16,703 773650ms HomeController         LogOff             - Signing out user
+DEBUG 2018-07-01 12:31:16,718 773665ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-07-01 12:31:25,303 782250ms EmailController        Index              - checkingSystem.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at HealthcareAnalytics.Controllers.EmailController.Index(Users_Data email) in C:\Projects\HealthCareAnalytics\HealthCare\HealthCare\TCG\Controllers\EmailController.cs:line 56
+DEBUG 2018-07-01 12:31:53,421 810368ms EmailController        Index              - checkingSystem.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at HealthcareAnalytics.Controllers.EmailController.Index(Users_Data email) in C:\Projects\HealthCareAnalytics\HealthCare\HealthCare\TCG\Controllers\EmailController.cs:line 56
+DEBUG 2018-07-01 23:28:41,101 50450ms HomeController         Login              - password
+DEBUG 2018-07-01 23:28:41,140 50489ms HomeController         Login              - password
+DEBUG 2018-07-01 23:28:41,141 50490ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-07-01 23:33:26,353 335702ms HomeController         Login              - password
+DEBUG 2018-07-01 23:33:26,355 335704ms HomeController         Login              - password
+DEBUG 2018-07-01 23:33:26,355 335704ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-07-02 13:43:45,723 26523ms HomeController         Login              - password
+DEBUG 2018-07-02 13:43:45,762 26562ms HomeController         Login              - password
+DEBUG 2018-07-02 13:43:45,763 26563ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-07-02 13:44:13,588 54388ms HomeController         Login              - password
+DEBUG 2018-07-02 13:44:13,590 54390ms HomeController         Login              - password
+DEBUG 2018-07-02 13:44:13,590 54390ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath

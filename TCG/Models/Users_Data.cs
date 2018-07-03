@@ -27,10 +27,10 @@ namespace HealthcareAnalytics.Models
         public Nullable<System.DateTime> user_updated_date { get; set; }
         public byte user_delete_flag { get; set; }
         public string user_middle_name { get; set; }
-        public string user_web_pwd { get; set; } 
-        public string confirm_pwd { get; set; }
+        public string user_web_pwd { get; set; }
         public string otp_key { get; set; }
         public Nullable<System.DateTime> otp_time { get; set; }
         public byte user_active_flag { get; set; }
+        public string user_web_login { get; set; }
     }
 }

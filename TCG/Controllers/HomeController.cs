@@ -327,33 +327,38 @@ namespace HealthcareAnalytics.Controllers
                 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(User_Login Role)
+        public ActionResult Login(LoginModel login)
         {
             if (ModelState.IsValid)
             {
-                var details = (from logindetails in db2.User_Login 
-                               where logindetails.user_web_login == Role.user_web_login && logindetails.user_web_pwd == Role.user_web_pwd
+                var details = (from logindetails in db2.Users_Data 
+                               where logindetails.user_web_login == login.username && logindetails.user_web_pwd == login.password
                                //&& logindetails.user_password == Role.user_password
                                select new
                                {
+                                   
                                    logindetails.user_web_login,
                                    logindetails.user_web_pwd,
                                    logindetails.user_first_name,
-                                   logindetails.user_last_name
+                                   logindetails.user_last_name,
+                                   logindetails.user_email_id
                                }).ToList();                              
 
                 if (details.FirstOrDefault() != null)
                 {
                     log.Debug(details.FirstOrDefault().user_web_pwd);
-                    log.Debug((Role.user_web_pwd));
+                    log.Debug((login.password));
 
 
                     log.Debug("[Home][login]: Succesfully logged in  "+ details.FirstOrDefault().user_web_login);
                     Session["username"] = details.FirstOrDefault().user_web_login;
                     Session["first"] = details.FirstOrDefault().user_first_name;
                     Session["last"] = details.FirstOrDefault().user_last_name;
+                    Session["email"] = details.FirstOrDefault().user_email_id;
+
                     //return RedirectToAction("ARManagement", "Home");
                     return RedirectToAction("worklist_Home", "WorkDriver");
+
                 }
                 else
                 {
@@ -364,30 +369,9 @@ namespace HealthcareAnalytics.Controllers
             {
                 ModelState.AddModelError("", "Username and password is required");
             }
-            return View(Role);
+            return View(login);
         }
-
-
-        //private static Byte[] convertGetSHA512(Byte[] strInput)
-        // {
-
-        //     byte[] data = Encoding.GetEncoding(1252).GetBytes(Convert.ToString(strInput));
-
-        //     SHA512 shaM = new SHA512Managed();
-
-        //     byte[] arrHash = shaM.ComputeHash(strInput);
-
-
-        //     return arrHash;
-
-
-        // }
-
-        // private static string convertString(Byte[] input) {
-
-        //     string hashedpassword = Convert.ToBase64String(input);
-        //     return hashedpassword;
-        // }
+                   
 
 
         public string DecryptString(string encrString)
