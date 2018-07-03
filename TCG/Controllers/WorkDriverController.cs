@@ -34,7 +34,7 @@ namespace HealthcareAnalytics.Controllers
         readonly string tableauServer = "http://tableau.bpa.services/trusted/";
 
         //private healthcareEntities db = new healthcareEntities();
-        public TCG_Worklist TCG_WL = new TCG_Worklist();
+        
         public TCG_WorklistModel TCG_WLM = new TCG_WorklistModel();
         private User_Login UL = new User_Login();
         private TCG_DataEntities db2 = new TCG_DataEntities();
@@ -244,10 +244,13 @@ namespace HealthcareAnalytics.Controllers
                     string[] test = (result[i].Account_Name.ToString()).Split(':');
                     result[i].PatientName = test[0];
                     result[i].caseFlag = test[1];
-                    if (result[i].caseFlag == "NEW")
+                    if (result[i].caseFlag == "NEW" )
                         result[i].flagCase = true;
                     else
                         result[i].flagCase = false;
+                    if (!string.IsNullOrEmpty(result[i].Brief_Summary))
+                        result[i].flagCase = false;
+
                 }
 
                 if (!String.IsNullOrEmpty(searchString))
@@ -306,7 +309,7 @@ namespace HealthcareAnalytics.Controllers
                 }
 
 
-                int pageSize = 13;
+                int pageSize = 10;
                 int pageNumber = (page ?? 1);
                 for (int i = 0; i < result.Count; i++)
                 {
@@ -753,12 +756,19 @@ namespace HealthcareAnalytics.Controllers
                                     Cmnt = underPaymentsListByID[0].Brief_Summary;
                                 else
                                     Cmnt = "";
+
+                                int strStatus = 0;
+                                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                {
+                                    strStatus = 5;
+                                }
+                                else { strStatus = 9; }
                                 //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, 
                                 //string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, 
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                    underPay, " ", "22", "49", "49", Cmnt,
                                     "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -808,12 +818,19 @@ namespace HealthcareAnalytics.Controllers
                                 else
                                     date = DateTime.Parse(taskDetails[0].Rcvd_Dt);
 
+                                int strStatus = 0;
+                                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                {
+                                    strStatus = 5;
+                                }
+                                else { strStatus = 9; }
+
                                 //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, 
                                 //string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, 
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WLM.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                    rootCause, denialStatusReason.ToString(), denialReason.ToString(), "49", "49", "",
                                    "2", "1", "", 40, date,
                                    DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -874,12 +891,19 @@ namespace HealthcareAnalytics.Controllers
                                     Cmnt = underPaymentsListByID[0].Brief_Summary;
                                 else
                                     Cmnt = "";
+
+                                int strStatus = 0;
+                                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                {
+                                    strStatus = 5;
+                                }
+                                else { strStatus = 9; }
                                 //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, 
                                 //string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, 
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                     underPay, " ", "22", "49", "49", Cmnt,
                                     "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -919,16 +943,17 @@ namespace HealthcareAnalytics.Controllers
                         acdDetails.link = 2;
                     }
                     //acdDetails.userName = underPaymentsListByID[0].Biller;
-                    if(!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
                     {
                         acdDetails.userName = underPaymentsListByID[0].Biller;
+                        acdDetails.userFlag = 1;
                     }
                     else
                     {
-                        acdDetails.userName = " ";
+                        acdDetails.userFlag = 2;
                     }
-
                     acdDetails.userID = acdDetails.ACD_Owner;
+
                     if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
                     {
                         acdDetails.ACD_Comments = underPaymentsListByID[0].Brief_Summary;
@@ -961,6 +986,13 @@ namespace HealthcareAnalytics.Controllers
                     }
                     else
                         acdDetails.convExpAmtDiff = "$" + "0.00";
+
+
+                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                    {
+                        acdDetails.ACD_Status = 5;
+                    }
+
 
                     //CASE DETAILS HISTORY
                     ACDH = getCaseDetailsHistoryList(HospitalAccountID);
@@ -1222,12 +1254,19 @@ namespace HealthcareAnalytics.Controllers
                                     Cmnt = underPaymentsListByID[0].Brief_Summary;
                                 else
                                     Cmnt = "";
+
+                                int strStatus = 0;
+                                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                {
+                                    strStatus = 5;
+                                }
+                                else { strStatus = 9; }
                                 //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, 
                                 //string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, 
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                    underPay, " ", "22", "49", "49", Cmnt,
                                     "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -1277,12 +1316,19 @@ namespace HealthcareAnalytics.Controllers
                                 else
                                     date = DateTime.Parse(taskDetails[0].Rcvd_Dt);
 
+                                int strStatus = 0;
+                                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                {
+                                    strStatus = 5;
+                                }
+                                else { strStatus = 9; }
+
                                 //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, 
                                 //string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, 
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WLM.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                    rootCause, denialStatusReason.ToString(), denialReason.ToString(), "49", "49", "",
                                    "2", "1", "", 40, date,
                                    DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -1343,12 +1389,19 @@ namespace HealthcareAnalytics.Controllers
                                     Cmnt = underPaymentsListByID[0].Brief_Summary;
                                 else
                                     Cmnt = "";
+
+                                int strStatus = 0;
+                                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                {
+                                    strStatus = 5;
+                                }
+                                else { strStatus = 9; }
                                 //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, 
                                 //string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, 
                                 //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
                                 //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
                                 //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
-                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), 9, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                     underPay, " ", "22", "49", "49", Cmnt,
                                     "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
                                     DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
@@ -1391,10 +1444,11 @@ namespace HealthcareAnalytics.Controllers
                     if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
                     {
                         acdDetails.userName = underPaymentsListByID[0].Biller;
+                        acdDetails.userFlag = 1;
                     }
                     else
                     {
-                        acdDetails.userName = " ";
+                        acdDetails.userFlag = 2;
                     }
                     acdDetails.userID = acdDetails.ACD_Owner;
 
@@ -1430,6 +1484,13 @@ namespace HealthcareAnalytics.Controllers
                     }
                     else
                         acdDetails.convExpAmtDiff = "$" + "0.00";
+
+                    
+                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                    {
+                        acdDetails.ACD_Status = 5;
+                    }
+                   
 
                     //CASE DETAILS HISTORY
                     ACDH = getCaseDetailsHistoryList(HospitalAccountID);
@@ -1685,6 +1746,137 @@ namespace HealthcareAnalytics.Controllers
 
             return ACD.ACD_HspAccID;
         }
+
+        public ActionResult TrendGraph()
+        {
+            ViewBag.UserFirst = Session["first"];
+            ViewBag.UserLast = Session["last"];
+            ViewBag.Message = GetTableauToken();
+
+            log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
+            return View();
+
+        }
+
+        private String GetTableauToken()
+        {
+
+            log.Debug("Retrieving Tableau token ");
+            var user = "Rdhanavath";
+            var request = (HttpWebRequest)WebRequest.Create(tableauServer);
+
+            var encoding = new UTF8Encoding();
+            var postData = "username=" + user;
+
+            byte[] data = encoding.GetBytes(postData);
+
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+            var response = (HttpWebResponse)request.GetResponse();
+
+            return new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+        }
+
+
+        [HttpPost]
+        public void DispatchPdf(String pageName)
+        {
+
+            log.Debug("[User:" + Session["first"] + "]  " + "[Home][dispatchPdf]: Dispatching PDF  with parameter: " + pageName);
+            string WatermarkLocation = Server.MapPath("~/Images/hennepin healthcare new logo.png");
+            string imageUrl = "http://34.194.103.217:8111/api/GeneratePDF?url=" + pageName;
+            string saveLocation = Server.MapPath("~") + "\\Images\\temp.pdf";
+
+            byte[] imageBytes;
+
+            log.Debug("[Home][dispatchPdf]: Creating post request with url : " + imageUrl);
+            HttpWebRequest imageRequest = (HttpWebRequest)WebRequest.Create(imageUrl);
+            imageRequest.Method = "POST";
+            var postData = "url=" + pageName;
+
+            imageRequest.ContentType = "application/x-www-form-urlencoded";
+            imageRequest.ContentLength = 0;
+
+            WebResponse imageResponse = imageRequest.GetResponse();
+
+            Stream responseStream = imageResponse.GetResponseStream();
+            log.Debug("[Home][dispatchPdf]: Retrieving Response");
+            using (BinaryReader br = new BinaryReader(responseStream))
+            {
+                imageBytes = br.ReadBytes(500000);
+                br.Close();
+            }
+            responseStream.Close();
+            imageResponse.Close();
+            log.Debug("[Home][dispatchPdf]: Closing Stream!");
+            FileStream fs = new FileStream(saveLocation, FileMode.Create);
+            BinaryWriter bw = new BinaryWriter(fs);
+
+            log.Debug("[Home][dispatchPdf]: Writing to file at " + saveLocation);
+            try
+            {
+                bw.Write(imageBytes);
+            }
+            finally
+            {
+                fs.Close();
+                bw.Close();
+            }
+            log.Debug("[Home][dispatchPdf]: Closed File Stream  ");
+            //downloaded the document
+            Document document = new Document();
+            PdfReader pdfReader = new PdfReader(saveLocation);
+            PdfStamper stamp = new PdfStamper(pdfReader, new FileStream(saveLocation.Replace("temp.pdf", "[temp][file].pdf"), FileMode.Create));
+
+            iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(WatermarkLocation);
+            img.ScaleToFit(120f, 155.25f);
+            img.SetAbsolutePosition(document.Left, document.Top - 50); // set the position in the document where you want the watermark to appear (0,0 = bottom left corner of the page)
+
+
+            log.Debug("[Home][dispatchPdf]: Added Image to PDF  ");
+            PdfContentByte waterMark;
+            for (int page = 1; page <= pdfReader.NumberOfPages; page++)
+            {
+                waterMark = stamp.GetOverContent(page);
+                waterMark.AddImage(img);
+            }
+            stamp.FormFlattening = true;
+            stamp.Close();
+
+            pdfReader.Close();
+            stamp.Close();
+            document.Close();
+            // now delete the original file and rename the temp file to the original file
+            System.IO.File.Delete(saveLocation);
+            log.Debug("[Home][dispatchPdf]: Saving Image with PDF");
+            System.IO.File.Move(saveLocation.Replace("temp.pdf", "[temp][file].pdf"), saveLocation);
+            //File.Delete(url);
+            //File.Move(url.Replace(".pdf", "[temp][file].pdf"), url);
+
+
+            //client side download 
+            log.Debug("[Home][dispatchPdf]: Sending the PDF to Client Browser ");
+            Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AddHeader("Content-Disposition", "attachment; filename='" + pageName + ".pdf'");
+            Response.WriteFile(saveLocation);
+            Response.End();
+            //byte[] fileBytes = System.IO.File.ReadAllBytes(saveLocation);
+            //string fileName = "AR Management.pdf";
+            //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            log.Debug("[Home][dispatchPdf]: Deleting the temporary PDF File ");
+            System.IO.File.Delete(saveLocation);
+
+
+        }
+
 
     }
 }

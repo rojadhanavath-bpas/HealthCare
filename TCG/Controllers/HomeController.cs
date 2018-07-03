@@ -31,7 +31,7 @@ namespace HealthcareAnalytics.Controllers
         readonly string tableauServer = "http://tableau.bpa.services/trusted/";
 
         //private healthcareEntities db = new healthcareEntities();
-        public TCG_Worklist TCG_WL = new TCG_Worklist();
+        public TCG_WorklistModel TCG_WL = new TCG_WorklistModel();
         private User_Login UL = new User_Login();
         private TCG_DataEntities db2 = new TCG_DataEntities();
         private Account_AR_Status AARS = new Account_AR_Status();
@@ -462,7 +462,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populateStatus()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Status_Master.Select(x => new SelectListItem { Text = x.SM_Name, Value = x.SM_ID.ToString() }).ToList();
 
         }
@@ -470,7 +470,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populateAccount_ARStatus()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Account_AR_Status.Select(x => new SelectListItem { Text = x.ARSts_Name, Value = x.ARSts_ID.ToString() }).ToList();
 
         }
@@ -478,7 +478,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_BillStatus()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Account_Bill_Status.Select(x => new SelectListItem { Text = x.BillSts_Name, Value = x.BillSts_ID.ToString() }).ToList();
 
         }
@@ -486,7 +486,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_AccountSource()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Account_Source.Select(x => new SelectListItem { Text = x.AccSrc_Name, Value = x.AccSrc_ID.ToString() }).ToList();
 
         }
@@ -494,7 +494,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_EncounterType()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Encounter_Type.Select(x => new SelectListItem { Text = x.EncType_Name, Value = x.EncType_ID.ToString() }).ToList();
 
         }
@@ -502,7 +502,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_Insurance()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Insurance_Company_Name.Select(x => new SelectListItem { Text = x.InsCmp_Name, Value = x.InsCmp_ID.ToString() }).ToList();
 
         }
@@ -510,7 +510,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_PayorFC()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Payor_Financial_Class.Select(x => new SelectListItem { Text = x.PyrFC_Name, Value = x.PyrFC_ID.ToString() }).ToList();
 
         }
@@ -518,7 +518,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_PrimaryReason()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.PrimaryReason_Master.Select(x => new SelectListItem { Text = x.PRM_Name, Value = x.PRM_ID.ToString() }).ToList();
 
         }
@@ -526,7 +526,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_Task()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Task_Master.Select(x => new SelectListItem { Text = x.TM_Name, Value = x.TM_ID.ToString() }).ToList();
 
         }
@@ -542,7 +542,7 @@ namespace HealthcareAnalytics.Controllers
         private static List<SelectListItem> populate_Priority()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             return context.Priority_Master.Select(x => new SelectListItem { Text = x.PM_Name, Value = x.PM_ID.ToString() }).ToList();
 
         }        
@@ -580,10 +580,10 @@ namespace HealthcareAnalytics.Controllers
 
             editOpenTask_id = id;
             string HospitalAccountID = editOpenTask_id;
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             TCG_DataEntities context_tcg = new TCG_DataEntities();
 
-            TCG_WL = new TCG_Worklist();
+            TCG_WL = new TCG_WorklistModel();
             List<Account_Case_Task> ACDT = new List<Account_Case_Task>();
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
             Get_Account_Info_for_ARandDenial_Result AIARDR = new Get_Account_Info_for_ARandDenial_Result();
@@ -705,10 +705,10 @@ namespace HealthcareAnalytics.Controllers
 
             editOpenTask_id = id;
             string HospitalAccountID = editOpenTask_id;
-            TCG_Worklist context = new TCG_Worklist();
+            TCG_WorklistModel context = new TCG_WorklistModel();
             TCG_DataEntities context_tcg = new TCG_DataEntities();
 
-            TCG_WL = new TCG_Worklist();
+            TCG_WL = new TCG_WorklistModel();
             List<Account_Case_Task> ACDT = new List<Account_Case_Task>();
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
             Get_Account_Info_for_ARandDenial_Result AIARDR = new Get_Account_Info_for_ARandDenial_Result();
@@ -801,7 +801,7 @@ namespace HealthcareAnalytics.Controllers
         {
 
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
-            using (var db = new TCG_Worklist())
+            using (var db = new TCG_WorklistModel())
             {
                 return (from c in db.Account_Case_Details
                         where c.ACD_HspAccID == HospitalAccountID 
@@ -814,7 +814,7 @@ namespace HealthcareAnalytics.Controllers
         {
 
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
-            using (var db = new TCG_Worklist())
+            using (var db = new TCG_WorklistModel())
             {
                 return (from c in db.Account_Case_Details
                         where c.ACD_HspAccID == HospitalAccountID && c.ACD_ID == case_ID
@@ -827,7 +827,7 @@ namespace HealthcareAnalytics.Controllers
         {
 
             List<Account_Case_Task> ACDT = new List<Account_Case_Task>();
-            using (var db = new TCG_Worklist())
+            using (var db = new TCG_WorklistModel())
             {
                 ACDT = (from c in db.Account_Case_Task
                         where c.ACT_HspAccID == HospitalAccountID && c.ACT_ACD_ID == case_ID && c.ACT_DeleteFlag == 0
@@ -1236,7 +1236,7 @@ namespace HealthcareAnalytics.Controllers
                 {
                     ViewBag.IsUpdate = true;
 
-                    TCG_Worklist context = new TCG_Worklist();
+                    TCG_WorklistModel context = new TCG_WorklistModel();
                     TCG_DataEntities context_tcg = new TCG_DataEntities();
 
                     ACS = TCG_WL.Account_Case_Details.Where(m => m.ACD_HspAccID == id && m.ACD_ID == case_ID).FirstOrDefault();
@@ -1347,7 +1347,7 @@ namespace HealthcareAnalytics.Controllers
             editOpenTask_id = id;
             string HospitalAccountID = editOpenTask_id;
 
-            TCG_WL = new TCG_Worklist();
+            TCG_WL = new TCG_WorklistModel();
             List<Account_Case_Details> ACD = new List<Account_Case_Details>();
             Get_Account_Info_for_ARandDenial_Result AIARDR = new Get_Account_Info_for_ARandDenial_Result();
             List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
@@ -1365,7 +1365,7 @@ namespace HealthcareAnalytics.Controllers
 
                         var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
                         var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-                        var model = new TCG_Worklist();
+                        var model = new TCG_WorklistModel();
                         int new_Case_Value;
                         if (Case_checkHospitalAccID != null)
                         {
@@ -1398,7 +1398,7 @@ namespace HealthcareAnalytics.Controllers
 
                         }
 
-                        TCG_Worklist context = new TCG_Worklist();
+                        TCG_WorklistModel context = new TCG_WorklistModel();
                         TCG_DataEntities context_tcg = new TCG_DataEntities();
 
 

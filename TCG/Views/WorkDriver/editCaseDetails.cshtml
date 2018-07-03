@@ -157,7 +157,15 @@
 
                                                         <div class="form-group col-sm-3">
                                                             <label for="DDL_Owner" class="text-info small">OWNER</label>
-                                                            @Html.DropDownListFor(m => m.ACD_Owner, (IEnumerable<SelectListItem>)ViewBag.UL, new { @class = "form-control dropdown" })
+                                                            @if (Model.userFlag == 1)
+                                                            {
+                                                                @Html.TextBoxFor(m => m.userID, new { @Value = Model.userName, @class = "form-control", @readonly = "readonly" })
+                                                            }
+                                                            @if (Model.userFlag == 2)
+                                                            {
+                                                                @Html.DropDownListFor(m => m.ACD_Owner, (IEnumerable<SelectListItem>)ViewBag.UL, new { @class = "form-control dropdown" })
+                                                            }
+
                                                         </div>
                                                         <div class="form-group col-sm-3">
                                                             <label for="dt_Date" class="text-info small">DISCHARGE DATE</label>
@@ -186,7 +194,7 @@
                                                         <div class="form-group col-sm-3">
                                                             @if (Model.link == 1)
                                                             {
-                                                                <label for="DDL_PayerReason" class="text-info small">ROOT CAUSE</label>
+                                                            <label for="DDL_PayerReason" class="text-info small">UNDERPAYMENT REASON</label>
                                                                 @*@Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.RC, new { @class = "form-control dropdown", @disabled = "disabled" })*@
                                                                 @Html.DropDownListFor(m => m.ACD_PayerReason, (IEnumerable<SelectListItem>)ViewBag.UP, new { @class = "form-control dropdown" })
                                                                 @Html.HiddenFor(m => m.link)
@@ -214,7 +222,7 @@
                                                         <div class="form-group col-sm-3">
                                                             @if (Model.link == 1)
                                                             {
-                                                                <label for="DDL_PrimaryReason" class="text-info small">UNDERPAYMENT/PRIMARY REASON</label>
+                                                                <label for="DDL_PrimaryReason" class="text-info small">PAYER PRIMARY REASON</label>
                                                                 @*@Html.DropDownListFor(m => m.ACD_PrimaryReason, (IEnumerable<SelectListItem>)ViewBag.UP, new { @class = "form-control dropdown" })*@
                                                                 @Html.TextBoxFor(m => m.ACD_PrimaryReason, new { @value = Model.ACD_PrimaryReason.ToString(), @class = "form-control" })
                                                             }
@@ -443,7 +451,7 @@
                                                             }
                                                         </tbody>
                                                     </table>
-                                                    }
+                                                    
                                                 </div>
 
                                             </div>

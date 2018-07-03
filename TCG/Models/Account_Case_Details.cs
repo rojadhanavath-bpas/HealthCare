@@ -59,6 +59,7 @@ namespace HealthcareAnalytics.Models
         public string convAllAmtDiff { get; set; }
         public string convExpAmtDiff { get; set; }
         public string convAllAmtDiffPyr { get; set; }
+        public int userFlag { get; set; }
 
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

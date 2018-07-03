@@ -40,6 +40,5 @@ namespace HealthcareAnalytics.Models
         public string caseFlag { get; set; }
         public Boolean flagCase { get; set; }
 
-
     }
 }

@@ -331,21 +331,6 @@
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModel.cs" />
-    <Compile Include="Models\Worklist.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Worklist.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Worklist.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Worklist.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Worklist.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Worklist.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\WorklistModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -431,13 +416,6 @@
       <DependentUpon>Registration_SP.edmx</DependentUpon>
     </Content>
     <Content Include="Grid.mvc.readme" />
-    <EntityDeploy Include="Models\Worklist.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Worklist.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Worklist.edmx.diagram">
-      <DependentUpon>Worklist.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -544,16 +522,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>tcgDatabase.edmx</DependentUpon>
       <LastGenOutput>tcgDatabase.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Worklist.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Worklist.edmx</DependentUpon>
-      <LastGenOutput>Worklist.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Worklist.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Worklist.edmx</DependentUpon>
-      <LastGenOutput>Worklist.cs</LastGenOutput>
     </Content>
     <Content Include="Models\WorklistModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -767,6 +735,7 @@
     <Content Include="Views\WorkDriver\editCaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\viewCaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\viewTestPage.cshtml" />
+    <Content Include="Views\WorkDriver\TrendGraph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
