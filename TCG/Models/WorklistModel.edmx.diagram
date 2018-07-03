@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1b34281a1af04e5dba0c5e05c6777fa9" Name="Diagram1">
+        <EntityTypeShape EntityType="TCG_Worklist.Account_AR_Status" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Account_Bill_Status" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Account_Case_Details" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Account_Case_Detials_History" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Account_Case_Task" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Account_Case_Task_History" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Account_Source" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.CaseCompleted_Master" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.DenialCat_Master" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.DenialStatus_Master" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Encounter_Type" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Insurance_Company_Name" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Payor_Financial_Class" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.PrimaryReason_Master" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Priority_Master" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.RootCause_Master" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Status_Master" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Task_Master" Width="1.5" PointX="5.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Underpayment_Reason" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TCG_Worklist.Underpayment" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="TCG_Worklist.FK__Account_C__ACDH___40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="TCG_Worklist.FK__Account_C__ACT_A__44CA3770" ManuallyRouted="false" />
+        <AssociationConnector Association="TCG_Worklist.FK__Account_C__ACTH___498EEC8D" ManuallyRouted="false" />
+        <AssociationConnector Association="TCG_Worklist.FK__Account_C__ACTH___489AC854" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

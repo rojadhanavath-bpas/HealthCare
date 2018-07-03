@@ -80,7 +80,7 @@ namespace HealthcareAnalytics.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "user_ID,user_first_name,user_last_name,user_full_name,user_role_key,user_phone_number,user_email_id,user_added_by,user_add_date,user_updated_by,user_updated_date,user_delete_flag,user_middle_name,user_web_pwd,otp_key,otp_time,confirm_pwd")] Users_Data users_Data, String role_value)
+        public ActionResult Create([Bind(Include = "user_ID,user_first_name,user_last_name,user_full_name,user_role_key,user_phone_number,user_email_id,user_added_by,user_add_date,user_updated_by,user_updated_date,user_delete_flag,user_middle_name,user_web_pwd,otp_key,otp_time,confirm_pwd")] Users_Data users_Data, String role_value)
         {
             ViewBag.UserFirst = Session["first"];
             ViewBag.UserLast = Session["last"];
@@ -90,7 +90,7 @@ namespace HealthcareAnalytics.Controllers
             if (checkEmail != null)
             {
                 ViewBag.message = "Email Already exist!";
-           
+
                 return View("Create");
             }
 
@@ -109,13 +109,13 @@ namespace HealthcareAnalytics.Controllers
                     var admin = "admin";
                     var keyword = "Create";
 
-                    db.Database.ExecuteSqlCommand("create_user @First_name = {0}, @last_name = {1}, @middle_name = {2}, @Email = {3}, @Phone_number = {4}, @pwd = {5}, @role ={6}, @keyword={7}, @admin={8}, @ID={9}", firstname, lastname, middleName, email, phonenum, pwd, role, keyword,admin,id);
+                    db.Database.ExecuteSqlCommand("create_user @First_name = {0}, @last_name = {1}, @middle_name = {2}, @Email = {3}, @Phone_number = {4}, @pwd = {5}, @role ={6}, @keyword={7}, @admin={8}, @ID={9}", firstname, lastname, middleName, email, phonenum, pwd, role, keyword, admin, id);
                     return View("Details");
                 }
                 else
                 {
                     ViewBag.message = "Passwords Didn't match";
-                 
+
                     return View("Create");
                 }
             }

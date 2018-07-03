@@ -25,11 +25,11 @@ namespace HealthcareAnalytics.Models
         public int ACD_ID { get; set; }
         public string ACD_HspAccID { get; set; }
         public string ACD_Amount { get; set; }
-        public string ACD_Status { get; set; }
+        public int ACD_Status { get; set; }
         public string ACD_Owner { get; set; }
         public string ACD_Type { get; set; }
         public string ACD_SubType { get; set; }
-        public string ACD_PayerReason { get; set; }
+        public int ACD_PayerReason { get; set; }
         public string ACD_PrimaryReason { get; set; }
         public string ACD_SecondaryReason { get; set; }
         public string ACD_PrinDiag { get; set; }
@@ -43,7 +43,7 @@ namespace HealthcareAnalytics.Models
         public string ACD_Completed { get; set; }
         public string ACD_Priority { get; set; }
         public string ACD_Description { get; set; }
-        public string ACD_TaskFollowUp { get; set; }
+        public int ACD_TaskFollowUp { get; set; }
         public Nullable<System.DateTime> ACD_DueDate { get; set; }
         public Nullable<System.DateTime> ACD_FollowUpDate { get; set; }
         public Nullable<bool> ACD_DeleteFlag { get; set; }
@@ -51,7 +51,15 @@ namespace HealthcareAnalytics.Models
         public string dateConvert { get; set; }
         public string dateFollowUp { get; set; }
         public decimal convertAmount { get; set; }
+        public string convAmt { get; set; }
         public int link { get; set; }
+        public string userName { get; set; }
+        public string userID { get; set; }
+
+        public string convAllAmtDiff { get; set; }
+        public string convExpAmtDiff { get; set; }
+        public string convAllAmtDiffPyr { get; set; }
+        public int userFlag { get; set; }
 
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

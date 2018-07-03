@@ -249,9 +249,6 @@ namespace HealthcareAnalytics.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("create_user", first_nameParameter, last_nameParameter, middle_nameParameter, emailParameter, phone_numberParameter, pwdParameter, roleParameter, keywordParameter, adminParameter, iDParameter);
         }
     
-        public virtual ObjectResult<Get_Under_Paymnent_Accounts_Result> Get_Under_Paymnent_Accounts()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_Result>("Get_Under_Paymnent_Accounts");
-        }
+       
     }
 }
