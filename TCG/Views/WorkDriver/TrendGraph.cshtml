@@ -3,7 +3,9 @@
     ViewBag.Title = "Trends";
 }
 
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <html>
 <head>
@@ -12,7 +14,7 @@
     <script src='https://public.tableau.com/javascripts/api/tableau-2.js'></script>
     <script src='https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.9.2/xlsx.core.min.js"></script>
-    
+
     <script>
 //first, create the viz
     $(document).ready(function initViz() {

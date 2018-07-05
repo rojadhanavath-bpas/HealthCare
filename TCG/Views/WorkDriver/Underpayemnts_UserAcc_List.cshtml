@@ -6,10 +6,12 @@
 @{
     ViewBag.Title = "User Account List";
 }
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <html>
 <head>
-     
+
     <script type="text/javascript">
         $(function () {
             $("table.tablesorter").tablesorter({ widthFixed: true, sortList: [[0, 0]] })
@@ -19,9 +21,9 @@
             $('#btn2').prop('disabled', true);
 
         });
-        
-      
-        
+
+
+
     </script>
 
 </head>
@@ -40,9 +42,9 @@
                                 <span style="color:#d9edf7;" class="font-weight-bold large">
                                     User Account List
 
-                                    
-                                        @Html.ActionLink("BACK", "worklist_Home", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
-                                   
+
+                                    @Html.ActionLink("BACK", "worklist_Home", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+
                                 </span>
                             </h4>
                         </div>
@@ -91,7 +93,7 @@
                                                 Account ID
                                             </th>
                                             <th>@Html.ActionLink("Discharge Date", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.DateSortParm })</th>
-                                            <th>@Html.ActionLink("Patient Name", "Underpayemnts_UserAcc_List" , new { sortOrder = ViewBag.sort_PatientName })</th>                                           
+                                            <th>@Html.ActionLink("Patient Name", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_PatientName })</th>
                                             <th>@Html.ActionLink("Payor", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_PayorName })</th>
                                             <th>@Html.ActionLink("Account Balance", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_Bal })</th>
                                             <th>@Html.ActionLink("Plan", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_Plan })</th>
@@ -113,21 +115,21 @@
                                                     @Html.DisplayFor(modelItem => item.DischargeDate)
                                                 </td>
                                                 <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
-                                               
+
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Payor_Name)
                                                 </td>
                                                 <td class="text-right">
                                                     @Html.DisplayFor(modelItem => item.convertBal)
                                                 </td>
-                                                <td >
+                                                <td>
                                                     @Html.DisplayFor(modelItem => item.Plan_Name)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Acct_Class)
                                                 </td>
-                                                
-                                                <td class="small">                                                   
+
+                                                <td class="small">
                                                     @if (item.flagCase)
                                                     {
                                                         <button id="btn1" class="btn-xs active btn-default btn-block">New</button>

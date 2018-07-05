@@ -9,14 +9,12 @@ namespace HealthcareAnalytics.Models
     public class PwdChange
     {
         [Display(Name = "Current Password")]
-        [Required(ErrorMessage = "Confirm password is required")]
-        
+        [Required(ErrorMessage = "Confirm password is required")]        
         [DataType(DataType.Password)]
         public string current_pwd { get; set; }
 
         [Display(Name = "New Password")]
-        [Required(ErrorMessage = "Confirm password is required")]
-        
+        [Required(ErrorMessage = "Confirm password is required")]        
         [DataType(DataType.Password)]
         public string new_pwd { get; set; }
 

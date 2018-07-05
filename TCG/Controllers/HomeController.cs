@@ -356,8 +356,8 @@ namespace HealthcareAnalytics.Controllers
                     Session["last"] = details.FirstOrDefault().user_last_name;
                     Session["email"] = details.FirstOrDefault().user_email_id;
 
-                    //return RedirectToAction("ARManagement", "Home");
-                    return RedirectToAction("worklist_Home", "WorkDriver");
+                    return RedirectToAction("ARManagement", "Home");
+                    //return RedirectToAction("worklist_Home", "WorkDriver");
 
                 }
                 else

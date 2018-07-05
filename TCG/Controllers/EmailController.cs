@@ -177,6 +177,8 @@ namespace HealthcareAnalytics.Controllers
         // GET: Email/Create
         public ActionResult Create()
         {
+            ViewBag.UserFirst = Session["first"];
+            ViewBag.UserLast = Session["last"];
             return View();
         }
 
@@ -191,6 +193,8 @@ namespace HealthcareAnalytics.Controllers
 
         public ActionResult ChangePassword()
         {
+            ViewBag.UserFirst = Session["first"];
+            ViewBag.UserLast = Session["last"];
 
             return View();
         }
@@ -234,8 +238,13 @@ namespace HealthcareAnalytics.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "NO records found");
+                    ModelState.AddModelError("", "Please enter valid password");
                 }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Please enter all the fields");
+                return View();
             }
             return View();
         }

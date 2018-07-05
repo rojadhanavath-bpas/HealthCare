@@ -327,7 +327,6 @@
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserContext.cs" />
-    <Compile Include="Models\UserDataModel.cs" />
     <Compile Include="Models\Users_Data.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>

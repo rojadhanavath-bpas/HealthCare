@@ -164,3 +164,308 @@ DEBUG 2018-07-02 13:43:45,763 26563ms HomeController         Login              
 DEBUG 2018-07-02 13:44:13,588 54388ms HomeController         Login              - password
 DEBUG 2018-07-02 13:44:13,590 54390ms HomeController         Login              - password
 DEBUG 2018-07-02 13:44:13,590 54390ms HomeController         Login              - [Home][login]: Succesfully logged in  Roja.Dhanavath
+DEBUG 2018-07-03 11:34:05,618 24228ms HomeController         Login              - password
+DEBUG 2018-07-03 11:34:05,639 24249ms HomeController         Login              - password
+DEBUG 2018-07-03 11:34:05,640 24250ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 11:37:37,198 17855ms HomeController         Login              - password
+DEBUG 2018-07-03 11:37:37,199 17856ms HomeController         Login              - password
+DEBUG 2018-07-03 11:37:37,222 17879ms HomeController         Login              - password
+DEBUG 2018-07-03 11:37:37,222 17879ms HomeController         Login              - password
+DEBUG 2018-07-03 11:37:37,223 17880ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 11:37:37,223 17880ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 11:38:59,069 17500ms HomeController         Login              - password
+DEBUG 2018-07-03 11:38:59,095 17526ms HomeController         Login              - password
+DEBUG 2018-07-03 11:38:59,096 17527ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 11:38:59,232 17662ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:38:59,830 18261ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 11:39:26,905 45336ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:39:27,160 45590ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 11:40:52,580 131010ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:40:52,857 131288ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 11:42:33,083 231513ms HomeController         Login              - password
+DEBUG 2018-07-03 11:42:33,084 231514ms HomeController         Login              - password
+DEBUG 2018-07-03 11:42:33,085 231515ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 11:42:33,098 231528ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:42:33,436 231867ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 11:43:33,879 292310ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:43:34,103 292534ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 11:43:43,543 301973ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:43:43,759 302189ms HomeController         DebitAR            - [User:Vaynu]  Loading Debit AR  Page..
+DEBUG 2018-07-03 11:44:36,273 354704ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:44:36,567 354997ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 11:44:39,477 357907ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:44:39,617 358048ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 11:44:42,669 361100ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:44:42,785 361215ms HomeController         DebitAR            - [User:Vaynu]  Loading Debit AR  Page..
+DEBUG 2018-07-03 11:44:54,050 372481ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:44:54,218 372648ms HomeController         DebitAR            - [User:Vaynu]  Loading Debit AR  Page..
+DEBUG 2018-07-03 11:45:01,339 379769ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:45:01,510 379941ms HomeController         DenialsManagement  - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 11:45:20,063 398493ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:45:20,238 398668ms HomeController         DenialsManagement  - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 11:45:32,100 410530ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:45:32,344 410774ms HomeController         TrendGraph         - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 11:46:15,656 454086ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:46:15,861 454291ms HomeController         TrendGraph         - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 11:46:18,349 456780ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:46:18,461 456892ms HomeController         TrendGraph         - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 11:46:37,048 475478ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:46:37,386 475817ms HomeController         TrendGraph         - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 11:46:40,474 478905ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:46:40,670 479101ms HomeController         TrendGraph         - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 11:46:45,105 483535ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:46:45,293 483723ms HomeController         TrendGraph         - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 11:47:20,398 518829ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:47:20,604 519035ms HomeController         DenialsManagement  - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 11:47:25,190 523620ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 11:47:25,303 523733ms HomeController         TrendGraph         - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 12:03:33,320 17739ms HomeController         Login              - password
+DEBUG 2018-07-03 12:03:33,336 17755ms HomeController         Login              - password
+DEBUG 2018-07-03 12:03:33,336 17755ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 12:03:33,441 17859ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 12:03:33,944 18363ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 12:06:14,233 66596ms HomeController         Login              - password
+DEBUG 2018-07-03 12:06:14,250 66613ms HomeController         Login              - password
+DEBUG 2018-07-03 12:06:14,250 66613ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 12:06:14,362 66726ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 12:06:14,934 67297ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 12:07:46,548 158911ms HomeController         Login              - password
+DEBUG 2018-07-03 12:07:46,549 158912ms HomeController         Login              - password
+DEBUG 2018-07-03 12:07:46,550 158913ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 12:07:46,558 158921ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 12:07:46,733 159096ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 12:07:52,460 164823ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 12:07:52,621 164984ms HomeController         CreditAR           - [User:Vaynu]  Loading Credit AR  Page..
+DEBUG 2018-07-03 12:07:58,897 171260ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 12:07:59,094 171457ms HomeController         DenialsManagement  - [User:Vaynu]  Loading Denials Management  Page..
+DEBUG 2018-07-03 12:36:54,173 16394ms HomeController         Login              - password
+DEBUG 2018-07-03 12:36:54,192 16413ms HomeController         Login              - password
+DEBUG 2018-07-03 12:36:54,193 16414ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 12:36:54,303 16525ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 12:36:54,845 17067ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 13:08:42,088 29058ms HomeController         Login              - password
+DEBUG 2018-07-03 13:08:42,103 29073ms HomeController         Login              - password
+DEBUG 2018-07-03 13:08:42,103 29073ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 13:08:42,217 29187ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 13:08:42,685 29655ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 13:26:47,608 44277ms HomeController         Login              - password
+DEBUG 2018-07-03 13:26:47,624 44293ms HomeController         Login              - password
+DEBUG 2018-07-03 13:26:47,625 44294ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 13:26:47,752 44421ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 13:26:48,270 44938ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:09:05,170 33867ms HomeController         Login              - password
+DEBUG 2018-07-03 15:09:05,188 33885ms HomeController         Login              - password
+DEBUG 2018-07-03 15:09:05,188 33885ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:09:05,309 34007ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:09:05,928 34625ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:11:39,626 24104ms HomeController         Login              - password
+DEBUG 2018-07-03 15:11:39,640 24118ms HomeController         Login              - password
+DEBUG 2018-07-03 15:11:39,641 24119ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:11:39,756 24234ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:11:40,477 24956ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:15:18,662 15395ms HomeController         Login              - password
+DEBUG 2018-07-03 15:15:18,676 15409ms HomeController         Login              - password
+DEBUG 2018-07-03 15:15:18,676 15409ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:15:18,793 15525ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:15:19,383 16115ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:24:06,759 19029ms HomeController         Login              - password
+DEBUG 2018-07-03 15:24:06,777 19047ms HomeController         Login              - password
+DEBUG 2018-07-03 15:24:06,778 19048ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:24:06,894 19164ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:24:07,488 19758ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:29:08,419 23917ms HomeController         Login              - password
+DEBUG 2018-07-03 15:29:08,445 23943ms HomeController         Login              - password
+DEBUG 2018-07-03 15:29:08,445 23943ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:29:08,553 24052ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:29:09,082 24580ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:32:09,064 20123ms HomeController         Login              - password
+DEBUG 2018-07-03 15:32:09,080 20139ms HomeController         Login              - password
+DEBUG 2018-07-03 15:32:09,081 20140ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:32:09,187 20247ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:32:09,686 20746ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:36:04,937 21264ms HomeController         Login              - password
+DEBUG 2018-07-03 15:36:04,951 21278ms HomeController         Login              - password
+DEBUG 2018-07-03 15:36:04,952 21279ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:36:05,058 21384ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:36:05,610 21936ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:38:38,152 18299ms HomeController         Login              - password
+DEBUG 2018-07-03 15:38:38,166 18313ms HomeController         Login              - password
+DEBUG 2018-07-03 15:38:38,167 18314ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:38:38,275 18422ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:38:38,817 18964ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:41:04,974 16555ms HomeController         Login              - password
+DEBUG 2018-07-03 15:41:04,988 16569ms HomeController         Login              - password
+DEBUG 2018-07-03 15:41:04,988 16569ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:41:05,093 16675ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:41:05,603 17184ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:46:33,909 15671ms HomeController         Login              - password
+DEBUG 2018-07-03 15:46:33,909 15671ms HomeController         Login              - password
+DEBUG 2018-07-03 15:46:33,934 15696ms HomeController         Login              - password
+DEBUG 2018-07-03 15:46:33,935 15697ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:46:33,933 15695ms HomeController         Login              - password
+DEBUG 2018-07-03 15:46:33,939 15701ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:46:34,052 15813ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:46:34,689 16451ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 15:55:59,887 16721ms HomeController         Login              - password
+DEBUG 2018-07-03 15:55:59,901 16735ms HomeController         Login              - password
+DEBUG 2018-07-03 15:55:59,902 16736ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 15:56:00,051 16885ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 15:56:00,688 17522ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:16:19,816 21524ms HomeController         Login              - password
+DEBUG 2018-07-03 16:16:19,830 21538ms HomeController         Login              - password
+DEBUG 2018-07-03 16:16:19,831 21538ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:16:19,938 21645ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:16:20,539 22246ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:21:16,797 16930ms HomeController         Login              - password
+DEBUG 2018-07-03 16:21:16,813 16946ms HomeController         Login              - password
+DEBUG 2018-07-03 16:21:16,814 16947ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:21:16,939 17072ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:21:17,489 17622ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:30:47,463 37503ms HomeController         Login              - password
+DEBUG 2018-07-03 16:30:47,477 37517ms HomeController         Login              - password
+DEBUG 2018-07-03 16:30:47,477 37517ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:30:47,581 37621ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:30:48,095 38136ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:40:56,569 17243ms HomeController         Login              - password
+DEBUG 2018-07-03 16:40:56,584 17258ms HomeController         Login              - password
+DEBUG 2018-07-03 16:40:56,584 17258ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:40:56,699 17372ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:40:57,198 17871ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:43:38,046 15074ms HomeController         Login              - password
+DEBUG 2018-07-03 16:43:38,061 15089ms HomeController         Login              - password
+DEBUG 2018-07-03 16:43:38,061 15089ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:43:38,182 15210ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:43:38,669 15697ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:46:20,159 18248ms HomeController         Login              - password
+DEBUG 2018-07-03 16:46:20,173 18262ms HomeController         Login              - password
+DEBUG 2018-07-03 16:46:20,174 18263ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:46:20,286 18375ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:46:20,759 18848ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:50:51,301 17066ms HomeController         Login              - password
+DEBUG 2018-07-03 16:50:51,316 17081ms HomeController         Login              - password
+DEBUG 2018-07-03 16:50:51,316 17081ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:50:51,430 17195ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:50:51,924 17689ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:54:35,977 22976ms HomeController         Login              - password
+DEBUG 2018-07-03 16:54:35,997 22996ms HomeController         Login              - password
+DEBUG 2018-07-03 16:54:35,997 22996ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:54:36,104 23103ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:54:36,592 23591ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:56:44,829 14817ms HomeController         Login              - password
+DEBUG 2018-07-03 16:56:44,843 14831ms HomeController         Login              - password
+DEBUG 2018-07-03 16:56:44,843 14831ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:56:44,954 14943ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:56:45,380 15368ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 16:58:11,191 18838ms HomeController         Login              - password
+DEBUG 2018-07-03 16:58:11,205 18852ms HomeController         Login              - password
+DEBUG 2018-07-03 16:58:11,206 18853ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 16:58:11,312 18959ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 16:58:11,789 19436ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 17:00:01,903 17487ms HomeController         Login              - password
+DEBUG 2018-07-03 17:00:01,917 17501ms HomeController         Login              - password
+DEBUG 2018-07-03 17:00:01,917 17501ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 17:00:02,025 17610ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 17:00:02,534 18118ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 17:05:18,718 20806ms HomeController         Login              - password
+DEBUG 2018-07-03 17:05:18,737 20825ms HomeController         Login              - password
+DEBUG 2018-07-03 17:05:18,737 20825ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 17:05:18,846 20934ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 17:05:19,373 21461ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 17:08:32,927 26884ms HomeController         Login              - password
+DEBUG 2018-07-03 17:08:32,942 26899ms HomeController         Login              - password
+DEBUG 2018-07-03 17:08:32,943 26900ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 17:08:33,066 27023ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 17:08:33,543 27500ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 17:14:03,097 15326ms HomeController         Login              - password
+DEBUG 2018-07-03 17:14:03,126 15354ms HomeController         Login              - password
+DEBUG 2018-07-03 17:14:03,127 15355ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 17:14:03,260 15488ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 17:14:03,734 15963ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-03 17:18:31,170 87962ms HomeController         Login              - password
+DEBUG 2018-07-03 17:18:31,191 87983ms HomeController         Login              - password
+DEBUG 2018-07-03 17:18:31,191 87983ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-03 17:18:31,313 88105ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 17:18:31,789 88581ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 09:23:36,976 56618ms HomeController         Login              - password
+DEBUG 2018-07-05 09:23:37,016 56658ms HomeController         Login              - password
+DEBUG 2018-07-05 09:23:37,016 56658ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 09:23:37,244 56886ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 09:23:37,920 57562ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 09:33:00,054 248972ms HomeController         Login              - new123
+DEBUG 2018-07-05 09:33:00,498 249417ms HomeController         Login              - new123
+DEBUG 2018-07-05 09:33:01,039 249957ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 09:33:15,478 264396ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 09:33:15,982 264900ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 09:48:57,046 47510ms HomeController         Login              - new123
+DEBUG 2018-07-05 09:48:57,072 47537ms HomeController         Login              - new123
+DEBUG 2018-07-05 09:48:57,076 47541ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 09:48:57,306 47771ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 09:48:57,918 48383ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 09:59:30,192 25552ms HomeController         Login              - new123
+DEBUG 2018-07-05 09:59:30,219 25580ms HomeController         Login              - new123
+DEBUG 2018-07-05 09:59:30,220 25581ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 09:59:30,449 25809ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 09:59:31,111 26471ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 10:08:41,794 179764ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:08:41,813 179783ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:08:41,813 179783ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 10:08:41,929 179899ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 10:08:42,390 180360ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 10:08:56,890 194860ms HomeController         LogOff             - Cleared session..
+DEBUG 2018-07-05 10:08:56,895 194865ms HomeController         LogOff             - Signing out user
+DEBUG 2018-07-05 10:08:56,914 194884ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-07-05 10:09:19,124 217094ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:09:19,124 217094ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:09:19,126 217096ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 10:09:19,135 217105ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 10:09:19,281 217251ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 10:18:52,154 21217ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:18:52,169 21232ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:18:52,170 21233ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 10:18:52,308 21371ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 10:18:52,762 21825ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 10:24:22,693 59631ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:24:22,711 59648ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:24:22,712 59649ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 10:24:22,826 59763ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 10:24:23,246 60183ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 10:30:34,779 18971ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:30:34,795 18987ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:30:34,795 18987ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 10:30:34,920 19111ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 10:30:35,334 19526ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 10:50:19,616 39725ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:50:19,629 39738ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:50:19,630 39739ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 10:50:19,748 39857ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 10:50:20,217 40327ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 10:54:56,101 16368ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:54:56,117 16384ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:54:56,117 16384ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 10:54:56,231 16498ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 10:54:56,697 16964ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 10:56:05,772 86039ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:56:05,772 86039ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:56:05,773 86040ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 10:56:05,782 86049ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 10:56:05,925 86192ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 10:57:47,253 187520ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:57:47,253 187520ms HomeController         Login              - new123
+DEBUG 2018-07-05 10:57:47,254 187521ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 10:57:47,263 187530ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 10:57:47,410 187677ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 11:00:46,846 48593ms HomeController         Login              - new123
+DEBUG 2018-07-05 11:00:46,861 48608ms HomeController         Login              - new123
+DEBUG 2018-07-05 11:00:46,861 48608ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 11:00:46,977 48724ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 11:00:47,402 49149ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 11:01:16,560 78307ms HomeController         Login              - new123
+DEBUG 2018-07-05 11:01:16,561 78308ms HomeController         Login              - new123
+DEBUG 2018-07-05 11:01:16,562 78309ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 11:01:16,575 78322ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 11:01:16,713 78460ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
+DEBUG 2018-07-05 11:05:08,437 18505ms HomeController         Login              - new123
+DEBUG 2018-07-05 11:05:08,450 18518ms HomeController         Login              - new123
+DEBUG 2018-07-05 11:05:08,451 18519ms HomeController         Login              - [Home][login]: Succesfully logged in  Vaynu.Osuri
+DEBUG 2018-07-05 11:05:08,566 18634ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-05 11:05:09,022 19090ms HomeController         ARManagement       - [User:Vaynu]  Loading AR Management Page..
