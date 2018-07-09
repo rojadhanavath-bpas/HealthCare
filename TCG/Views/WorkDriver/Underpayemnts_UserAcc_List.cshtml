@@ -6,10 +6,14 @@
 @{
     ViewBag.Title = "User Account List";
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 
 <html>
 <head>
-     
+
     <script type="text/javascript">
         $(function () {
             $("table.tablesorter").tablesorter({ widthFixed: true, sortList: [[0, 0]] })
@@ -19,9 +23,9 @@
             $('#btn2').prop('disabled', true);
 
         });
-        
-      
-        
+
+
+
     </script>
 
 </head>
@@ -40,9 +44,9 @@
                                 <span style="color:#d9edf7;" class="font-weight-bold large">
                                     User Account List
 
-                                    
-                                        @Html.ActionLink("BACK", "worklist_Home", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
-                                   
+
+                                    @Html.ActionLink("BACK", "worklist_Home", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+
                                 </span>
                             </h4>
                         </div>
@@ -56,35 +60,35 @@
                                     @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_HB_Result s in ViewBag.flagDetails)
                                     {
                                         <label class="text-info small">ACCOUNT CLASS: </label>
-                                        if(s.flag == 1)
+                                        if (s.flag == 1)
                                         {
                                             @*@Html.DropDownList("DDLValue", (IEnumerable<SelectListItem>)ViewBag.HPPB, new { @class = "form-control dropdown", @onchange = "this.form.action='Underpayemnts_UserAcc_List'; this.form.submit();" })*@
-                                            @Html.DropDownListFor(Model => s.flag, (IEnumerable<SelectListItem>)ViewBag.HPPB, "-Select-", new { @class = "form-control dropdown", @onchange = "this.form.action='Underpayemnts_UserAcc_List'; this.form.submit();" })
-                                            @Html.HiddenFor(Model => s.flag)
+                                            @Html.DropDownListFor(m => s.flag, (IEnumerable<SelectListItem>)ViewBag.HPPB, "-Select-", new { @class = "form-control dropdown", @onchange = "this.form.action='Underpayemnts_UserAcc_List'; this.form.submit();" })
+                                            @Html.HiddenFor(m => s.flag)
                                         }
-                                        if(s.flag == 2)
+                                        if (s.flag == 2)
                                         {
-                                            @Html.DropDownListFor(Model => s.flag, (IEnumerable<SelectListItem>)ViewBag.HPPB, "-Select-", new { @class = "form-control dropdown", @onchange = "this.form.action='PB_Underpayments_UserAccList'; this.form.submit();" })
-                                            @Html.HiddenFor(Model => s.flag)
+                                            @Html.DropDownListFor(m => s.flag, (IEnumerable<SelectListItem>)ViewBag.HPPB, "-Select-", new { @class = "form-control dropdown", @onchange = "this.form.action='PB_Underpayments_UserAccList'; this.form.submit();" })
+                                            @Html.HiddenFor(m => s.flag)
                                         }
                                     }
                                 </p>
                             </div>
 
                             <div class="col-sm-2">
-                                
+
                             </div>
 
-                            
-                                <div class="col-sm-4">
-                                    <label class="text-info text-center center-block">ACCOUNT CLASS: HB </label>
-                                </div>
-                           
+
+                            <div class="col-sm-4">
+                                <label class="text-info text-center center-block">ACCOUNT CLASS: HB </label>
+                            </div>
+
                             @*<div class="col-sm-2">
-                                
-                            </div>*@
+
+                                </div>*@
                             <div class="col-sm-2">
-                               
+
                             </div>
 
                             <div class="col-sm-2">
@@ -108,7 +112,7 @@
                                                 Account ID
                                             </th>
                                             <th>@Html.ActionLink("Discharge Date", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.DateSortParm })</th>
-                                            <th>@Html.ActionLink("Patient Name", "Underpayemnts_UserAcc_List" , new { sortOrder = ViewBag.sort_PatientName })</th>                                           
+                                            <th>@Html.ActionLink("Patient Name", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_PatientName })</th>
                                             <th>@Html.ActionLink("Payor", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_PayorName })</th>
                                             <th>@Html.ActionLink("Account Balance", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_Bal })</th>
                                             @*<th>@Html.ActionLink("Plan", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_Plan })</th>*@
@@ -127,29 +131,27 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Account)).ToString(), "viewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
+                                                    @Html.ActionLink((@Html.DisplayFor(m => item.Account)).ToString(), "viewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.DischargeDate)
+                                                    @Html.DisplayFor(m => item.DischargeDate)
                                                 </td>
-                                                <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
-                                               
+                                                <td>@Html.DisplayFor(m => item.PatientName)</td>
+
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Payor_Name)
+                                                    @Html.DisplayFor(m => item.Payor_Name)
                                                 </td>
                                                 <td class="text-right">
-                                                    @Html.DisplayFor(modelItem => item.convertBal)
+                                                    @Html.DisplayFor(m => item.convertBal)
                                                 </td>
                                                 @*<td >
-                                                    @Html.DisplayFor(modelItem => item.Plan_Name)
-                                                </td>*@
+                                                        @Html.DisplayFor(modelItem => item.Plan_Name)
+                                                    </td>*@
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Acct_Class)
+                                                    @Html.DisplayFor(m => item.Acct_Class)
                                                 </td>
-                                                <td>
-
-                                                </td>
-                                                <td class="small">                                                   
+                                                <td></td>
+                                                <td class="small">
                                                     @if (item.flagCase)
                                                     {
                                                         <button id="btn1" class="btn-xs active btn-default btn-block">New</button>

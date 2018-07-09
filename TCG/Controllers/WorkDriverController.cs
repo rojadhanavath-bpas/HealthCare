@@ -202,7 +202,6 @@ namespace HealthcareAnalytics.Controllers
 
         }
 
-
         public ActionResult Underpayemnts_UserAcc_List(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue)
         {
             ViewBag.HPPB = populateHPorPB();
@@ -218,9 +217,8 @@ namespace HealthcareAnalytics.Controllers
             ViewBag.sort_AccClass = sortOrder == "AccClass_Asc" ? "AccClass_Des" : "AccClass_Asc";
             int pageSize = 10;
             int pageNumber = (page ?? 1);
-            Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
-            int new_Case_Value = 0;
-            List<Get_Under_Paymnent_Accounts_Result> result = new List<Get_Under_Paymnent_Accounts_Result>();
+
+
             if (searchString != null)
             {
                 page = 1;
@@ -232,114 +230,119 @@ namespace HealthcareAnalytics.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+
             using (TCG_WorklistModel db2 = new TCG_WorklistModel())
             {
-                result = db2.Get_Under_Paymnent_Accounts().ToList();
+                List<Get_Under_Paymnent_Accounts_Result> result = db2.Get_Under_Paymnent_Accounts().ToList();
                 List<Get_Under_Paymnent_Accounts_HB_Result> flagRes = new List<Get_Under_Paymnent_Accounts_HB_Result>();
-                flagRes.Add(new Get_Under_Paymnent_Accounts_HB_Result() { flag = 1 });
+                flagRes.Add(new Get_Under_Paymnent_Accounts_HB_Result() { flag = 2 });
                 ViewBag.flagDetails = flagRes;
-                int x = result[0].flag;
-            }
-            for (int i = 0; i < result.Count; i++)
-            {
 
-                result[i].AccId = Convert.ToString(result[i].Account);
-
-                string[] test = (result[i].Account_Name.ToString()).Split(':');
-                result[i].PatientName = test[0];
-                result[i].caseFlag = test[1];
-                if (result[i].caseFlag == "NEW")
-                    result[i].flagCase = true;
-                else
-                    result[i].flagCase = false;
-                if (!string.IsNullOrEmpty(result[i].Brief_Summary))
-                    result[i].flagCase = false;
-
-                if (string.IsNullOrEmpty(result[i].Payor_Name))
-                    result[i].Payor_Name = "";
-                if (string.IsNullOrEmpty(result[i].Acct_Class))
-                    result[i].Acct_Class = "";
-                if (string.IsNullOrEmpty(result[i].Plan_Name))
-                    result[i].Plan_Name = "";
-                if (result[i].Underpayment_Reason_Code == null)
-                    result[i].Underpayment_Reason_Code = 0;
-
-                int underPayRsn = result[i].Underpayment_Reason_Code.Value;
-
-              
-
-            }
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                result = result.Where(s => s.AccId.Contains(searchString.Trim().ToString())
-                                       || s.Payor_Name.ToLower().Contains(searchString.Trim().ToLower())
-                                       || s.Account_Name.ToLower().Contains(searchString.Trim().ToLower())
-                                       || s.Acct_Class.ToLower().Contains(searchString.Trim().ToLower())
-                                       || s.Plan_Name.ToLower().Contains(searchString.Trim().ToLower())).ToList();
-            }
-
-            switch (sortOrder)
-            {
-                case "accID_Sorting":
-                    result = result.OrderByDescending(s => s.Account).ToList();
-                    break;
-                case "date_Sorting":
-                    result = result.OrderBy(s => s.Disch_Date).ToList();
-                    break;
-                case "date_DesSorting":
-                    result = result.OrderByDescending(s => s.Disch_Date).ToList();
-                    break;
-                case "payorName_Asc":
-                    result = result.OrderBy(s => s.Payor_Name).ToList();
-                    break;
-                case "payorName_Des":
-                    result = result.OrderByDescending(s => s.Payor_Name).ToList();
-                    break;
-                case "patientName_Asc":
-                    result = result.OrderBy(s => s.Account_Name).ToList();
-                    break;
-                case "patientName_Des":
-                    result = result.OrderByDescending(s => s.Account_Name).ToList();
-                    break;
-                case "Bal_Asc":
-                    result = result.OrderBy(s => s.Acct_Bal).ToList();
-                    break;
-                case "Bal_Des":
-                    result = result.OrderByDescending(s => s.Acct_Bal).ToList();
-                    break;
-                case "Plan_Asc":
-                    result = result.OrderBy(s => s.Plan_Name).ToList();
-                    break;
-                case "Plan_Des":
-                    result = result.OrderByDescending(s => s.Plan_Name).ToList();
-                    break;
-                case "AccClass_Asc":
-                    result = result.OrderByDescending(s => s.Acct_Class).ToList();
-                    break;
-                case "AccClass_Des":
-                    result = result.OrderBy(s => s.Acct_Class).ToList();
-                    break;
-                default:  // Name Descending 
-                    result = result.OrderByDescending(s => s.Acct_Bal).ToList();
-                    break;
-            }
-
-            for (int i = 0; i < result.Count; i++)
-            {
-                if (result[i].Disch_Date.HasValue)
+                for (int i = 0; i < result.Count; i++)
                 {
-                    result[i].DischargeDate = result[i].Disch_Date.Value.ToShortDateString();
+                    //if (result[i].Account.HasValue)
+                    //{
+                    //    result[i].AccId = Convert.ToString(result[i].Account);
+                    //}
+
+
+                    result[i].AccId = Convert.ToString(result[i].Account);
+
+                    string[] test = (result[i].Account_Name.ToString()).Split(':');
+                    result[i].PatientName = test[0];
+                    result[i].caseFlag = test[1];
+                    if (result[i].caseFlag == "NEW")
+                        result[i].flagCase = true;
+                    else
+                        result[i].flagCase = false;
+                    if (!string.IsNullOrEmpty(result[i].Brief_Summary))
+                        result[i].flagCase = false;
+
+                    if (string.IsNullOrEmpty(result[i].Payor_Name))
+                        result[i].Payor_Name = "";
+                    if (string.IsNullOrEmpty(result[i].Acct_Class))
+                        result[i].Acct_Class = "";
+                    if (string.IsNullOrEmpty(result[i].Plan_Name))
+                        result[i].Plan_Name = "";
+                    if (result[i].Underpayment_Reason_Code == null)
+                        result[i].Underpayment_Reason_Code = 0;
                 }
 
-                string testAmt = result[i].Acct_Bal.Value.ToString("0.00");
-                Decimal testDecimal = Convert.ToDecimal(testAmt);
-                result[i].convertAmount = Math.Round(testDecimal, 2);
-                result[i].convertBal = "$" + result[i].convertAmount.ToString();
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    result = result.Where(s => s.AccId.Contains(searchString.Trim().ToString())
+                                           || s.Payor_Name.ToLower().Contains(searchString.Trim().ToLower())
+                                           || s.Account_Name.ToLower().Contains(searchString.Trim().ToLower())
+                                           || s.Acct_Class.ToLower().Contains(searchString.Trim().ToLower())
+                                           || s.Plan_Name.ToLower().Contains(searchString.Trim().ToLower())).ToList();
+                }
+
+                switch (sortOrder)
+                {
+                    case "accID_Sorting":
+                        result = result.OrderByDescending(s => s.Account).ToList();
+                        break;
+                    case "date_Sorting":
+                        result = result.OrderBy(s => s.Disch_Date).ToList();
+                        break;
+                    case "date_DesSorting":
+                        result = result.OrderByDescending(s => s.Disch_Date).ToList();
+                        break;
+                    case "payorName_Asc":
+                        result = result.OrderBy(s => s.Payor_Name).ToList();
+                        break;
+                    case "payorName_Des":
+                        result = result.OrderByDescending(s => s.Payor_Name).ToList();
+                        break;
+                    case "patientName_Asc":
+                        result = result.OrderBy(s => s.Account_Name).ToList();
+                        break;
+                    case "patientName_Des":
+                        result = result.OrderByDescending(s => s.Account_Name).ToList();
+                        break;
+                    case "Bal_Asc":
+                        result = result.OrderBy(s => s.Acct_Bal).ToList();
+                        break;
+                    case "Bal_Des":
+                        result = result.OrderByDescending(s => s.Acct_Bal).ToList();
+                        break;
+                    case "Plan_Asc":
+                        result = result.OrderBy(s => s.Plan_Name).ToList();
+                        break;
+                    case "Plan_Des":
+                        result = result.OrderByDescending(s => s.Plan_Name).ToList();
+                        break;
+                    case "AccClass_Asc":
+                        result = result.OrderByDescending(s => s.Acct_Class).ToList();
+                        break;
+                    case "AccClass_Des":
+                        result = result.OrderBy(s => s.Acct_Class).ToList();
+                        break;
+                    default:  // Name Descending 
+                        result = result.OrderByDescending(s => s.Acct_Bal).ToList();
+                        break;
+                }
+
+
+
+                for (int i = 0; i < result.Count; i++)
+                {
+                    if (result[i].Disch_Date.HasValue)
+                    {
+                        result[i].DischargeDate = result[i].Disch_Date.Value.ToShortDateString();
+                    }
+
+                    string testAmt = result[i].Acct_Bal.Value.ToString("0.00");
+                    Decimal testDecimal = Convert.ToDecimal(testAmt);
+                    result[i].convertAmount = Math.Round(testDecimal, 2);
+                    result[i].convertBal = "$" + result[i].convertAmount.ToString();
+                }
+
+
+                return View(result.ToPagedList(pageNumber, pageSize));
             }
 
-            return View(result.ToPagedList(pageNumber, pageSize));
+
 
         }
 
@@ -359,8 +362,7 @@ namespace HealthcareAnalytics.Controllers
             ViewBag.sort_AccClass = sortOrder == "AccClass_Asc" ? "AccClass_Des" : "AccClass_Asc";
             int pageSize = 10;
             int pageNumber = (page ?? 1);
-            Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
-            int new_Case_Value = 0;
+
 
             if (searchString != null)
             {
@@ -373,16 +375,15 @@ namespace HealthcareAnalytics.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            TCG_WLM = new TCG_WorklistModel();
-            List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+
             using (TCG_WorklistModel db2 = new TCG_WorklistModel())
             {
                 List<Get_Under_Paymnent_Accounts_HB_Result> result = db2.Get_Under_Paymnent_Accounts_HB().ToList();
 
                 List<Get_Under_Paymnent_Accounts_HB_Result> flagRes = new List<Get_Under_Paymnent_Accounts_HB_Result>();
-                flagRes.Add(new Get_Under_Paymnent_Accounts_HB_Result() {flag=  2 });
+                flagRes.Add(new Get_Under_Paymnent_Accounts_HB_Result() { flag = 1 });
                 ViewBag.flagDetails = flagRes;
-                int x = result[0].flag;
+
                 for (int i = 0; i < result.Count; i++)
                 {
                     //if (result[i].Account.HasValue)
@@ -412,9 +413,6 @@ namespace HealthcareAnalytics.Controllers
                     if (result[i].Underpayment_Reason_Code == null)
                         result[i].Underpayment_Reason_Code = 0;
 
-                    int underPayRsn = result[i].Underpayment_Reason_Code.Value;
-
-                   
                 }
 
                 if (!String.IsNullOrEmpty(searchString))
@@ -494,6 +492,299 @@ namespace HealthcareAnalytics.Controllers
 
 
         }
+
+        //public ActionResult Underpayemnts_UserAcc_List(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue)
+        //{
+        //    ViewBag.HPPB = populateHPorPB();
+        //    ViewBag.UserFirst = Session["first"];
+        //    ViewBag.UserLast = Session["last"];
+        //    ViewBag.CurrentSort = sortOrder;
+        //    ViewBag.sort_AccountID = String.IsNullOrEmpty(sortOrder) ? "accID_Sorting" : "";
+        //    ViewBag.DateSortParm = sortOrder == "date_Sorting" ? "date_DesSorting" : "date_Sorting";
+        //    ViewBag.sort_PatientName = sortOrder == "patientName_Asc" ? "patientName_Des" : "patientName_Asc";
+        //    ViewBag.sort_PayorName = sortOrder == "payorName_Asc" ? "payorName_Des" : "payorName_Asc";
+        //    ViewBag.sort_Bal = sortOrder == "Bal_Asc" ? "Bal_Des" : "Bal_Asc";
+        //    ViewBag.sort_Plan = sortOrder == "Plan_Asc" ? "Plan_Des" : "Plan_Asc";
+        //    ViewBag.sort_AccClass = sortOrder == "AccClass_Asc" ? "AccClass_Des" : "AccClass_Asc";
+        //    int pageSize = 10;
+        //    int pageNumber = (page ?? 1);
+        //    Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
+        //    int new_Case_Value = 0;
+        //    List<Get_Under_Paymnent_Accounts_Result> result = new List<Get_Under_Paymnent_Accounts_Result>();
+        //    if (searchString != null)
+        //    {
+        //        page = 1;
+        //    }
+        //    else
+        //    {
+        //        searchString = currentFilter;
+        //    }
+
+        //    ViewBag.CurrentFilter = searchString;
+
+        //    List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+        //    using (TCG_WorklistModel db2 = new TCG_WorklistModel())
+        //    {
+        //        result = db2.Get_Under_Paymnent_Accounts().ToList();
+        //        List<Get_Under_Paymnent_Accounts_HB_Result> flagRes = new List<Get_Under_Paymnent_Accounts_HB_Result>();
+        //        flagRes.Add(new Get_Under_Paymnent_Accounts_HB_Result() { flag = 1 });
+        //        ViewBag.flagDetails = flagRes;
+        //        int x = result[0].flag;
+
+        //        for (int i = 0; i < result.Count; i++)
+        //        {
+
+        //            result[i].AccId = Convert.ToString(result[i].Account);
+
+        //            string[] test = (result[i].Account_Name.ToString()).Split(':');
+        //            result[i].PatientName = test[0];
+        //            result[i].caseFlag = test[1];
+        //            if (result[i].caseFlag == "NEW")
+        //                result[i].flagCase = true;
+        //            else
+        //                result[i].flagCase = false;
+        //            if (!string.IsNullOrEmpty(result[i].Brief_Summary))
+        //                result[i].flagCase = false;
+
+        //            if (string.IsNullOrEmpty(result[i].Payor_Name))
+        //                result[i].Payor_Name = "";
+        //            if (string.IsNullOrEmpty(result[i].Acct_Class))
+        //                result[i].Acct_Class = "";
+        //            if (string.IsNullOrEmpty(result[i].Plan_Name))
+        //                result[i].Plan_Name = "";
+        //            if (result[i].Underpayment_Reason_Code == null)
+        //                result[i].Underpayment_Reason_Code = 0;
+
+        //            int underPayRsn = result[i].Underpayment_Reason_Code.Value;
+
+
+
+        //        }
+
+        //        if (!String.IsNullOrEmpty(searchString))
+        //        {
+        //            result = result.Where(s => s.AccId.Contains(searchString.Trim().ToString())
+        //                                   || s.Payor_Name.ToLower().Contains(searchString.Trim().ToLower())
+        //                                   || s.Account_Name.ToLower().Contains(searchString.Trim().ToLower())
+        //                                   || s.Acct_Class.ToLower().Contains(searchString.Trim().ToLower())
+        //                                   || s.Plan_Name.ToLower().Contains(searchString.Trim().ToLower())).ToList();
+        //        }
+
+        //        switch (sortOrder)
+        //        {
+        //            case "accID_Sorting":
+        //                result = result.OrderByDescending(s => s.Account).ToList();
+        //                break;
+        //            case "date_Sorting":
+        //                result = result.OrderBy(s => s.Disch_Date).ToList();
+        //                break;
+        //            case "date_DesSorting":
+        //                result = result.OrderByDescending(s => s.Disch_Date).ToList();
+        //                break;
+        //            case "payorName_Asc":
+        //                result = result.OrderBy(s => s.Payor_Name).ToList();
+        //                break;
+        //            case "payorName_Des":
+        //                result = result.OrderByDescending(s => s.Payor_Name).ToList();
+        //                break;
+        //            case "patientName_Asc":
+        //                result = result.OrderBy(s => s.Account_Name).ToList();
+        //                break;
+        //            case "patientName_Des":
+        //                result = result.OrderByDescending(s => s.Account_Name).ToList();
+        //                break;
+        //            case "Bal_Asc":
+        //                result = result.OrderBy(s => s.Acct_Bal).ToList();
+        //                break;
+        //            case "Bal_Des":
+        //                result = result.OrderByDescending(s => s.Acct_Bal).ToList();
+        //                break;
+        //            case "Plan_Asc":
+        //                result = result.OrderBy(s => s.Plan_Name).ToList();
+        //                break;
+        //            case "Plan_Des":
+        //                result = result.OrderByDescending(s => s.Plan_Name).ToList();
+        //                break;
+        //            case "AccClass_Asc":
+        //                result = result.OrderByDescending(s => s.Acct_Class).ToList();
+        //                break;
+        //            case "AccClass_Des":
+        //                result = result.OrderBy(s => s.Acct_Class).ToList();
+        //                break;
+        //            default:  // Name Descending 
+        //                result = result.OrderByDescending(s => s.Acct_Bal).ToList();
+        //                break;
+        //        }
+
+        //        for (int i = 0; i < result.Count; i++)
+        //        {
+        //            if (result[i].Disch_Date.HasValue)
+        //            {
+        //                result[i].DischargeDate = result[i].Disch_Date.Value.ToShortDateString();
+        //            }
+
+        //            string testAmt = result[i].Acct_Bal.Value.ToString("0.00");
+        //            Decimal testDecimal = Convert.ToDecimal(testAmt);
+        //            result[i].convertAmount = Math.Round(testDecimal, 2);
+        //            result[i].convertBal = "$" + result[i].convertAmount.ToString();
+        //        }
+
+        //        return View(result.ToPagedList(pageNumber, pageSize));
+        //    }
+
+        //}
+
+
+        //public ActionResult PB_Underpayments_UserAccList(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue)
+        //{
+        //    ViewBag.HPPB = populateHPorPB();
+        //    ViewBag.UserFirst = Session["first"];
+        //    ViewBag.UserLast = Session["last"];
+        //    ViewBag.CurrentSort = sortOrder;
+        //    ViewBag.sort_AccountID = String.IsNullOrEmpty(sortOrder) ? "accID_Sorting" : "";
+        //    ViewBag.DateSortParm = sortOrder == "date_Sorting" ? "date_DesSorting" : "date_Sorting";
+        //    ViewBag.sort_PatientName = sortOrder == "patientName_Asc" ? "patientName_Des" : "patientName_Asc";
+        //    ViewBag.sort_PayorName = sortOrder == "payorName_Asc" ? "payorName_Des" : "payorName_Asc";
+        //    ViewBag.sort_Bal = sortOrder == "Bal_Asc" ? "Bal_Des" : "Bal_Asc";
+        //    ViewBag.sort_Plan = sortOrder == "Plan_Asc" ? "Plan_Des" : "Plan_Asc";
+        //    ViewBag.sort_AccClass = sortOrder == "AccClass_Asc" ? "AccClass_Des" : "AccClass_Asc";
+        //    int pageSize = 10;
+        //    int pageNumber = (page ?? 1);
+        //    Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
+        //    int new_Case_Value = 0;
+
+        //    if (searchString != null)
+        //    {
+        //        page = 1;
+        //    }
+        //    else
+        //    {
+        //        searchString = currentFilter;
+        //    }
+
+        //    ViewBag.CurrentFilter = searchString;
+
+        //    TCG_WLM = new TCG_WorklistModel();
+        //    List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+        //    using (TCG_WorklistModel db2 = new TCG_WorklistModel())
+        //    {
+        //        List<Get_Under_Paymnent_Accounts_HB_Result> result = db2.Get_Under_Paymnent_Accounts_HB().ToList();
+
+        //        List<Get_Under_Paymnent_Accounts_HB_Result> flagRes = new List<Get_Under_Paymnent_Accounts_HB_Result>();
+        //        flagRes.Add(new Get_Under_Paymnent_Accounts_HB_Result() {flag=  2 });
+        //        ViewBag.flagDetails = flagRes;
+        //        int x = result[0].flag;
+        //        for (int i = 0; i < result.Count; i++)
+        //        {
+        //            //if (result[i].Account.HasValue)
+        //            //{
+        //            //    result[i].AccId = Convert.ToString(result[i].Account);
+        //            //}
+
+
+        //            result[i].AccId = Convert.ToString(result[i].Account);
+
+        //            string[] test = (result[i].Account_Name.ToString()).Split(':');
+        //            result[i].PatientName = test[0];
+        //            result[i].caseFlag = test[1];
+        //            if (result[i].caseFlag == "NEW")
+        //                result[i].flagCase = true;
+        //            else
+        //                result[i].flagCase = false;
+        //            if (!string.IsNullOrEmpty(result[i].Brief_Summary))
+        //                result[i].flagCase = false;
+
+        //            if (string.IsNullOrEmpty(result[i].Payor_Name))
+        //                result[i].Payor_Name = "";
+        //            if (string.IsNullOrEmpty(result[i].Acct_Class))
+        //                result[i].Acct_Class = "";
+        //            if (string.IsNullOrEmpty(result[i].Plan_Name))
+        //                result[i].Plan_Name = "";
+        //            if (result[i].Underpayment_Reason_Code == null)
+        //                result[i].Underpayment_Reason_Code = 0;
+
+        //            int underPayRsn = result[i].Underpayment_Reason_Code.Value;
+
+                   
+        //        }
+
+        //        if (!String.IsNullOrEmpty(searchString))
+        //        {
+        //            result = result.Where(s => s.AccId.Contains(searchString.Trim().ToString())
+        //                                   || s.Payor_Name.ToLower().Contains(searchString.Trim().ToLower())
+        //                                   || s.PatientName.ToLower().Contains(searchString.Trim().ToLower())
+        //                                   || s.Acct_Class.ToLower().Contains(searchString.Trim().ToLower())
+        //                                   || s.Plan_Name.ToLower().Contains(searchString.Trim().ToLower())).ToList();
+        //        }
+
+        //        switch (sortOrder)
+        //        {
+        //            case "accID_Sorting":
+        //                result = result.OrderByDescending(s => s.Account).ToList();
+        //                break;
+        //            case "date_Sorting":
+        //                result = result.OrderBy(s => s.Disch_Date).ToList();
+        //                break;
+        //            case "date_DesSorting":
+        //                result = result.OrderByDescending(s => s.Disch_Date).ToList();
+        //                break;
+        //            case "payorName_Asc":
+        //                result = result.OrderBy(s => s.Payor_Name).ToList();
+        //                break;
+        //            case "payorName_Des":
+        //                result = result.OrderByDescending(s => s.Payor_Name).ToList();
+        //                break;
+        //            case "patientName_Asc":
+        //                result = result.OrderBy(s => s.Account_Name).ToList();
+        //                break;
+        //            case "patientName_Des":
+        //                result = result.OrderByDescending(s => s.Account_Name).ToList();
+        //                break;
+        //            case "Bal_Asc":
+        //                result = result.OrderBy(s => s.Acct_Bal).ToList();
+        //                break;
+        //            case "Bal_Des":
+        //                result = result.OrderByDescending(s => s.Acct_Bal).ToList();
+        //                break;
+        //            case "Plan_Asc":
+        //                result = result.OrderBy(s => s.Plan_Name).ToList();
+        //                break;
+        //            case "Plan_Des":
+        //                result = result.OrderByDescending(s => s.Plan_Name).ToList();
+        //                break;
+        //            case "AccClass_Asc":
+        //                result = result.OrderByDescending(s => s.Acct_Class).ToList();
+        //                break;
+        //            case "AccClass_Des":
+        //                result = result.OrderBy(s => s.Acct_Class).ToList();
+        //                break;
+        //            default:  // Name Descending 
+        //                result = result.OrderByDescending(s => s.Acct_Bal).ToList();
+        //                break;
+        //        }
+
+
+
+        //        for (int i = 0; i < result.Count; i++)
+        //        {
+        //            if (result[i].Disch_Date.HasValue)
+        //            {
+        //                result[i].DischargeDate = result[i].Disch_Date.Value.ToShortDateString();
+        //            }
+
+        //            string testAmt = result[i].Acct_Bal.Value.ToString("0.00");
+        //            Decimal testDecimal = Convert.ToDecimal(testAmt);
+        //            result[i].convertAmount = Math.Round(testDecimal, 2);
+        //            result[i].convertBal = "$" + result[i].convertAmount.ToString();
+        //        }
+
+
+        //        return View(result.ToPagedList(pageNumber, pageSize));
+        //    }
+
+
+
+        //}
 
 
         private static List<SelectListItem> populateHPorPB()

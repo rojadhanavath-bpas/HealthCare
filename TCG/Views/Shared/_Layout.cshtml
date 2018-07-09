@@ -23,102 +23,110 @@
 
 </head>
 <body>
-    @*<div class="">
-        @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
-        {
 
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href='@Url.Action("Login", "Home")' class=""><img src="~/Images/hennepin healthcare new logo.png" /></a>
+    @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
+    {
 
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        @*<li class="dropdown">
-                                <a href="@Url.Action("ARManagement", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLink("AR Management", "ARManagement", "Home")</li>
-                                    <li>@Html.ActionLink("Debit AR", "DebitAR", "Home")</li>
-                                    <li>@Html.ActionLink("Credit AR", "CreditAR", "Home")</li>
-                                </ul>
-                            </li>
-                            <li>@Html.ActionLink("Denials Management", "DenialsManagement", "Home")</li>*@
-                        <li>@Html.ActionLink("Receivable Management", "worklist_Home", "WorkDriver")</li>
-                        <li>@Html.ActionLink("Trends", "TrendGraph", "WorkDriver")</li>
-                        
-                        <li>@Html.ActionLink("Manage Users", "Index", "Users_Data")</li>
+        <div class="navbar navbar-inverse navbar-fixed-top">
 
-                    </ul>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href='@Url.Action("Login", "Home")' class=""><img src="~/Images/hennepin healthcare new logo.png" /></a>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
-                           <li>@Html.ActionLink("Change Password", "ChangePassword", "Email")</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                </div>
             </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="@Url.Action("ARManagement", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("AR Management", "ARManagement", "Home")</li>
+                            <li>@Html.ActionLink("Debit AR", "DebitAR", "Home")</li>
+                            <li>@Html.ActionLink("Credit AR", "CreditAR", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Denials Management", "DenialsManagement", "Home")</li>
+                    <li>@Html.ActionLink("Receivable Management", "worklist_Home", "WorkDriver")</li>
+                    <li class="dropdown">
+                        <a href="@Url.Action("Root Cause Trends", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Root Cause Trends<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("HB Trends", "TrendGraph", "WorkDriver")</li>
+                            <li>@Html.ActionLink("HB Underpayment", "HBUnderpayTrend", "WorkDriver")</li>
+                            <li>@Html.ActionLink("PB Trends", "PBTrendGraph", "WorkDriver")</li>
+                            <li>@Html.ActionLink("PB Underpayment", "PBUnderpayTrends", "WorkDriver")</li>
+                        </ul>
+                    </li>
 
-        }
-    </div>*@
-    <div class="">
-        @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
-        {
+                    <li>@Html.ActionLink("Manage Users", "Index", "Users_Data")</li>
 
-            <div class="navbar navbar-inverse navbar-fixed-top">
-              
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a href='@Url.Action("Login", "Home")' class=""><img src="~/Images/hennepin healthcare new logo.png" /></a>
-
-    </div>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">           
-            <li>@Html.ActionLink("Receivable Management", "worklist_Home", "WorkDriver")</li>
-            <li class="dropdown">
-                <a href="@Url.Action("Root Cause Trends", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Root Cause Trends<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>@Html.ActionLink("HB Trends", "TrendGraph", "WorkDriver")</li>
-                    <li>@Html.ActionLink("HB Underpayment", "HBUnderpayTrend", "WorkDriver")</li>
-                    <li>@Html.ActionLink("PB Trends", "PBTrendGraph", "WorkDriver")</li>
-                    <li>@Html.ActionLink("PB Underpayment", "PBUnderpayTrends", "WorkDriver")</li>
                 </ul>
-            </li>
-            <li>@Html.ActionLink("Manage Users", "Index", "Users_Data")</li>
-        </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
+                            <li>@Html.ActionLink("Change Password", "ChangePassword", "Email")</li>
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-        </ul>
 
-    </div>
-    </div>
+            </div>
+        </div>
 
     }
-    </div>
+
+    @*<div class="">
+            @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
+            {
+
+                <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href='@Url.Action("Login", "Home")' class=""><img src="~/Images/hennepin healthcare new logo.png" /></a>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Receivable Management", "worklist_Home", "WorkDriver")</li>
+                <li class="dropdown">
+                    <a href="@Url.Action("Root Cause Trends", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Root Cause Trends<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("HB Trends", "TrendGraph", "WorkDriver")</li>
+                        <li>@Html.ActionLink("HB Underpayment", "HBUnderpayTrend", "WorkDriver")</li>
+                        <li>@Html.ActionLink("PB Trends", "PBTrendGraph", "WorkDriver")</li>
+                        <li>@Html.ActionLink("PB Underpayment", "PBUnderpayTrends", "WorkDriver")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Manage Users", "Index", "Users_Data")</li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        </div>
+
+        }
+        </div>*@
 
     <div class=" body-content">
         @RenderBody()

@@ -6,6 +6,9 @@
 @{
     ViewBag.Title = "User Account List";
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <html>
 <head>
@@ -56,33 +59,33 @@
                                     @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_HB_Result s in ViewBag.flagDetails)
                                     {
                                         <label class="text-info small">ACCOUNT CLASS: </label>
-                                        if(s.flag == 1)
+                                        if (s.flag == 1)
                                         {
                                             @*@Html.DropDownList("DDLValue", (IEnumerable<SelectListItem>)ViewBag.HPPB, new { @class = "form-control dropdown", @onchange = "this.form.action='Underpayemnts_UserAcc_List'; this.form.submit();" })*@
-                                            @Html.DropDownListFor(Model => s.flag, (IEnumerable<SelectListItem>)ViewBag.HPPB, "-Select-", new { @class = "form-control dropdown", @onchange = "this.form.action='Underpayemnts_UserAcc_List'; this.form.submit();" })
-                                            @Html.HiddenFor(Model => s.flag)
+                                            @Html.DropDownListFor(m => s.flag, (IEnumerable<SelectListItem>)ViewBag.HPPB, "-Select-", new { @class = "form-control dropdown", @onchange = "this.form.action='Underpayemnts_UserAcc_List'; this.form.submit();" })
+                                            @Html.HiddenFor(m => s.flag)
                                         }
-                                        if(s.flag == 2)
+                                        if (s.flag == 2)
                                         {
-                                            @Html.DropDownListFor(Model => s.flag, (IEnumerable<SelectListItem>)ViewBag.HPPB, "-Select-", new { @class = "form-control dropdown", @onchange = "this.form.action='PB_Underpayments_UserAccList'; this.form.submit();" })
-                                            @Html.HiddenFor(Model => s.flag)
+                                            @Html.DropDownListFor(m => s.flag, (IEnumerable<SelectListItem>)ViewBag.HPPB, "-Select-", new { @class = "form-control dropdown", @onchange = "this.form.action='PB_Underpayments_UserAccList'; this.form.submit();" })
+                                            @Html.HiddenFor(m => s.flag)
                                         }
                                     }
-                                    </p>
+                                </p>
                             </div>
 
                             <div class="col-sm-2">
-                                
+
                             </div>
 
                             <div class="col-sm-4">
                                 <label class="text-info text-center center-block">ACCOUNT CLASS: PB </label>
                             </div>
                             @*<div class="col-sm-2">
-                               
-                            </div>*@
+
+                                </div>*@
                             <div class="col-sm-2">
-                               
+
                             </div>
 
                             <div class="col-sm-2">
