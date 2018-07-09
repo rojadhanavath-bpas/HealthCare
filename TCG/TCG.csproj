@@ -259,7 +259,13 @@
     <Compile Include="Models\Get_AR_Info_for_Balance_Range_Result.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Get_Under_Paymnent_Accounts_HB_Result.cs">
+      <DependentUpon>WorklistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Get_Under_Paymnent_Accounts_Result.cs">
+      <DependentUpon>WorklistModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HBorPB_Master.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Insurance_Company_Name.cs">
@@ -321,7 +327,7 @@
     <Compile Include="Models\Underpayment.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Underpayment_Reason.cs">
+    <Compile Include="Models\Underpayment_ReasonCode.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users_Data.cs">
@@ -736,6 +742,12 @@
     <Content Include="Views\WorkDriver\viewCaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\viewTestPage.cshtml" />
     <Content Include="Views\WorkDriver\TrendGraph.cshtml" />
+    <Content Include="Views\WorkDriver\PB_Underpayments_UserAccList.cshtml" />
+    <Content Include="Views\WorkDriver\PBViewCaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\PBeditCaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\PBTrendGraph.cshtml" />
+    <Content Include="Views\WorkDriver\HBUnderpayTrend.cshtml" />
+    <Content Include="Views\WorkDriver\PBUnderpayTrends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

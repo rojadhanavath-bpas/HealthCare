@@ -1200,13 +1200,13 @@ namespace HealthcareAnalytics.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    TCG_WL.Case_InsUpd(caseDetails.ACD_ID, caseDetails.ACD_HspAccID, caseDetails.ACD_Amount, caseDetails.ACD_Status, caseDetails.ACD_Owner,
-                        caseDetails.ACD_Type, caseDetails.ACD_SubType, caseDetails.ACD_PayerReason, caseDetails.ACD_PrimaryReason, caseDetails.ACD_SecondaryReason
-                         , caseDetails.ACD_PrinDiag, caseDetails.ACD_PrinProc, caseDetails.ACD_Comments, "", "", "", 0, DateTime.Now, DateTime.Now, false, Session["username"].ToString(),
-                          DateTime.Now, "", DateTime.Now, "", case_TasK_idParameter);
+                    //TCG_WL.Case_InsUpd(caseDetails.ACD_ID, caseDetails.ACD_HspAccID, caseDetails.ACD_Amount, caseDetails.ACD_Status, caseDetails.ACD_Owner,
+                    //    caseDetails.ACD_Type, caseDetails.ACD_SubType, caseDetails.ACD_PayerReason, caseDetails.ACD_PrimaryReason, caseDetails.ACD_SecondaryReason
+                    //     , caseDetails.ACD_PrinDiag, caseDetails.ACD_PrinProc, caseDetails.ACD_Comments, "", "", "", 0, DateTime.Now, DateTime.Now, false, Session["username"].ToString(),
+                    //      DateTime.Now, "", DateTime.Now, "", case_TasK_idParameter);
 
 
-                    new_Case_Value = Convert.ToInt32(case_TasK_idParameter.Value);
+                    //new_Case_Value = Convert.ToInt32(case_TasK_idParameter.Value);
 
 
 
@@ -1293,10 +1293,10 @@ namespace HealthcareAnalytics.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    TCG_WL.Case_InsUpd(caseDetails.ACD_ID, caseDetails.ACD_HspAccID, caseDetails.ACD_Amount, caseDetails.ACD_Status, caseDetails.ACD_Owner,
-                        caseDetails.ACD_Type, caseDetails.ACD_SubType, caseDetails.ACD_PayerReason, caseDetails.ACD_PrimaryReason, caseDetails.ACD_SecondaryReason
-                         , caseDetails.ACD_PrinDiag, caseDetails.ACD_PrinProc, caseDetails.ACD_Comments, "", "", "", 0, DateTime.Now, DateTime.Now, false, Session["username"].ToString(),
-                          DateTime.Now, "", DateTime.Now, "", case_idParameter);
+                    //TCG_WL.Case_InsUpd(caseDetails.ACD_ID, caseDetails.ACD_HspAccID, caseDetails.ACD_Amount, caseDetails.ACD_Status, caseDetails.ACD_Owner,
+                    //    caseDetails.ACD_Type, caseDetails.ACD_SubType, caseDetails.ACD_PayerReason, caseDetails.ACD_PrimaryReason, caseDetails.ACD_SecondaryReason
+                    //     , caseDetails.ACD_PrinDiag, caseDetails.ACD_PrinProc, caseDetails.ACD_Comments, "", "", "", 0, DateTime.Now, DateTime.Now, false, Session["username"].ToString(),
+                    //      DateTime.Now, "", DateTime.Now, "", case_idParameter);
 
 
                     //new_Case_Value = Convert.ToInt32(case_idParameter.Value);
@@ -1380,8 +1380,8 @@ namespace HealthcareAnalytics.Controllers
                         if (Case_checkHospitalAccID == null)
                         {
 
-                            TCG_WL.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 1, ownerId, "1",
-                           "2", 2, "1", "2", "3","2", (taskDetails[0].Reporting_Rsn_Code_w__Desc == null) ? "None" : taskDetails[0].Reporting_Rsn_Code_w__Desc,"" ,"", "",0, DateTime.Now,DateTime.Now,false, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_idParameter);
+                           // TCG_WL.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), 1, ownerId, "1",
+                           //"2", 2, "1", "2", "3","2", (taskDetails[0].Reporting_Rsn_Code_w__Desc == null) ? "None" : taskDetails[0].Reporting_Rsn_Code_w__Desc,"" ,"", "",0, DateTime.Now,DateTime.Now,false, Session["username"].ToString(), DateTime.Now, "", DateTime.Now, "", case_idParameter);
 
 
                             new_Case_Value = Convert.ToInt32(case_idParameter.Value);

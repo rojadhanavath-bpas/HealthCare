@@ -1,5 +1,5 @@
 ﻿
-@model PagedList.IPagedList<HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_Result>
+@model PagedList.IPagedList<HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_HB_Result>
 @using PagedList.Mvc;
 
 
@@ -9,7 +9,7 @@
 
 <html>
 <head>
-     
+
     <script type="text/javascript">
         $(function () {
             $("table.tablesorter").tablesorter({ widthFixed: true, sortList: [[0, 0]] })
@@ -19,15 +19,15 @@
             $('#btn2').prop('disabled', true);
 
         });
-        
-      
-        
+
+
+
     </script>
 
 </head>
 <body>
 
-    @using (Html.BeginForm("Underpayemnts_UserAcc_List", "WorkDriver", FormMethod.Get, new { @class = "search-wrapper cf" }))
+    @using (Html.BeginForm("PB_Underpayments_UserAccList", "WorkDriver", FormMethod.Get, new { @class = "search-wrapper cf" }))
     {
         @Html.AntiForgeryToken()
         <form>
@@ -40,9 +40,9 @@
                                 <span style="color:#d9edf7;" class="font-weight-bold large">
                                     User Account List
 
-                                    
-                                        @Html.ActionLink("BACK", "worklist_Home", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
-                                   
+
+                                    @Html.ActionLink("BACK", "worklist_Home", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+
                                 </span>
                             </h4>
                         </div>
@@ -68,20 +68,18 @@
                                             @Html.HiddenFor(Model => s.flag)
                                         }
                                     }
-                                </p>
+                                    </p>
                             </div>
 
                             <div class="col-sm-2">
                                 
                             </div>
 
-                            
-                                <div class="col-sm-4">
-                                    <label class="text-info text-center center-block">ACCOUNT CLASS: HB </label>
-                                </div>
-                           
+                            <div class="col-sm-4">
+                                <label class="text-info text-center center-block">ACCOUNT CLASS: PB </label>
+                            </div>
                             @*<div class="col-sm-2">
-                                
+                               
                             </div>*@
                             <div class="col-sm-2">
                                
@@ -107,12 +105,12 @@
                                                 @*@Html.ActionLink("Account ID", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_AccountID })*@
                                                 Account ID
                                             </th>
-                                            <th>@Html.ActionLink("Discharge Date", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.DateSortParm })</th>
-                                            <th>@Html.ActionLink("Patient Name", "Underpayemnts_UserAcc_List" , new { sortOrder = ViewBag.sort_PatientName })</th>                                           
-                                            <th>@Html.ActionLink("Payor", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_PayorName })</th>
-                                            <th>@Html.ActionLink("Account Balance", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_Bal })</th>
+                                            <th>@Html.ActionLink("Service Date", "PB_Underpayments_UserAccList", new { sortOrder = ViewBag.DateSortParm })</th>
+                                            <th>@Html.ActionLink("Patient Name", "PB_Underpayments_UserAccList", new { sortOrder = ViewBag.sort_PatientName })</th>
+                                            <th>@Html.ActionLink("Payor", "PB_Underpayments_UserAccList", new { sortOrder = ViewBag.sort_PayorName })</th>
+                                            <th>@Html.ActionLink("Account Balance", "PB_Underpayments_UserAccList", new { sortOrder = ViewBag.sort_Bal })</th>
                                             @*<th>@Html.ActionLink("Plan", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_Plan })</th>*@
-                                            <th>@Html.ActionLink("Account Class", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_AccClass })</th>
+                                            <th>@Html.ActionLink("Account Class", "PB_Underpayments_UserAccList", new { sortOrder = ViewBag.sort_AccClass })</th>
                                             @*<th>@Html.ActionLink("# of cases" , "Underpayemnts_UserAcc_List")</th>*@
                                             <th>
                                                 Placement Date
@@ -127,13 +125,13 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Account)).ToString(), "viewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
+                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Account)).ToString(), "PBviewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.DischargeDate)
                                                 </td>
                                                 <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
-                                               
+
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Payor_Name)
                                                 </td>
@@ -141,15 +139,13 @@
                                                     @Html.DisplayFor(modelItem => item.convertBal)
                                                 </td>
                                                 @*<td >
-                                                    @Html.DisplayFor(modelItem => item.Plan_Name)
-                                                </td>*@
+                                                        @Html.DisplayFor(modelItem => item.Plan_Name)
+                                                    </td>*@
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Acct_Class)
                                                 </td>
-                                                <td>
-
-                                                </td>
-                                                <td class="small">                                                   
+                                                <td></td>
+                                                <td class="small">
                                                     @if (item.flagCase)
                                                     {
                                                         <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
@@ -170,7 +166,7 @@
                                     <div class=" center-block align-self-md-center paging-wrapper">
                                         <span class="text-primary center-block align-self-md-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</span>
 
-                                        @Html.PagedListPager(Model, page => Url.Action("Underpayemnts_UserAcc_List",
+                                        @Html.PagedListPager(Model, page => Url.Action("PB_Underpayments_UserAccList",
                          new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
                                     </div>
                                 </div>

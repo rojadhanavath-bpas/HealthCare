@@ -284,3 +284,160 @@ DEBUG 2018-07-02 14:52:41,368 50063ms HomeController         Login              
 DEBUG 2018-07-02 14:57:51,757 75358ms HomeController         Login              - password
 DEBUG 2018-07-02 14:57:51,832 75433ms HomeController         Login              - password
 DEBUG 2018-07-02 14:57:51,835 75436ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-03 07:26:39,085 37894ms HomeController         Login              - password
+DEBUG 2018-07-03 07:26:39,166 37975ms HomeController         Login              - password
+DEBUG 2018-07-03 07:26:39,168 37977ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-03 07:38:59,173 777982ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 07:39:00,342 779150ms HomeController         ARManagement       - [User:Nirmal]  Loading AR Management Page..
+DEBUG 2018-07-03 07:39:07,625 786434ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 07:39:07,977 786786ms HomeController         DenialsManagement  - [User:Nirmal]  Loading Denials Management  Page..
+DEBUG 2018-07-03 07:39:16,589 795398ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-03 07:39:17,080 795888ms HomeController         TrendGraph         - [User:Nirmal]  Loading Denials Management  Page..
+DEBUG 2018-07-03 10:11:25,635 33624ms HomeController         Login              - password
+DEBUG 2018-07-03 10:11:25,725 33714ms HomeController         Login              - password
+DEBUG 2018-07-03 10:11:25,727 33716ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 05:45:32,084 35897ms HomeController         Login              - password
+DEBUG 2018-07-06 05:45:32,166 35979ms HomeController         Login              - password
+DEBUG 2018-07-06 05:45:32,168 35981ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 06:42:42,057 36770ms HomeController         Login              - password
+DEBUG 2018-07-06 06:42:42,136 36848ms HomeController         Login              - password
+DEBUG 2018-07-06 06:42:42,138 36850ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 07:00:09,932 32607ms HomeController         Login              - password
+DEBUG 2018-07-06 07:00:10,013 32689ms HomeController         Login              - password
+DEBUG 2018-07-06 07:00:10,015 32691ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 07:08:19,029 48047ms HomeController         Login              - password
+DEBUG 2018-07-06 07:08:19,088 48107ms HomeController         Login              - password
+DEBUG 2018-07-06 07:08:19,089 48108ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 07:19:16,692 47510ms HomeController         Login              - password
+DEBUG 2018-07-06 07:19:16,758 47576ms HomeController         Login              - password
+DEBUG 2018-07-06 07:19:16,760 47578ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 07:29:42,601 32985ms HomeController         Login              - password
+DEBUG 2018-07-06 07:29:42,673 33058ms HomeController         Login              - password
+DEBUG 2018-07-06 07:29:42,675 33060ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 10:13:10,043 39089ms HomeController         Login              - password
+DEBUG 2018-07-06 10:13:10,129 39175ms HomeController         Login              - password
+DEBUG 2018-07-06 10:13:10,131 39177ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 10:15:44,901 55930ms HomeController         Login              - password
+DEBUG 2018-07-06 10:15:44,985 56014ms HomeController         Login              - password
+DEBUG 2018-07-06 10:15:44,987 56016ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 10:33:13,842 499798ms HomeController         Login              - password
+DEBUG 2018-07-06 10:33:13,915 499870ms HomeController         Login              - password
+DEBUG 2018-07-06 10:33:13,918 499873ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 10:44:14,517 32420ms HomeController         Login              - password
+DEBUG 2018-07-06 10:44:14,581 32484ms HomeController         Login              - password
+DEBUG 2018-07-06 10:44:14,581 32484ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 10:51:52,758 44490ms HomeController         Login              - password
+DEBUG 2018-07-06 10:51:52,814 44546ms HomeController         Login              - password
+DEBUG 2018-07-06 10:51:52,818 44550ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 10:54:41,201 44640ms HomeController         Login              - password
+DEBUG 2018-07-06 10:54:41,257 44696ms HomeController         Login              - password
+DEBUG 2018-07-06 10:54:41,257 44696ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 11:01:54,318 29727ms HomeController         Login              - password
+DEBUG 2018-07-06 11:01:54,378 29787ms HomeController         Login              - password
+DEBUG 2018-07-06 11:01:54,378 29787ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 11:56:01,636 120400ms HomeController         Login              - password
+DEBUG 2018-07-06 11:56:01,688 120452ms HomeController         Login              - password
+DEBUG 2018-07-06 11:56:01,692 120456ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 12:05:20,247 30196ms HomeController         Login              - password
+DEBUG 2018-07-06 12:05:20,311 30260ms HomeController         Login              - password
+DEBUG 2018-07-06 12:05:20,311 30260ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 12:16:37,918 30369ms HomeController         Login              - password
+DEBUG 2018-07-06 12:16:37,995 30446ms HomeController         Login              - password
+DEBUG 2018-07-06 12:16:37,998 30449ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 13:08:10,700 34883ms HomeController         Login              - password
+DEBUG 2018-07-06 13:08:10,756 34940ms HomeController         Login              - password
+DEBUG 2018-07-06 13:08:10,758 34942ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 13:12:39,220 32644ms HomeController         Login              - password
+DEBUG 2018-07-06 13:12:39,269 32692ms HomeController         Login              - password
+DEBUG 2018-07-06 13:12:39,270 32693ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 13:24:53,276 30164ms HomeController         Login              - password
+DEBUG 2018-07-06 13:24:53,338 30226ms HomeController         Login              - password
+DEBUG 2018-07-06 13:24:53,340 30228ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 13:29:44,428 31167ms HomeController         Login              - password
+DEBUG 2018-07-06 13:29:44,483 31222ms HomeController         Login              - password
+DEBUG 2018-07-06 13:29:44,485 31224ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 14:13:31,190 25096ms HomeController         Login              - password
+DEBUG 2018-07-06 14:13:31,548 25454ms HomeController         Login              - password
+DEBUG 2018-07-06 14:13:31,550 25456ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 14:19:10,048 30072ms HomeController         Login              - password
+DEBUG 2018-07-06 14:19:10,048 30072ms HomeController         Login              - password
+DEBUG 2018-07-06 14:19:10,107 30131ms HomeController         Login              - password
+DEBUG 2018-07-06 14:19:10,110 30134ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 14:19:10,108 30132ms HomeController         Login              - password
+DEBUG 2018-07-06 14:19:10,113 30137ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 14:23:57,585 26678ms HomeController         Login              - password
+DEBUG 2018-07-06 14:23:57,718 26811ms HomeController         Login              - password
+DEBUG 2018-07-06 14:23:57,769 26862ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 14:38:35,176 44178ms HomeController         Login              - password
+DEBUG 2018-07-06 14:38:35,231 44233ms HomeController         Login              - password
+DEBUG 2018-07-06 14:38:35,233 44235ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 15:25:13,388 31882ms HomeController         Login              - password
+DEBUG 2018-07-06 15:25:13,502 31997ms HomeController         Login              - password
+DEBUG 2018-07-06 15:25:13,504 31998ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 15:30:09,396 31917ms HomeController         Login              - password
+DEBUG 2018-07-06 15:30:09,494 32016ms HomeController         Login              - password
+DEBUG 2018-07-06 15:30:09,496 32018ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-06 15:40:37,825 91041ms HomeController         Login              - password
+DEBUG 2018-07-06 15:40:37,910 91126ms HomeController         Login              - password
+DEBUG 2018-07-06 15:40:37,911 91127ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-07 09:08:38,098 40156ms HomeController         Login              - password
+DEBUG 2018-07-07 09:08:38,187 40246ms HomeController         Login              - password
+DEBUG 2018-07-07 09:08:38,187 40246ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-07 11:08:22,014 37089ms HomeController         Login              - password
+DEBUG 2018-07-07 11:08:22,098 37173ms HomeController         Login              - password
+DEBUG 2018-07-07 11:08:22,098 37173ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-07 11:08:38,170 53245ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-07 12:25:01,049 44980ms HomeController         Login              - password
+DEBUG 2018-07-07 12:25:01,169 45100ms HomeController         Login              - password
+DEBUG 2018-07-07 12:25:01,169 45100ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-07 12:50:58,422 48294ms HomeController         Login              - password
+DEBUG 2018-07-07 12:50:58,514 48386ms HomeController         Login              - password
+DEBUG 2018-07-07 12:50:58,516 48388ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-07 13:36:32,002 37901ms HomeController         Login              - password
+DEBUG 2018-07-07 13:36:32,104 38003ms HomeController         Login              - password
+DEBUG 2018-07-07 13:36:32,106 38005ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 15:07:34,320 33954ms HomeController         Login              - password
+DEBUG 2018-07-08 15:07:34,411 34046ms HomeController         Login              - password
+DEBUG 2018-07-08 15:07:34,413 34048ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 15:54:43,128 34908ms HomeController         Login              - password
+DEBUG 2018-07-08 15:54:43,216 34995ms HomeController         Login              - password
+DEBUG 2018-07-08 15:54:43,218 34997ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 20:18:01,713 32882ms HomeController         Login              - password
+DEBUG 2018-07-08 20:18:01,804 32973ms HomeController         Login              - password
+DEBUG 2018-07-08 20:18:01,806 32975ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 20:23:53,366 31908ms HomeController         Login              - password
+DEBUG 2018-07-08 20:23:53,446 31988ms HomeController         Login              - password
+DEBUG 2018-07-08 20:23:53,450 31992ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 20:28:20,831 34814ms HomeController         Login              - password
+DEBUG 2018-07-08 20:28:20,904 34887ms HomeController         Login              - password
+DEBUG 2018-07-08 20:28:20,907 34890ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 20:34:09,563 29756ms HomeController         Login              - password
+DEBUG 2018-07-08 20:34:09,626 29819ms HomeController         Login              - password
+DEBUG 2018-07-08 20:34:09,628 29821ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 21:46:39,741 85066ms HomeController         Login              - password
+DEBUG 2018-07-08 21:46:39,841 85166ms HomeController         Login              - password
+DEBUG 2018-07-08 21:46:39,843 85168ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 22:07:56,996 33458ms HomeController         Login              - password
+DEBUG 2018-07-08 22:07:57,103 33564ms HomeController         Login              - password
+DEBUG 2018-07-08 22:07:57,105 33566ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 22:35:07,794 34297ms HomeController         Login              - password
+DEBUG 2018-07-08 22:35:07,882 34385ms HomeController         Login              - password
+DEBUG 2018-07-08 22:35:07,885 34388ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 22:51:43,094 41850ms HomeController         Login              - password
+DEBUG 2018-07-08 22:51:43,186 41942ms HomeController         Login              - password
+DEBUG 2018-07-08 22:51:43,189 41945ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 22:57:28,017 30420ms HomeController         Login              - password
+DEBUG 2018-07-08 22:57:28,069 30472ms HomeController         Login              - password
+DEBUG 2018-07-08 22:57:28,071 30474ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 23:03:05,431 30470ms HomeController         Login              - password
+DEBUG 2018-07-08 23:03:05,486 30525ms HomeController         Login              - password
+DEBUG 2018-07-08 23:03:05,489 30528ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 23:08:06,584 33406ms HomeController         Login              - password
+DEBUG 2018-07-08 23:08:06,645 33466ms HomeController         Login              - password
+DEBUG 2018-07-08 23:08:06,648 33469ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 23:14:54,528 139904ms HomeController         Login              - password
+DEBUG 2018-07-08 23:14:54,585 139962ms HomeController         Login              - password
+DEBUG 2018-07-08 23:14:54,587 139964ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar
+DEBUG 2018-07-08 23:24:13,209 42399ms HomeController         Login              - password
+DEBUG 2018-07-08 23:24:13,261 42451ms HomeController         Login              - password
+DEBUG 2018-07-08 23:24:13,263 42453ms HomeController         Login              - [Home][login]: Succesfully logged in  Nirmal.Kumar

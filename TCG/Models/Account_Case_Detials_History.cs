@@ -38,9 +38,22 @@ namespace HealthcareAnalytics.Models
         public Nullable<System.DateTime> ACDH_DueDate { get; set; }
         public Nullable<System.DateTime> ACDH_FollowUpDate { get; set; }
         public Nullable<bool> ACDH_DeleteFlag { get; set; }
+        public decimal ACDH_TotalCharges { get; set; }
+        public decimal ACDH_TotalPay { get; set; }
+        public decimal ACDH_TotalAdj { get; set; }
+        public decimal ACDH_AmtDiffNAA { get; set; }
+        public decimal ACDH_AmtDiffPayor { get; set; }
+        public decimal ACDH_ExpAmt { get; set; }
+        public string ACDH_BillProvider { get; set; }
+        public string ACDH_Department { get; set; }
+        public string ACDH_HBorPB { get; set; }
 
         public string convertDate { get; set; }
         public string convertFollowUpDate { get; set; }
+        public string totalCharges { get; set; }
+        public string totalPay { get; set; }
+        public string totalAdj { get; set; }
+        public string totalAccBal { get; set; }
 
 
         public virtual Account_Case_Details Account_Case_Details { get; set; }
