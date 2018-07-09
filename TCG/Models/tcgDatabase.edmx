@@ -91,30 +91,6 @@ warning 6002: The table/view 'TCG_Data.dbo.Denials_Data' does not have a primary
           <Property Name="role_created_date" Type="smalldatetime" Nullable="false" />
           <Property Name="role_delete_flag" Type="tinyint" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TCG_Data.dbo.Underpayment_Reason' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Underpayment_Reason">
-          <Property Name="Reason_Code" Type="int" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Underpayments">
-          <Property Name="Deferral Due" Type="nvarchar" MaxLength="255" />
-          <Property Name="Account" Type="float" />
-          <Property Name="Acct Class" Type="nvarchar" MaxLength="255" />
-          <Property Name="Acct Status" Type="nvarchar" MaxLength="255" />
-          <Property Name="Account Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Disch Date" Type="datetime" />
-          <Property Name="Acct Bal" Type="float" />
-          <Property Name="Message" Type="nvarchar" MaxLength="255" />
-          <Property Name="Diagnosis Codes (Mapped : CMS ICD-10-CM &gt; ICD-9-CM)" Type="float" />
-          <Property Name="Plan Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Payor Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Allowed Amount Difference (Current NAA Posted To Bucket)" Type="float" />
-          <Property Name="Expected Allowed Amount" Type="nvarchar" MaxLength="255" />
-          <Property Name="Allowed Amount Difference (Payor-Specified)" Type="float" />
-        </EntityType>-->
         <EntityType Name="User_Login">
           <Key>
             <PropertyRef Name="user_Id" />
@@ -146,6 +122,7 @@ warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primar
           <Property Name="otp_key" Type="nvarchar" MaxLength="50" />
           <Property Name="otp_time" Type="smalldatetime" />
           <Property Name="user_active_flag" Type="tinyint" Nullable="false" />
+          <Property Name="user_web_login" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Function Name="Case_Task_InsUpd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ACT_ID" Type="int" Mode="In" />
@@ -562,6 +539,7 @@ warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primar
           <Property Name="otp_key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="otp_time" Type="DateTime" Precision="0" />
           <Property Name="user_active_flag" Type="Byte" Nullable="false" />
+          <Property Name="user_web_login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Denials_Data">
           <Key>
@@ -864,6 +842,7 @@ warning 6013: The table/view 'TCG_Data.dbo.Underpayments' does not have a primar
           <EntitySetMapping Name="Users_Data">
             <EntityTypeMapping TypeName="TCG_DataModel.Users_Data">
               <MappingFragment StoreEntitySet="Users_Data">
+                <ScalarProperty Name="user_web_login" ColumnName="user_web_login" />
                 <ScalarProperty Name="user_active_flag" ColumnName="user_active_flag" />
                 <ScalarProperty Name="otp_time" ColumnName="otp_time" />
                 <ScalarProperty Name="otp_key" ColumnName="otp_key" />

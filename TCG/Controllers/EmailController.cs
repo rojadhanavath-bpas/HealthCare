@@ -24,62 +24,56 @@ namespace HealthcareAnalytics.Controllers
         private TCG_DataEntities db = new TCG_DataEntities();
         private TCG_Registration db2 = new TCG_Registration();
 
+
         [HttpPost]
-        public ActionResult Index(Users_Data email)
-        {
-            var UserEmail = db.Users_Data.Where(m => m.user_email_id == email.user_email_id).SingleOrDefault();
-            if (ModelState.IsValid)
+        public ActionResult Index(LoginModel getemail){
+            var UserEmail = db.Users_Data.Where(m => m.user_email_id == getemail.email).SingleOrDefault();
+
+            if (UserEmail != null)
             {
-                if (UserEmail == null)
+                try
                 {
-                    ViewBag.message = "The given email address doesn't exist.";
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                    mail.From = new MailAddress("bpaservicesllc@gmail.com");
+                    mail.To.Add(UserEmail.user_email_id);
+                    mail.Subject = "Your BPAS Account | Password Reset Action";
+                    string password = System.Web.Security.Membership.GeneratePassword(6, 0);
+
+                    /**
+                     * Inserting in to Database  
+                     */
+                    UserEmail.otp_key = password;
+                    UserEmail.otp_time = DateTime.Now;
+                    db.Entry(UserEmail).State = EntityState.Modified;
+                    db.SaveChanges();
+
+
+                    mail.Body = "Let's get you back into your account .Please use this one time password: " + password + " ";
+
+                    SmtpServer.Port = 587;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("bpaservicesllc@gmail.com", "Bpas2018");
+                    SmtpServer.EnableSsl = true;
+
+                    SmtpServer.Send(mail);
+
+                    forgotPassword fgt = new forgotPassword();
+                    fgt.email = UserEmail.user_email_id;
+
+                    return View("RecoverPassword", fgt);
                 }
-                else {
-
-                    ViewBag.message = "YES";                                        
-                    try
-                    {
-                        MailMessage mail = new MailMessage();
-                        SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-
-                        mail.From = new MailAddress("bpaservicesllc@gmail.com");
-                        mail.To.Add(UserEmail.user_email_id);
-                        mail.Subject = "Your BPAS Account | Password Reset Action";
-                        string password = System.Web.Security.Membership.GeneratePassword(6, 0);
-
-                        /**
-                         * Inserting in to Database  
-                         */
-                        UserEmail.otp_key = password;
-                        UserEmail.otp_time = DateTime.Now;
-                        db.Entry(UserEmail).State = EntityState.Modified;
-                        db.SaveChanges();
-
-
-                        mail.Body = "Let's get you back into your account .Please use this one time password: " + password + " ";
-
-                        SmtpServer.Port = 587;
-                        SmtpServer.Credentials = new System.Net.NetworkCredential("bpaservicesllc@gmail.com", "Bpas2018");
-                        SmtpServer.EnableSsl = true;
-
-                        SmtpServer.Send(mail);
-
-                        forgotPassword fgt =  new forgotPassword();
-                        fgt.email = UserEmail.user_email_id;
-
-                        return View("SendSimpleMessage", fgt);
-                    }
-                    catch (Exception ex)
-                    {
-                        log.Debug("checking" + ex);
-                    }
-                              }
-                
-                            } 
-            else{
-                ViewBag.message = "Error: Contact Admin if problem persists";               
+                catch (Exception ex)
+                {
+                    log.Debug("checking" + ex);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Emaild doesn't exist");
 
             }
+
 
             return View();
 
@@ -89,104 +83,82 @@ namespace HealthcareAnalytics.Controllers
         [HttpPost]
         public ActionResult passwordReset(forgotPassword fwd)
         {
-            var UserEmail = db.Users_Data.Where(m => m.user_email_id == fwd.email).SingleOrDefault();
-            //OPT same, SQL Database Update
 
-            if (UserEmail != null && UserEmail.otp_key == fwd.otp_text)
+            if (ModelState.IsValid)
             {
-
-                DateTime startTime = (DateTime) UserEmail.otp_time;
-
-                DateTime endTime = DateTime.Now;
-                TimeSpan span = endTime.Subtract(startTime);
-                if (span.TotalMinutes <= 5)
+                var UserEmail = db.Users_Data.Where(m => m.user_email_id == fwd.email).SingleOrDefault();
+                if (UserEmail != null && UserEmail.otp_key == fwd.otp_text)
                 {
-
-                    if (fwd.password == fwd.confirm_pwd)
+                    DateTime startTime = (DateTime)UserEmail.otp_time;
+                    DateTime endTime = DateTime.Now;
+                    TimeSpan span = endTime.Subtract(startTime);
+                    if (span.TotalMinutes <= 5)
                     {
-
                         UserEmail.user_web_pwd = fwd.password;
-
                         db.Entry(UserEmail).State = EntityState.Modified;
                         db.SaveChanges();
-                        ViewBag.message = "Done";
                     }
                     else
                     {
-
-                        ViewBag.message = "NOTVALID";
-                        return View("SendSimpleMessage");
+                        ModelState.AddModelError("", "OTP has expired!, Please try again");
                     }
-
+                    return View();
                 }
-                else {
-                    ViewBag.message = "Token expired. Request again";
-                    return View("SendSimpleMessage");
+                else
+                {
+                    ModelState.AddModelError("", "Please check your OTP");
                 }
-
             }
-            else {
-                // ViewBag.message = "One Time Password Expired or No Matching User!";
-                ViewBag.message = "Please check all the fields";
-                return View("SendSimpleMessage");
-            }
-            
-            
             return View("PwdChanged");
-            
+
         }
 
 
-            // GET: Email
-            public ActionResult Index()
+
+
+
+        // GET: Email
+        public ActionResult Index()
         {
-           return View();
+            return View();
         }
 
-     
+        [HttpGet]
+        [AllowAnonymous]
+        public JsonResult CheckEmail(string user_email_id)
+        {
+            if (db.Users_Data.Where(m => m.user_email_id == user_email_id).FirstOrDefault() != null)
+                return Json(true, JsonRequestBehavior.AllowGet);
+            else
+                return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
         // POST: Email/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAccount(Registration registration)
+        public ActionResult Create(RegistrationModel registration)
         {
-            var checkEmail = db.Users_Data.Where(m => m.user_email_id ==registration.user_email_id).FirstOrDefault();
-
-            if (checkEmail != null) {
-                ViewBag.message = "Email Already exist!";
-                return View("Create");
-            }
-
             if (ModelState.IsValid)
             {
-                if (registration.user_web_pwd == registration.confirm_pwd)
-                {
-                    var firstname = registration.user_first_name;
-                    var lastname = registration.user_last_name;
-                    var middleName = registration.user_middle_name;
-                    var email = registration.user_email_id;
-                    var phonenum = registration.user_phone_number;
-                    var pwd = registration.user_web_pwd;
-
-                    db.Database.ExecuteSqlCommand("CreateAccount @First_name = {0}, @last_name = {1}, @middle_name = {2}, @Email = {3}, @Phone_number = {4}, @pwd = {5}", firstname, lastname, middleName, email, phonenum, pwd);
-                    return View("Successfully");
-                }
-                else {
-
-                    ViewBag.message = "Passwords Didn't match";
-                    return View("Create");
-                }
-                
-               
+                var firstname = registration.first_name;
+                var lastname = registration.last_name;
+                var middleName = registration.middle_name;
+                var username = registration.username;
+                var email = registration.email_id;
+                var phonenum = registration.phone_number;
+                var pwd = registration.password;
+                db.Database.ExecuteSqlCommand("CreateAccount @First_name = {0}, @last_name = {1}, @middle_name = {2},@UserName, @Email = {3}, @Phone_number = {4}, @pwd = {5}", firstname, lastname, middleName, username,email, phonenum, pwd);
+                return View("Successfully");
             }
-
-            ViewBag.message = "Error: Please Check your details ";
-            return View("Create");
-
-
+            else
+            {
+                ModelState.AddModelError("", "PLease Enter Mandatroty feilds");
+                return View();
+            }
         }
-               
+
         // GET: Email/Edit/5
         public async Task<ActionResult> Edit(Guid? id)
         {
@@ -205,6 +177,8 @@ namespace HealthcareAnalytics.Controllers
         // GET: Email/Create
         public ActionResult Create()
         {
+            ViewBag.UserFirst = Session["first"];
+            ViewBag.UserLast = Session["last"];
             return View();
         }
 
@@ -216,5 +190,64 @@ namespace HealthcareAnalytics.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult ChangePassword()
+        {
+            ViewBag.UserFirst = Session["first"];
+            ViewBag.UserLast = Session["last"];
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult ChangePassword(PwdChange cpwd)
+        {
+            if (ModelState.IsValid)
+            {
+                var email = Session["email"].ToString();
+                //string email = "roja.d293@gmail.com";
+                Users_Data userdata = db.Users_Data.Where(c => c.user_email_id == email && c.user_web_pwd == cpwd.current_pwd).FirstOrDefault();
+                if (userdata != null)
+                {
+                    //Users_Data _uda = new Users_Data();
+
+                    try
+                    {
+                        userdata.user_web_pwd = cpwd.new_pwd;
+                        db.SaveChanges();
+                    }
+                    catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                    {
+                        Exception raise = dbEx;
+                        foreach (var validationErrors in dbEx.EntityValidationErrors)
+                        {
+                            foreach (var validationError in validationErrors.ValidationErrors)
+                            {
+                                string message = string.Format("{0}:{1}",
+                                    validationErrors.Entry.Entity.ToString(),
+                                    validationError.ErrorMessage);
+                                // raise a new exception nesting  
+                                // the current instance as InnerException  
+                                raise = new InvalidOperationException(message, raise);
+                            }
+                        }
+                        throw raise;
+                    }
+
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Please enter valid password");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Please enter all the fields");
+                return View();
+            }
+            return View();
+        }
+
     }
 }

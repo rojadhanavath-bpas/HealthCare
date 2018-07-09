@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Details";
 }
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <div>
     <h4 style="padding-left: 100px;">Users Data</h4>
     <hr />
@@ -31,7 +33,7 @@
         <dd>
             @Html.DisplayFor(model => model.user_info.user_middle_name)
         </dd>
-        
+
         <dt>
             @Html.DisplayNameFor(model => model.User_roles.role_code_short)
         </dt>
@@ -87,7 +89,7 @@
         <dd>
             @Html.DisplayFor(model => model.user_info.user_updated_date)
         </dd>
-               
+
     </dl>
 </div>
 <p>

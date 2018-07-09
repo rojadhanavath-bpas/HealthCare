@@ -1,5 +1,5 @@
 ﻿
-@model HealthcareAnalytics.Models.User_Login
+@model HealthcareAnalytics.Models.LoginModel
 @{  
     ViewBag.Title = "Home Page";
 }
@@ -22,9 +22,9 @@
                
                     <div class="form-group" style="padding-left:10%;">
                         @*@Html.LabelFor(model => model.user_web_login, htmlAttributes: new { @class = "control-label" })*@
-                        @Html.EditorFor(model => model.user_web_login, new { htmlAttributes = new { @class = "form-control", placeholder = "User Name" } })
+                        @Html.EditorFor(model=> model.username, new { htmlAttributes = new { @class = "form-control", placeholder = "User Name" } })
 
-                        @Html.ValidationMessageFor(model => model.user_web_login, " ", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.username, " ", new { @class = "text-danger" })
                         <span class="glyphicon glyphicon-user"></span>
                   
                 </div>
@@ -32,10 +32,10 @@
                     <div class="form-group" style="padding-left:10%;">
                        @*@Html.LabelFor(model => model.user_web_pwd, htmlAttributes: new { @class = "control-label col-md-4" })*@          
 
-                        @Html.EditorFor(model => model.user_web_pwd, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
 
-                        @Html.ValidationMessageFor(model => model.user_web_pwd, " ", new { @class = "text-danger" })
-                        <span class="glyphicon glyphicon-lock"></span>                
+                        @Html.ValidationMessageFor(model => model.password, " ", new { @class = "text-danger" })
+                        <span class="glyphicon glyphicon-lock"></span>            
                     
                 </div>
 

@@ -2,12 +2,15 @@
 @{
     ViewBag.Title = "TCG - Worklist";
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title> Index </title>
-  
+
 </head>
 <body>
 
@@ -19,9 +22,9 @@
                 <div class="panel panel-body">
                     <div id="id_cases" class="panel-body tab-pane fade in active">
 
-                        <div>                      
-                            <h4><strong>Follow-up Due Today Worklists</strong></h4>               
-                           
+                        <div>
+                            <h4><strong>Follow-up Due Today Worklists</strong></h4>
+
                         </div>
                         <hr />
 
@@ -38,6 +41,6 @@
             </div>
         </form>
     }
-    
+
 </body>
 </html>

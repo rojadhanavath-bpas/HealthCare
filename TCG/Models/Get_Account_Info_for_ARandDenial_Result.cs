@@ -119,6 +119,12 @@ namespace HealthcareAnalytics.Models
         public string Src_Pmt_Tx { get; set; }
         public string Stage { get; set; }
 
+
+
+
+
+
+
         public int isLinkOther { get; set; }
         public string convAdmDate { get; set; }
         public string convDischDate { get; set; }
@@ -128,6 +134,6 @@ namespace HealthcareAnalytics.Models
         public string convTotPayAmt { get; set; }
         public string convAdjAmt { get; set; }
         public string convTotAccBal { get; set; }
-        //public string convTotPayAmt { get; set; }
+
     }
 }

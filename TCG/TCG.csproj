@@ -271,6 +271,7 @@
     <Compile Include="Models\Insurance_Company_Name.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Models\Payor_Financial_Class.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
@@ -281,6 +282,7 @@
     <Compile Include="Models\Priority_Master.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PwdChange.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\Registration_SP.Context.cs">
       <AutoGen>True</AutoGen>
@@ -330,6 +332,7 @@
     <Compile Include="Models\Underpayment_ReasonCode.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserContext.cs" />
     <Compile Include="Models\Users_Data.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
@@ -688,7 +691,7 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\home.cshtml" />
@@ -748,6 +751,7 @@
     <Content Include="Views\WorkDriver\PBTrendGraph.cshtml" />
     <Content Include="Views\WorkDriver\HBUnderpayTrend.cshtml" />
     <Content Include="Views\WorkDriver\PBUnderpayTrends.cshtml" />
+    <Content Include="Views\Email\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

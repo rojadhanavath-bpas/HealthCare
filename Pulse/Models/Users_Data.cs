@@ -31,5 +31,6 @@ namespace HealthcareAnalytics.Models
         public string otp_key { get; set; }
         public Nullable<System.DateTime> otp_time { get; set; }
         public byte user_active_flag { get; set; }
+        public string user_web_login { get; set; }
     }
 }

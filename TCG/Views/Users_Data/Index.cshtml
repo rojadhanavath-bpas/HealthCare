@@ -3,30 +3,33 @@
 @{
     ViewBag.Title = "Index";
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <script>
-    //$(document).ready(function () {
-        
-  
-    //$('.btn-toggle').click(function () {
-    //    $(this).find('.btn').toggleClass('active');
+        //$(document).ready(function () {
 
-    //    if ($(this).find('.btn-primary').size() > 0) {
-    //        $(this).find('.btn').toggleClass('btn-primary');
-    //    }
-    //    if ($(this).find('.btn-danger').size() > 0) {
-    //        $(this).find('.btn').toggleClass('btn-danger');
-    //    }
-    //    if ($(this).find('.btn-success').size() > 0) {
-    //        $(this).find('.btn').toggleClass('btn-success');
-    //    }
-    //    if ($(this).find('.btn-info').size() > 0) {
-    //        $(this).find('.btn').toggleClass('btn-info');
-    //    }
 
-    //    $(this).find('.btn').toggleClass('btn-default');
+        //$('.btn-toggle').click(function () {
+        //    $(this).find('.btn').toggleClass('active');
 
-    //});
-    //});
+        //    if ($(this).find('.btn-primary').size() > 0) {
+        //        $(this).find('.btn').toggleClass('btn-primary');
+        //    }
+        //    if ($(this).find('.btn-danger').size() > 0) {
+        //        $(this).find('.btn').toggleClass('btn-danger');
+        //    }
+        //    if ($(this).find('.btn-success').size() > 0) {
+        //        $(this).find('.btn').toggleClass('btn-success');
+        //    }
+        //    if ($(this).find('.btn-info').size() > 0) {
+        //        $(this).find('.btn').toggleClass('btn-info');
+        //    }
+
+        //    $(this).find('.btn').toggleClass('btn-default');
+
+        //});
+        //});
 </script>
 <div class="container-fluid">
     <div class="row">
@@ -56,22 +59,22 @@
             <table class="table table-striped">
                 <tr>
                     <th scope="col">
-                        @Html.DisplayNameFor(model => model.user_info.user_first_name)
+                        @Html.DisplayNameFor(model => model.first_name)
                     </th>
                     <th scope="col">
-                        @Html.DisplayNameFor(model => model.user_info.user_last_name)
+                        @Html.DisplayNameFor(model => model.last_name)
                     </th>
                     <th scope="col">
-                        @Html.DisplayNameFor(model => model.user_info.user_middle_name)
+                        @Html.DisplayNameFor(model => model.user_middle_name)
                     </th>
                     <th scope="col">
-                        @Html.DisplayNameFor(model => model.User_roles.role_code_short)
+                        @Html.DisplayNameFor(model => model.user_role)
                     </th>
                     <th scope="col">
-                        @Html.DisplayNameFor(model => model.user_info.user_phone_number)
+                        @Html.DisplayNameFor(model => model.phone_number)
                     </th>
                     <th scope="col">
-                        @Html.DisplayNameFor(model => model.user_info.user_email_id)
+                        @Html.DisplayNameFor(model => model.email_id)
                     </th>
 
                     <th scope="col">Actions</th>
@@ -104,7 +107,7 @@
                             @Html.ActionLink("Edit", "Edit", new { id = item.user_info.user_ID }, new { @class = "badge badge-primary" })  |
 
                             @Html.ActionLink("Details", "Details", new { id = item.user_info.user_ID }, new { @class = "badge badge-primary" }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.user_info.user_ID }, new { @class = "badge badge-danger" }) 
+                            @Html.ActionLink("Delete", "Delete", new { id = item.user_info.user_ID }, new { @class = "badge badge-danger" })
 
                         </td>
                         <td>
@@ -118,11 +121,11 @@
                 }
 
             </table>
-            </div>
-            <div class="col-md-1">
-
-            </div>
         </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-1">
 
@@ -130,10 +133,10 @@
         <div class="col-md-10">
             @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-primary" })
         </div>
-        
+
         <div class="col-md-1">
 
         </div>
     </div>
 </div>
-   
+
