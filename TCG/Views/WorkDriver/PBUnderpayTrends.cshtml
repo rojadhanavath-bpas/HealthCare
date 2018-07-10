@@ -1,11 +1,11 @@
 ﻿
 @{
-    ViewBag.Title = "Trends";
+    ViewBag.Title = "PB Underpay Trends";
 }
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <html>
 <head>
@@ -24,8 +24,8 @@
         h = $(window).height() - 70;
         var vizDiv = document.getElementById("vizDiv");
         var ticket = "@ViewBag.Message";
-        var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/Workdriver_Main/HB?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
-        //var url = "http://tab.bpa.services/views/Workdriver_Main/HB?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
+        var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/PB_Underpay_Dashboard/PB-ByPayor?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
+        //var url = "http://tab.bpa.services/views/PB_Underpay_Dashboard/PB-ByPayor?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
 
 
 

@@ -31,5 +31,6 @@ namespace HealthcareAnalytics.Models
         public string Brief_Summary { get; set; }
         public Nullable<System.DateTime> DateOfUpdate { get; set; }
         public string Biller { get; set; }
+        public string BillingProvider { get; set; }
     }
 }

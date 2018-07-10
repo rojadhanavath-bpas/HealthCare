@@ -11,26 +11,34 @@ namespace HealthcareAnalytics.Models
 {
     using System;
     
-    public partial class Get_Under_Paymnent_Accounts_Result
+    public partial class Get_Under_Paymnent_Accounts_HB_Result
     {
         public Nullable<int> Deferral_Due { get; set; }
         public string Account { get; set; }
         public string Acct_Class { get; set; }
-        public string Acct_Status { get; set; }
+        public Nullable<int> Acct_Status { get; set; }
         public string Account_Name { get; set; }
         public Nullable<System.DateTime> Disch_Date { get; set; }
-        public Nullable<double> Acct_Bal { get; set; }
-        public string Message { get; set; }
-        public string Diagnosis_Codes { get; set; }
+        public Nullable<decimal> Acct_Bal { get; set; }
+        public Nullable<double> Diagnosis_Codes { get; set; }
         public string Plan_Name { get; set; }
         public string Payor_Name { get; set; }
-        public Nullable<double> Allowed_Amount_Difference { get; set; }
-        public string Expected_Allowed_Amount { get; set; }
-        public Nullable<double> Allowed_Amount_Difference_Payor_Specified { get; set; }
         public Nullable<int> Underpayment_Reason_Code { get; set; }
         public string Brief_Summary { get; set; }
         public Nullable<System.DateTime> DateOfUpdate { get; set; }
-        public string Biller { get; set; }
+        public string Billing_Provider { get; set; }
+        public string Procedure { get; set; }
+        public Nullable<decimal> Ins_Amt { get; set; }
+        public string Account_Workqueues { get; set; }
+        public string All_Claim_Payors { get; set; }
+        public Nullable<decimal> Allow_Discrepancy_Amt { get; set; }
+        public string Cur_Plan_Group { get; set; }
+        public string Dr_Cr { get; set; }
+        public string Dept_Specialty { get; set; }
+        public string Diagnosis_Code { get; set; }
+        public string Enc_Specialty { get; set; }
+        public string Prim_Fee_Sched { get; set; }
+        public string Procedure_Description { get; set; }
 
         public string DischargeDate { get; set; }
         public decimal convertAmount { get; set; }

@@ -48,6 +48,15 @@
           <Property Name="ACD_DueDate" Type="datetime" />
           <Property Name="ACD_FollowUpDate" Type="datetime" />
           <Property Name="ACD_DeleteFlag" Type="bit" />
+          <Property Name="ACD_TotalCharges" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACD_TotalPay" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACD_TotalAdj" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACD_AmtDiffNAA" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACD_AmtDiffPayor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACD_ExpAmt" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACD_BillProvider" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ACD_Department" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ACD_HBorPB" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Account_Case_Detials_History">
           <Key>
@@ -77,6 +86,15 @@
           <Property Name="ACDH_DueDate" Type="datetime" />
           <Property Name="ACDH_FollowUpDate" Type="datetime" />
           <Property Name="ACDH_DeleteFlag" Type="bit" />
+          <Property Name="ACDH_TotalCharges" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACDH_TotalPay" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACDH_TotalAdj" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACDH_AmtDiffNAA" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACDH_AmtDiffPayor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACDH_ExpAmt" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ACDH_BillProvider" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ACDH_Department" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ACDH_HBorPB" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Account_Case_Task">
           <Key>
@@ -152,6 +170,16 @@
           <Property Name="EncType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EncType_Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TCG_Data.dbo.HBorPB_Master' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HBorPB_Master">
+          <Key>
+            <PropertyRef Name="HP_ID" />
+            <PropertyRef Name="HP_Name" />
+          </Key>
+          <Property Name="HP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HP_Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="Insurance_Company_Name">
           <Key>
             <PropertyRef Name="InsCmp_ID" />
@@ -201,12 +229,12 @@
           <Property Name="TM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TM_Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="Underpayment_Reason">
+        <EntityType Name="Underpayment_ReasonCode">
           <Key>
             <PropertyRef Name="Reason_Code" />
           </Key>
+          <Property Name="Reason_Title" Type="nvarchar" MaxLength="255" />
           <Property Name="Reason_Code" Type="int" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Underpayments">
           <Key>
@@ -229,6 +257,7 @@
           <Property Name="Brief_Summary" Type="nvarchar" MaxLength="4000" />
           <Property Name="DateOfUpdate" Type="date" />
           <Property Name="Biller" Type="nvarchar" MaxLength="255" />
+          <Property Name="BillingProvider" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK__Account_C__ACDH___40F9A68C">
           <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
@@ -282,6 +311,15 @@
           <Parameter Name="ACD_ID" Type="int" Mode="In" />
           <Parameter Name="ACD_HspAccID" Type="varchar" Mode="In" />
           <Parameter Name="ACD_Amount" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_TotalCharges" Type="decimal" Mode="In" />
+          <Parameter Name="ACD_TotalPay" Type="decimal" Mode="In" />
+          <Parameter Name="ACD_TotalAdj" Type="decimal" Mode="In" />
+          <Parameter Name="ACD_AmtDiffNAA" Type="decimal" Mode="In" />
+          <Parameter Name="ACD_AmtDiffPayor" Type="decimal" Mode="In" />
+          <Parameter Name="ACD_ExpAmt" Type="decimal" Mode="In" />
+          <Parameter Name="ACD_BillProvider" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_Department" Type="varchar" Mode="In" />
+          <Parameter Name="ACD_HBorPB" Type="varchar" Mode="In" />
           <Parameter Name="ACD_Status" Type="int" Mode="In" />
           <Parameter Name="ACD_Owner" Type="varchar" Mode="In" />
           <Parameter Name="ACD_Type" Type="varchar" Mode="In" />
@@ -325,6 +363,7 @@
           <Parameter Name="new_recordNumber" Type="int" Mode="InOut" />
         </Function>
         <Function Name="Get_Under_Paymnent_Accounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Under_Paymnent_Accounts_HB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="TCG_WorklistStoreContainer">
           <EntitySet Name="Account_AR_Status" EntityType="Self.Account_AR_Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Account_Bill_Status" EntityType="Self.Account_Bill_Status" Schema="dbo" store:Type="Tables" />
@@ -344,8 +383,14 @@
           <EntitySet Name="RootCause_Master" EntityType="Self.RootCause_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status_Master" EntityType="Self.Status_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task_Master" EntityType="Self.Task_Master" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Underpayment_Reason" EntityType="Self.Underpayment_Reason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Underpayment_ReasonCode" EntityType="Self.Underpayment_ReasonCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Underpayments" EntityType="Self.Underpayments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HBorPB_Master" EntityType="Self.HBorPB_Master" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HBorPB_Master].[HP_ID] AS [HP_ID], 
+    [HBorPB_Master].[HP_Name] AS [HP_Name]
+    FROM [dbo].[HBorPB_Master] AS [HBorPB_Master]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Account_C__ACDH___40F9A68C" Association="Self.FK__Account_C__ACDH___40F9A68C">
             <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
             <End Role="Account_Case_Detials_History" EntitySet="Account_Case_Detials_History" />
@@ -413,6 +458,15 @@
           <NavigationProperty Name="Account_Case_Detials_History" Relationship="Self.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Details" ToRole="Account_Case_Detials_History" />
           <NavigationProperty Name="Account_Case_Task" Relationship="Self.FK__Account_C__ACT_A__44CA3770" FromRole="Account_Case_Details" ToRole="Account_Case_Task" />
           <NavigationProperty Name="Account_Case_Task_History" Relationship="Self.FK__Account_C__ACTH___498EEC8D" FromRole="Account_Case_Details" ToRole="Account_Case_Task_History" />
+          <Property Name="ACD_TotalCharges" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACD_TotalPay" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACD_TotalAdj" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACD_AmtDiffNAA" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACD_AmtDiffPayor" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACD_ExpAmt" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACD_BillProvider" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_Department" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACD_HBorPB" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Account_Case_Detials_History">
           <Key>
@@ -443,6 +497,15 @@
           <Property Name="ACDH_FollowUpDate" Type="DateTime" Precision="3" />
           <Property Name="ACDH_DeleteFlag" Type="Boolean" />
           <NavigationProperty Name="Account_Case_Details" Relationship="Self.FK__Account_C__ACDH___40F9A68C" FromRole="Account_Case_Detials_History" ToRole="Account_Case_Details" />
+          <Property Name="ACDH_TotalCharges" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACDH_TotalPay" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACDH_TotalAdj" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACDH_AmtDiffNAA" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACDH_AmtDiffPayor" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACDH_ExpAmt" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ACDH_BillProvider" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_Department" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACDH_HBorPB" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Account_Case_Task">
           <Key>
@@ -571,13 +634,6 @@
           <Property Name="TM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TM_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="Underpayment_Reason">
-          <Key>
-            <PropertyRef Name="Reason_Code" />
-          </Key>
-          <Property Name="Reason_Code" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Underpayment">
           <Key>
             <PropertyRef Name="Account" />
@@ -599,6 +655,7 @@
           <Property Name="Brief_Summary" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="DateOfUpdate" Type="DateTime" Precision="0" />
           <Property Name="Biller" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BillingProvider" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__Account_C__ACDH___40F9A68C">
           <End Role="Account_Case_Details" Type="Self.Account_Case_Details" Multiplicity="1" />
@@ -667,7 +724,6 @@
           <EntitySet Name="RootCause_Master" EntityType="Self.RootCause_Master" />
           <EntitySet Name="Status_Master" EntityType="Self.Status_Master" />
           <EntitySet Name="Task_Master" EntityType="Self.Task_Master" />
-          <EntitySet Name="Underpayment_Reason" EntityType="Self.Underpayment_Reason" />
           <EntitySet Name="Underpayments" EntityType="Self.Underpayment" />
           <AssociationSet Name="FK__Account_C__ACDH___40F9A68C" Association="Self.FK__Account_C__ACDH___40F9A68C">
             <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
@@ -689,6 +745,15 @@
             <Parameter Name="ACD_ID" Mode="In" Type="Int32" />
             <Parameter Name="ACD_HspAccID" Mode="In" Type="String" />
             <Parameter Name="ACD_Amount" Mode="In" Type="String" />
+            <Parameter Name="ACD_TotalCharges" Mode="In" Type="Decimal" />
+            <Parameter Name="ACD_TotalPay" Mode="In" Type="Decimal" />
+            <Parameter Name="ACD_TotalAdj" Mode="In" Type="Decimal" />
+            <Parameter Name="ACD_AmtDiffNAA" Mode="In" Type="Decimal" />
+            <Parameter Name="ACD_AmtDiffPayor" Mode="In" Type="Decimal" />
+            <Parameter Name="ACD_ExpAmt" Mode="In" Type="Decimal" />
+            <Parameter Name="ACD_BillProvider" Mode="In" Type="String" />
+            <Parameter Name="ACD_Department" Mode="In" Type="String" />
+            <Parameter Name="ACD_HBorPB" Mode="In" Type="String" />
             <Parameter Name="ACD_Status" Mode="In" Type="Int32" />
             <Parameter Name="ACD_Owner" Mode="In" Type="String" />
             <Parameter Name="ACD_Type" Mode="In" Type="String" />
@@ -732,6 +797,9 @@
             <Parameter Name="new_recordNumber" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Get_Under_Paymnent_Accounts" ReturnType="Collection(TCG_Worklist.Get_Under_Paymnent_Accounts_Result)" />
+          <EntitySet Name="HBorPB_Master" EntityType="TCG_Worklist.HBorPB_Master" />
+          <FunctionImport Name="Get_Under_Paymnent_Accounts_HB" ReturnType="Collection(TCG_Worklist.Get_Under_Paymnent_Accounts_HB_Result)" />
+          <EntitySet Name="Underpayment_ReasonCode" EntityType="TCG_Worklist.Underpayment_ReasonCode" />
         </EntityContainer>
         <ComplexType Name="Get_Under_Paymnent_Accounts_Result">
           <Property Type="Int32" Name="Deferral_Due" Nullable="true" />
@@ -753,6 +821,49 @@
           <Property Type="DateTime" Name="DateOfUpdate" Nullable="true" />
           <Property Type="String" Name="Biller" Nullable="true" MaxLength="255" />
         </ComplexType>
+        <EntityType Name="HBorPB_Master">
+          <Key>
+            <PropertyRef Name="HP_ID" />
+            <PropertyRef Name="HP_Name" />
+          </Key>
+          <Property Name="HP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HP_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="Get_Under_Paymnent_Accounts_HB_Result">
+          <Property Type="Int32" Name="Deferral_Due" Nullable="true" />
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Acct_Class" Nullable="false" MaxLength="2" />
+          <Property Type="Int32" Name="Acct_Status" Nullable="true" />
+          <Property Type="String" Name="Account_Name" Nullable="true" MaxLength="265" />
+          <Property Type="DateTime" Name="Disch_Date" Nullable="true" />
+          <Property Type="Decimal" Name="Acct_Bal" Nullable="true" Precision="19" />
+          <Property Type="Double" Name="Diagnosis_Codes" Nullable="true" />
+          <Property Type="String" Name="Plan_Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Payor_Name" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Underpayment_Reason_Code" Nullable="true" />
+          <Property Type="String" Name="Brief_Summary" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="DateOfUpdate" Nullable="true" />
+          <Property Type="String" Name="Billing_Provider" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Procedure" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Ins_Amt" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Account_Workqueues" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="All_Claim_Payors" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Allow_Discrepancy_Amt" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Cur_Plan_Group" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Dr_Cr" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Dept_Specialty" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Diagnosis_Code" Nullable="true" />
+          <Property Type="String" Name="Enc_Specialty" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Prim_Fee_Sched" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Procedure_Description" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <EntityType Name="Underpayment_ReasonCode">
+          <Key>
+            <PropertyRef Name="Reason_Code" />
+          </Key>
+          <Property Name="Reason_Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Reason_Code" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -778,6 +889,15 @@
           <EntitySetMapping Name="Account_Case_Details">
             <EntityTypeMapping TypeName="TCG_Worklist.Account_Case_Details">
               <MappingFragment StoreEntitySet="Account_Case_Details">
+                <ScalarProperty Name="ACD_HBorPB" ColumnName="ACD_HBorPB" />
+                <ScalarProperty Name="ACD_Department" ColumnName="ACD_Department" />
+                <ScalarProperty Name="ACD_BillProvider" ColumnName="ACD_BillProvider" />
+                <ScalarProperty Name="ACD_ExpAmt" ColumnName="ACD_ExpAmt" />
+                <ScalarProperty Name="ACD_AmtDiffPayor" ColumnName="ACD_AmtDiffPayor" />
+                <ScalarProperty Name="ACD_AmtDiffNAA" ColumnName="ACD_AmtDiffNAA" />
+                <ScalarProperty Name="ACD_TotalAdj" ColumnName="ACD_TotalAdj" />
+                <ScalarProperty Name="ACD_TotalPay" ColumnName="ACD_TotalPay" />
+                <ScalarProperty Name="ACD_TotalCharges" ColumnName="ACD_TotalCharges" />
                 <ScalarProperty Name="ACD_ID" ColumnName="ACD_ID" />
                 <ScalarProperty Name="ACD_HspAccID" ColumnName="ACD_HspAccID" />
                 <ScalarProperty Name="ACD_Amount" ColumnName="ACD_Amount" />
@@ -809,6 +929,15 @@
           <EntitySetMapping Name="Account_Case_Detials_History">
             <EntityTypeMapping TypeName="TCG_Worklist.Account_Case_Detials_History">
               <MappingFragment StoreEntitySet="Account_Case_Detials_History">
+                <ScalarProperty Name="ACDH_HBorPB" ColumnName="ACDH_HBorPB" />
+                <ScalarProperty Name="ACDH_Department" ColumnName="ACDH_Department" />
+                <ScalarProperty Name="ACDH_BillProvider" ColumnName="ACDH_BillProvider" />
+                <ScalarProperty Name="ACDH_ExpAmt" ColumnName="ACDH_ExpAmt" />
+                <ScalarProperty Name="ACDH_AmtDiffPayor" ColumnName="ACDH_AmtDiffPayor" />
+                <ScalarProperty Name="ACDH_AmtDiffNAA" ColumnName="ACDH_AmtDiffNAA" />
+                <ScalarProperty Name="ACDH_TotalAdj" ColumnName="ACDH_TotalAdj" />
+                <ScalarProperty Name="ACDH_TotalPay" ColumnName="ACDH_TotalPay" />
+                <ScalarProperty Name="ACDH_TotalCharges" ColumnName="ACDH_TotalCharges" />
                 <ScalarProperty Name="ACDH_ID" ColumnName="ACDH_ID" />
                 <ScalarProperty Name="ACDH_ACD_ID" ColumnName="ACDH_ACD_ID" />
                 <ScalarProperty Name="ACDH_HspAccID" ColumnName="ACDH_HspAccID" />
@@ -973,17 +1102,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Underpayment_Reason">
-            <EntityTypeMapping TypeName="TCG_Worklist.Underpayment_Reason">
-              <MappingFragment StoreEntitySet="Underpayment_Reason">
-                <ScalarProperty Name="Reason_Code" ColumnName="Reason_Code" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Underpayments">
             <EntityTypeMapping TypeName="TCG_Worklist.Underpayment">
               <MappingFragment StoreEntitySet="Underpayments">
+                <ScalarProperty Name="BillingProvider" ColumnName="BillingProvider" />
                 <ScalarProperty Name="Account" ColumnName="Account" />
                 <ScalarProperty Name="Acct_Class" ColumnName="Acct Class" />
                 <ScalarProperty Name="Acct_Status" ColumnName="Acct Status" />
@@ -1030,6 +1152,54 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="HBorPB_Master">
+            <EntityTypeMapping TypeName="TCG_Worklist.HBorPB_Master">
+              <MappingFragment StoreEntitySet="HBorPB_Master">
+                <ScalarProperty Name="HP_Name" ColumnName="HP_Name" />
+                <ScalarProperty Name="HP_ID" ColumnName="HP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Get_Under_Paymnent_Accounts_HB" FunctionName="TCG_Worklist.Store.Get_Under_Paymnent_Accounts_HB">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCG_Worklist.Get_Under_Paymnent_Accounts_HB_Result">
+                <ScalarProperty Name="Deferral_Due" ColumnName="Deferral Due" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Acct_Class" ColumnName="Acct Class" />
+                <ScalarProperty Name="Acct_Status" ColumnName="Acct Status" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
+                <ScalarProperty Name="Disch_Date" ColumnName="Disch Date" />
+                <ScalarProperty Name="Acct_Bal" ColumnName="Acct Bal" />
+                <ScalarProperty Name="Diagnosis_Codes" ColumnName="Diagnosis_Codes" />
+                <ScalarProperty Name="Plan_Name" ColumnName="Plan Name" />
+                <ScalarProperty Name="Payor_Name" ColumnName="Payor Name" />
+                <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+                <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+                <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
+                <ScalarProperty Name="Billing_Provider" ColumnName="Billing Provider" />
+                <ScalarProperty Name="Procedure" ColumnName="Procedure" />
+                <ScalarProperty Name="Ins_Amt" ColumnName="Ins Amt" />
+                <ScalarProperty Name="Account_Workqueues" ColumnName="Account Workqueues" />
+                <ScalarProperty Name="All_Claim_Payors" ColumnName="All Claim Payors" />
+                <ScalarProperty Name="Allow_Discrepancy_Amt" ColumnName="Allow Discrepancy Amt" />
+                <ScalarProperty Name="Cur_Plan_Group" ColumnName="Cur Plan Group" />
+                <ScalarProperty Name="Dr_Cr" ColumnName="Dr/Cr" />
+                <ScalarProperty Name="Dept_Specialty" ColumnName="Dept Specialty" />
+                <ScalarProperty Name="Diagnosis_Code" ColumnName="Diagnosis Code" />
+                <ScalarProperty Name="Enc_Specialty" ColumnName="Enc Specialty" />
+                <ScalarProperty Name="Prim_Fee_Sched" ColumnName="Prim Fee Sched" />
+                <ScalarProperty Name="Procedure_Description" ColumnName="Procedure Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Underpayment_ReasonCode">
+            <EntityTypeMapping TypeName="TCG_Worklist.Underpayment_ReasonCode">
+              <MappingFragment StoreEntitySet="Underpayment_ReasonCode">
+                <ScalarProperty Name="Reason_Code" ColumnName="Reason_Code" />
+                <ScalarProperty Name="Reason_Title" ColumnName="Reason_Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

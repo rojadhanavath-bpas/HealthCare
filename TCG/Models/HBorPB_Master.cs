@@ -12,9 +12,9 @@ namespace HealthcareAnalytics.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Underpayment_Reason
+    public partial class HBorPB_Master
     {
-        public int Reason_Code { get; set; }
-        public string Description { get; set; }
+        public int HP_ID { get; set; }
+        public string HP_Name { get; set; }
     }
 }

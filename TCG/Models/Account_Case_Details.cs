@@ -47,6 +47,15 @@ namespace HealthcareAnalytics.Models
         public Nullable<System.DateTime> ACD_DueDate { get; set; }
         public Nullable<System.DateTime> ACD_FollowUpDate { get; set; }
         public Nullable<bool> ACD_DeleteFlag { get; set; }
+        public decimal ACD_TotalCharges { get; set; }
+        public decimal ACD_TotalPay { get; set; }
+        public decimal ACD_TotalAdj { get; set; }
+        public decimal ACD_AmtDiffNAA { get; set; }
+        public decimal ACD_AmtDiffPayor { get; set; }
+        public decimal ACD_ExpAmt { get; set; }
+        public string ACD_BillProvider { get; set; }
+        public string ACD_Department { get; set; }
+        public string ACD_HBorPB { get; set; }
 
         public string dateConvert { get; set; }
         public string dateFollowUp { get; set; }
@@ -55,11 +64,14 @@ namespace HealthcareAnalytics.Models
         public int link { get; set; }
         public string userName { get; set; }
         public string userID { get; set; }
-
         public string convAllAmtDiff { get; set; }
         public string convExpAmtDiff { get; set; }
         public string convAllAmtDiffPyr { get; set; }
         public int userFlag { get; set; }
+        public string TotChrgAmt { get; set; }
+        public string TotPayAmt { get; set; }
+        public string TotAdjAmt { get; set; }
+        public string TotAccBal { get; set; }
 
         
 
