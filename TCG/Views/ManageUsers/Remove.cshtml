@@ -1,0 +1,73 @@
+﻿@model HealthcareAnalytics.Models.ManageUsersModel
+@{
+    ViewBag.Title = "Remove";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Remove", "ManageUsers", FormMethod.Post, new { @class = "my_form" }))
+{
+
+<div class="row">
+    <div class="container" style="padding-top: 50px;">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <h3>Are you sure you want to remove the user?</h3>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>@Html.LabelFor(model => model.FirstName)</th>
+                        <td>@Html.DisplayFor(model => model.FirstName, new { @readonly = true })</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(model => model.LastName)</th>
+                        <td>@Html.DisplayFor(model => model.LastName)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(model => model.MiddleName)</th>
+                        <td>@Html.DisplayFor(model => model.MiddleName)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(model => model.PhoneNumber)</th>
+                        <td>@Html.DisplayFor(model => model.PhoneNumber)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(model => model.EmailId)</th>
+                        <td>@Html.DisplayFor(model => model.EmailId)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(model => model.AddedBy)</th>
+                        <td>@Html.DisplayFor(model => model.AddedBy)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(model => model.UserRole)</th>
+                        <td>@Html.DisplayFor(model => model.UserRole)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.LabelFor(model => model.IsActive)</th>
+                        <td>@Html.ValueFor(model => model.IsActive)</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Remove" class="btn btn-danger" /> |
+                                @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-primary" })
+                            </div>
+                        </th>
+                        <td></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+       
+        <div class="col-md-2">
+        </div>
+
+    </div>
+   
+
+</div>
+
+}
+

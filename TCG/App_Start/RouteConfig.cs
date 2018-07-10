@@ -27,7 +27,7 @@ namespace HealthcareAnalytics
             routes.MapRoute(
                name: "",
                url: "{controller}/{action}/{id}",
-               defaults: new { controller = "Email", action = "VerifyEmail", id = UrlParameter.Optional }
+               defaults: new { controller = "Account", action = "IdentifyAccount", id = UrlParameter.Optional }
            );
 
         }

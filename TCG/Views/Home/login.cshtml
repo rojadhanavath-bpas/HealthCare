@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="login-container login-form">
-        <div class="long-shadow">«The Chappelle Group » </div>
+        @*<div class="long-shadow">«The Chappelle Group » </div>*@
         <div class="panel panel-default">
             <div class="panel-body">
 
@@ -20,7 +20,7 @@
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                
-                    <div class="form-group" style="padding-left:10%;">
+                    <div class="form-group" style="padding-left:15%;">
                         @*@Html.LabelFor(model => model.user_web_login, htmlAttributes: new { @class = "control-label" })*@
                         @Html.EditorFor(model=> model.username, new { htmlAttributes = new { @class = "form-control", placeholder = "User Name" } })
 
@@ -29,7 +29,7 @@
                   
                 </div>
 
-                    <div class="form-group" style="padding-left:10%;">
+                    <div class="form-group" style="padding-left:15%;">
                        @*@Html.LabelFor(model => model.user_web_pwd, htmlAttributes: new { @class = "control-label col-md-4" })*@          
 
                         @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
@@ -41,15 +41,15 @@
 
                 
                 <div class="form-group">
-                    <div style="width:100%;margin-top:15px;padding-left:120px;">
-                        <input type="submit" style="width:100px!important;" value="Login " class="btn btn-primary">
+                    <div style="width:100%;margin-top:15px;padding-left:35%;">
+                        <input type="submit" style="width:100px!important;" value="Log In " class="btn btn-primary">
                         <br />
                         <br />
                    </div>
                         <div class="form-group">
-                            <ul style="list-style-type: none; font-size: 17px; padding-left: 10px;">
-                                <li class="control-label col-md-6">@Html.ActionLink("Forgot Password ?", "index", "Email")</li>
-                                <li class="col-md-6">@Html.ActionLink("Create Account", "create", "Email")</li>
+                            <ul style="list-style-type: none; font-size: 15px; padding-left: 10px;">
+                                <li class="control-label col-md-6">@Html.ActionLink("Forgot Password?", "IdentifyAccount", "Account")</li>
+                                <li class="col-md-6">@Html.ActionLink("Create Account", "create", "Account")</li>
                             </ul>
                         </div>                    
 
@@ -57,5 +57,5 @@
             </div>
         </div>
 </div>
-<div id="particles-js"></div>
+
 }

@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-@using (Html.BeginForm())
+@using (@Html.BeginForm("IdentifyAccount", "Account", FormMethod.Post, new { @class = "my_form" }))
 {
     @Html.AntiForgeryToken()
 
@@ -30,12 +30,12 @@
                     
                    <div class="form-group">
                         <div class="col-md-offset-4 col-md-8">
-                            <input type="submit" style="width:100px!important;" value="Reset" class="btn btn-primary">
+                            <input type="submit" value="Reset" class="btn btn-primary">
                         </div>
                         <br />
                         <br />
-                        <div>
-                            <b>  @Html.ActionLink("Back to Login", "Login", "Home")</b>
+                        <div class="forgotbtn">
+                            <b>@Html.ActionLink("Back to Login", "Login", "Home")</b>
                         </div>
 
                     </div>

@@ -1,0 +1,70 @@
+﻿@model HealthcareAnalytics.Models.ManageUsersModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Details", "ManageUsers", FormMethod.Post, new { @class = "my_form" }))
+{
+
+    <div class="row">
+        <div class="container" style="padding-top: 50px;">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+               <h3>The user Information</h3>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.FirstName)</th>
+                            <td>@Html.DisplayFor(model => model.FirstName, new { @readonly = true })</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.LastName)</th>
+                            <td>@Html.DisplayFor(model => model.LastName)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.MiddleName)</th>
+                            <td>@Html.DisplayFor(model => model.MiddleName)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.PhoneNumber)</th>
+                            <td>@Html.DisplayFor(model => model.PhoneNumber)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.EmailId)</th>
+                            <td>@Html.DisplayFor(model => model.EmailId)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.AddedBy)</th>
+                            <td>@Html.DisplayFor(model => model.AddedBy)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.UserRole)</th>
+                            <td>@Html.DisplayFor(model => model.UserRole)</td>
+                        </tr>
+                        <tr>
+                            <th>@Html.LabelFor(model => model.IsActive)</th>
+                            <td> @Html.ValueFor(model => model.IsActive)</td>
+                        </tr>
+                       
+                        <tr>
+
+                            <th> @Html.ActionLink("Back to List", "All", "ManageUsers", new { }, new { @class = "btn btn-primary" })</th>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-2">
+            </div>
+
+        </div>
+
+
+    </div>
+
+}

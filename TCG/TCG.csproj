@@ -206,8 +206,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\Users_DataController.cs" />
     <Compile Include="Controllers\WorkDriverController.cs" />
     <Compile Include="Global.asax.cs">
@@ -266,6 +267,7 @@
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ManageUsersModel.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Models\Payor_Financial_Class.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
@@ -698,11 +700,11 @@
     <Content Include="Views\Home\worklist.cshtml" />
     <Content Include="Views\Home\priority.cshtml" />
     <Content Include="Views\Home\VerifyEmail.cshtml" />
-    <Content Include="Views\Email\Create.cshtml" />
-    <Content Include="Views\Email\Delete.cshtml" />
-    <Content Include="Views\Email\Details.cshtml" />
-    <Content Include="Views\Email\Edit.cshtml" />
-    <Content Include="Views\Email\Index.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\IdentifyAccount.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -712,9 +714,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Email\SendSimpleMessage.cshtml" />
-    <Content Include="Views\Email\Successfully.cshtml" />
-    <Content Include="Views\Email\PwdChanged.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\Successfully.cshtml" />
+    <Content Include="Views\Account\PwdChanged.cshtml" />
     <Content Include="Views\Home\TCG_CaseDetails.cshtml" />
     <Content Include="Views\Home\TCG_CaseDetails_Modified.cshtml" />
     <Content Include="Views\Shared\_GridPager.cshtml" />
@@ -739,7 +741,11 @@
     <Content Include="Views\WorkDriver\viewCaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\viewTestPage.cshtml" />
     <Content Include="Views\WorkDriver\TrendGraph.cshtml" />
-    <Content Include="Views\Email\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\ManageUsers\All.cshtml" />
+    <Content Include="Views\ManageUsers\User.cshtml" />
+    <Content Include="Views\ManageUsers\Details.cshtml" />
+    <Content Include="Views\ManageUsers\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

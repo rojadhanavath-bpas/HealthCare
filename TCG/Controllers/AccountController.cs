@@ -16,17 +16,17 @@ using System.Data.SqlClient;
 
 namespace HealthcareAnalytics.Controllers
 {
-    public class EmailController : Controller
+    public class AccountController : Controller
     {
 
         private static log4net.ILog Log { get; set; }
-        ILog log = log4net.LogManager.GetLogger(typeof(EmailController));
+        ILog log = log4net.LogManager.GetLogger(typeof(AccountController));
         private TCG_DataEntities db = new TCG_DataEntities();
         private TCG_Registration db2 = new TCG_Registration();
 
 
         [HttpPost]
-        public ActionResult Index(LoginModel getemail){
+        public ActionResult IdentifyAccount(LoginModel getemail){
             var UserEmail = db.Users_Data.Where(m => m.user_email_id == getemail.email).SingleOrDefault();
 
             if (UserEmail != null)
@@ -61,7 +61,7 @@ namespace HealthcareAnalytics.Controllers
                     forgotPassword fgt = new forgotPassword();
                     fgt.email = UserEmail.user_email_id;
 
-                    return View("RecoverPassword", fgt);
+                    return View("ResetPassword", fgt);
                 }
                 catch (Exception ex)
                 {
@@ -81,7 +81,7 @@ namespace HealthcareAnalytics.Controllers
 
 
         [HttpPost]
-        public ActionResult passwordReset(forgotPassword fwd)
+        public ActionResult ResetPassword(forgotPassword fwd)
         {
 
             if (ModelState.IsValid)
@@ -118,7 +118,8 @@ namespace HealthcareAnalytics.Controllers
 
 
         // GET: Email
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult IdentifyAccount()
         {
             return View();
         }
@@ -142,14 +143,14 @@ namespace HealthcareAnalytics.Controllers
         {
             if (ModelState.IsValid)
             {
-                var firstname = registration.first_name;
-                var lastname = registration.last_name;
-                var middleName = registration.middle_name;
-                var username = registration.username;
-                var email = registration.email_id;
-                var phonenum = registration.phone_number;
-                var pwd = registration.password;
-                db.Database.ExecuteSqlCommand("CreateAccount @First_name = {0}, @last_name = {1}, @middle_name = {2},@UserName, @Email = {3}, @Phone_number = {4}, @pwd = {5}", firstname, lastname, middleName, username,email, phonenum, pwd);
+                var firstname = registration.FirstName;
+                var lastname = registration.LastName;
+                var middleName = registration.MiddleName;
+                var username = registration.UserName;
+                var email = registration.Email;
+                var phonenum = registration.Phone;
+                var pwd = registration.Password;
+                db.Database.ExecuteSqlCommand("CreateAccount @First_name = {0}, @last_name = {1}, @middle_name = {2}, @Email = {3}, @Phone_number = {4}, @pwd = {5}, @UserName={6}", firstname, lastname, middleName, email, phonenum, pwd,username);
                 return View("Successfully");
             }
             else

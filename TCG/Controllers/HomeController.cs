@@ -333,8 +333,7 @@ namespace HealthcareAnalytics.Controllers
             {
                 var details = (from logindetails in db2.Users_Data 
                                where logindetails.user_web_login == login.username && logindetails.user_web_pwd == login.password
-                               //&& logindetails.user_password == Role.user_password
-                               select new
+                              select new
                                {
                                    
                                    logindetails.user_web_login,

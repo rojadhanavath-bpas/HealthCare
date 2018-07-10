@@ -87,9 +87,6 @@ namespace HealthcareAnalytics.Models
         [System.ComponentModel.DataAnnotations.Compare("user_web_pwd", ErrorMessage = "Password mismatch")]
         [DataType(DataType.Password)]
         public string confirm_pwd { get; set; }
-
-
-
-
+                
     }
 }

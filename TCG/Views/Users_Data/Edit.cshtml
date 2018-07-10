@@ -11,7 +11,7 @@
 }
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Users_Data", FormMethod.Post, new { @class = "my_form" }))
 {
     @Html.AntiForgeryToken()
 

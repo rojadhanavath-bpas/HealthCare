@@ -1,7 +1,7 @@
-﻿body {
+﻿/*body {
     padding-top: 50px;
     padding-bottom: 20px;
-}
+}*/
 
 ::-webkit-scrollbar {
     display: none;
@@ -25,15 +25,11 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 80%;
 }
 
 
-img {
-    height: auto;
-    width: 15vw;
-   padding-top: 4px;
-}
+
 .dateholder {
     color: deepskyblue;
     font-size: 12px;
@@ -59,7 +55,7 @@ img {
 
 
 .login-form {
-    width: 400px;
+    width: 25%;
 }
 
 .login-title {
@@ -70,6 +66,7 @@ img {
 
 .login-userinput {
     margin-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .login-button {
@@ -100,11 +97,20 @@ img {
 .panel-body {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 }
-
-
-.login-bg {
-    background: #B0E0E6 no-repeat; /* Old browsers   #02b8d8*/
+.panel-default {
+    -webkit-box-shadow: 0px -1px 26px 3px rgba(3,78,161,1);
+    -moz-box-shadow: 0px -1px 26px 3px rgba(3,78,161,1);
+    box-shadow: 0px -1px 26px 3px rgba(3,78,161,1);
 }
+.login-bg {
+   
+    padding-top: 0px;
+
+}
+    .login-bg > .navbar {
+        min-height: 100px !important;
+        background-color: #337ab7 !important;
+    }
 
 /*.btn-info {
     color: #86bcb6;
@@ -178,7 +184,7 @@ button.logout-button > a {
     }
 }
 .nav{
-    padding-left: 50px;
+    padding-left: 10%;
 }
 .modal-dialog {
     display: inline-block;
@@ -193,12 +199,13 @@ button.logout-button > a {
 .navbar-nav > li > a {
     color: black !important;
     font-weight: bold;
-    font-size: 1em;
+    /*font-size: 1em;*/
     font-family: Roboto;
     vertical-align: middle !important;
     padding-top: 18px;
-    height: 8vh;
-   
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+    height: 100%;
 }
  .navbar-nav > li > a:hover {
         background-color: powderblue !important;
@@ -433,8 +440,93 @@ table.paleBlueRows {
 
 .form-group > .glyphicon {
     top: -30px !important;
-    left: 78% !important;
+    left: 73%!important;
 }
 .form-horizontal .form-group {
     margin-right: 0px !important;
+    border-radius: 0px !important;
+    font-family: sans-serif !important;
+}
+.form-control {
+    border-radius: 0px !important;
+}
+.forgotbtn{
+    padding-left: 5px !important;
+}
+
+img {
+    max-height: 100%;
+    height: 100%;
+}
+
+.navbar-brand {
+    padding: 0px!important;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+
+    .navbar.center .navbar-inner .nav {
+        display: inline-block;
+        float: none;
+    }
+
+@media (min-width: 768px) and (max-width: 1175px) {
+    .nav {
+        padding-left: 1%;
+    }
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-left, .navbar-right {
+        float: none !important;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .navbar-nav {
+        float: none !important;
+        margin-top: 7.5px;
+    }
+
+        .navbar-nav > li {
+            float: none;
+        }
+
+            .navbar-nav > li > a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+    .collapse.in {
+        display: block !important;
+    }
+}
+/* Registration page CSS*/
+div.container.registration{
+    width: 35% !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container.changepassword {
+    width: 30% !important;
+    padding-top: 10%;
+    padding-bottom: 20px;
 }
