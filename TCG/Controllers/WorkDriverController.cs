@@ -1452,7 +1452,6 @@ namespace HealthcareAnalytics.Controllers
             {
                 using (TCG_WorklistModel tcg_CaseDetails = new TCG_WorklistModel())
                 {
-                    int new_Case_Value = 0;
                     var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
 
                     string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
@@ -3046,7 +3045,6 @@ namespace HealthcareAnalytics.Controllers
             {
                 using (TCG_WorklistModel tcg_CaseDetails = new TCG_WorklistModel())
                 {
-                    int new_Case_Value = 0;
                     var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
 
                     string ownerId = get_Owner_dropDownValue(Session["username"].ToString());

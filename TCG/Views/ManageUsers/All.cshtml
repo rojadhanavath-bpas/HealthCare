@@ -4,7 +4,7 @@
     ViewBag.Title = "All";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container-fluid">
+<div class="All">
     <div class="row">
         <br />
     </div>
@@ -15,7 +15,7 @@
 
         </div>
         <div class="col-md-10">
-            @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Create New", "AddUser", new { }, new { @class = "btn btn-success" })
         </div>
         <div class="col-md-1">
 
@@ -36,9 +36,6 @@
                     </th>
                     <th scope="col">
                         @Html.DisplayNameFor(model => model.LastName)
-                    </th>
-                    <th scope="col">
-                        @Html.DisplayNameFor(model => model.FullName)
                     </th>
                     <th scope="col">
                         @Html.DisplayNameFor(model => model.UserRole)
@@ -62,9 +59,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FullName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.UserRole)

@@ -1,0 +1,121 @@
+﻿@model HealthcareAnalytics.Models.ManageUsersModel
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container registration">
+    @using (Html.BeginForm("Create", "Account", FormMethod.Post, new { @class = "my_form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @*<div class="login-container login-form">*@
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 style="text-align:center; color:#dba560;">Create Your Account Here!</h3>
+
+
+                    @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MiddleName, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group dropdown">
+                        @Html.LabelFor(model => model.UserRole, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            <select name="role_value" class="form-control">
+                                @foreach (var role in ViewBag.roles)
+                                {
+                                    <option value="@role">@role</option>
+                                }
+                            </select>
+                            @*  @Html.DropDownListFor(model => model.user_email_id ,SelectListItem ViewBag.roles, String.Empty, new { @class = "extra-class" })*@
+                            @Html.ValidationMessageFor(model => model.UserRole, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EmailId, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-7">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </div>
+
+
+                    <div>
+                        @Html.ActionLink("Back to Login", "Login", "Home")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+
+
+
+
+

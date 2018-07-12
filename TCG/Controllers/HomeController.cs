@@ -911,8 +911,7 @@ namespace HealthcareAnalytics.Controllers
             editOpenTask_id = taskDetails.ACT_HspAccID;
             string id = editOpenTask_id;
             var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-            int new_Case_Task_Value = 0;
-
+           
             try
             {
                 if (ModelState.IsValid)
@@ -943,8 +942,7 @@ namespace HealthcareAnalytics.Controllers
 
             editOpenTask_id = ACT.ACT_HspAccID;          
             var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-            int new_Case_Task_Value = 0;
-
+           
             try
             {
                 if (ModelState.IsValid)
@@ -972,8 +970,7 @@ namespace HealthcareAnalytics.Controllers
 
             editOpenTask_id = ACT.ACT_HspAccID;
             var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-            int new_Case_Task_Value = 0;
-
+            
             try
             {
                 if (ModelState.IsValid)
@@ -1176,8 +1173,7 @@ namespace HealthcareAnalytics.Controllers
             editOpenTask_id = caseDetails.ACD_HspAccID;
             string id = editOpenTask_id;
             var case_TasK_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-            int new_Case_Value = 0;
-
+           
             try
             {
                 if (ModelState.IsValid)
@@ -1269,8 +1265,7 @@ namespace HealthcareAnalytics.Controllers
             editOpenTask_id = caseDetails.ACD_HspAccID;
             string id = editOpenTask_id;
             var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
-            int new_Case_Value = 0;
-
+            
             try
             {
                 if (ModelState.IsValid)
