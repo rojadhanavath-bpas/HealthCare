@@ -201,12 +201,14 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\justified-nav.css" />
+    <Content Include="Content\TestSheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\ADDI_Logo.jpg" />
+    <Content Include="Images\ADDI_Transparent%28CROP%29.png" />
     <Content Include="Images\Health_Icon.PNG" />
     <Content Include="Images\Logo_New.png" />
     <Content Include="Images\Pulse Logo_FINAL Color.png" />
@@ -244,6 +246,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
