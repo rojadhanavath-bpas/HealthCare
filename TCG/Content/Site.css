@@ -12,6 +12,7 @@
     display: inherit;
     padding-left: 0px;
     padding-right: 15px;
+    padding-top: 50px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -168,7 +169,7 @@ button.logout-button > a {
 
 
 .form-control {
-    margin: 4px !important;
+    margin: 9px !important;
 }
 
 .modal {
@@ -445,11 +446,14 @@ table.paleBlueRows {
 .form-horizontal .form-group {
     margin-right: 0px !important;
     border-radius: 0px !important;
-    font-family: sans-serif !important;
+    font-family: 'Segoe UI';
+    font-weight: normal; 
 }
-.form-control {
-    border-radius: 0px !important;
-}
+   
+
+    .form-control {
+        border-radius: 0px !important;
+    }
 .forgotbtn{
     padding-left: 5px !important;
 }
@@ -524,9 +528,21 @@ img {
 div.container.registration{
     width: 35% !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 30px !important;
+   
+}
+.form-group{
+    margin-bottom: 0px !important;
+}
+.form-control{
+    height: 30px !important;
+    font-size: 0.9em;
+    padding: 5px 8px !important;
 }
 .container.changepassword {
     width: 30% !important;
     padding-top: 10%;
     padding-bottom: 20px;
 }
+
+/*Manage Users All*/

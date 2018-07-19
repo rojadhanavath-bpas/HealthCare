@@ -1452,7 +1452,6 @@ namespace HealthcareAnalytics.Controllers
             {
                 using (TCG_WorklistModel tcg_CaseDetails = new TCG_WorklistModel())
                 {
-                    int new_Case_Value = 0;
                     var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
 
                     string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
@@ -3046,7 +3045,6 @@ namespace HealthcareAnalytics.Controllers
             {
                 using (TCG_WorklistModel tcg_CaseDetails = new TCG_WorklistModel())
                 {
-                    int new_Case_Value = 0;
                     var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
 
                     string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
@@ -3347,13 +3345,20 @@ namespace HealthcareAnalytics.Controllers
 
         public ActionResult TrendGraph()
         {
-            ViewBag.UserFirst = Session["first"];
-            ViewBag.UserLast = Session["last"];
-            ViewBag.Message = GetTableauToken();
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                ViewBag.Message = GetTableauToken();
 
-            log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
-            return View();
-
+                log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
+                return View();
+            }
         }
 
         public ActionResult PBTrendGraph()

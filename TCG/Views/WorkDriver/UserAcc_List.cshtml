@@ -6,7 +6,9 @@
 @{
     ViewBag.Title = "User Account List";
 }
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <html>
 <head>
     @*<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" src="stylesheet">
@@ -154,13 +156,13 @@
                             </div>
                             <div class="row">
                                 @*<div class="col-sm-12">
-                                    <div class=" center-block align-self-md-center paging-wrapper">
-                                        <span class="text-primary center-block align-self-md-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</span>
+                                               <div class=" center-block align-self-md-center paging-wrapper">
+                                                   <span class="text-primary center-block align-self-md-center">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</span>
 
-                                        @Html.PagedListPager(Model, page => Url.Action("UserAcc_List",
-                         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-                                    </div>
-                                </div>*@
+                                                   @Html.PagedListPager(Model, page => Url.Action("UserAcc_List",
+                                    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                                               </div>
+                                           </div>*@
                             </div>
                         </div>
                     </div>
