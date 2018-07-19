@@ -3345,13 +3345,20 @@ namespace HealthcareAnalytics.Controllers
 
         public ActionResult TrendGraph()
         {
-            ViewBag.UserFirst = Session["first"];
-            ViewBag.UserLast = Session["last"];
-            ViewBag.Message = GetTableauToken();
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                ViewBag.Message = GetTableauToken();
 
-            log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
-            return View();
-
+                log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
+                return View();
+            }
         }
 
         public ActionResult PBTrendGraph()

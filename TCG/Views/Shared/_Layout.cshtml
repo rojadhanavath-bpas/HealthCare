@@ -17,7 +17,32 @@
         $(document).ready(function () {
             $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
             $('a[href="' + this.location.pathname + '"]').parent().parent().parent().addClass('active');
+            setInterval(function () {
+
+                var match = document.cookie.match(new RegExp('(^| )timeoutcookie=([^;]+)'));
+                if (match) {
+
+                    console.log("Cookie Found");
+
+                } else {
+
+                    window.location ="login"
+                    console.log("Cookie NOT Found");
+                }
+
+            }, 5000);
         });
+
+        window.addEventListener("mousemove keypress", event => {
+            var expires = "";
+            
+                var date = new Date();
+                date.setTime(date.getTime() + (300 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            
+            document.cookie = "timeoutcookie" + "=" + (date.toUTCString() || "") + expires + "; path=/";
+        });
+        
     </script>
 
 </head>

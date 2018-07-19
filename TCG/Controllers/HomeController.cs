@@ -71,11 +71,7 @@ namespace HealthcareAnalytics.Controllers
             
         }
         
-        public ActionResult Home()
-        {
-            log.Debug("Loading Home Page..");
-            return View();
-        }
+       
         public ActionResult Worklist()
         {
             ViewBag.UserFirst = Session["first"];
@@ -147,49 +143,95 @@ namespace HealthcareAnalytics.Controllers
                 return View(result.ToPagedList(pageNumber, pageSize));
                // return Json(new {  data = data, recordtotal = totalRecords, recordsfiltered = totalRecords }, JsonRequestBehavior.AllowGet);
 
+            }           
+
+        } 
+        [HttpGet]
+        public ActionResult e(string logout)
+        {
+            if (logout == "true")
+            {
+                Session["User"] = null; //it's my session variable
+                Session.Clear();
+                Session.Abandon();
+                log.Debug("Cleared session..");
+                log.Debug("Signing out user");
+                FormsAuthentication.SignOut(); //you write this when you use FormsAuthentication
+                log.Debug("Signing Successful! Redirecting to login page..");
+                return RedirectToAction("login", "Home");
             }
-            
-
-        }        
-
-
+            else { return null; }
+        }
+        
         public ActionResult DebitAR()
         {
-            ViewBag.UserFirst = Session["first"];
-            ViewBag.UserLast = Session["last"];
-            ViewBag.Message = GetTableauToken();
-            log.Debug("[User:"+ Session["first"] +"]  "+ "Loading Debit AR  Page..");
-            return View();
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                ViewBag.Message = GetTableauToken();
+
+                log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
+                return View();
+            }
         }
 
         public ActionResult CreditAR()
         {
-            ViewBag.UserFirst = Session["first"];
-            ViewBag.UserLast = Session["last"];
-            ViewBag.Message = GetTableauToken();
-            log.Debug("[User:" + Session["first"] + "]  " + "Loading Credit AR  Page..");
-            return View();
+
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                ViewBag.Message = GetTableauToken();
+
+                log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
+                return View();
+            }
+            
         }
                
         public ActionResult ARManagement()
         {
-            ViewBag.UserFirst = Session["first"];
-            ViewBag.UserLast = Session["last"];
-            ViewBag.Message = GetTableauToken();
-            log.Debug("[User:" + Session["first"] + "]  " + "Loading AR Management Page..");
-            //this.getFile("http://ec2-34-194-103-217.compute-1.amazonaws.com:8111/api/GeneratePDF");
-            //this.getFile("http://www.pdf995.com/samples/pdf.pdf");
-            return View();
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                ViewBag.Message = GetTableauToken();
+
+                log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
+                return View();
+            }
         }
        
         public ActionResult DenialsManagement()
-        {            
-            ViewBag.UserFirst = Session["first"];
-            ViewBag.UserLast = Session["last"];
-            ViewBag.Message = GetTableauToken();
+        {
 
-            log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
-            return View();
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                ViewBag.Message = GetTableauToken();
+
+                log.Debug("[User:" + Session["first"] + "]  " + "Loading Denials Management  Page..");
+                return View();
+            }           
             
         }
 
@@ -229,6 +271,15 @@ namespace HealthcareAnalytics.Controllers
            
             return new StreamReader(response.GetResponseStream()).ReadToEnd();
                        
+        }
+
+        public void SetCookie()
+        {
+            HttpCookie timeout = new HttpCookie("timeoutcookie");
+            DateTime now = DateTime.Now;
+            timeout.Value = now.ToString();
+            timeout.Expires = now.AddMinutes(15);
+            //Response.Cookies.Add(timeout);
         }
                 
         [HttpPost]
@@ -355,6 +406,12 @@ namespace HealthcareAnalytics.Controllers
                     Session["last"] = details.FirstOrDefault().user_last_name;
                     Session["email"] = details.FirstOrDefault().user_email_id;
 
+                    HttpCookie timeout = new HttpCookie("timeoutcookie");
+                    DateTime now = DateTime.Now;
+                    timeout.Value = now.ToString();
+                    timeout.Expires = now.AddMinutes(5);
+                    Response.Cookies.Add(timeout);
+
                     return RedirectToAction("ARManagement", "Home");
                     //return RedirectToAction("worklist_Home", "WorkDriver");
 
@@ -369,6 +426,7 @@ namespace HealthcareAnalytics.Controllers
                 ModelState.AddModelError("", "Username and password is required");
             }
             return View(login);
+                        
         }
                    
 
