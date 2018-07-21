@@ -390,6 +390,8 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Icon.png" />
+    <Content Include="Images\ADDI_Logo.jpg" />
+    <Content Include="Images\ADDI_Transparent%28CROP%29.png" />
     <Content Include="Images\Health_Icon.PNG" />
     <Content Include="Images\hennepin healthcare new logo.png" />
     <Content Include="Images\Logo_New.png" />
@@ -757,11 +759,11 @@
     <Content Include="Views\WorkDriver\PBTrendGraph.cshtml" />
     <Content Include="Views\WorkDriver\HBUnderpayTrend.cshtml" />
     <Content Include="Views\WorkDriver\PBUnderpayTrends.cshtml" />
-    <Content Include="Views\Email\ChangePassword.cshtml" />
     <Content Include="Views\ManageUsers\AddUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Email\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
