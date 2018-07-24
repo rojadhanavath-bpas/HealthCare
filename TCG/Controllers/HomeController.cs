@@ -412,8 +412,8 @@ namespace HealthcareAnalytics.Controllers
                     timeout.Expires = now.AddMinutes(5);
                     Response.Cookies.Add(timeout);
 
-                    //return RedirectToAction("ARManagement", "Home");
-                    return RedirectToAction("worklist_Home", "WorkDriver");
+                    return RedirectToAction("ARManagement", "Home");
+                    //return RedirectToAction("worklist_Home", "WorkDriver");
 
                 }
                 else

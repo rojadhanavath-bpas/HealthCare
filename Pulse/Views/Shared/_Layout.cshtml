@@ -10,6 +10,20 @@
     @Styles.Render("~/Content/font-awesome.css")
     @Styles.Render("~/Content/font-awesome")
     @Styles.Render("~/Content/fontawesome")
+    <script type="text/javascript" src="https://bpassoftware.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/utaltx/b/7/a44af77267a987a660377e5c46e0fb64/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=e1e08a33"></script>
+
+    <script type="text/javascript">
+    window.ATL_JQ_PAGE_PROPS = {
+            "triggerFunction": function (showCollectorDialog) {
+                //Requires that jQuery is available!
+                jQuery("#jiraTicketCollector").click(function (e) {
+                    e.preventDefault();
+                    showCollectorDialog();
+                });
+            }
+        };
+    </script>
+
     <script>
         $(document).ready(function () {
             $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
@@ -74,6 +88,7 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <li><a id="jiraTicketCollector"><i class="glyphicon glyphicon-question-sign" aria-hidden="true"></i> Support </a></li>
                                     <li><a href="@Url.Action("login", "Home" )"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
                                 </ul>
                             </li>

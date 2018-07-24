@@ -12,6 +12,19 @@
     @Styles.Render("~/Content/font-awesome")
     @Styles.Render("~/Content/fontawesome")
     @Scripts.Render("~/bundles/datetime")
+    <script type="text/javascript" src="https://bpassoftware.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/utaltx/b/7/a44af77267a987a660377e5c46e0fb64/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=e1e08a33"></script>
+
+    <script type="text/javascript">
+        window.ATL_JQ_PAGE_PROPS = {
+            "triggerFunction": function (showCollectorDialog) {
+                //Requires that jQuery is available!
+                jQuery("#jiraTicketCollector").click(function (e) {
+                    e.preventDefault();
+                    showCollectorDialog();
+                });
+            }
+        };
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -19,8 +32,8 @@
             var x = this.location.pathname;
             var value = x.split("/");
             var loc = value[1];
-            var  v1 = value[3]; 
-           //FOR WORKDRIVER ---- LIVE or STAGING or LOCAl
+            var v1 = value[3];
+            //FOR WORKDRIVER ---- LIVE or STAGING or LOCAl
             if (loc == "ADDIWorkdriver" || loc == "staging_workdriver") {
                 if (v1 == "Underpayemnts_UserAcc_List" || v1 == "PB_Underpayments_UserAccList" || v1 == "viewCaseDetails" || v1 == "editCaseDetails" || v1 == "PBViewCaseDetails" || v1 == "PBeditCaseDetails") {
                     if (loc == "ADDIWorkdriver") {//LIVE
@@ -49,7 +62,7 @@
 
                 } else {
 
-                    window.location ="login"
+                    window.location = "login"
                     console.log("Cookie NOT Found");
                 }
 
@@ -58,14 +71,14 @@
 
         window.addEventListener("mousemove keypress", event => {
             var expires = "";
-            
-                var date = new Date();
-                date.setTime(date.getTime() + (300 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            
+
+            var date = new Date();
+            date.setTime(date.getTime() + (300 * 1000));
+            expires = "; expires=" + date.toUTCString();
+
             document.cookie = "timeoutcookie" + "=" + (date.toUTCString() || "") + expires + "; path=/";
         });
-        
+
     </script>
 
 </head>
@@ -86,7 +99,7 @@
                     </div>
                     <div class="navbar-collapse collapse " id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav  list-inline" style="margin-left: 18%;">
-                            @*<li class="dropdown">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href='@Url.Action("ARManagement", "Home")'>AR Management</a></li>
@@ -94,8 +107,8 @@
                                     <li><a href='@Url.Action("creditAR", "Home")'>Credit AR</a></li>
                                 </ul>
                             </li>
-                            <li><a href='@Url.Action("DenialsManagement", "Home")'>Denials Management</a></li>*@
-                            <li><a href='@Url.Action("worklist_Home", "WorkDriver")'>Receivable Management</a></li>
+                            <li><a href='@Url.Action("DenialsManagement", "Home")'>Denials Management</a></li>
+                            @*<li><a href='@Url.Action("worklist_Home", "WorkDriver")'>Receivable Management</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Root Cause Trends<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -104,7 +117,7 @@
                                     <li><a href='@Url.Action("PBTrendGraph", "WorkDriver")'>PB Trends</a></li>
                                     <li><a href='@Url.Action("PBUnderpayTrends", "WorkDriver")'>PB Underpayments</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                             <li><a href='@Url.Action("All", "ManageUsers")'>Manage Users</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right top-right">
@@ -114,8 +127,9 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("login", "Home" )"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
                                     <li><a href="@Url.Action("ChangePassword", "Account" )"><i class="fa fa-user-secret" aria-hidden="true"></i> Change Password </a></li>
+                                    <li><a id="jiraTicketCollector"><i class="glyphicon glyphicon-question-sign" aria-hidden="true"></i> Support </a></li>
+                                    <li><a href="@Url.Action("login", "Home" )"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -127,7 +141,7 @@
 
     </div>
 
-    @*<div class=" body-content">
+    <div class=" body-content">
 
         <div class="form-row">
             <div class="form-group  col-sm-1">
@@ -153,9 +167,9 @@
                 <span style="color:white !important;margin-left: 50%;">All Rights Reserved 2018&reg;</span>
             </div>
         </footer>
-    </div>*@
+    </div>
 
-    <div class=" body-content">
+    @*<div class=" body-content">
         <div class="form-row">
             <div class="form-group  col-sm-11">
             </div>
@@ -174,7 +188,7 @@
                 <span style="color:white !important;margin-left: 50%;">All Rights Reserved 2018&reg;</span>
             </div>
         </footer>
-    </div>
+    </div>*@
 
 
     @Scripts.Render("~/bundles/jquery")
