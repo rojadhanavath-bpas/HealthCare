@@ -369,12 +369,9 @@ namespace HealthcareAnalytics.Controllers
             //return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
             log.Debug("[Home][dispatchPdf]: Deleting the temporary PDF File ");
             System.IO.File.Delete(saveLocation);
-
-
         }
 
-        //SHA2_512 to String
-        
+        //SHA2_512 to String   
                 
         [HttpPost]
         [ValidateAntiForgeryToken]

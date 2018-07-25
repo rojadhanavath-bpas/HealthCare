@@ -207,6 +207,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationRolesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\Users_DataController.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Models\Account_Source.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationRoles.cs" />
     <Compile Include="Models\CaseCompleted_Master.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
@@ -759,6 +761,7 @@
     <Content Include="Views\WorkDriver\PBUnderpayTrends.cshtml" />
     <Content Include="Views\Email\ChangePassword.cshtml" />
     <Content Include="Views\ManageUsers\AddUser.cshtml" />
+    <Content Include="Views\ApplicationRoles\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
