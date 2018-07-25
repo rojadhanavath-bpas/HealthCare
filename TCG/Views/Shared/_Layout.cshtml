@@ -12,9 +12,45 @@
     @Styles.Render("~/Content/font-awesome")
     @Styles.Render("~/Content/fontawesome")
     @Scripts.Render("~/bundles/datetime")
+    <script type="text/javascript" src="https://bpassoftware.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/utaltx/b/7/a44af77267a987a660377e5c46e0fb64/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=e1e08a33"></script>
+
+    <script type="text/javascript">
+        window.ATL_JQ_PAGE_PROPS = {
+            "triggerFunction": function (showCollectorDialog) {
+                //Requires that jQuery is available!
+                jQuery("#jiraTicketCollector").click(function (e) {
+                    e.preventDefault();
+                    showCollectorDialog();
+                });
+            }
+        };
+    </script>
 
     <script>
         $(document).ready(function () {
+
+            var x = this.location.pathname;
+            var value = x.split("/");
+            var loc = value[1];
+            var v1 = value[3];
+            //FOR WORKDRIVER ---- LIVE or STAGING or LOCAl
+            if (loc == "ADDIWorkdriver" || loc == "staging_workdriver") {
+                if (v1 == "Underpayemnts_UserAcc_List" || v1 == "PB_Underpayments_UserAccList" || v1 == "viewCaseDetails" || v1 == "editCaseDetails" || v1 == "PBViewCaseDetails" || v1 == "PBeditCaseDetails") {
+                    if (loc == "ADDIWorkdriver") {//LIVE
+                        $('a[href="/ADDIWorkdriver/WorkDriver/worklist_Home"]').parent().addClass('active');
+                    }
+                    else if (loc == "staging_workdriver") {//STAGING
+                        $('a[href="/staging_workdriver/WorkDriver/worklist_Home"]').parent().addClass('active');
+                    }
+                }
+            }
+            else {//LOCAL
+                v1 = value[2]
+                if (v1 == "Underpayemnts_UserAcc_List" || v1 == "PB_Underpayments_UserAccList" || v1 == "viewCaseDetails" || v1 == "editCaseDetails" || v1 == "PBViewCaseDetails" || v1 == "PBeditCaseDetails") {
+                    $('a[href="/WorkDriver/worklist_Home"]').parent().addClass('active');
+                }
+            }
+
             $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
             $('a[href="' + this.location.pathname + '"]').parent().parent().parent().addClass('active');
             setInterval(function () {
@@ -26,7 +62,7 @@
 
                 } else {
 
-                    window.location ="login"
+                    window.location = "login"
                     console.log("Cookie NOT Found");
                 }
 
@@ -35,134 +71,125 @@
 
         window.addEventListener("mousemove keypress", event => {
             var expires = "";
-            
-                var date = new Date();
-                date.setTime(date.getTime() + (300 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            
+
+            var date = new Date();
+            date.setTime(date.getTime() + (300 * 1000));
+            expires = "; expires=" + date.toUTCString();
+
             document.cookie = "timeoutcookie" + "=" + (date.toUTCString() || "") + expires + "; path=/";
         });
-        
+
     </script>
 
 </head>
 <body>
-    
-        @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
-        {
 
-            <div class="navbar navbar-inverse navbar-fixed-top center">
-                <div class="container-fluid">
-                    <div class="navbar-header">
+    <div class="">
+
+        @if (Request.Url.PathAndQuery != "/addi" || Request.Url.PathAndQuery != "/addi/")
+        {
+            <div class="navbar navbar-inverse navbar-fixed-top center ">
+                <div class="container-fluid ">
+                    <div class="navbar-header ">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href='@Url.Action("Login", "Home")' class="navbar-brand"><img class="img-responsive" src="~/Images/hennepin healthcare new logo.png" /></a>
-
                     </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
+                    <div class="navbar-collapse collapse " id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav  list-inline" style="margin-left: 18%;">
                             <li class="dropdown">
-                                <a href="@Url.Action("ARManagement", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLink("AR Management", "ARManagement", "Home")</li>
-                                    <li>@Html.ActionLink("Debit AR", "DebitAR", "Home")</li>
-                                    <li>@Html.ActionLink("Credit AR", "CreditAR", "Home")</li>
+                                    <li><a href='@Url.Action("ARManagement", "Home")'>AR Management</a></li>
+                                    <li><a href='@Url.Action("debitAR", "Home")'>Debit AR</a></li>
+                                    <li><a href='@Url.Action("creditAR", "Home")'>Credit AR</a></li>
                                 </ul>
                             </li>
-                            <li>@Html.ActionLink("Denials Management", "DenialsManagement", "Home")</li>
-                            <li>@Html.ActionLink("Receivable Management", "worklist_Home", "WorkDriver")</li>
-                            <li>@Html.ActionLink("Trends", "TrendGraph", "WorkDriver")</li>
-                            @*<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" aria-expanded="false" data-toggle="dropdown">Receivable Management <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>@Html.ActionLink("Old Workdriver", "Worklist", "Home")</li>
-                        <li>@Html.ActionLink("New Workdriver", "worklist_Home", "WorkDriver")</li>
-                    </ul>
-                </li>*@
-                            <li>@Html.ActionLink("Manage Users", "All", "ManageUsers")</li>
-
-                        </ul>
-
-                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href='@Url.Action("DenialsManagement", "Home")'>Denials Management</a></li>
+                            @*<li><a href='@Url.Action("worklist_Home", "WorkDriver")'>Receivable Management</a></li>
                             <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Root Cause Trends<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href='@Url.Action("TrendGraph", "WorkDriver")'>HB Trends</a></li>
+                                    <li><a href='@Url.Action("HBUnderpayTrend", "WorkDriver")'>HB Underpayment</a></li>
+                                    <li><a href='@Url.Action("PBTrendGraph", "WorkDriver")'>PB Trends</a></li>
+                                    <li><a href='@Url.Action("PBUnderpayTrends", "WorkDriver")'>PB Underpayments</a></li>
+                                </ul>
+                            </li>*@
+                            <li><a href='@Url.Action("All", "ManageUsers")'>Manage Users</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right top-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast
+                                    <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Change Password", "ChangePassword", "Account")</li>
-                                    <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
-
+                                    <li><a href="@Url.Action("ChangePassword", "Account" )"><i class="fa fa-user-secret" aria-hidden="true"></i> Change Password </a></li>
+                                    <li><a id="jiraTicketCollector"><i class="glyphicon glyphicon-question-sign" aria-hidden="true"></i> Support </a></li>
+                                    <li><a href="@Url.Action("login", "Home" )"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
                                 </ul>
                             </li>
                         </ul>
-
-                    </div>
-
-                    </div>
-
+                    </div><!-- /.navbar-collapse -->
                 </div>
-
-    }
-
-    @*<div class="">
-            @if (Request.Url.PathAndQuery != "/pulse" || Request.Url.PathAndQuery != "/pulse/")
-            {
-
-                <div class="navbar navbar-inverse navbar-fixed-top">
-
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href='@Url.Action("Login", "Home")' class=""><img src="~/Images/hennepin healthcare new logo.png" /></a>
-
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Receivable Management", "worklist_Home", "WorkDriver")</li>
-                <li class="dropdown">
-                    <a href="@Url.Action("Root Cause Trends", "Home")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Root Cause Trends<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>@Html.ActionLink("HB Trends", "TrendGraph", "WorkDriver")</li>
-                        <li>@Html.ActionLink("HB Underpayment", "HBUnderpayTrend", "WorkDriver")</li>
-                        <li>@Html.ActionLink("PB Trends", "PBTrendGraph", "WorkDriver")</li>
-                        <li>@Html.ActionLink("PB Underpayment", "PBUnderpayTrends", "WorkDriver")</li>
-                    </ul>
-                </li>
-                <li>@Html.ActionLink("Manage Users", "Index", "Users_Data")</li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user-circle fa-lg"></i> &nbsp; @ViewBag.UserFirst @ViewBag.UserLast <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="@Url.Action("LogOff", "Home")"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out </a></li>
-                    </ul>
-                </li>
-            </ul>
-
-        </div>
-        </div>
+            </div>
 
         }
-        </div>*@
+
+    </div>
 
     <div class=" body-content">
-        @RenderBody()
+
+        <div class="form-row">
+            <div class="form-group  col-sm-1">
+
+            </div>
+            <div class="form-group  col-sm-11">
+
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group  col-sm-1">
+                <span style="float:left;margin-left:15% !important;margin-top:35% !important;"> <a href='@Url.Action("Login", "Home")'><img width="225" height="10" src="~/Images/ADDI_Logo.jpg" /></a></span>
+            </div>
+
+            <div class="form-group col-sm-11 text-left" style="margin-left:-10% !important;margin-top:2% !important;">
+                @RenderBody()
+            </div>
+        </div>
 
         <footer>
             <div class="footer">
-                <span>All Rights Reserved 2018&reg;</span>
+                <span style="color:white !important;margin-left: 50%;">All Rights Reserved 2018&reg;</span>
             </div>
         </footer>
     </div>
+
+    @*<div class=" body-content">
+        <div class="form-row">
+            <div class="form-group  col-sm-11">
+            </div>
+            <div class="form-group  col-sm-1">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-11 text-left" style="margin-top:2% !important;">
+                @RenderBody()
+            </div>
+            <div class="form-group  col-sm-1">                
+            </div>
+        </div>  
+        <footer>
+            <div class="footer">
+                <span style="color:white !important;margin-left: 50%;">All Rights Reserved 2018&reg;</span>
+            </div>
+        </footer>
+    </div>*@
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

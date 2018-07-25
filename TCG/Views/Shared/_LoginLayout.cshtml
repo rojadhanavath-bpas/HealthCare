@@ -10,20 +10,18 @@
     @Styles.Render("~/Content/font-awesome.css")
     @Styles.Render("~/Content/fontawesome")
 </head>
-<body class="login-bg">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
+<body>
+    @*<nav class="navbar navbar-default ">
+        <div class="container-fluid ">
+            <div class="navbar-header login-bg">
                 <a class="" href="#">
-                    <img alt="Brand" src="~/Images/hennepin healthcare new logo.png" style="height: auto; min-width: 350px; padding-top: 12px;">
+                    <img alt="Brand" src="~/Images/hennepin healthcare new logo.png" style="height: auto; min-width: 350px; padding-top: 12px;">                    
                 </a>
-            </div>
+            </div>           
         </div>
-    </nav>
+    </nav>*@
 
-
-
-    <div>
+    <div style="margin-top:0% !important;">
         @RenderBody()
     </div>
     @Scripts.Render("~/bundles/jquery")

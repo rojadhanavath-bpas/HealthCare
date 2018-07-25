@@ -9,10 +9,30 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    display: inherit;
+    /*display: inherit;
     padding-left: 0px;
-    padding-right: 15px;
-    padding-top: 50px;
+    padding-right: 15px;*/
+    height: 985px !important;
+    width: 100% !important;
+}
+
+
+@media (min-width: 768px) {
+    .body-content {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .body-contents {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .body-content {
+        width: 1170px;
+    }
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -38,25 +58,35 @@ textarea {
     right: 120px;
     top: 5px;
 }
+
 .footer {
     bottom: 0px;
     position: fixed;
-    height: 3%;
+    /*height: 3%;*/
+    height: 4% !important;
     width: 100%;
-    color: white;
-    padding-top: 5px;
-    background-color: #034EA1;
+    color: white !important;
+    padding-top: 10px;
+    /*font-family: Roboto;*/
+    font-family: 'Exo', sans-serif;
+    font-weight: bold;
+    /*background-color: #034ea1;*/
+    /*background-color: #34495D;*/
+    background-color: #2f7399;
 }
 
-.footer > span {
-        margin-left: 40%;
-        color: white;
+    .footer > span {
+        /*color: white;*/
+        color: black !important;
         font-size: 0.8vw;
     }
 
 
 .login-form {
-    width: 25%;
+    width: 65%;
+    margin-top: 30% !important;
+    margin-left: 20%;
+    background-color: #f2f2f2 !important;
 }
 
 .login-title {
@@ -91,26 +121,29 @@ textarea {
 }
 
 .login-container {
-    padding-top: 5%;
+    /*padding-top: 5%;*/
     margin: 0 auto;
 }
 
 .panel-body {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 }
+
 .panel-default {
     -webkit-box-shadow: 0px -1px 26px 3px rgba(3,78,161,1);
     -moz-box-shadow: 0px -1px 26px 3px rgba(3,78,161,1);
     box-shadow: 0px -1px 26px 3px rgba(3,78,161,1);
 }
-.login-bg {
-   
-    padding-top: 0px;
 
+.login-bg {
+    padding-top: 0px;
 }
+
     .login-bg > .navbar {
-        min-height: 100px !important;
-        background-color: #337ab7 !important;
+        min-height: 100% !important;
+        /*background-color: #337ab7 !important;*/
+        /*background-color: #f2f2f2 !important;*/
+        background-color: #f2f2f2 !important;
     }
 
 /*.btn-info {
@@ -169,7 +202,7 @@ button.logout-button > a {
 
 
 .form-control {
-    margin: 9px !important;
+    margin: 4px !important;
 }
 
 .modal {
@@ -184,62 +217,190 @@ button.logout-button > a {
         height: 100%;
     }
 }
-.nav{
+
+/*.nav {
     padding-left: 10%;
-}
+}*/
+
 .modal-dialog {
     display: inline-block;
     text-align: left;
     vertical-align: middle;
 }
+
 .navbar-inverse {
-    background-color: white !important;
-    color: black !important;
-    border-bottom: 5px solid #034EA1;
+    /*background-color: white !important;*/
+    /*background-color: #1a242f !important;*/
+    /*background-color:#34495D !important;*/
+    background-color: #2f7399 !important;
+    border-bottom: 5px solid #25B89A;
+    /*background-color: #25B89A !important;*/
 }
+
 .navbar-nav > li > a {
-    color: black !important;
+    color: white !important;
     font-weight: bold;
-    /*font-size: 1em;*/
-    font-family: Roboto;
+    /*font-family: Roboto;*/
+    font-family: 'Exo', sans-serif;
     vertical-align: middle !important;
     padding-top: 18px;
-    padding-left: 9px !important;
-    padding-right: 9px !important;
+    /*padding-left: 15px !important;
+    padding-right: 9px !important;*/
     height: 100%;
 }
- .navbar-nav > li > a:hover {
-        background-color: powderblue !important;
+
+    .navbar-nav > li > a:hover {
+        /*background-color: powderblue !important;*/
+        background-color: #25B89A !important;
         color: black !important;
     }
+
 .navbar-inverse .navbar-nav > .active > a {
-    background-color: #034EA1 !important;
+    /*background-color: #034EA1 !important;*/
+    background-color: #25B89A;
     color: white !important;
 }
+
 .navbar-inverse .navbar-nav > .open > a {
-    background-color: #034EA1 !important;
+    background-color: #25B89A !important;
     color: white !important;
 }
+
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
     background-color: powderblue !important;
     color: black !important;
 }
+
 .dropdown-menu > .active > a {
-    background-color: #034EA1 !important;
+    /*background-color: #034EA1 !important;*/
+    background-color: #25B89A;
     color: white !important;
 }
+
 .navbar-right {
     margin-right: 0px !important;
 }
+
 ul.dropdown-menu > li > a {
     color: black !important;
     font-size: 1em;
     font-family: Roboto;
+    /*font-family: 'Lato', serif !important;*/
     font-weight: bold;
 }
+
 .navbar-inverse .navbar-toggle .icon-bar {
     background-color: #034EA1 !important;
 }
+
+/*@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+html, body {
+    font-family: 'Exo', sans-serif;
+}
+
+.navbar-default {
+    font-size: 1.15em;
+    font-weight: 400;
+    background-color: #006b96;
+    padding: 10px;
+    border: 0px;
+    border-radius: 0px;
+}
+
+    .navbar-default .navbar-nav > li > a {
+        color: white;
+    }
+
+        .navbar-default .navbar-nav > li > a:hover {
+            color: #cbf0ff;
+        }
+
+    .navbar-default .navbar-brand {
+        color: #002433;
+    }
+
+        .navbar-default .navbar-brand:hover {
+            color: #ffffff;
+            text-shadow: 1px -1px 8px #b3e9ff;
+        }
+
+    .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+        background-color: #004059;
+        color: white;
+    }
+
+    .navbar-default .navbar-toggle {
+        border: none;
+    }
+
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+        border: none;
+    }
+
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+        background-color: #002433;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #ffffff;
+    }
+
+.dropdown-menu {
+    background-color: #004059;
+    color: white;
+    border: 0px;
+    border-radius: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+    .dropdown-menu > li > a {
+        background-color: #004059;
+        color: white;
+    }
+
+        .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+            background-color: #004059;
+            color: white;
+        }
+
+    .dropdown-menu .divider {
+        height: 1px;
+        margin: 9px 0;
+        overflow: hidden;
+        background-color: #003246;
+    }
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+}
+
+@media (max-width: 767px) {
+    .dropdown-menu > li > a {
+        background-color: #006b96;
+        color: #ffffff;
+    }
+
+        .dropdown-menu > li > a:hover {
+            color: #ffffff;
+        }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+        color: #ffffff;
+        background-color: transparent;
+    }
+
+    .dropdown-menu .divider {
+        height: 1px;
+        margin: 9px 0;
+        overflow: hidden;
+        background-color: #005577;
+    }*/
+}
+/* END Media Query */
+
+
 .animationload {
     background-color: #fff;
     height: 100%;
@@ -409,52 +570,50 @@ table.paleBlueRows {
 .list-group-item-info {
     color: #31708f;
     background-color: white !important;
-    
-    
 }
 
-.list-group-item-info:hover {
-    
-    background-color: lightgoldenrodyellow !important;
-}
+    .list-group-item-info:hover {
+        background-color: lightgoldenrodyellow !important;
+    }
 
     .list-group-item-info > a:hover {
-        text-decoration:none!important;
+        text-decoration: none !important;
     }
-    .list-group-item-info:hover > .fa  {
+
+    .list-group-item-info:hover > .fa {
         font-size: medium;
     }
-    .list-group-item-info:hover > .fa :hover{
-        color:green;
-        
 
-        font-size:small;
-    }
-
+        .list-group-item-info:hover > .fa :hover {
+            color: green;
+            font-size: small;
+        }
 
 
-    div.form-control span.glyphicon {
-        position: absolute!important;
-        right: 0!important;
-        padding: 8px 27px!important;
-    }
+
+div.form-control span.glyphicon {
+    position: absolute !important;
+    right: 0 !important;
+    padding: 8px 27px !important;
+}
 
 .form-group > .glyphicon {
     top: -30px !important;
-    left: 73%!important;
+    left: 73% !important;
 }
+
 .form-horizontal .form-group {
     margin-right: 0px !important;
     border-radius: 0px !important;
-    font-family: 'Segoe UI';
-    font-weight: normal; 
+    /*font-family: sans-serif !important;*/
+    font-family: 'Exo', sans-serif;
 }
-   
 
-    .form-control {
-        border-radius: 0px !important;
-    }
-.forgotbtn{
+.form-control {
+    border-radius: 0px !important;
+}
+
+.forgotbtn {
     padding-left: 5px !important;
 }
 
@@ -464,7 +623,7 @@ img {
 }
 
 .navbar-brand {
-    padding: 0px!important;
+    padding: 0px !important;
 }
 
 .navbar.center .navbar-inner {
@@ -480,6 +639,7 @@ img {
     .nav {
         padding-left: 1%;
     }
+
     .navbar-header {
         float: none;
     }
@@ -525,24 +685,13 @@ img {
     }
 }
 /* Registration page CSS*/
-div.container.registration{
+div.container.registration {
     width: 35% !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-top: 30px !important;
-   
 }
-.form-group{
-    margin-bottom: 0px !important;
-}
-.form-control{
-    height: 30px !important;
-    font-size: 0.9em;
-    padding: 5px 8px !important;
-}
+
 .container.changepassword {
     width: 30% !important;
     padding-top: 10%;
     padding-bottom: 20px;
 }
-
-/*Manage Users All*/

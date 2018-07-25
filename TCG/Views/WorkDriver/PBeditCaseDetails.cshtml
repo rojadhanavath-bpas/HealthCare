@@ -282,26 +282,26 @@
                                                         {
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_AccNo" class="text-info small">ACCOUNT NUMBER</label>
-                                                                @Html.TextBoxFor(Model => @s.Hospital_Account_ID, new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(m => @s.Hospital_Account_ID, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
 
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_PatientName" class="text-info small">PATIENT NAME</label>
-                                                                @Html.TextBoxFor(Model => @s.Account_Patient_Name, new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(m => @s.Account_Patient_Name, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
 
                                                             <div class="form-group col-sm-3">
                                                                 @*<label for="Txt_AccStatus" class="text-info">ACCOUNT STATUS</label>
-                                                                    @Html.TextBoxFor(Model => @s.Account_AR_Status, new { @class = "form-control ", @readonly = "readonly" })*@
+                                                                    @Html.TextBoxFor(m => @s.Account_AR_Status, new { @class = "form-control ", @readonly = "readonly" })*@
                                                                 <label for="Txt_AdmitDate" class="text-info small">ADMIT DATE</label>
-                                                                @Html.TextBoxFor(Model => @s.convAdmDate, new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(m => @s.convAdmDate, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
                                                         }
                                                         @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_HB_Result s in ViewBag.underPaymentsLinkData)
                                                         {
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_PatientType" class="text-info small">PATIENT TYPE</label>
-                                                                @Html.TextBoxFor(Model => @s.Enc_Specialty, new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(m => @s.Enc_Specialty, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
                                                         }
                                                     </div>
@@ -312,12 +312,12 @@
 
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_CurrentFC" class="text-info small">DEPARTMENT SPECIALITY</label>
-                                                                @Html.TextBoxFor(Model => @s.Dept_Specialty, new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(m => @s.Dept_Specialty, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
 
                                                             @*<div class="form-group col-sm-4">
                                                                     <label for="Txt_DischargeDate" class="text-info">DISCHARGE DATE</label>
-                                                                    @Html.TextBoxFor(Model => @s.convDischDate, new { @class = "form-control", @readonly = "readonly" })
+                                                                    @Html.TextBoxFor(m => @s.convDischDate, new { @class = "form-control", @readonly = "readonly" })
                                                                 </div>*@
                                                         }
 
@@ -325,16 +325,16 @@
                                                         {
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_DischargeDispos" class="text-info small">PROCEDURE CODE</label>
-                                                                @Html.TextBoxFor(Model => v.Diagnosis_Codes, new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(m => v.Diagnosis_Codes, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_DischargeDispos" class="text-info small">PLAN</label>
-                                                                @Html.TextBoxFor(Model => v.Plan_Name, new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(m => v.Plan_Name, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
 
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_OperPhysician" class="text-info small">PAYOR</label>
-                                                                @Html.TextBoxFor(Model => v.Payor_Name, new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(m => v.Payor_Name, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
                                                         }
                                                     </div>
@@ -398,13 +398,13 @@
                                                                         <label for="Txt_FinalBillDate" class="text-info">FIRST BILL DATE</label>
                                                                     </td>
                                                                     <td>
-                                                                        @Html.DisplayFor(Model => @s.convFirstBillDate, new { @class = "form-control ", @readonly = "readonly" })
+                                                                        @Html.DisplayFor(m => @s.convFirstBillDate, new { @class = "form-control ", @readonly = "readonly" })
                                                                     </td>
                                                                     <td>
                                                                         <label for="Txt_LastPayDate" class="text-info">LAST PAY DATE</label>
                                                                     </td>
                                                                     <td>
-                                                                        @Html.DisplayFor(Model => @s.convLastPayDate, new { @class = "form-control ", @readonly = "readonly" })
+                                                                        @Html.DisplayFor(m => @s.convLastPayDate, new { @class = "form-control ", @readonly = "readonly" })
                                                                     </td>
                                                                 </tr>
                                                             }

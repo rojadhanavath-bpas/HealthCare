@@ -1,6 +1,6 @@
 ﻿
 @model HealthcareAnalytics.Models.LoginModel
-@{  
+@{
     ViewBag.Title = "Home Page";
 }
 @{
@@ -10,52 +10,59 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="login-container login-form">
-        @*<div class="long-shadow">«The Chappelle Group » </div>*@
-        <div class="panel panel-default">
-            <div class="panel-body">
 
-                <h4 style="text-align:center"> Login to your Account</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-               
-                    <div class="form-group" style="padding-left:15%;">
-                        @*@Html.LabelFor(model => model.user_web_login, htmlAttributes: new { @class = "control-label" })*@
-                        @Html.EditorFor(model=> model.username, new { htmlAttributes = new { @class = "form-control", placeholder = "User Name" } })
-
-                        @Html.ValidationMessageFor(model => model.username, " ", new { @class = "text-danger" })
-                        <span class="glyphicon glyphicon-user"></span>
-                  
-                </div>
-
-                    <div class="form-group" style="padding-left:15%;">
-                       @*@Html.LabelFor(model => model.user_web_pwd, htmlAttributes: new { @class = "control-label col-md-4" })*@          
-
-                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
-
-                        @Html.ValidationMessageFor(model => model.password, " ", new { @class = "text-danger" })
-                        <span class="glyphicon glyphicon-lock"></span>            
-                    
-                </div>
-
-                
-                <div class="form-group">
-                    <div style="width:100%;margin-top:15px;padding-left:35%;">
-                        <input type="submit" style="width:100px!important;" value="Log In " class="btn btn-primary">
-                        <br />
-                        <br />
-                   </div>
-                        <div class="form-group">
-                            <ul style="list-style-type: none; font-size: 15px; padding-left: 10px;">
-                                <li class="control-label col-md-6">@Html.ActionLink("Forgot Password?", "IdentifyAccount", "Account")</li>
-                                <li class="col-md-6">@Html.ActionLink("Create Account", "create", "Account")</li>
-                            </ul>
-                        </div>                    
-
-                </div>
-            </div>
+<div class="body-content" style="background-color: #25B89A !important;">
+    @*#2f7399*@
+    <div class="container-fluid " style="background-color: #f2f2f2 !important;border-bottom: 5px solid #2f7399;height:100px !important;">
+        <div class="navbar-header login-bg text-center">
+            
+            <img width="250" style="margin-left:5% !important;margin-top:2% !important;" src="~/Images/ADDI_Transparent(CROP).png" class="img-responsive text-center center-block" alt="" />
+            
         </div>
+    </div>
+    
+    <div class="container">
+        <div class="row" id="pwd-container">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                @*<img alt="Brand" src="~/Images/hennepin healthcare new logo.png"  width= "500"  style="margin-top:20% !important; margin-left:20% !important;" class="img-responsive">*@
+                <section class="login-form">
+                    <div class="panel panel-default " style="background-color:#f2f2f2 !important;">
+                        <div class="panel-body ">
+                            <br />
+                            @*<img width="325" style="margin-left:15%;" src="~/Images/ADDI_Transparent(CROP).png" class="img-responsive text-center" alt="" />*@
+                            <img alt="Brand" src="~/Images/hennepin healthcare new logo.png" width="325" style=" margin-left:15% !important;" class="img-responsive">
+                            <br />
+                            <br />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group" style="margin-left:15%;">
+                                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", placeholder = "User Name" } })
+                                @Html.ValidationMessageFor(model => model.username, " ", new { @class = "text-danger" })
+                                <span class="glyphicon glyphicon-user"></span>
+                                <br />
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                                @Html.ValidationMessageFor(model => model.password, " ", new { @class = "text-danger" })
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="text-center" style="width:100%;">
+                                    <input type="submit" style="width:100px!important;" value="Log In " class="btn btn-lg btn-primary">
+                                </div>
+                                <br />
+                                <div class="form-group text-center">
+                                    <a href='@Url.Action("create", "Account")'>Create Account</a> or <a href='@Url.Action("IdentifyAccount", "Account")'>Reset Password</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-md-2"></div>
+        </div>
+
+    </div>
 </div>
 
 }
