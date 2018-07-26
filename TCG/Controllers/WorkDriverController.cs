@@ -66,16 +66,30 @@ namespace HealthcareAnalytics.Controllers
         // GET: WorkDriver
         public ActionResult Index()
         {
-            return View();
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                return View();
+            }
         }
 
         public ActionResult worklist_Home()
         {
-            ViewBag.UserFirst = Session["first"];
-            ViewBag.UserLast = Session["last"];
-
-
-            return View();
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                return View();
+            }
         }
 
 
@@ -193,11 +207,7 @@ namespace HealthcareAnalytics.Controllers
                     result[i].convertBal = "$" + result[i].convertAmount.ToString();
                 }
                 return View(result.ToPagedList(pageNumber, pageSize));
-
-
-
-            }
-
+                 }
 
 
         }

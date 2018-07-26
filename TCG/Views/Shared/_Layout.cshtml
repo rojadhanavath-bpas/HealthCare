@@ -61,19 +61,20 @@
                     console.log("Cookie Found");
 
                 } else {
+                  
+                        window.location.href=  window.location.origin + "/Home/login";
 
-                    window.location = "login"
                     console.log("Cookie NOT Found");
                 }
 
-            }, 5000);
+            }, 10000);
         });
 
         window.addEventListener("mousemove keypress", event => {
             var expires = "";
 
             var date = new Date();
-            date.setTime(date.getTime() + (300 * 1000));
+            date.setTime(date.getTime() + (900 * 1000));
             expires = "; expires=" + date.toUTCString();
 
             document.cookie = "timeoutcookie" + "=" + (date.toUTCString() || "") + expires + "; path=/";
@@ -119,6 +120,7 @@
                                 </ul>
                             </li>*@
                             <li><a href='@Url.Action("All", "ManageUsers")'>Manage Users</a></li>
+                            <li><a href="@Url.Action("Roles","ApplicationRoles")">Manage Roles</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right top-right">
                             <li class="dropdown">
