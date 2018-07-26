@@ -66,14 +66,14 @@
                     console.log("Cookie NOT Found");
                 }
 
-            }, 5000);
+            }, 500000);
         });
 
         window.addEventListener("mousemove keypress", event => {
             var expires = "";
 
             var date = new Date();
-            date.setTime(date.getTime() + (300 * 1000));
+            date.setTime(date.getTime() + (900 * 1000));
             expires = "; expires=" + date.toUTCString();
 
             document.cookie = "timeoutcookie" + "=" + (date.toUTCString() || "") + expires + "; path=/";
@@ -99,7 +99,7 @@
                     </div>
                     <div class="navbar-collapse collapse " id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav  list-inline" style="margin-left: 18%;">
-                            @*<li class="dropdown">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">AR Management<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href='@Url.Action("ARManagement", "Home")'>AR Management</a></li>
@@ -107,7 +107,7 @@
                                     <li><a href='@Url.Action("creditAR", "Home")'>Credit AR</a></li>
                                 </ul>
                             </li>
-                            <li><a href='@Url.Action("DenialsManagement", "Home")'>Denials Management</a></li>*@
+                            <li><a href='@Url.Action("DenialsManagement", "Home")'>Denials Management</a></li>
                             <li><a href='@Url.Action("worklist_Home", "WorkDriver")'>Receivable Management</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Root Cause Trends<span class="caret"></span></a>
@@ -141,7 +141,7 @@
 
     </div>
 
-    @*<div class=" body-content">
+    <div class=" body-content">
 
         <div class="form-row">
             <div class="form-group  col-sm-1">
@@ -167,9 +167,9 @@
                 <span style="color:white !important;margin-left: 50%;">All Rights Reserved 2018&reg;</span>
             </div>
         </footer>
-    </div>*@
+    </div>
 
-    <div class=" body-content">
+    @*<div class=" body-content">
         <div class="form-row">
             <div class="form-group  col-sm-11">
             </div>
@@ -188,7 +188,7 @@
                 <span style="color:white !important;margin-left: 50%;">All Rights Reserved 2018&reg;</span>
             </div>
         </footer>
-    </div>
+    </div>*@
 
 
     @Scripts.Render("~/bundles/jquery")
