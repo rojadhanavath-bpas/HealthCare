@@ -38,7 +38,35 @@ namespace HealthcareAnalytics.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult AddRole()
+        {
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                return View();
+            }
+        }
 
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddRole(String role)
+        {
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                return View();
+            }
+        }
     }
 }

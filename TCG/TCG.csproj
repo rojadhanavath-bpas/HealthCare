@@ -764,6 +764,7 @@
     <Content Include="Views\WorkDriver\PBUnderpayTrends.cshtml" />
     <Content Include="Views\ManageUsers\AddUser.cshtml" />
     <Content Include="Views\ApplicationRoles\Roles.cshtml" />
+    <Content Include="Views\ApplicationRoles\AddRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

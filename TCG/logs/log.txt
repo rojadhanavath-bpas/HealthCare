@@ -78,3 +78,43 @@ DEBUG 2018-07-23 15:20:02,013 1403630ms HomeController         DenialsManagement
 DEBUG 2018-07-23 15:20:10,767 1412384ms HomeController         LogOff             - Cleared session..
 DEBUG 2018-07-23 15:20:10,769 1412386ms HomeController         LogOff             - Signing out user
 DEBUG 2018-07-23 15:20:10,787 1412404ms HomeController         LogOff             - Signing Successful! Redirecting to login page..
+DEBUG 2018-07-25 17:10:04,015 1144121ms HomeController         Login              - bpas
+DEBUG 2018-07-25 17:10:04,052 1144157ms HomeController         Login              - bpas
+DEBUG 2018-07-25 17:10:04,053 1144158ms HomeController         Login              - [Home][login]: Succesfully logged in  rojadhanavath
+DEBUG 2018-07-25 17:10:04,156 1144261ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-25 17:10:04,621 1144726ms HomeController         ARManagement       - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-07-25 17:18:30,438 127960ms HomeController         Login              - bpas
+DEBUG 2018-07-25 17:18:30,462 127984ms HomeController         Login              - bpas
+DEBUG 2018-07-25 17:18:30,463 127985ms HomeController         Login              - [Home][login]: Succesfully logged in  rojadhanavath
+DEBUG 2018-07-25 17:18:30,622 128145ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-25 17:18:31,114 128636ms HomeController         ARManagement       - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-07-25 20:41:41,695 26822ms HomeController         Login              - bpas
+DEBUG 2018-07-25 20:41:41,721 26848ms HomeController         Login              - bpas
+DEBUG 2018-07-25 20:41:41,722 26849ms HomeController         Login              - [Home][login]: Succesfully logged in  rojadhanavath
+DEBUG 2018-07-25 20:41:41,932 27059ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-25 20:41:42,855 27982ms HomeController         ARManagement       - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-07-25 22:09:40,244 150608ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:09:40,281 150645ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:09:40,283 150647ms HomeController         Login              - [Home][login]: Succesfully logged in  rojadhanavath
+DEBUG 2018-07-25 22:09:40,459 150822ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-25 22:09:41,001 151364ms HomeController         ARManagement       - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-07-25 22:25:21,363 22388ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:25:21,381 22406ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:25:21,383 22408ms HomeController         Login              - [Home][login]: Succesfully logged in  rojadhanavath
+DEBUG 2018-07-25 22:25:21,596 22621ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-25 22:25:22,157 23182ms HomeController         ARManagement       - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-07-25 22:28:58,876 239901ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:28:58,877 239902ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:28:58,878 239903ms HomeController         Login              - [Home][login]: Succesfully logged in  rojadhanavath
+DEBUG 2018-07-25 22:28:58,891 239916ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-25 22:28:59,090 240115ms HomeController         ARManagement       - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-07-25 22:30:36,046 337071ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:30:36,048 337073ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:30:36,049 337074ms HomeController         Login              - [Home][login]: Succesfully logged in  rojadhanavath
+DEBUG 2018-07-25 22:30:36,059 337084ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-25 22:30:36,274 337299ms HomeController         ARManagement       - [User:Roja]  Loading Denials Management  Page..
+DEBUG 2018-07-25 22:31:06,965 367990ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:31:06,966 367991ms HomeController         Login              - bpas
+DEBUG 2018-07-25 22:31:06,967 367992ms HomeController         Login              - [Home][login]: Succesfully logged in  rojadhanavath
+DEBUG 2018-07-25 22:31:06,983 368008ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-07-25 22:31:07,195 368220ms HomeController         ARManagement       - [User:Roja]  Loading Denials Management  Page..
