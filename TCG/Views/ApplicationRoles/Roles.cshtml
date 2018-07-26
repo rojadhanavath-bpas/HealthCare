@@ -1,0 +1,84 @@
+﻿@model IEnumerable<HealthcareAnalytics.Models.ApplicationRoles>
+@{
+    ViewBag.Title = "Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="All">
+  
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            @Html.ActionLink("Create New", "AddUser", new { }, new { @class = "btn btn-success" })
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+
+
+            <table class="table table-striped">
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Role_Description)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.Role_Name)
+                    </th>                   
+                    <th scope="col">Actions</th>
+                   
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <i class="fa fa-user-circle fa-lg"></i> &nbsp; @Html.DisplayFor(modelItem => item.Role_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Role_Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>                        
+                        <td>
+                            <i class="fa fa-envelope fa-lg"></i> &nbsp;  @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "User", new { id = item.Role_Name }, new { @class = "badge badge-primary" })  |                           
+                            @Html.ActionLink("Delete", "Remove", new { id = item.Role_Name }, new { @class = "badge badge-danger" })
+
+                        </td>
+                        
+                    </tr>
+                }
+
+            </table>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+   
+</div>
+
+
+
+
+
+
