@@ -397,7 +397,7 @@ html, body {
         overflow: hidden;
         background-color: #005577;
     }*/
-}
+
 /* END Media Query */
 
 
@@ -688,6 +688,7 @@ img {
 div.container.registration {
     width: 35% !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 10vh;
 }
 
 .container.changepassword {
