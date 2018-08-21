@@ -406,7 +406,7 @@ namespace HealthcareAnalytics.Controllers
                     HttpCookie timeout = new HttpCookie("timeoutcookie");
                     DateTime now = DateTime.Now;
                     timeout.Value = now.ToString();
-                    timeout.Expires = now.AddMinutes(19);
+                    timeout.Expires = now.AddMinutes(45);
                     Response.Cookies.Add(timeout);
 
                     return RedirectToAction("ARManagement", "Home");

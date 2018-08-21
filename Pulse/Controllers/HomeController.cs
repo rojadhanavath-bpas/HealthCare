@@ -182,6 +182,17 @@ namespace HealthcareAnalytics.Controllers
             return View();
         }
 
+
+        public ActionResult StJoseph()
+        {
+            ViewBag.UserFirst = Session["first"];
+            ViewBag.UserLast = Session["last"];
+            ViewBag.Message = getTableauToken();
+
+            return View();
+        }
+
+
         //GET Method
         public ActionResult IdentifyAccount()
         {        

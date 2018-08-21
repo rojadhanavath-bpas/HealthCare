@@ -17,7 +17,7 @@
 }
 
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
     .body-content {
         width: 750px;
     }
@@ -33,7 +33,29 @@
     .body-content {
         width: 1170px;
     }
+}*/
+
+@media (min-width: 768px) {
+    .body-content {
+        width: 750px;
+        height: 985px !important;
+    }
 }
+
+@media (min-width: 992px) {
+    .body-contents {
+        width: 970px;
+        height: 985px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .body-content {
+        width: 1170px;
+        height: 985px !important;
+    }
+}
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 

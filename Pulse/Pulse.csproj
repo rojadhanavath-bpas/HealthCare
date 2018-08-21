@@ -291,6 +291,7 @@
     <Content Include="Views\Home\IdentifyAccount.cshtml" />
     <Content Include="Views\Home\RecoverPassword.cshtml" />
     <Content Include="Views\Home\Reset.cshtml" />
+    <Content Include="Views\Home\StJoseph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
