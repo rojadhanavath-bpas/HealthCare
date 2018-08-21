@@ -13,15 +13,15 @@ namespace HealthcareAnalytics.Models
         [Display(Name = "Created Date")]
         public DateTime CreatedDate { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Text)]
         [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Text)]
         [Display(Name = "Role Description")]
         public string  Role_Description { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Text)]
         [Display(Name = "Role")]
         public string Role_Name { get; set; }
 
