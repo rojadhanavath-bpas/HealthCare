@@ -262,7 +262,7 @@
     <Compile Include="Models\Get_AR_Info_for_Balance_Range_Result.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Get_Under_Paymnent_Accounts_HB_Result.cs">
+    <Compile Include="Models\Get_Under_Paymnent_Accounts_PB_Result.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Get_Under_Paymnent_Accounts_Result.cs">

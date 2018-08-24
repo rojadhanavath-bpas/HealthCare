@@ -28,8 +28,8 @@
         <AssociationConnector Association="TCG_Worklist.FK__Account_C__ACT_A__44CA3770" ManuallyRouted="false" />
         <AssociationConnector Association="TCG_Worklist.FK__Account_C__ACTH___498EEC8D" ManuallyRouted="false" />
         <AssociationConnector Association="TCG_Worklist.FK__Account_C__ACTH___489AC854" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="TCG_Worklist.HBorPB_Master" Width="1.5" PointX="12.375" PointY="12.75" />
         <EntityTypeShape EntityType="TCG_Worklist.Underpayment_ReasonCode" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TCG_Worklist.HBorPB_Master" Width="1.5" PointX="12.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

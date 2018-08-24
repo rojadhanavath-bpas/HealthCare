@@ -46,8 +46,8 @@ namespace HealthcareAnalytics.Models
         public virtual DbSet<Status_Master> Status_Master { get; set; }
         public virtual DbSet<Task_Master> Task_Master { get; set; }
         public virtual DbSet<Underpayment> Underpayments { get; set; }
-        public virtual DbSet<HBorPB_Master> HBorPB_Master { get; set; }
         public virtual DbSet<Underpayment_ReasonCode> Underpayment_ReasonCode { get; set; }
+        public virtual DbSet<HBorPB_Master> HBorPB_Master { get; set; }
     
         public virtual int Case_InsUpd(Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, Nullable<decimal> aCD_TotalCharges, Nullable<decimal> aCD_TotalPay, Nullable<decimal> aCD_TotalAdj, Nullable<decimal> aCD_AmtDiffNAA, Nullable<decimal> aCD_AmtDiffPayor, Nullable<decimal> aCD_ExpAmt, string aCD_BillProvider, string aCD_Department, string aCD_HBorPB, Nullable<int> aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, Nullable<int> aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, Nullable<int> aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber)
         {
@@ -260,9 +260,14 @@ namespace HealthcareAnalytics.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_Result>("Get_Under_Paymnent_Accounts");
         }
     
-        public virtual ObjectResult<Get_Under_Paymnent_Accounts_HB_Result> Get_Under_Paymnent_Accounts_HB()
+        public virtual int Get_Under_Paymnent_Accounts_HB()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_HB_Result>("Get_Under_Paymnent_Accounts_HB");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Get_Under_Paymnent_Accounts_HB");
+        }
+    
+        public virtual ObjectResult<Get_Under_Paymnent_Accounts_PB_Result> Get_Under_Paymnent_Accounts_PB()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_PB_Result>("Get_Under_Paymnent_Accounts_PB");
         }
     }
 }

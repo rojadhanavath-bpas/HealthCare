@@ -73,7 +73,6 @@ namespace HealthcareAnalytics.Models
         public string TotAdjAmt { get; set; }
         public string TotAccBal { get; set; }
 
-        
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account_Case_Detials_History> Account_Case_Detials_History { get; set; }
