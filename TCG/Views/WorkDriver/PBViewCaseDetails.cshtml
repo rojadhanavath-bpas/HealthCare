@@ -331,17 +331,19 @@
                                                             </div>
 
                                                             @*<div class="form-group col-sm-4">
-                                                                    <label for="Txt_DischargeDate" class="text-info">DISCHARGE DATE</label>
-                                                                    @Html.TextBoxFor(m => @s.convDischDate, new { @class = "form-control", @readonly = "readonly" })
-                                                                </div>*@
+                                                            <label for="Txt_DischargeDate" class="text-info">DISCHARGE DATE</label>
+                                                            @Html.TextBoxFor(m => @s.convDischDate, new { @class = "form-control", @readonly = "readonly" })
+                                                        </div>*@
                                                         }
 
+
+                                                            <div class="form-group col-sm-3">
+                                                                <label for="Txt_DischargeDispos" class="text-info small">DIAG/PROC CODE</label>
+                                                                @*@Html.TextBoxFor(m => v.Diagnosis_Codes, new { @class = "form-control ", @readonly = "readonly" })*@                                                               
+                                                                @Html.DropDownList("SelectedDropDownValue", (SelectList)ViewBag.cptvalues, new { @class = "form-control" })
+                                                            </div>
                                                         @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_PB_Result v in ViewBag.underPaymentsLinkData)
                                                         {
-                                                            <div class="form-group col-sm-3">
-                                                                <label for="Txt_DischargeDispos" class="text-info small">PROCEDURE CODE</label>
-                                                                @Html.TextBoxFor(m => v.Diagnosis_Codes, new { @class = "form-control ", @readonly = "readonly" })
-                                                            </div>
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_DischargeDispos" class="text-info small">PLAN</label>
                                                                 @Html.TextBoxFor(m => v.Plan_Name, new { @class = "form-control ", @readonly = "readonly" })

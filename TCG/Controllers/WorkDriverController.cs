@@ -216,7 +216,7 @@ namespace HealthcareAnalytics.Controllers
 
         }
 
-        public ActionResult Underpayemnts_UserAcc_List(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue)
+        public ActionResult Underpayemnts_UserAcc_List(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue, string type)
         {
             if (Session["username"] == null)
             {
@@ -254,6 +254,25 @@ namespace HealthcareAnalytics.Controllers
                 using (TCG_WorklistModel db2 = new TCG_WorklistModel())
                 {
                     List<Get_Under_Paymnent_Accounts_Result> result = db2.Get_Under_Paymnent_Accounts().ToList();
+
+                    if (type == "All")
+                    {
+                        using (var db = new TCG_WorklistModel())
+                        {
+                            result = (from c in db.Get_Under_Paymnent_Accounts()                                      
+                                      select c).ToList();
+                        }
+                    }
+                    else if(type == "New" || type== "Zero Balance" || type=="Credit Balance")
+                    {
+                        using (var db = new TCG_WorklistModel())
+                        {
+                            result = (from c in db.Get_Under_Paymnent_Accounts()
+                                      where c.CaseStatus == type
+                                      select c).ToList();
+                        }
+                    }
+
                     List<Get_Under_Paymnent_Accounts_PB_Result> flagRes = new List<Get_Under_Paymnent_Accounts_PB_Result>();
                     flagRes.Add(new Get_Under_Paymnent_Accounts_PB_Result() { flag = 2 });
                     ViewBag.flagDetails = flagRes;
@@ -279,6 +298,13 @@ namespace HealthcareAnalytics.Controllers
 
                         if (!string.IsNullOrEmpty(result[i].Brief_Summary))
                             result[i].flagCase = false;
+
+                        if (result[i].CaseStatus == "New")
+                            result[i].flagCaseValue = 1;
+                        else if (result[i].CaseStatus == "Credit Balance")
+                            result[i].flagCaseValue = 2;
+                        else
+                            result[i].flagCaseValue = 3;
 
                         if (string.IsNullOrEmpty(result[i].Payor_Name))
                             result[i].Payor_Name = "";
@@ -369,7 +395,7 @@ namespace HealthcareAnalytics.Controllers
         }
 
 
-        public ActionResult PB_Underpayments_UserAccList(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue)
+        public ActionResult PB_Underpayments_UserAccList(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue,string type)
         {
             if (Session["username"] == null)
             {
@@ -407,6 +433,24 @@ namespace HealthcareAnalytics.Controllers
                 using (TCG_WorklistModel db2 = new TCG_WorklistModel())
                 {
                     List<Get_Under_Paymnent_Accounts_PB_Result> result = db2.Get_Under_Paymnent_Accounts_PB().ToList();
+
+                    if (type == "All")
+                    {
+                        using (var db = new TCG_WorklistModel())
+                        {
+                            result = (from c in db.Get_Under_Paymnent_Accounts_PB()
+                                      select c).ToList();
+                        }
+                    }
+                    else if (type == "New" || type == "Zero Balance" || type == "Credit Balance")
+                    {
+                        using (var db = new TCG_WorklistModel())
+                        {
+                            result = (from c in db.Get_Under_Paymnent_Accounts_PB()
+                                      where c.Acct_Status == type
+                                      select c).ToList();
+                        }
+                    }
 
                     List<Get_Under_Paymnent_Accounts_PB_Result> flagRes = new List<Get_Under_Paymnent_Accounts_PB_Result>();
                     flagRes.Add(new Get_Under_Paymnent_Accounts_PB_Result() { flag = 1 });
@@ -537,7 +581,9 @@ namespace HealthcareAnalytics.Controllers
             }
         }
 
+
         
+
         private static List<SelectListItem> populateHPorPB()
         {
             List<SelectListItem> items = new List<SelectListItem>();
@@ -674,7 +720,7 @@ namespace HealthcareAnalytics.Controllers
 
         }
 
-
+       
         [HttpGet]
         public ActionResult editCaseDetails(string id, string linkName)
         {
@@ -1803,6 +1849,22 @@ namespace HealthcareAnalytics.Controllers
                 if (underPaymentsListByID.Count > 0)
                 {
                     underPaymentsListByID[0].DischargeDate = underPaymentsListByID[0].Disch_Date.Value.ToShortDateString();
+                    string[] cptcode;
+                    if (underPaymentsListByID[0].CPTCODES.Contains(','))
+                    {
+                        cptcode = underPaymentsListByID[0].CPTCODES.Split(',');
+                        List<string> key = new List<string>();
+                        for(int i=0;i<cptcode.Length;i++)
+                        {
+                            key.Add(cptcode[i]);
+                        }
+                        ViewBag.cptvalues = new SelectList(key);                       
+
+                    }
+                    else
+                    {
+                        ViewBag.cptvalues = new SelectList(underPaymentsListByID[0].CPTCODES);
+                    }
                 }
 
                 try
@@ -1934,6 +1996,7 @@ namespace HealthcareAnalytics.Controllers
                             else
                                 taskDetails[0].convLastPayDate = " ";
 
+                            
 
                             var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
                             var model = new TCG_WorklistModel();
@@ -1952,9 +2015,13 @@ namespace HealthcareAnalytics.Controllers
                                 {
                                     int billStatus_type;
                                     //if (underPaymentsListByID[0].Acct_Status.HasValue)
-                                    if (underPaymentsListByID[0].Acct_Status !=null)
+                                    if (underPaymentsListByID[0].Acct_Status != null)
                                     {
                                         string test = Convert.ToString(underPaymentsListByID[0].Acct_Status);
+                                        if (test == "New" || test == "Zero Balance" || test == "Credit Balance")
+                                        {
+                                            test = "Select";
+                                        }
                                         billStatus_type = get_BillStatus_dropDownValue(test.ToString());
                                     }
                                     else
@@ -2160,6 +2227,10 @@ namespace HealthcareAnalytics.Controllers
                                     if (underPaymentsListByID[0].Acct_Status != null)
                                     {
                                         string test = Convert.ToString(underPaymentsListByID[0].Acct_Status);
+                                        if (test == "New" || test == "Zero Balance" || test == "Credit Balance")
+                                        {
+                                            test = "Select";
+                                        }
                                         billStatus_type = get_BillStatus_dropDownValue(test.ToString());
                                     }
                                     else
@@ -2364,6 +2435,22 @@ namespace HealthcareAnalytics.Controllers
                 if (underPaymentsListByID.Count > 0)
                 {
                     underPaymentsListByID[0].DischargeDate = underPaymentsListByID[0].Disch_Date.Value.ToShortDateString();
+                    string[] cptcode;                    
+                    if (underPaymentsListByID[0].CPTCODES.Contains(','))
+                    {
+                        cptcode = underPaymentsListByID[0].CPTCODES.Split(',');
+                        List<string> key = new List<string>();
+                        for (int i = 0; i < cptcode.Length; i++)
+                        {
+                            key.Add(cptcode[i]);
+                        }
+                        ViewBag.cptvalues = new SelectList(key);
+
+                    }
+                    else
+                    {
+                        ViewBag.cptvalues = new SelectList(underPaymentsListByID[0].CPTCODES);
+                    }
                 }
 
                 try
@@ -2515,6 +2602,10 @@ namespace HealthcareAnalytics.Controllers
                                     if (underPaymentsListByID[0].Acct_Status != null)
                                     {
                                         string test = Convert.ToString(underPaymentsListByID[0].Acct_Status);
+                                        if (test == "New" || test == "Zero Balance" || test == "Credit Balance")
+                                        {
+                                            test = "Select";
+                                        }
                                         billStatus_type = get_BillStatus_dropDownValue(test.ToString());
                                     }
                                     else
@@ -2720,6 +2811,10 @@ namespace HealthcareAnalytics.Controllers
                                     if (underPaymentsListByID[0].Acct_Status != null)
                                     {
                                         string test = Convert.ToString(underPaymentsListByID[0].Acct_Status);
+                                        if(test == "New" || test == "Zero Balance" || test == "Credit Balance")
+                                        {
+                                            test = "Select";
+                                        }
                                         billStatus_type = get_BillStatus_dropDownValue(test.ToString());
                                     }
                                     else

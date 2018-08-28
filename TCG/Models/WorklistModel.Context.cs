@@ -255,11 +255,6 @@ namespace HealthcareAnalytics.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_Task_InsUpd", aCT_IDParameter, aCT_HspAccIDParameter, aCT_ACD_IDParameter, aCT_CompletedParameter, aCT_PriorityParameter, aCT_DescriptionParameter, aCT_OwnerParameter, aCT_CommentParameter, aCT_DueDateParameter, aCT_DeleteFlagParameter, aCT_CreatedByParameter, aCT_CreatedDateParameter, aCT_UpdatedByParameter, aCT_UpdateddateParameter, aCT_UpdatedBy_DBParameter, new_recordNumber);
         }
     
-        public virtual ObjectResult<Get_Under_Paymnent_Accounts_Result> Get_Under_Paymnent_Accounts()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_Result>("Get_Under_Paymnent_Accounts");
-        }
-    
         public virtual int Get_Under_Paymnent_Accounts_HB()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Get_Under_Paymnent_Accounts_HB");
@@ -268,6 +263,11 @@ namespace HealthcareAnalytics.Models
         public virtual ObjectResult<Get_Under_Paymnent_Accounts_PB_Result> Get_Under_Paymnent_Accounts_PB()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_PB_Result>("Get_Under_Paymnent_Accounts_PB");
+        }
+    
+        public virtual ObjectResult<Get_Under_Paymnent_Accounts_Result> Get_Under_Paymnent_Accounts()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_Result>("Get_Under_Paymnent_Accounts");
         }
     }
 }

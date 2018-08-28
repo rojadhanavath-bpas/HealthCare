@@ -330,7 +330,7 @@
                                                         @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_Result v in ViewBag.underPaymentsLinkData)
                                                         {
                                                             <div class="form-group col-sm-3">
-                                                                <label for="Txt_DischargeDispos" class="text-info small">DIAGNOSIS CODE</label>
+                                                                <label for="Txt_DischargeDispos" class="text-info small">DIAG/PROC CODE</label>
                                                                 @Html.TextBoxFor(m => v.Diagnosis_Codes, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
                                                             <div class="form-group col-sm-3">

@@ -55,8 +55,6 @@ namespace HealthcareAnalytics.Models
         public string totalAdj { get; set; }
         public string totalAccBal { get; set; }
 
-
-
         public virtual Account_Case_Details Account_Case_Details { get; set; }
     }
 }

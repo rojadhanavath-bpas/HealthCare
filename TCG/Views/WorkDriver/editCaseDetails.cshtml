@@ -291,7 +291,7 @@
 
                                                             <div class="form-group col-sm-3">
                                                                 @*<label for="Txt_AccStatus" class="text-info">ACCOUNT STATUS</label>
-                                                                    @Html.TextBoxFor(m => @s.Account_AR_Status, new { @class = "form-control ", @readonly = "readonly" })*@
+                    @Html.TextBoxFor(m => @s.Account_AR_Status, new { @class = "form-control ", @readonly = "readonly" })*@
                                                                 <label for="Txt_AdmitDate" class="text-info small">ADMIT DATE</label>
                                                                 @Html.TextBoxFor(m => @s.convAdmDate, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
@@ -302,38 +302,40 @@
                                                             </div>
                                                         </div>
                                                     }
-                                                    <div class="form-row">
-                                                        @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
-                                                        {
+                                                        <div class="form-row">
+                                                            @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                            {
 
-                                                            <div class="form-group col-sm-3">
-                                                                <label for="Txt_CurrentFC" class="text-info small">CURRENT F/C</label>
-                                                                @Html.TextBoxFor(m => @s.Account_Financial_Class, new { @class = "form-control ", @readonly = "readonly" })
-                                                            </div>
+                                                                <div class="form-group col-sm-3">
+                                                                    <label for="Txt_CurrentFC" class="text-info small">CURRENT F/C</label>
+                                                                    @Html.TextBoxFor(m => @s.Account_Financial_Class, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
 
-                                                            @*<div class="form-group col-sm-4">
-                                                                    <label for="Txt_DischargeDate" class="text-info">DISCHARGE DATE</label>
-                                                                    @Html.TextBoxFor(m => @s.convDischDate, new { @class = "form-control", @readonly = "readonly" })
-                                                                </div>*@
-                                                        }
+                                                                @*<div class="form-group col-sm-4">
+                                                                <label for="Txt_DischargeDate" class="text-info">DISCHARGE DATE</label>
+                                                                @Html.TextBoxFor(m => @s.convDischDate, new { @class = "form-control", @readonly = "readonly" })
+                                                            </div>*@
+                                                            }
 
-                                                        @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_Result v in ViewBag.underPaymentsLinkData)
-                                                        {
-                                                            <div class="form-group col-sm-3">
-                                                                <label for="Txt_DischargeDispos " class="text-info small">DIAGNOSIS CODE</label>
-                                                                @Html.TextBoxFor(m => v.Diagnosis_Codes, new { @class = "form-control ", @readonly = "readonly" })
-                                                            </div>
-                                                            <div class="form-group col-sm-3">
-                                                                <label for="Txt_DischargeDispos " class="text-info small">PLAN</label>
-                                                                @Html.TextBoxFor(m => v.Plan_Name, new { @class = "form-control ", @readonly = "readonly" })
-                                                            </div>
+                                                            @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_PB_Result v in ViewBag.underPaymentsLinkData)
+                                                            {
+                                                                <div class="form-group col-sm-3">
+                                                                    <label for="Txt_DischargeDispos " class="text-info small">DIAG/PROC CODE</label>
+                                                                    @Html.TextBoxFor(m => v.Diagnosis_Codes, new { @class = "form-control ", @readonly = "readonly" })
 
-                                                            <div class="form-group col-sm-3">
-                                                                <label for="Txt_OperPhysician " class="text-info small">PAYOR</label>
-                                                                @Html.TextBoxFor(m => v.Payor_Name, new { @class = "form-control ", @readonly = "readonly" })
-                                                            </div>
-                                                        }
-                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group col-sm-3">
+                                                                    <label for="Txt_DischargeDispos " class="text-info small">PLAN</label>
+                                                                    @Html.TextBoxFor(m => v.Plan_Name, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
+
+                                                                <div class="form-group col-sm-3">
+                                                                    <label for="Txt_OperPhysician " class="text-info small">PAYOR</label>
+                                                                    @Html.TextBoxFor(m => v.Payor_Name, new { @class = "form-control ", @readonly = "readonly" })
+                                                                </div>
+                                                            }
+                                                        </div>
                                                 </div>
                                             </div>
 

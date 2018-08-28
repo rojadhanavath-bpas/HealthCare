@@ -10,7 +10,7 @@
 namespace HealthcareAnalytics.Models
 {
     using System;
-
+    
     public partial class Get_Under_Paymnent_Accounts_Result
     {
         public Nullable<int> Deferral_Due { get; set; }
@@ -31,6 +31,7 @@ namespace HealthcareAnalytics.Models
         public string Brief_Summary { get; set; }
         public Nullable<System.DateTime> DateOfUpdate { get; set; }
         public string Biller { get; set; }
+        public string CaseStatus { get; set; }
 
         public string DischargeDate { get; set; }
         public decimal convertAmount { get; set; }
@@ -39,9 +40,8 @@ namespace HealthcareAnalytics.Models
         public string PatientName { get; set; }
         public string caseFlag { get; set; }
         public Boolean flagCase { get; set; }
-        public int flagCaseValue { get; set; }
         public string ddlValue { get; set; }
         public int flag { get; set; }
-
+        public int flagCaseValue { get; set; }
     }
 }

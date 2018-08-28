@@ -50,10 +50,8 @@ namespace HealthcareAnalytics.Models
         public string PatientName { get; set; }
         public string caseFlag { get; set; }
         public Boolean flagCase { get; set; }
-        public int flagCaseValue { get; set; }
         public string ddlValue { get; set; }
         public int flag { get; set; }
-
-
+        public int flagCaseValue { get; set; }
     }
 }

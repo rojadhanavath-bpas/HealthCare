@@ -80,10 +80,11 @@
 
                             <div class="col-sm-4">
                                 <label class="text-info text-center center-block">ACCOUNT CLASS: PB </label>
+                                
                             </div>
                             @*<div class="col-sm-2">
 
-                                </div>*@
+                            </div>*@
                             <div class="col-sm-2">
 
                             </div>
@@ -97,7 +98,31 @@
                             </div>
 
                         </div>
+                        <div class="row">
+                            <div class="col-sm-4">
 
+                            </div>
+                            <div class="col-sm-1">
+                                <label class="text-info text-center center-block">CASE STATUS:  </label>
+                            </div>
+                           
+                            <div class="col-sm-1">
+                                @Html.ActionLink("ALL", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "All" }, new { @class = "btn-sm btn-block btn-primary text-center" })
+                            </div>
+                            <div class="col-sm-1">
+
+                                @Html.ActionLink("New", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "New" }, new { @class = "btn-sm btn-block btn-primary text-center" })
+                            </div>
+                            <div class="col-sm-1">
+                                @Html.ActionLink("Zero Bal", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "Zero Balance" }, new { @class = " btn-sm btn-block btn-primary text-center" })
+                            </div>
+                            <div class="col-sm-1">
+                                @Html.ActionLink("Credit Bal", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "Credit Balance" }, new { @class = "btn-sm btn-block btn-primary text-center" })
+                            </div>
+                            <div class="col-sm-3">
+
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-sm-12">
@@ -142,21 +167,21 @@
                                                     @Html.DisplayFor(modelItem => item.convertBal)
                                                 </td>
                                                 @*<td >
-                                                        @Html.DisplayFor(modelItem => item.Plan_Name)
-                                                    </td>*@
+                                    @Html.DisplayFor(modelItem => item.Plan_Name)
+                                </td>*@
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Acct_Class)
                                                 </td>
                                                 <td></td>
                                                 <td class="small">
                                                     @*@if (item.flagCase)
-        {
-            <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
-        }
-        else
-        {
-            <button id="btn2" class="btn-xs active btn-block btn-danger">In-Review</button>
-        }*@
+                                    {
+                                        <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
+                                    }
+                                    else
+                                    {
+                                        <button id="btn2" class="btn-xs active btn-block btn-danger">In-Review</button>
+                                    }*@
                                                     @if (item.flagCaseValue == 1)
                                                     {
                                                         <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
