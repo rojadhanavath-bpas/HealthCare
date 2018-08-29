@@ -24,15 +24,7 @@
 
         });
 
-        $(document).ready(function () {
-            $('rb1').live('change', function () {
-                alert($(this).val());
-                window.location = '@Url.Action("editCaseDetails", "WorkDriver")';
-            });
-
-           
-        });
-
+       
     </script>
 
 </head>
@@ -114,19 +106,18 @@
                             <div class="col-sm-1">
                                 <label class="text-info text-center center-block">CASE STATUS:  </label>
                             </div>                            
-                            <div class="col-sm-1 ">
-                                <input type='radio' id='rb1' name='type' />
-                                @Html.ActionLink("ALL", "Underpayemnts_UserAcc_List", "WorkDriver", new { type = "All" }, new { @class = "btn-sm btn-block btn-primary text-center", @id = "link1" })
+                            <div class="col-sm-1 ">                                
+                                @Html.ActionLink("All", "Underpayemnts_UserAcc_List", "WorkDriver", new { type = "All" }, new { @class = "btn-sm btn-block btn-primary text-center" })
                             </div>
                             <div class="col-sm-1">
 
-                                @Html.ActionLink("New", "Underpayemnts_UserAcc_List", "WorkDriver", new { type = "New" }, new { @class = "btn-sm btn-block btn-primary text-center" })
+                                @Html.ActionLink("Debit", "Underpayemnts_UserAcc_List", "WorkDriver", new { type = "New" }, new { @class = "btn-sm btn-block btn-primary text-center" })
                             </div>
                             <div class="col-sm-1">
                                 @Html.ActionLink("Zero Bal", "Underpayemnts_UserAcc_List", "WorkDriver", new { type = "Zero Balance" }, new { @class = " btn-sm btn-block btn-primary text-center" })
                             </div>
                             <div class="col-sm-1">
-                                @Html.ActionLink("Credit Bal", "Underpayemnts_UserAcc_List", "WorkDriver", new { type = "Credit Balance" }, new { @class = "btn-sm btn-block btn-primary text-center" })
+                                @Html.ActionLink("Credit", "Underpayemnts_UserAcc_List", "WorkDriver", new { type = "Credit Balance" }, new { @class = "btn-sm btn-block btn-primary text-center" })
                             </div>
                             <div class="col-sm-3">
 
@@ -153,7 +144,7 @@
                                             <th>
                                                 Placement Date
                                             </th>
-                                            <th>
+                                            <th class=" text-center">
                                                 Case Status
                                             </th>
                                         </tr>
@@ -161,53 +152,57 @@
                                     <tbody class="table-responsive">
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(m => item.Account)).ToString(), "viewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(m => item.DischargeDate)
-                                                </td>
-                                                <td>@Html.DisplayFor(m => item.PatientName)</td>
+                                        <tr>
+                                            <td>
+                                                @Html.ActionLink((@Html.DisplayFor(m => item.Account)).ToString(), "viewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(m => item.DischargeDate)
+                                            </td>
+                                            <td>@Html.DisplayFor(m => item.PatientName)</td>
 
-                                                <td>
-                                                    @Html.DisplayFor(m => item.Payor_Name)
-                                                </td>
-                                                <td class="text-right">
-                                                    @Html.DisplayFor(m => item.convertBal)
-                                                </td>
-                                                @*<td >
-                                                        @Html.DisplayFor(modelItem => item.Plan_Name)
-                                                    </td>*@
-                                                <td>
-                                                    @Html.DisplayFor(m => item.Acct_Class)
-                                                </td>
-                                                <td></td>
-                                                <td class="small">
-                                                    @*@if (item.flagCase)
-                                                    {
-                                                        <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
-                                                    }
-                                                    else
-                                                    {
-                                                        <button id="btn2" class="btn-xs active btn-block btn-danger">In-Review</button>
-                                                    }*@
+                                            <td>
+                                                @Html.DisplayFor(m => item.Payor_Name)
+                                            </td>
+                                            <td class="text-right">
+                                                @Html.DisplayFor(m => item.convertBal)
+                                            </td>
+                                            @*<td >
+            @Html.DisplayFor(modelItem => item.Plan_Name)
+        </td>*@
+                                            <td>
+                                                @Html.DisplayFor(m => item.Acct_Class)
+                                            </td>
+                                            <td></td>
+                                            @if (item.flagCaseValue == 1)
+                                            {
+                                                <td class="small text-center" style="color:dimgrey;font-weight:bold;font-size:small">DEBIT</td>
+                                            }
+                                            @if (item.flagCaseValue == 2)
+                                            {
+                                                <td class="small text-center" style="color:red;font-weight:bold;font-size:small">CREDIT</td>
+                                            }
+                                            @if (item.flagCaseValue == 3)
+                                            {
+                                                <td class="small text-center" style="color:forestgreen;font-weight:bold;font-size:small">ZERO BAL</td>
+                                            }
+                                            @*<td class="small">                                         
 
-                                                    @if (item.flagCaseValue == 1)
-                                                    {
-                                                        <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
-                                                    }
-                                                    @if (item.flagCaseValue == 2)
-                                                    {
-                                                        <button id="btn2" class="btn-xs active btn-block btn-danger">Credit Bal.</button>
-                                                    }
-                                                    @if (item.flagCaseValue == 3)
-                                                    {
-                                                        <button id="btn2" class="btn-xs active btn-block btn-success">Zero Bal.</button>
-                                                    }
-                                                </td>
+                                            @if (item.flagCaseValue == 1)
+                                            {
+                                                <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
+                                            }
+                                            @if (item.flagCaseValue == 2)
+                                            {
+                                                <button id="btn2" class="btn-xs active btn-block btn-danger">Credit Bal.</button>
+                                            }
+                                            @if (item.flagCaseValue == 3)
+                                            {
+                                                <button id="btn2" class="btn-xs active btn-block btn-success">Zero Bal.</button>
+                                            }
+                                            </td>*@
 
-                                            </tr>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>

@@ -107,17 +107,17 @@
                             </div>
                            
                             <div class="col-sm-1">
-                                @Html.ActionLink("ALL", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "All" }, new { @class = "btn-sm btn-block btn-primary text-center" })
+                                @Html.ActionLink("All", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "All" }, new { @class = "btn-sm btn-block btn-primary text-center" })
                             </div>
                             <div class="col-sm-1">
 
-                                @Html.ActionLink("New", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "New" }, new { @class = "btn-sm btn-block btn-primary text-center" })
+                                @Html.ActionLink("Debit", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "New" }, new { @class = "btn-sm btn-block btn-primary text-center" })
                             </div>
                             <div class="col-sm-1">
                                 @Html.ActionLink("Zero Bal", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "Zero Balance" }, new { @class = " btn-sm btn-block btn-primary text-center" })
                             </div>
                             <div class="col-sm-1">
-                                @Html.ActionLink("Credit Bal", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "Credit Balance" }, new { @class = "btn-sm btn-block btn-primary text-center" })
+                                @Html.ActionLink("Credit", "PB_Underpayments_UserAccList", "WorkDriver", new { type = "Credit Balance" }, new { @class = "btn-sm btn-block btn-primary text-center" })
                             </div>
                             <div class="col-sm-3">
 
@@ -143,7 +143,7 @@
                                             <th>
                                                 Placement Date
                                             </th>
-                                            <th>
+                                            <th class=" text-center">
                                                 Case Status
                                             </th>
                                         </tr>
@@ -151,52 +151,57 @@
                                     <tbody class="table-responsive">
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(modelItem => item.Account)).ToString(), "PBviewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.DischargeDate)
-                                                </td>
-                                                <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
+                                        <tr>
+                                            <td>
+                                                @Html.ActionLink((@Html.DisplayFor(modelItem => item.Account)).ToString(), "PBviewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DischargeDate)
+                                            </td>
+                                            <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
 
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Payor_Name)
-                                                </td>
-                                                <td class="text-right">
-                                                    @Html.DisplayFor(modelItem => item.convertBal)
-                                                </td>
-                                                @*<td >
-                                    @Html.DisplayFor(modelItem => item.Plan_Name)
-                                </td>*@
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Acct_Class)
-                                                </td>
-                                                <td></td>
-                                                <td class="small">
-                                                    @*@if (item.flagCase)
-                                    {
-                                        <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
-                                    }
-                                    else
-                                    {
-                                        <button id="btn2" class="btn-xs active btn-block btn-danger">In-Review</button>
-                                    }*@
-                                                    @if (item.flagCaseValue == 1)
-                                                    {
-                                                        <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
-                                                    }
-                                                    @if (item.flagCaseValue == 2)
-                                                    {
-                                                        <button id="btn2" class="btn-xs active btn-block btn-danger">Credit Bal.</button>
-                                                    }
-                                                    @if (item.flagCaseValue == 3)
-                                                    {
-                                                        <button id="btn2" class="btn-xs active btn-block btn-success">Zero Bal.</button>
-                                                    }
-                                                </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Payor_Name)
+                                            </td>
+                                            <td class="text-right">
+                                                @Html.DisplayFor(modelItem => item.convertBal)
+                                            </td>
+                                            @*<td >
+                                                @Html.DisplayFor(modelItem => item.Plan_Name)
+                                            </td>*@
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Acct_Class)
+                                            </td>
+                                            <td></td>
+                                            @if (item.flagCaseValue == 1)
+                                            {
+                                                <td class="small text-center" style="color:dimgrey;font-weight:bold;font-size:small">DEBIT</td>
+                                            }
+                                            @if (item.flagCaseValue == 2)
+                                            {
+                                                <td class="small text-center" style="color:red;font-weight:bold;font-size:small">CREDIT</td>
+                                            }
+                                            @if (item.flagCaseValue == 3)
+                                            {
+                                                <td class="small text-center" style="color:forestgreen;font-weight:bold;font-size:small">ZERO BAL</td>
+                                            }
+                                            @*<td class="small">
 
-                                            </tr>
+                                                @if (item.flagCaseValue == 1)
+                                                {
+                                                    <button id="btn1" class="btn-xs active btn-default btn-block">New</button>
+                                                }
+                                                @if (item.flagCaseValue == 2)
+                                                {
+                                                    <button id="btn2" class="btn-xs active btn-block btn-danger">Credit Bal.</button>
+                                                }
+                                                @if (item.flagCaseValue == 3)
+                                                {
+                                                    <button id="btn2" class="btn-xs active btn-block btn-success">Zero Bal.</button>
+                                                }
+                                            </td>*@
+
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
