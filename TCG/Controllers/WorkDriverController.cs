@@ -4752,6 +4752,24 @@ namespace HealthcareAnalytics.Controllers
 
         }
 
+
+        public ActionResult APDTrendGraph()
+        {
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                ViewBag.Message = GetTableauToken();
+
+                return View();
+            }
+
+        }
+
         private String GetTableauToken()
         {
 
