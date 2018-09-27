@@ -361,6 +361,7 @@
           <Parameter Name="new_recordNumber" Type="int" Mode="InOut" />
         </Function>
         <Function Name="Get_Under_Paymnent_Accounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Under_Paymnent_Accounts_APD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Get_Under_Paymnent_Accounts_PB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="TCG_WorklistStoreContainer">
           <EntitySet Name="Account_AR_Status" EntityType="Self.Account_AR_Status" Schema="dbo" store:Type="Tables" />
@@ -795,6 +796,7 @@
           <EntitySet Name="HBorPB_Master" EntityType="TCG_Worklist.HBorPB_Master" />
           <FunctionImport Name="Get_Under_Paymnent_Accounts_PB" ReturnType="Collection(TCG_Worklist.Get_Under_Paymnent_Accounts_PB_Result)" />
           <FunctionImport Name="Get_Under_Paymnent_Accounts" ReturnType="Collection(TCG_Worklist.Get_Under_Paymnent_Accounts_Result)" />
+          <FunctionImport Name="Get_Under_Paymnent_Accounts_APD" ReturnType="Collection(TCG_Worklist.Get_Under_Paymnent_Accounts_APD_Result)" />
         </EntityContainer>
         <EntityType Name="Underpayment_ReasonCode">
           <Key>
@@ -861,6 +863,44 @@
           <Property Type="DateTime" Name="DateOfUpdate" Nullable="true" />
           <Property Type="String" Name="Biller" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="CaseStatus" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Get_Under_Paymnent_Accounts_APD_Result">
+          <Property Type="Int32" Name="Deferral_Due" Nullable="true" />
+          <Property Type="String" Name="Account" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Acct_Class" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Acct_Status" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Account_Name" Nullable="true" MaxLength="265" />
+          <Property Type="DateTime" Name="Disch_Date" Nullable="true" />
+          <Property Type="Double" Name="Acct_Bal" Nullable="true" />
+          <Property Type="String" Name="Message" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Diagnosis_Codes" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Plan_Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Payor_Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CaseStatus" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Allowed_Amount_Difference" Nullable="true" />
+          <Property Type="String" Name="Expected_Allowed_Amount" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Allowed_Amount_Difference_Payor_Specified" Nullable="true" />
+          <Property Type="Int32" Name="Underpayment_Reason_Code" Nullable="true" />
+          <Property Type="String" Name="Brief_Summary" Nullable="true" MaxLength="4000" />
+          <Property Type="DateTime" Name="DateOfUpdate" Nullable="true" />
+          <Property Type="String" Name="Biller" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="BillingProvider" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="Adm_Ser_Date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Bill_Date" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Claim_Date" Nullable="true" Precision="23" />
+          <Property Type="Double" Name="Total_Charges" Nullable="true" />
+          <Property Type="String" Name="Financial_Class" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Ins1_ID__" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="INS1_Balance" Nullable="true" />
+          <Property Type="String" Name="Ins2_ID__" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="INS2_Mnemonic" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Ins2_Payer" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="INS2_Balance" Nullable="true" />
+          <Property Type="String" Name="Ins3_ID" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="INS3_Mnemonic" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Ins3_Payer" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="INS3_Balance" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="Pt_Balance" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1200,6 +1240,48 @@
                 <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
                 <ScalarProperty Name="Biller" ColumnName="Biller" />
                 <ScalarProperty Name="CaseStatus" ColumnName="CaseStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Under_Paymnent_Accounts_APD" FunctionName="TCG_Worklist.Store.Get_Under_Paymnent_Accounts_APD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCG_Worklist.Get_Under_Paymnent_Accounts_APD_Result">
+                <ScalarProperty Name="Deferral_Due" ColumnName="Deferral Due" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Acct_Class" ColumnName="Acct Class" />
+                <ScalarProperty Name="Acct_Status" ColumnName="Acct Status" />
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
+                <ScalarProperty Name="Disch_Date" ColumnName="Disch Date" />
+                <ScalarProperty Name="Acct_Bal" ColumnName="Acct Bal" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Diagnosis_Codes" ColumnName="Diagnosis_Codes" />
+                <ScalarProperty Name="Plan_Name" ColumnName="Plan Name" />
+                <ScalarProperty Name="Payor_Name" ColumnName="Payor Name" />
+                <ScalarProperty Name="CaseStatus" ColumnName="CaseStatus" />
+                <ScalarProperty Name="Allowed_Amount_Difference" ColumnName="Allowed_Amount_Difference" />
+                <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected Allowed Amount" />
+                <ScalarProperty Name="Allowed_Amount_Difference_Payor_Specified" ColumnName="Allowed_Amount_Difference_Payor_Specified" />
+                <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+                <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+                <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
+                <ScalarProperty Name="Biller" ColumnName="Biller" />
+                <ScalarProperty Name="BillingProvider" ColumnName="BillingProvider" />
+                <ScalarProperty Name="Adm_Ser_Date" ColumnName="Adm/Ser Date" />
+                <ScalarProperty Name="Bill_Date" ColumnName="Bill Date" />
+                <ScalarProperty Name="Claim_Date" ColumnName="Claim Date" />
+                <ScalarProperty Name="Total_Charges" ColumnName="Total Charges" />
+                <ScalarProperty Name="Financial_Class" ColumnName="Financial Class" />
+                <ScalarProperty Name="Ins1_ID__" ColumnName="Ins1 ID #" />
+                <ScalarProperty Name="INS1_Balance" ColumnName="INS1 Balance" />
+                <ScalarProperty Name="Ins2_ID__" ColumnName="Ins2 ID #" />
+                <ScalarProperty Name="INS2_Mnemonic" ColumnName="INS2 Mnemonic" />
+                <ScalarProperty Name="Ins2_Payer" ColumnName="Ins2 Payer" />
+                <ScalarProperty Name="INS2_Balance" ColumnName="INS2 Balance" />
+                <ScalarProperty Name="Ins3_ID" ColumnName="Ins3 ID" />
+                <ScalarProperty Name="INS3_Mnemonic" ColumnName="INS3 Mnemonic" />
+                <ScalarProperty Name="Ins3_Payer" ColumnName="Ins3 Payer" />
+                <ScalarProperty Name="INS3_Balance" ColumnName="INS3 Balance" />
+                <ScalarProperty Name="Pt_Balance" ColumnName="Pt Balance" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

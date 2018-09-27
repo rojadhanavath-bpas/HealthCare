@@ -11,7 +11,7 @@ namespace HealthcareAnalytics.Models
 {
     using System;
     
-    public partial class Get_Under_Paymnent_Accounts_Result
+    public partial class Get_Under_Paymnent_Accounts_APD_Result
     {
         public Nullable<int> Deferral_Due { get; set; }
         public string Account { get; set; }
@@ -24,6 +24,7 @@ namespace HealthcareAnalytics.Models
         public string Diagnosis_Codes { get; set; }
         public string Plan_Name { get; set; }
         public string Payor_Name { get; set; }
+        public string CaseStatus { get; set; }
         public Nullable<double> Allowed_Amount_Difference { get; set; }
         public string Expected_Allowed_Amount { get; set; }
         public Nullable<double> Allowed_Amount_Difference_Payor_Specified { get; set; }
@@ -31,7 +32,23 @@ namespace HealthcareAnalytics.Models
         public string Brief_Summary { get; set; }
         public Nullable<System.DateTime> DateOfUpdate { get; set; }
         public string Biller { get; set; }
-        public string CaseStatus { get; set; }
+        public string BillingProvider { get; set; }
+        public Nullable<System.DateTime> Adm_Ser_Date { get; set; }
+        public Nullable<System.DateTime> Bill_Date { get; set; }
+        public Nullable<System.DateTime> Claim_Date { get; set; }
+        public Nullable<double> Total_Charges { get; set; }
+        public string Financial_Class { get; set; }
+        public string Ins1_ID__ { get; set; }
+        public Nullable<double> INS1_Balance { get; set; }
+        public string Ins2_ID__ { get; set; }
+        public string INS2_Mnemonic { get; set; }
+        public string Ins2_Payer { get; set; }
+        public Nullable<double> INS2_Balance { get; set; }
+        public string Ins3_ID { get; set; }
+        public string INS3_Mnemonic { get; set; }
+        public string Ins3_Payer { get; set; }
+        public string INS3_Balance { get; set; }
+        public Nullable<double> Pt_Balance { get; set; }
 
         public string DischargeDate { get; set; }
         public decimal convertAmount { get; set; }
@@ -43,6 +60,8 @@ namespace HealthcareAnalytics.Models
         public string ddlValue { get; set; }
         public int flag { get; set; }
         public int flagCaseValue { get; set; }
+
+
 
     }
 }

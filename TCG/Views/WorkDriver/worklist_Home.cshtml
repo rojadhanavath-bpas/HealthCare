@@ -36,7 +36,13 @@
 
                                 <div>
                                     <ul class="list-group">
-                                        <li class="list-group-item list-group-item-info"><i class="fa fa-chevron-circle-right"></i> &nbsp;@Html.ActionLink("PRIORITY 1 - Underpayments ", "Underpayemnts_UserAcc_List", "WorkDriver") </li>
+                                        <li class="list-group-item list-group-item-info">
+                                            <i class="fa fa-chevron-circle-right"></i> &nbsp; PRIORITY 1 - Underpayments
+                                            <ul style="list-style-type:none">                                                
+                                                <li>&nbsp;&nbsp;<i class="fa fa-minus-circle"></i> &nbsp;@Html.ActionLink("HCMC ", "Underpayemnts_UserAcc_List", "WorkDriver") </li>                                                
+                                                <li>&nbsp;&nbsp;<i class="fa fa-minus-circle"></i> &nbsp;@Html.ActionLink("APD ", "APD_UserAcc_List", "WorkDriver") </li>
+                                            </ul>
+                                        </li>
                                         <li class="list-group-item list-group-item-info"><i class="fa fa-chevron-circle-right"></i> &nbsp;@Html.ActionLink("PRIORITY 2 - Denials", "UserAcc_List", "WorkDriver") </li>
                                         <li class="list-group-item list-group-item-info"><i class="fa fa-chevron-circle-right"></i> &nbsp;@Html.ActionLink("PRIORITY 3 - Others", "UserAcc_List", "WorkDriver")  </li>
                                     </ul>

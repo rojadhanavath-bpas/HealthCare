@@ -262,6 +262,9 @@
     <Compile Include="Models\Get_AR_Info_for_Balance_Range_Result.cs">
       <DependentUpon>tcgDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Get_Under_Paymnent_Accounts_APD_Result.cs">
+      <DependentUpon>WorklistModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Get_Under_Paymnent_Accounts_PB_Result.cs">
       <DependentUpon>WorklistModel.tt</DependentUpon>
     </Compile>
@@ -765,6 +768,9 @@
     <Content Include="Views\ManageUsers\AddUser.cshtml" />
     <Content Include="Views\ApplicationRoles\Roles.cshtml" />
     <Content Include="Views\ApplicationRoles\AddRole.cshtml" />
+    <Content Include="Views\WorkDriver\APD_UserAcc_List.cshtml" />
+    <Content Include="Views\WorkDriver\APDViewCaseDetails.cshtml" />
+    <Content Include="Views\WorkDriver\APDEditCaseDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

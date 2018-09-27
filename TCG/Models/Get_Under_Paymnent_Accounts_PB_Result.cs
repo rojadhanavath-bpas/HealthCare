@@ -53,5 +53,6 @@ namespace HealthcareAnalytics.Models
         public string ddlValue { get; set; }
         public int flag { get; set; }
         public int flagCaseValue { get; set; }
+
     }
 }

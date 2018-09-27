@@ -84,7 +84,7 @@
 <body>
 
 
-    @using (Html.BeginForm("PBeditCaseDetails", "WorkDriver", FormMethod.Post))
+    @using (Html.BeginForm("APDEditCaseDetails", "WorkDriver", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         <form>
@@ -140,7 +140,7 @@
                                                     <span>
                                                         @if (Model.link == 1)
                                                         {
-                                                            @Html.ActionLink("BACK", "PB_Underpayments_UserAccList", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
+                                                            @Html.ActionLink("BACK", "APD_UserAcc_List", new { }, new { @class = "medium btn-sm btn-primary", @style = "float:right;" })
                                                         }
                                                         @if (Model.link == 2)
                                                         {
@@ -175,7 +175,7 @@
 
                                                         </div>
                                                         <div class="form-group col-sm-3">
-                                                            <label for="dt_Date" class="text-info small">SERVICE DATE</label>
+                                                            <label for="dt_Date" class="text-info small">DISCHARGE DATE</label>
                                                             @Html.TextBoxFor(m => m.ACD_DueDate, new { @Value = Model.dateConvert.ToString(), @class = "form-control", @readonly = "readonly" })
                                                         </div>
                                                         @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
@@ -276,10 +276,9 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-sm-12">
-
-                                                    <div class="form-row">
-                                                        @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
-                                                        {
+                                                    @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                    {
+                                                        <div class="form-row">
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_AccNo" class="text-info small">ACCOUNT NUMBER</label>
                                                                 @Html.TextBoxFor(m => @s.Hospital_Account_ID, new { @class = "form-control ", @readonly = "readonly" })
@@ -296,46 +295,43 @@
                                                                 <label for="Txt_AdmitDate" class="text-info small">ADMIT DATE</label>
                                                                 @Html.TextBoxFor(m => @s.convAdmDate, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
-                                                        }
-                                                        @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_PB_Result s in ViewBag.underPaymentsLinkData)
-                                                        {
+
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_PatientType" class="text-info small">PATIENT TYPE</label>
-                                                                @*@Html.TextBoxFor(m => @s.Enc_Specialty, new { @class = "form-control ", @readonly = "readonly" })*@
-                                                                @Html.TextBox(" "," ", new { @class = "form-control ", @readonly = "readonly" })
+                                                                @Html.TextBoxFor(m => @s.Encounter_Type, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
-                                                        }
-                                                    </div>
-
+                                                        </div>
+                                                    }
                                                     <div class="form-row">
-                                                        @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_PB_Result s in ViewBag.underPaymentsLinkData)
+                                                        @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                         {
 
                                                             <div class="form-group col-sm-3">
-                                                                <label for="Txt_CurrentFC" class="text-info small">DEPARTMENT SPECIALITY</label>
-                                                                @Html.TextBoxFor(m => @s.DEPARTMENTNAME, new { @class = "form-control ", @readonly = "readonly" })
+                                                                <label for="Txt_CurrentFC" class="text-info small">CURRENT F/C</label>
+                                                                @Html.TextBoxFor(m => @s.Account_Financial_Class, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
 
                                                             @*<div class="form-group col-sm-4">
-                <label for="Txt_DischargeDate" class="text-info">DISCHARGE DATE</label>
-                @Html.TextBoxFor(m => @s.convDischDate, new { @class = "form-control", @readonly = "readonly" })
-            </div>*@
+                                                                    <label for="Txt_DischargeDate" class="text-info">DISCHARGE DATE</label>
+                                                                    @Html.TextBoxFor(m => @s.convDischDate, new { @class = "form-control", @readonly = "readonly" })
+                                                                </div>*@
                                                         }
 
-
-                                                        <div class="form-group col-sm-3">
-                                                            <label for="Txt_DischargeDispos" class="text-info small">DIAG/PROC CODE</label>
-                                                            @Html.DropDownList("SelectedDropDownValue", (SelectList)ViewBag.cptvalues, new { @class = "form-control" })
-                                                        </div>
-                                                        @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_PB_Result v in ViewBag.underPaymentsLinkData)
+                                                        @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_APD_Result v in ViewBag.underPaymentsLinkData)
                                                         {
                                                             <div class="form-group col-sm-3">
-                                                                <label for="Txt_DischargeDispos" class="text-info small">PLAN</label>
+                                                                <label for="Txt_DischargeDispos " class="text-info small">DIAG/PROC CODE</label>
+                                                                @Html.TextBoxFor(m => v.Diagnosis_Codes, new { @class = "form-control ", @readonly = "readonly" })
+
+                                                            </div>
+
+                                                            <div class="form-group col-sm-3">
+                                                                <label for="Txt_DischargeDispos " class="text-info small">PLAN</label>
                                                                 @Html.TextBoxFor(m => v.Plan_Name, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
 
                                                             <div class="form-group col-sm-3">
-                                                                <label for="Txt_OperPhysician" class="text-info small">PAYOR</label>
+                                                                <label for="Txt_OperPhysician " class="text-info small">PAYOR</label>
                                                                 @Html.TextBoxFor(m => v.Payor_Name, new { @class = "form-control ", @readonly = "readonly" })
                                                             </div>
                                                         }
@@ -654,7 +650,7 @@
 
                                 <div class="modal-footer">
                                     <div class="col-sm-1" style="float:right;">
-                                        @Html.ActionLink("BACK", "PB_Underpayments_UserAccList", "WorkDriver", new { }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("BACK", "APD_UserAcc_List", "WorkDriver", new { }, new { @class = "btn btn-primary" })
                                     </div>
                                     <div class="col-sm-1" style="float:right;">
                                         <button type="submit" class="btn btn-danger" id="btnSave">Save</button>

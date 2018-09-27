@@ -377,7 +377,7 @@ namespace HealthcareAnalytics.Controllers
                 mm.IsBodyHtml = false;
                 using (SmtpClient smtp = new SmtpClient())
                 {
-                    smtp.Host = "smtp.gmail.com";
+                    smtp.Host = "smtp.office365.com";
                     smtp.EnableSsl = true;
                     NetworkCredential NetworkCred = new NetworkCredential(model.Email, model.Password);
                     smtp.UseDefaultCredentials = true;

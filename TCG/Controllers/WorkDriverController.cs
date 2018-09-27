@@ -582,13 +582,198 @@ namespace HealthcareAnalytics.Controllers
         }
 
 
-        
+        public ActionResult APD_UserAcc_List(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue, string type)
+        {
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.HPPB = populateHPorPB();
+                ViewBag.UserFirst = Session["first"];
+                ViewBag.UserLast = Session["last"];
+                ViewBag.CurrentSort = sortOrder;
+                ViewBag.sort_AccountID = String.IsNullOrEmpty(sortOrder) ? "accID_Sorting" : "";
+                ViewBag.DateSortParm = sortOrder == "date_Sorting" ? "date_DesSorting" : "date_Sorting";
+                ViewBag.sort_PatientName = sortOrder == "patientName_Asc" ? "patientName_Des" : "patientName_Asc";
+                ViewBag.sort_PayorName = sortOrder == "payorName_Asc" ? "payorName_Des" : "payorName_Asc";
+                ViewBag.sort_Bal = sortOrder == "Bal_Asc" ? "Bal_Des" : "Bal_Asc";
+                ViewBag.sort_Plan = sortOrder == "Plan_Asc" ? "Plan_Des" : "Plan_Asc";
+                ViewBag.sort_AccClass = sortOrder == "AccClass_Asc" ? "AccClass_Des" : "AccClass_Asc";
+                int pageSize = 10;
+                int pageNumber = (page ?? 1);
+
+
+                if (searchString != null)
+                {
+                    page = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
+                }
+
+                ViewBag.CurrentFilter = searchString;
+
+
+                using (TCG_WorklistModel db2 = new TCG_WorklistModel())
+                {
+                    List<Get_Under_Paymnent_Accounts_APD_Result> result = db2.Get_Under_Paymnent_Accounts_APD().ToList();
+
+                    if (type == "All")
+                    {
+                        using (var db = new TCG_WorklistModel())
+                        {
+                            result = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                                      select c).ToList();
+                        }
+                    }
+                    else if (type == "New" || type == "Zero Balance" || type == "Credit Balance")
+                    {
+                        using (var db = new TCG_WorklistModel())
+                        {
+                            result = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                                      where c.CaseStatus == type
+                                      select c).ToList();
+                        }
+                    }
+
+                    //List<Get_Under_Paymnent_Accounts_PB_Result> flagRes = new List<Get_Under_Paymnent_Accounts_PB_Result>();
+                    //flagRes.Add(new Get_Under_Paymnent_Accounts_PB_Result() { flag = 1 });
+                    //ViewBag.flagDetails = flagRes;
+
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        //if (result[i].Account.HasValue)
+                        //{
+                        //    result[i].AccId = Convert.ToString(result[i].Account);
+                        //}
+
+
+                        result[i].AccId = Convert.ToString(result[i].Account);
+
+                        if (result[i].Account_Name != null)
+                        {
+                            string[] test = (result[i].Account_Name.ToString()).Split(':');
+                            result[i].PatientName = test[0];
+                            result[i].caseFlag = test[1];
+                        }
+                        else
+                        {
+                            result[i].PatientName = " ";
+                            result[i].caseFlag = "NEW";
+                        }
+
+                        if (result[i].caseFlag == "NEW")
+                            result[i].flagCase = true;
+                        else
+                            result[i].flagCase = false;
+                        if (!string.IsNullOrEmpty(result[i].Brief_Summary))
+                            result[i].flagCase = false;
+
+                        if (result[i].CaseStatus == "New")
+                            result[i].flagCaseValue = 1;
+                        else if (result[i].CaseStatus == "Credit Balance")
+                            result[i].flagCaseValue = 2;
+                        else
+                            result[i].flagCaseValue = 3;
+
+                        if (string.IsNullOrEmpty(result[i].Payor_Name))
+                            result[i].Payor_Name = "";
+                        if (string.IsNullOrEmpty(result[i].Acct_Class))
+                            result[i].Acct_Class = "";
+                        if (string.IsNullOrEmpty(result[i].Plan_Name))
+                            result[i].Plan_Name = "";
+                        if (result[i].Underpayment_Reason_Code == null)
+                            result[i].Underpayment_Reason_Code = 0;
+
+                    }
+
+                    if (!String.IsNullOrEmpty(searchString))
+                    {
+                        result = result.Where(s => s.AccId.Contains(searchString.Trim().ToString())
+                                               || s.Payor_Name.ToLower().Contains(searchString.Trim().ToLower())
+                                               || s.PatientName.ToLower().Contains(searchString.Trim().ToLower())
+                                               || s.Acct_Class.ToLower().Contains(searchString.Trim().ToLower())
+                                               || s.Plan_Name.ToLower().Contains(searchString.Trim().ToLower())).ToList();
+                    }
+
+                    switch (sortOrder)
+                    {
+                        case "accID_Sorting":
+                            result = result.OrderByDescending(s => s.Account).ToList();
+                            break;
+                        case "date_Sorting":
+                            result = result.OrderBy(s => s.Disch_Date).ToList();
+                            break;
+                        case "date_DesSorting":
+                            result = result.OrderByDescending(s => s.Disch_Date).ToList();
+                            break;
+                        case "payorName_Asc":
+                            result = result.OrderBy(s => s.Payor_Name).ToList();
+                            break;
+                        case "payorName_Des":
+                            result = result.OrderByDescending(s => s.Payor_Name).ToList();
+                            break;
+                        case "patientName_Asc":
+                            result = result.OrderBy(s => s.Account_Name).ToList();
+                            break;
+                        case "patientName_Des":
+                            result = result.OrderByDescending(s => s.Account_Name).ToList();
+                            break;
+                        case "Bal_Asc":
+                            result = result.OrderBy(s => s.Acct_Bal).ToList();
+                            break;
+                        case "Bal_Des":
+                            result = result.OrderByDescending(s => s.Acct_Bal).ToList();
+                            break;
+                        case "Plan_Asc":
+                            result = result.OrderBy(s => s.Plan_Name).ToList();
+                            break;
+                        case "Plan_Des":
+                            result = result.OrderByDescending(s => s.Plan_Name).ToList();
+                            break;
+                        case "AccClass_Asc":
+                            result = result.OrderByDescending(s => s.Acct_Class).ToList();
+                            break;
+                        case "AccClass_Des":
+                            result = result.OrderBy(s => s.Acct_Class).ToList();
+                            break;
+                        default:  // Name Descending 
+                            result = result.OrderByDescending(s => s.Acct_Bal).ToList();
+                            break;
+                    }
+
+
+
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        if (result[i].Disch_Date.HasValue)
+                        {
+                            result[i].DischargeDate = result[i].Disch_Date.Value.ToShortDateString();
+                        }
+
+                        string testAmt = result[i].Acct_Bal.Value.ToString("0.00");
+                        Decimal testDecimal = Convert.ToDecimal(testAmt);
+                        result[i].convertAmount = Math.Round(testDecimal, 2);
+                        result[i].convertBal = "$" + result[i].convertAmount.ToString();
+                    }
+
+
+                    return View(result.ToPagedList(pageNumber, pageSize));
+                }
+
+
+            }
+        }
+
 
         private static List<SelectListItem> populateHPorPB()
         {
             List<SelectListItem> items = new List<SelectListItem>();
             TCG_WorklistModel context = new TCG_WorklistModel();
-            return context.HBorPB_Master.Select(x => new SelectListItem { Text = x.HP_Name, Value = x.HP_ID.ToString() }).ToList();
+            return context.HBorPB_Master.Select(x => new SelectListItem { Text = x.HP_Name, Value = x.HP_ID.ToString() }).Take(2).ToList();
 
         }
 
@@ -668,7 +853,7 @@ namespace HealthcareAnalytics.Controllers
         {
             List<SelectListItem> items = new List<SelectListItem>();
             TCG_DataEntities context = new TCG_DataEntities();
-            return context.User_Login.Select(x => new SelectListItem { Text = x.user_web_login, Value = x.user_Id.ToString() }).ToList();
+            return context.Users_Data.Select(x => new SelectListItem { Text = x.user_web_login, Value = x.user_ID.ToString() }).ToList();
 
         }
 
@@ -753,7 +938,7 @@ namespace HealthcareAnalytics.Controllers
                 string HospitalAccountID = openCaseID;
                 int new_Case_Value = 0;
                 Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
-
+                string ownerId = string.Empty;
 
 
                 TCG_WLM = new TCG_WorklistModel();
@@ -768,6 +953,19 @@ namespace HealthcareAnalytics.Controllers
                 {
                     underPaymentsListByID[0].DischargeDate = underPaymentsListByID[0].Disch_Date.Value.ToShortDateString();
                 }
+
+                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                {
+                    TCG_DataEntities tcguserdata = new TCG_DataEntities();
+                    Users_Data tcglogin = new Users_Data();
+                    tcglogin = tcguserdata.Users_Data.Where(m => m.user_first_name.ToString() == underPaymentsListByID[0].Biller).FirstOrDefault();
+                    ownerId = tcglogin.user_ID.ToString();
+                }
+                else
+                {
+                    ownerId = get_Owner_dropDownValue("Select Owner");
+                }
+
 
                 try
                 {
@@ -906,7 +1104,7 @@ namespace HealthcareAnalytics.Controllers
                             {
                                 new_Case_Value = 0;
                             }
-                            string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                            //string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
                             if (Case_checkHospitalAccID == null)
                             {
                                 if (linkName == "underPay")
@@ -1061,7 +1259,7 @@ namespace HealthcareAnalytics.Controllers
                             {
                                 new_Case_Value = 0;
                             }
-                            string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                            //string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
                             if (Case_checkHospitalAccID == null)
                             {
                                 if (linkName == "underPay")
@@ -1152,15 +1350,16 @@ namespace HealthcareAnalytics.Controllers
                             acdDetails.link = 2;
                         }
                         //acdDetails.userName = underPaymentsListByID[0].Biller;
-                        if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
-                        {
-                            acdDetails.userName = underPaymentsListByID[0].Biller;
-                            acdDetails.userFlag = 1;
-                        }
-                        else
-                        {
-                            acdDetails.userFlag = 2;
-                        }
+                        //if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                        //{
+                        //    acdDetails.userName = underPaymentsListByID[0].Biller;
+                        //    acdDetails.userFlag = 1;
+                        //}
+                        //else
+                        //{
+                        //    acdDetails.userFlag = 2;
+                        //}
+                        acdDetails.userFlag = 2;
                         acdDetails.userID = acdDetails.ACD_Owner;
 
                         if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
@@ -1340,7 +1539,7 @@ namespace HealthcareAnalytics.Controllers
                 string HospitalAccountID = openCaseID;
                 int new_Case_Value = 0;
                 Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
-
+                string ownerId = string.Empty;
 
 
                 TCG_WLM = new TCG_WorklistModel();
@@ -1354,6 +1553,19 @@ namespace HealthcareAnalytics.Controllers
                 if (underPaymentsListByID.Count > 0)
                 {
                     underPaymentsListByID[0].DischargeDate = underPaymentsListByID[0].Disch_Date.Value.ToShortDateString();
+                }
+
+
+                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                {
+                    TCG_DataEntities tcguserdata = new TCG_DataEntities();
+                    Users_Data tcglogin = new Users_Data();
+                    tcglogin = tcguserdata.Users_Data.Where(m => m.user_first_name.ToString() == underPaymentsListByID[0].Biller).FirstOrDefault();
+                    ownerId = tcglogin.user_ID.ToString();
+                }
+                else
+                {
+                    ownerId = get_Owner_dropDownValue("Select Owner");
                 }
 
                 try
@@ -1493,7 +1705,8 @@ namespace HealthcareAnalytics.Controllers
                             {
                                 new_Case_Value = 0;
                             }
-                            string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                            //string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                            
                             if (Case_checkHospitalAccID == null)
                             {
                                 if (linkName == "underPay")
@@ -1648,7 +1861,7 @@ namespace HealthcareAnalytics.Controllers
                             {
                                 new_Case_Value = 0;
                             }
-                            string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                            
                             if (Case_checkHospitalAccID == null)
                             {
                                 if (linkName == "underPay")
@@ -1676,11 +1889,7 @@ namespace HealthcareAnalytics.Controllers
                                         strStatus = 5;
                                     }
                                     else { strStatus = 9; }
-                                    //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, string aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, 
-                                    //string aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, 
-                                    //string aCD_Completed, string aCD_Priority, string aCD_Description, string aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, 
-                                    //Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
-                                    //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
+                                   
                                     TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), testAmt1, testAmt2, testAmt3,
                                        AmtAllowedNAA, AmtAllowedPay, ExpAmt, "1", "1", "1", strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
                                         underPay, " ", "22", "49", "49", Cmnt,
@@ -1739,15 +1948,16 @@ namespace HealthcareAnalytics.Controllers
                             acdDetails.link = 2;
                         }
                         //acdDetails.userName = underPaymentsListByID[0].Biller;
-                        if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
-                        {
-                            acdDetails.userName = underPaymentsListByID[0].Biller;
-                            acdDetails.userFlag = 1;
-                        }
-                        else
-                        {
-                            acdDetails.userFlag = 2;
-                        }
+                        //if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                        //{
+                        //    acdDetails.userName = underPaymentsListByID[0].Biller;
+                        //    acdDetails.userFlag = 1;
+                        //}
+                        //else
+                        //{
+                        //    acdDetails.userFlag = 2;
+                        //}
+                        acdDetails.userFlag = 2;
                         acdDetails.userID = acdDetails.ACD_Owner;
 
                         if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
@@ -1835,7 +2045,7 @@ namespace HealthcareAnalytics.Controllers
                 string HospitalAccountID = openCaseID;
                 int new_Case_Value = 0;
                 Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
-
+                string ownerId = string.Empty;
 
 
                 TCG_WLM = new TCG_WorklistModel();
@@ -1865,6 +2075,18 @@ namespace HealthcareAnalytics.Controllers
                     {
                         ViewBag.cptvalues = new SelectList(underPaymentsListByID[0].CPTCODES);
                     }
+                }
+
+                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                {
+                    TCG_DataEntities tcguserdata = new TCG_DataEntities();
+                    Users_Data tcglogin = new Users_Data();
+                    tcglogin = tcguserdata.Users_Data.Where(m => m.user_first_name.ToString() == underPaymentsListByID[0].Biller).FirstOrDefault();
+                    ownerId = tcglogin.user_ID.ToString();
+                }
+                else
+                {
+                    ownerId = get_Owner_dropDownValue("Select Owner");
                 }
 
                 try
@@ -2008,7 +2230,7 @@ namespace HealthcareAnalytics.Controllers
                             {
                                 new_Case_Value = 0;
                             }
-                            string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                            //string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
                             if (Case_checkHospitalAccID == null)
                             {
                                 if (linkName == "underPay")
@@ -2218,7 +2440,7 @@ namespace HealthcareAnalytics.Controllers
                             {
                                 new_Case_Value = 0;
                             }
-                            string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                            //string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
                             if (Case_checkHospitalAccID == null)
                             {
                                 if (linkName == "underPay")
@@ -2323,15 +2545,16 @@ namespace HealthcareAnalytics.Controllers
                         }
                         //acdDetails.userName = underPaymentsListByID[0].Biller;
                         //if (!string.IsNullOrEmpty(underPaymentsListByID[0].Billing_Provider))
-                        if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
-                        {
-                            acdDetails.userName = underPaymentsListByID[0].Biller;
-                            acdDetails.userFlag = 1;
-                        }
-                        else
-                        {
-                            acdDetails.userFlag = 2;
-                        }
+                        //if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                        //{
+                        //    acdDetails.userName = underPaymentsListByID[0].Biller;
+                        //    acdDetails.userFlag = 1;
+                        //}
+                        //else
+                        //{
+                        //    acdDetails.userFlag = 2;
+                        //}
+                        acdDetails.userFlag = 2;
                         acdDetails.userID = acdDetails.ACD_Owner;
 
                         if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
@@ -2421,7 +2644,7 @@ namespace HealthcareAnalytics.Controllers
                 string HospitalAccountID = openCaseID;
                 int new_Case_Value = 0;
                 Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
-
+                string ownerId = string.Empty;
 
 
                 TCG_WLM = new TCG_WorklistModel();
@@ -2452,6 +2675,19 @@ namespace HealthcareAnalytics.Controllers
                         ViewBag.cptvalues = new SelectList(underPaymentsListByID[0].CPTCODES);
                     }
                 }
+
+                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                {
+                    TCG_DataEntities tcguserdata = new TCG_DataEntities();
+                    Users_Data tcglogin = new Users_Data();
+                    tcglogin = tcguserdata.Users_Data.Where(m => m.user_first_name.ToString() == underPaymentsListByID[0].Biller).FirstOrDefault();
+                    ownerId = tcglogin.user_ID.ToString();
+                }
+                else
+                {
+                    ownerId = get_Owner_dropDownValue("Select Owner");
+                }
+
 
                 try
                 {
@@ -2593,7 +2829,7 @@ namespace HealthcareAnalytics.Controllers
                             {
                                 new_Case_Value = 0;
                             }
-                            string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                            //string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
                             if (Case_checkHospitalAccID == null)
                             {
                                 if (linkName == "underPay")
@@ -2802,7 +3038,7 @@ namespace HealthcareAnalytics.Controllers
                             {
                                 new_Case_Value = 0;
                             }
-                            string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                            //string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
                             if (Case_checkHospitalAccID == null)
                             {
                                 if (linkName == "underPay")
@@ -2906,15 +3142,15 @@ namespace HealthcareAnalytics.Controllers
                         }
                         //acdDetails.userName = underPaymentsListByID[0].Biller;
                         //if (!string.IsNullOrEmpty(underPaymentsListByID[0].Billing_Provider))
-                        if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
-                        {
-                            acdDetails.userName = underPaymentsListByID[0].Biller;
-                            acdDetails.userFlag = 1;
-                        }
-                        else
-                        {
+                        //if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                        //{
+                        //    acdDetails.userName = underPaymentsListByID[0].Biller;
+                        //    acdDetails.userFlag = 1;
+                        //}
+                        //else
+                        //{
                             acdDetails.userFlag = 2;
-                        }
+                        //}
                         acdDetails.userID = acdDetails.ACD_Owner;
 
                         if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
@@ -3042,7 +3278,7 @@ namespace HealthcareAnalytics.Controllers
                         else
                         { desc = ACD.ACD_Description; }
                         TCG_WLM.Case_InsUpd(ACD.ACD_ID, ACD.ACD_HspAccID, ACD.ACD_Amount, ACD.ACD_TotalCharges, ACD.ACD_TotalPay, ACD.ACD_TotalAdj,
-                            ACD.ACD_AmtDiffNAA, ACD.ACD_AmtDiffPayor, ACD.ACD_ExpAmt, "1", "1", "1",
+                            ACD.ACD_AmtDiffNAA, ACD.ACD_AmtDiffPayor, ACD.ACD_ExpAmt, "1", "1", "2",
                             ACD.ACD_Status, ACD.ACD_Owner, ACD.ACD_Type, ACD.ACD_SubType,
                             ACD.ACD_PayerReason, ACD.ACD_PrimaryReason, "22", "49", "49", ACD.ACD_Comments,
                             "2", ACD.ACD_Priority, desc, ACD.ACD_TaskFollowUp, ACD.ACD_DueDate,
@@ -3063,6 +3299,1124 @@ namespace HealthcareAnalytics.Controllers
                 return RedirectToAction("PBviewCaseDetails", new { id = ACD.ACD_HspAccID, linkName });
             }
         }
+
+        [HttpGet]
+        public ActionResult APDViewCaseDetails(string id, string linkName)
+        {
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.SM = populateStatus();
+                ViewBag.AARS = populateAccount_ARStatus();
+                ViewBag.ABS = populate_BillStatus();
+                ViewBag.AS = populate_AccountSource();
+                ViewBag.ECT = populate_EncounterType();
+                ViewBag.ICN = populate_Insurance();
+                ViewBag.PFC = populate_PayorFC();
+                ViewBag.PRM = populate_PrimaryReason();
+                ViewBag.TM = populate_Task();
+                ViewBag.UL = populate_UserLogin();
+                ViewBag.PM = populate_Priority();
+                ViewBag.RC = populateRootCause();
+                ViewBag.DC = populateDenialCategory();
+                ViewBag.UP = populateUnderPayReason();
+                ViewBag.CC = populateCompleted();
+                ViewBag.DS = populateDenialStatusMaster();
+
+                Session["AccountID"] = id;
+
+                openCaseID = id;
+                string HospitalAccountID = openCaseID;
+                int new_Case_Value = 0;
+                Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
+                string ownerId = string.Empty;
+
+
+                TCG_WLM = new TCG_WorklistModel();
+                Account_Case_Details acdDetails = new Account_Case_Details();
+                Account_Case_Detials_History acdhDetails = new Account_Case_Detials_History();
+                List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+                List<Account_Case_Detials_History> ACDH = new List<Account_Case_Detials_History>();
+
+                List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+                List<Get_Under_Paymnent_Accounts_APD_Result> underPaymentsListByID = getAPDUnderPaymentsDetailsList(openCaseID);
+                if (underPaymentsListByID.Count > 0)
+                {
+                    underPaymentsListByID[0].DischargeDate = underPaymentsListByID[0].Disch_Date.Value.ToShortDateString();
+                }
+
+
+                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                {
+                    TCG_DataEntities tcguserdata = new TCG_DataEntities();
+                    Users_Data tcglogin = new Users_Data();
+                    tcglogin = tcguserdata.Users_Data.Where(m => m.user_first_name.ToString() == underPaymentsListByID[0].Biller).FirstOrDefault();
+                    ownerId = tcglogin.user_ID.ToString();
+                }
+                else
+                {
+                    ownerId = get_Owner_dropDownValue("Select Owner");
+                }
+
+                try
+                {
+                    using (TCG_DataEntities tcg_CaseDetails = new TCG_DataEntities())
+                    {
+                        taskDetails = tcg_CaseDetails.Get_Account_Info_for_ARandDenial(id).ToList();
+
+                        if (taskDetails.Count > 0 && taskDetails != null)
+                        {
+                            if (taskDetails[0].Total_Charge_Amount.HasValue)
+                            {
+                                testAmt1 = Convert.ToDecimal(taskDetails[0].Total_Charge_Amount);
+                                testAmt1 = Math.Round(testAmt1, 2);
+                                taskDetails[0].convTotChrgAmt = "$" + testAmt1.ToString();
+                            }
+                            else
+                            {
+                                testAmt1 = 0;
+                                taskDetails[0].convTotChrgAmt = "$0.00";
+                            }
+
+
+                            if (taskDetails[0].Total_Payment_Amount.HasValue)
+                            {
+                                testAmt2 = Convert.ToDecimal(taskDetails[0].Total_Payment_Amount);
+                                testAmt2 = Math.Round(testAmt2, 2);
+                                taskDetails[0].convTotPayAmt = "$" + testAmt2.ToString();
+                            }
+                            else
+                            {
+                                taskDetails[0].convTotPayAmt = "$0.00";
+                                testAmt2 = 0;
+                            }
+
+
+                            if (taskDetails[0].Total_Adjustment_Amount.HasValue)
+                            {
+                                testAmt3 = Convert.ToDecimal(taskDetails[0].Total_Adjustment_Amount);
+                                testAmt3 = Math.Round(testAmt3, 2);
+                                taskDetails[0].convAdjAmt = "$" + testAmt3.ToString();
+                            }
+                            else
+                            {
+                                taskDetails[0].convAdjAmt = "$0.00";
+                                testAmt3 = 0;
+                            }
+
+
+                            if (taskDetails[0].Total_Account_Balance.HasValue)
+                            {
+                                testAmt4 = Convert.ToDecimal(taskDetails[0].Total_Account_Balance);
+                                testAmt4 = Math.Round(testAmt4, 2);
+                                taskDetails[0].convTotAccBal = "$" + testAmt4.ToString();
+                            }
+                            else
+                            {
+                                taskDetails[0].convTotAccBal = "$0.00";
+                                testAmt4 = 0;
+                            }
+
+
+                            if (underPaymentsListByID[0].Allowed_Amount_Difference != null || underPaymentsListByID[0].Allowed_Amount_Difference != 0)
+                            {
+                                AmtAllowedNAA = Convert.ToDecimal(underPaymentsListByID[0].Allowed_Amount_Difference);
+                                AmtAllowedNAA = Math.Round(AmtAllowedNAA, 2);
+                                acdDetails.convAllAmtDiff = "$" + AmtAllowedNAA.ToString();
+                            }
+                            else
+                            {
+                                acdDetails.convAllAmtDiff = "$" + "0.00";
+                                AmtAllowedNAA = 0;
+                            }
+
+                            if (underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified != null || underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified != 0)
+                            {
+                                AmtAllowedPay = Convert.ToDecimal(underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified);
+                                AmtAllowedPay = Math.Round(AmtAllowedPay, 2);
+                                acdDetails.convAllAmtDiffPyr = "$" + AmtAllowedPay.ToString();
+                            }
+                            else
+                            {
+                                AmtAllowedPay = 0;
+                                acdDetails.convAllAmtDiffPyr = "$" + "0.00";
+                            }
+
+
+                            if (!string.IsNullOrEmpty(underPaymentsListByID[0].Expected_Allowed_Amount) || underPaymentsListByID[0].Expected_Allowed_Amount != "0")
+                            {
+                                ExpAmt = Convert.ToDecimal(underPaymentsListByID[0].Expected_Allowed_Amount);
+                                ExpAmt = Math.Round(ExpAmt, 2);
+                                acdDetails.convExpAmtDiff = "$" + ExpAmt.ToString();
+                            }
+                            else
+                            {
+                                acdDetails.convExpAmtDiff = "$" + "0.00";
+                                ExpAmt = 0;
+                            }
+
+
+                            var Case_checkHospitalAccID = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+
+                            if (taskDetails[0].Admission_Date.HasValue)
+                                taskDetails[0].convAdmDate = taskDetails[0].Admission_Date.Value.ToShortDateString();
+                            else
+                                taskDetails[0].convAdmDate = " ";
+
+
+                            if (taskDetails[0].Discharge_Date.HasValue)
+                                taskDetails[0].convDischDate = taskDetails[0].Discharge_Date.Value.ToShortDateString();
+                            else
+                                taskDetails[0].convDischDate = " ";
+
+
+                            if (taskDetails[0].First_Billed_Date.HasValue)
+                                taskDetails[0].convFirstBillDate = taskDetails[0].First_Billed_Date.Value.ToShortDateString();
+                            else
+                                taskDetails[0].convFirstBillDate = " ";
+
+
+                            if (!string.IsNullOrEmpty(taskDetails[0].Last_Payor_Rcvd_Dt))
+                            {
+                                DateTime testDate = Convert.ToDateTime(taskDetails[0].Last_Payor_Rcvd_Dt);
+                                taskDetails[0].convLastPayDate = testDate.ToShortDateString();
+                            }
+                            else
+                                taskDetails[0].convLastPayDate = " ";
+
+
+                            var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+                            var model = new TCG_WorklistModel();
+                            if (Case_checkHospitalAccID != null)
+                            {
+                                new_Case_Value = Case_checkHospitalAccID.ACD_ID;
+                            }
+                            else
+                            {
+                                new_Case_Value = 0;
+                            }
+                            //string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+
+                            if (Case_checkHospitalAccID == null)
+                            {
+                                if (linkName == "underPay")
+                                {
+                                    int billStatus_type = get_BillStatus_dropDownValue(underPaymentsListByID[0].Acct_Status);
+                                    int accClass_subTpe = getAccClassDDLValue(underPaymentsListByID[0].Acct_Class);
+                                    int underPay;
+                                    if (underPaymentsListByID[0].Underpayment_Reason_Code != null)
+                                    {
+                                        underPay = underPaymentsListByID[0].Underpayment_Reason_Code.Value;
+                                    }
+                                    else
+                                    {
+                                        underPay = 0;
+                                    }
+
+                                    string Cmnt = string.Empty;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                        Cmnt = underPaymentsListByID[0].Brief_Summary;
+                                    else
+                                        Cmnt = "";
+
+                                    int strStatus = 0;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                    {
+                                        strStatus = 5;
+                                    }
+                                    else { strStatus = 9; }
+
+                                    //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, Nullable<decimal> aCD_TotalCharges, Nullable<decimal> aCD_TotalPay, Nullable<decimal> aCD_TotalAdj,
+                                    //Nullable<decimal> aCD_AmtDiffNAA, Nullable<decimal> aCD_AmtDiffPayor, Nullable<decimal> aCD_ExpAmt, string aCD_BillProvider, string aCD_Department, string aCD_HBorPB, 
+                                    //Nullable<int> aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, Nullable<int> aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, 
+                                    //string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, Nullable<int> aCD_TaskFollowUp, 
+                                    //Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
+                                    //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
+                                    TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), testAmt1, testAmt2, testAmt3,
+                                       AmtAllowedNAA, AmtAllowedPay, ExpAmt, "1", "1", "3",
+                                       strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(), underPay, " ", "22",
+                                       "49", "49", Cmnt, "2", "1", "", 40,
+                                        underPaymentsListByID[0].Disch_Date, DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
+                                        "", DateTime.Now, "", case_idParameter);
+
+
+                                    new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+
+                                    acdDetails.link = 1;
+                                }
+                                else if (linkName == "Other")
+                                {
+                                    int billStatus_type;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Account_Bill_Status))
+                                        billStatus_type = 5;
+                                    else
+                                        billStatus_type = get_BillStatus_dropDownValue(taskDetails[0].Account_Bill_Status);
+
+                                    int accClass_subTpe;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Acct_Class))
+                                        accClass_subTpe = 11;
+                                    else
+                                        accClass_subTpe = getAccClassDDLValue(taskDetails[0].Acct_Class); //Acct_Class -Denial , Account_Source - AR => Account_Source[Table in DB]
+
+                                    int rootCause = 0;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Root_Cause))
+                                        rootCause = 1;
+                                    else
+                                        rootCause = getRootCauseDDLValue(taskDetails[0].Root_Cause);
+
+                                    int denialReason = 0;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Denial_Cat))
+                                        denialReason = 1;
+                                    else
+                                        denialReason = getDenialReason(taskDetails[0].Denial_Cat);
+
+                                    int denialStatusReason = 0;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Status))
+                                        denialStatusReason = 1;
+                                    else
+                                        denialStatusReason = getDenialStatusReason(taskDetails[0].Status);
+
+
+                                    DateTime date;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Rcvd_Dt))
+                                        date = DateTime.Now;
+                                    else
+                                        date = DateTime.Parse(taskDetails[0].Rcvd_Dt);
+
+                                    int strStatus = 0;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                    {
+                                        strStatus = 5;
+                                    }
+                                    else { strStatus = 9; }
+
+                                    TCG_WLM.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), testAmt1, testAmt2, testAmt3,
+                                       AmtAllowedNAA, AmtAllowedPay, ExpAmt, "1", "1", "1", strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                       rootCause, denialStatusReason.ToString(), denialReason.ToString(), "49", "49", "",
+                                       "2", "1", "", 40, date,
+                                       DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
+                                       "", DateTime.Now, "", case_idParameter);
+
+
+                                    new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+
+                                    acdDetails.link = 2;
+
+
+                                }
+                            }
+
+                        }
+
+                        else if (taskDetails.Count == 0 || taskDetails == null)
+                        {
+
+                            var Case_checkHospitalAccID = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+
+
+                            Decimal testAmount = Convert.ToDecimal(underPaymentsListByID[0].Acct_Bal);
+                            testAmount = Math.Round(testAmount, 2);
+
+                            taskDetails.Add(new Get_Account_Info_for_ARandDenial_Result() { Hospital_Account_ID = Convert.ToString(underPaymentsListByID[0].Account), Account_Patient_Name = underPaymentsListByID[0].Account_Name, convAdmDate = "", Encounter_Type = "", Account_Financial_Class = "", convFirstBillDate = "", convLastPayDate = "", convTotChrgAmt = "$0.00", convTotPayAmt = "$0.00", convAdjAmt = "$0.00", convTotAccBal = "$" + testAmount.ToString() });
+
+                            testAmt1 = 0;
+                            taskDetails[0].convTotChrgAmt = "$0.00";
+
+                            taskDetails[0].convTotPayAmt = "$0.00";
+                            testAmt2 = 0;
+
+                            taskDetails[0].convAdjAmt = "$0.00";
+                            testAmt3 = 0;
+
+                            taskDetails[0].convTotAccBal = "$0.00";
+                            testAmt4 = 0;
+
+                            acdDetails.convAllAmtDiff = "$" + "0.00";
+                            AmtAllowedNAA = 0;
+
+                            AmtAllowedPay = 0;
+                            acdDetails.convAllAmtDiffPyr = "$" + "0.00";
+
+                            acdDetails.convExpAmtDiff = "$" + "0.00";
+                            ExpAmt = 0;
+
+                            var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+                            var model = new TCG_WorklistModel();
+
+                            if (Case_checkHospitalAccID != null)
+                            {
+                                new_Case_Value = Case_checkHospitalAccID.ACD_ID;
+                            }
+                            else
+                            {
+                                new_Case_Value = 0;
+                            }
+
+                            if (Case_checkHospitalAccID == null)
+                            {
+                                if (linkName == "underPay")
+                                {
+                                    int billStatus_type = get_BillStatus_dropDownValue(underPaymentsListByID[0].Acct_Status);
+                                    int accClass_subTpe = getAccClassDDLValue(underPaymentsListByID[0].Acct_Class);
+                                    int underPay;
+                                    if (underPaymentsListByID[0].Underpayment_Reason_Code != null)
+                                    {
+                                        underPay = underPaymentsListByID[0].Underpayment_Reason_Code.Value;
+                                    }
+                                    else
+                                    {
+                                        underPay = 0;
+                                    }
+                                    string Cmnt = string.Empty;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                        Cmnt = underPaymentsListByID[0].Brief_Summary;
+                                    else
+                                        Cmnt = "";
+
+                                    int strStatus = 0;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                    {
+                                        strStatus = 5;
+                                    }
+                                    else { strStatus = 9; }
+
+                                    //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, Nullable<decimal> aCD_TotalCharges, Nullable<decimal> aCD_TotalPay, Nullable<decimal> aCD_TotalAdj,
+                                    //Nullable<decimal> aCD_AmtDiffNAA, Nullable<decimal> aCD_AmtDiffPayor, Nullable<decimal> aCD_ExpAmt, string aCD_BillProvider, string aCD_Department, string aCD_HBorPB, 
+                                    //Nullable<int> aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, Nullable<int> aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, 
+                                    //string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, Nullable<int> aCD_TaskFollowUp, 
+                                    //Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
+                                    //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
+                                    TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), testAmt1, testAmt2, testAmt3,
+                                       AmtAllowedNAA, AmtAllowedPay, ExpAmt, "1", "1", "3",
+                                       strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),  underPay, 
+                                       " ", "22", "49", "49", Cmnt, "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
+                                        DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
+                                        "", DateTime.Now, "", case_idParameter);
+
+
+                                    new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+
+                                    acdDetails.link = 1;
+                                }
+                            }
+                        }
+
+
+                        TCG_WorklistModel context = new TCG_WorklistModel();
+                        TCG_DataEntities context_tcg = new TCG_DataEntities();
+
+
+                        ViewBag.ACD_data = get_CaseDetails(HospitalAccountID, new_Case_Value);
+                        ViewBag.One_ACD_data = get_OnlyOneCaseDetails(HospitalAccountID);
+                        ViewBag.OriginalData = taskDetails;
+                        ACD = get_CaseDetailsList(HospitalAccountID);
+                        ACD[0].dateConvert = ACD[0].ACD_DueDate.Value.ToShortDateString();
+
+                        //CASE DETAILS
+                        acdDetails = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                        acdDetails.dateConvert = acdDetails.ACD_DueDate.Value.ToShortDateString();
+                        acdDetails.dateFollowUp = acdDetails.ACD_FollowUpDate.Value.ToShortDateString();
+                        Decimal AmtConvert = Convert.ToDecimal(acdDetails.ACD_Amount);
+                        acdDetails.convertAmount = Math.Round(AmtConvert, 2);
+                        acdDetails.convAmt = acdDetails.convertAmount.ToString();
+                        Decimal conv1 = Convert.ToDecimal(acdDetails.ACD_Amount);
+                        conv1 = Math.Round(conv1, 2);
+                        acdDetails.TotAccBal = "$" + Convert.ToString(conv1);
+                        Decimal conv2 = Math.Round(acdDetails.ACD_TotalCharges, 2);
+                        acdDetails.TotChrgAmt = "$" + Convert.ToString(conv2);
+                        Decimal conv3 = Math.Round(acdDetails.ACD_TotalPay, 2);
+                        acdDetails.TotPayAmt = "$" + Convert.ToString(conv3);
+                        Decimal conv4 = Math.Round(acdDetails.ACD_TotalAdj, 2);
+                        acdDetails.TotAdjAmt = "$" + Convert.ToString(conv4);
+                        Decimal conv5 = Math.Round(acdDetails.ACD_AmtDiffNAA, 2);
+                        acdDetails.convAllAmtDiff = "$" + Convert.ToString(conv5);
+                        Decimal conv6 = Math.Round(acdDetails.ACD_AmtDiffPayor, 2);
+                        acdDetails.convAllAmtDiffPyr = "$" + Convert.ToString(conv6);
+                        Decimal conv7 = Math.Round(acdDetails.ACD_ExpAmt, 2);
+                        acdDetails.convExpAmtDiff = "$" + Convert.ToString(conv7);
+
+                        if (linkName == "underPay")
+                        {
+                            acdDetails.link = 1;
+                        }
+                        else
+                        {
+                            acdDetails.link = 2;
+                        }
+                        //acdDetails.userName = underPaymentsListByID[0].Biller;
+                        //if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                        //{
+                        //    acdDetails.userName = underPaymentsListByID[0].Biller;
+                        //    acdDetails.userFlag = 1;
+                        //}
+                        //else
+                        //{
+                        //    acdDetails.userFlag = 2;
+                        //}
+                        acdDetails.userFlag = 2;
+                        acdDetails.userID = acdDetails.ACD_Owner;
+
+                        if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                        {
+                            acdDetails.ACD_Comments = underPaymentsListByID[0].Brief_Summary;
+                        }
+
+
+                        if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                        {
+                            acdDetails.ACD_Status = 5;
+                        }
+
+
+                        //CASE DETAILS HISTORY
+                        ACDH = getCaseDetailsHistoryList(HospitalAccountID);
+                        if (ACDH.Count > 0)
+                        {
+                            for (int j = 0; j < ACDH.Count; j++)
+                            {
+                                ACDH[j].ACDH_Status = ACDH[j].ACDH_Status;
+                                ACDH[j].ACDH_PayerReason = ACDH[j].ACDH_PayerReason;
+                                Double amt = Convert.ToDouble(ACDH[j].ACDH_Amount);
+                                amt = Math.Round(amt, 2);
+                                ACDH[j].ACDH_Amount = "$" + Convert.ToString(amt);
+                                ACDH[j].ACDH_Owner = get_Owner_dropDownText(ACDH[j].ACDH_Owner);
+                                ACDH[j].convertDate = ACDH[j].ACDH_CreatedDate.ToShortDateString();
+                                ACDH[j].ACDH_Priority = getPrioritydropDownText(Convert.ToInt32(ACDH[j].ACDH_Priority));
+                                ACDH[j].convertFollowUpDate = ACDH[j].ACDH_FollowUpDate.Value.ToShortDateString();
+                                ACDH[j].ACDH_TaskFollowUp = ACDH[j].ACDH_TaskFollowUp;
+                                Decimal amt1 = Math.Round(ACDH[j].ACDH_TotalCharges, 2);
+                                ACDH[j].totalCharges = "$" + Convert.ToString(amt1);
+                                Decimal amt2 = Math.Round(ACDH[j].ACDH_TotalPay, 2);
+                                ACDH[j].totalPay = "$" + Convert.ToString(amt2);
+                                Decimal amt3 = Math.Round(ACDH[j].ACDH_TotalAdj, 2);
+                                ACDH[j].totalAdj = "$" + Convert.ToString(amt3);
+
+                            }
+
+                        }
+
+                        ViewBag.underPaymentsLinkData = underPaymentsListByID;
+                        ViewBag.caseDetailsHistory = ACDH;
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                return View(acdDetails);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult APDEditCaseDetails(string id, string linkName)
+        {
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.SM = populateStatus();
+                ViewBag.AARS = populateAccount_ARStatus();
+                ViewBag.ABS = populate_BillStatus();
+                ViewBag.AS = populate_AccountSource();
+                ViewBag.ECT = populate_EncounterType();
+                ViewBag.ICN = populate_Insurance();
+                ViewBag.PFC = populate_PayorFC();
+                ViewBag.PRM = populate_PrimaryReason();
+                ViewBag.TM = populate_Task();
+                ViewBag.UL = populate_UserLogin();
+                ViewBag.PM = populate_Priority();
+                ViewBag.RC = populateRootCause();
+                ViewBag.DC = populateDenialCategory();
+                ViewBag.UP = populateUnderPayReason();
+                ViewBag.CC = populateCompleted();
+                ViewBag.DS = populateDenialStatusMaster();
+
+                Session["AccountID"] = id;
+
+                openCaseID = id;
+                string HospitalAccountID = openCaseID;
+                int new_Case_Value = 0;
+                Decimal testAmt1, testAmt2, testAmt3, testAmt4, AmtAllowedNAA, AmtAllowedPay, ExpAmt;
+                string ownerId = string.Empty;
+
+
+                TCG_WLM = new TCG_WorklistModel();
+                Account_Case_Details acdDetails = new Account_Case_Details();
+                Account_Case_Detials_History acdhDetails = new Account_Case_Detials_History();
+                List<Account_Case_Details> ACD = new List<Account_Case_Details>();
+                List<Account_Case_Detials_History> ACDH = new List<Account_Case_Detials_History>();
+
+                List<Get_Account_Info_for_ARandDenial_Result> taskDetails = new List<Get_Account_Info_for_ARandDenial_Result>();
+                List<Get_Under_Paymnent_Accounts_APD_Result> underPaymentsListByID = getAPDUnderPaymentsDetailsList(openCaseID);
+                if (underPaymentsListByID.Count > 0)
+                {
+                    underPaymentsListByID[0].DischargeDate = underPaymentsListByID[0].Disch_Date.Value.ToShortDateString();
+                }
+
+
+                if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                {
+                    TCG_DataEntities tcguserdata = new TCG_DataEntities();
+                    Users_Data tcglogin = new Users_Data();
+                    tcglogin = tcguserdata.Users_Data.Where(m => m.user_first_name.ToString() == underPaymentsListByID[0].Biller).FirstOrDefault();
+                    ownerId = tcglogin.user_ID.ToString();
+                }
+                else
+                {
+                    ownerId = get_Owner_dropDownValue("Select Owner");
+                }
+
+                try
+                {
+                    using (TCG_DataEntities tcg_CaseDetails = new TCG_DataEntities())
+                    {
+                        taskDetails = tcg_CaseDetails.Get_Account_Info_for_ARandDenial(id).ToList();
+
+                        if (taskDetails.Count > 0 && taskDetails != null)
+                        {
+                            if (taskDetails[0].Total_Charge_Amount.HasValue)
+                            {
+                                testAmt1 = Convert.ToDecimal(taskDetails[0].Total_Charge_Amount);
+                                testAmt1 = Math.Round(testAmt1, 2);
+                                taskDetails[0].convTotChrgAmt = "$" + testAmt1.ToString();
+                            }
+                            else
+                            {
+                                testAmt1 = 0;
+                                taskDetails[0].convTotChrgAmt = "$0.00";
+                            }
+
+
+                            if (taskDetails[0].Total_Payment_Amount.HasValue)
+                            {
+                                testAmt2 = Convert.ToDecimal(taskDetails[0].Total_Payment_Amount);
+                                testAmt2 = Math.Round(testAmt2, 2);
+                                taskDetails[0].convTotPayAmt = "$" + testAmt2.ToString();
+                            }
+                            else
+                            {
+                                taskDetails[0].convTotPayAmt = "$0.00";
+                                testAmt2 = 0;
+                            }
+
+
+                            if (taskDetails[0].Total_Adjustment_Amount.HasValue)
+                            {
+                                testAmt3 = Convert.ToDecimal(taskDetails[0].Total_Adjustment_Amount);
+                                testAmt3 = Math.Round(testAmt3, 2);
+                                taskDetails[0].convAdjAmt = "$" + testAmt3.ToString();
+                            }
+                            else
+                            {
+                                taskDetails[0].convAdjAmt = "$0.00";
+                                testAmt3 = 0;
+                            }
+
+
+                            if (taskDetails[0].Total_Account_Balance.HasValue)
+                            {
+                                testAmt4 = Convert.ToDecimal(taskDetails[0].Total_Account_Balance);
+                                testAmt4 = Math.Round(testAmt4, 2);
+                                taskDetails[0].convTotAccBal = "$" + testAmt4.ToString();
+                            }
+                            else
+                            {
+                                taskDetails[0].convTotAccBal = "$0.00";
+                                testAmt4 = 0;
+                            }
+
+
+                            if (underPaymentsListByID[0].Allowed_Amount_Difference != null || underPaymentsListByID[0].Allowed_Amount_Difference != 0)
+                            {
+                                AmtAllowedNAA = Convert.ToDecimal(underPaymentsListByID[0].Allowed_Amount_Difference);
+                                AmtAllowedNAA = Math.Round(AmtAllowedNAA, 2);
+                                acdDetails.convAllAmtDiff = "$" + AmtAllowedNAA.ToString();
+                            }
+                            else
+                            {
+                                acdDetails.convAllAmtDiff = "$" + "0.00";
+                                AmtAllowedNAA = 0;
+                            }
+
+                            if (underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified != null || underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified != 0)
+                            {
+                                AmtAllowedPay = Convert.ToDecimal(underPaymentsListByID[0].Allowed_Amount_Difference_Payor_Specified);
+                                AmtAllowedPay = Math.Round(AmtAllowedPay, 2);
+                                acdDetails.convAllAmtDiffPyr = "$" + AmtAllowedPay.ToString();
+                            }
+                            else
+                            {
+                                AmtAllowedPay = 0;
+                                acdDetails.convAllAmtDiffPyr = "$" + "0.00";
+                            }
+
+
+                            if (!string.IsNullOrEmpty(underPaymentsListByID[0].Expected_Allowed_Amount) || underPaymentsListByID[0].Expected_Allowed_Amount != "0")
+                            {
+                                ExpAmt = Convert.ToDecimal(underPaymentsListByID[0].Expected_Allowed_Amount);
+                                ExpAmt = Math.Round(ExpAmt, 2);
+                                acdDetails.convExpAmtDiff = "$" + ExpAmt.ToString();
+                            }
+                            else
+                            {
+                                acdDetails.convExpAmtDiff = "$" + "0.00";
+                                ExpAmt = 0;
+                            }
+
+
+                            var Case_checkHospitalAccID = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+
+                            if (taskDetails[0].Admission_Date.HasValue)
+                                taskDetails[0].convAdmDate = taskDetails[0].Admission_Date.Value.ToShortDateString();
+                            else
+                                taskDetails[0].convAdmDate = " ";
+
+
+                            if (taskDetails[0].Discharge_Date.HasValue)
+                                taskDetails[0].convDischDate = taskDetails[0].Discharge_Date.Value.ToShortDateString();
+                            else
+                                taskDetails[0].convDischDate = " ";
+
+
+                            if (taskDetails[0].First_Billed_Date.HasValue)
+                                taskDetails[0].convFirstBillDate = taskDetails[0].First_Billed_Date.Value.ToShortDateString();
+                            else
+                                taskDetails[0].convFirstBillDate = " ";
+
+
+                            if (!string.IsNullOrEmpty(taskDetails[0].Last_Payor_Rcvd_Dt))
+                            {
+                                DateTime testDate = Convert.ToDateTime(taskDetails[0].Last_Payor_Rcvd_Dt);
+                                taskDetails[0].convLastPayDate = testDate.ToShortDateString();
+                            }
+                            else
+                                taskDetails[0].convLastPayDate = " ";
+
+
+                            var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+                            var model = new TCG_WorklistModel();
+                            if (Case_checkHospitalAccID != null)
+                            {
+                                new_Case_Value = Case_checkHospitalAccID.ACD_ID;
+                            }
+                            else
+                            {
+                                new_Case_Value = 0;
+                            }
+                            //string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+
+                            if (Case_checkHospitalAccID == null)
+                            {
+                                if (linkName == "underPay")
+                                {
+                                    int billStatus_type = get_BillStatus_dropDownValue(underPaymentsListByID[0].Acct_Status);
+                                    int accClass_subTpe = getAccClassDDLValue(underPaymentsListByID[0].Acct_Class);
+                                    int underPay;
+                                    if (underPaymentsListByID[0].Underpayment_Reason_Code != null)
+                                    {
+                                        underPay = underPaymentsListByID[0].Underpayment_Reason_Code.Value;
+                                    }
+                                    else
+                                    {
+                                        underPay = 0;
+                                    }
+
+                                    string Cmnt = string.Empty;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                        Cmnt = underPaymentsListByID[0].Brief_Summary;
+                                    else
+                                        Cmnt = "";
+
+                                    int strStatus = 0;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                    {
+                                        strStatus = 5;
+                                    }
+                                    else { strStatus = 9; }
+
+                                    //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, Nullable<decimal> aCD_TotalCharges, Nullable<decimal> aCD_TotalPay, Nullable<decimal> aCD_TotalAdj,
+                                    //Nullable<decimal> aCD_AmtDiffNAA, Nullable<decimal> aCD_AmtDiffPayor, Nullable<decimal> aCD_ExpAmt, string aCD_BillProvider, string aCD_Department, string aCD_HBorPB, 
+                                    //Nullable<int> aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, Nullable<int> aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, 
+                                    //string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, Nullable<int> aCD_TaskFollowUp, 
+                                    //Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
+                                    //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
+                                    TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), testAmt1, testAmt2, testAmt3,
+                                       AmtAllowedNAA, AmtAllowedPay, ExpAmt, "1", "1", "3",
+                                       strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(), underPay, " ", "22",
+                                       "49", "49", Cmnt, "2", "1", "", 40,
+                                        underPaymentsListByID[0].Disch_Date, DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
+                                        "", DateTime.Now, "", case_idParameter);
+
+
+                                    new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+
+                                    acdDetails.link = 1;
+                                }
+                                else if (linkName == "Other")
+                                {
+                                    int billStatus_type;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Account_Bill_Status))
+                                        billStatus_type = 5;
+                                    else
+                                        billStatus_type = get_BillStatus_dropDownValue(taskDetails[0].Account_Bill_Status);
+
+                                    int accClass_subTpe;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Acct_Class))
+                                        accClass_subTpe = 11;
+                                    else
+                                        accClass_subTpe = getAccClassDDLValue(taskDetails[0].Acct_Class); //Acct_Class -Denial , Account_Source - AR => Account_Source[Table in DB]
+
+                                    int rootCause = 0;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Root_Cause))
+                                        rootCause = 1;
+                                    else
+                                        rootCause = getRootCauseDDLValue(taskDetails[0].Root_Cause);
+
+                                    int denialReason = 0;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Denial_Cat))
+                                        denialReason = 1;
+                                    else
+                                        denialReason = getDenialReason(taskDetails[0].Denial_Cat);
+
+                                    int denialStatusReason = 0;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Status))
+                                        denialStatusReason = 1;
+                                    else
+                                        denialStatusReason = getDenialStatusReason(taskDetails[0].Status);
+
+
+                                    DateTime date;
+                                    if (string.IsNullOrEmpty(taskDetails[0].Rcvd_Dt))
+                                        date = DateTime.Now;
+                                    else
+                                        date = DateTime.Parse(taskDetails[0].Rcvd_Dt);
+
+                                    int strStatus = 0;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                    {
+                                        strStatus = 5;
+                                    }
+                                    else { strStatus = 9; }
+
+                                    TCG_WLM.Case_InsUpd(0, taskDetails[0].Hospital_Account_ID, System.Convert.ToString(taskDetails[0].Total_Account_Balance), testAmt1, testAmt2, testAmt3,
+                                       AmtAllowedNAA, AmtAllowedPay, ExpAmt, "1", "1", "1", strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(),
+                                       rootCause, denialStatusReason.ToString(), denialReason.ToString(), "49", "49", "",
+                                       "2", "1", "", 40, date,
+                                       DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
+                                       "", DateTime.Now, "", case_idParameter);
+
+
+                                    new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+
+                                    acdDetails.link = 2;
+
+
+                                }
+                            }
+
+                        }
+
+                        else if (taskDetails.Count == 0 || taskDetails == null)
+                        {
+
+                            var Case_checkHospitalAccID = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+
+
+                            Decimal testAmount = Convert.ToDecimal(underPaymentsListByID[0].Acct_Bal);
+                            testAmount = Math.Round(testAmount, 2);
+
+                            taskDetails.Add(new Get_Account_Info_for_ARandDenial_Result() { Hospital_Account_ID = Convert.ToString(underPaymentsListByID[0].Account), Account_Patient_Name = underPaymentsListByID[0].Account_Name, convAdmDate = "", Encounter_Type = "", Account_Financial_Class = "", convFirstBillDate = "", convLastPayDate = "", convTotChrgAmt = "$0.00", convTotPayAmt = "$0.00", convAdjAmt = "$0.00", convTotAccBal = "$" + testAmount.ToString() });
+
+                            testAmt1 = 0;
+                            taskDetails[0].convTotChrgAmt = "$0.00";
+
+                            taskDetails[0].convTotPayAmt = "$0.00";
+                            testAmt2 = 0;
+
+                            taskDetails[0].convAdjAmt = "$0.00";
+                            testAmt3 = 0;
+
+                            taskDetails[0].convTotAccBal = "$0.00";
+                            testAmt4 = 0;
+
+                            acdDetails.convAllAmtDiff = "$" + "0.00";
+                            AmtAllowedNAA = 0;
+
+                            AmtAllowedPay = 0;
+                            acdDetails.convAllAmtDiffPyr = "$" + "0.00";
+
+                            acdDetails.convExpAmtDiff = "$" + "0.00";
+                            ExpAmt = 0;
+
+                            var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+                            var model = new TCG_WorklistModel();
+
+                            if (Case_checkHospitalAccID != null)
+                            {
+                                new_Case_Value = Case_checkHospitalAccID.ACD_ID;
+                            }
+                            else
+                            {
+                                new_Case_Value = 0;
+                            }
+
+                            if (Case_checkHospitalAccID == null)
+                            {
+                                if (linkName == "underPay")
+                                {
+                                    int billStatus_type = get_BillStatus_dropDownValue(underPaymentsListByID[0].Acct_Status);
+                                    int accClass_subTpe = getAccClassDDLValue(underPaymentsListByID[0].Acct_Class);
+                                    int underPay;
+                                    if (underPaymentsListByID[0].Underpayment_Reason_Code != null)
+                                    {
+                                        underPay = underPaymentsListByID[0].Underpayment_Reason_Code.Value;
+                                    }
+                                    else
+                                    {
+                                        underPay = 0;
+                                    }
+                                    string Cmnt = string.Empty;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                        Cmnt = underPaymentsListByID[0].Brief_Summary;
+                                    else
+                                        Cmnt = "";
+
+                                    int strStatus = 0;
+                                    if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                                    {
+                                        strStatus = 5;
+                                    }
+                                    else { strStatus = 9; }
+
+                                    //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, Nullable<decimal> aCD_TotalCharges, Nullable<decimal> aCD_TotalPay, Nullable<decimal> aCD_TotalAdj,
+                                    //Nullable<decimal> aCD_AmtDiffNAA, Nullable<decimal> aCD_AmtDiffPayor, Nullable<decimal> aCD_ExpAmt, string aCD_BillProvider, string aCD_Department, string aCD_HBorPB, 
+                                    //Nullable<int> aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, Nullable<int> aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, 
+                                    //string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, Nullable<int> aCD_TaskFollowUp, 
+                                    //Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
+                                    //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
+                                    TCG_WLM.Case_InsUpd(0, System.Convert.ToString(underPaymentsListByID[0].Account), System.Convert.ToString(underPaymentsListByID[0].Acct_Bal), testAmt1, testAmt2, testAmt3,
+                                       AmtAllowedNAA, AmtAllowedPay, ExpAmt, "1", "1", "3",
+                                       strStatus, ownerId, billStatus_type.ToString(), accClass_subTpe.ToString(), underPay,
+                                       " ", "22", "49", "49", Cmnt, "2", "1", "", 40, underPaymentsListByID[0].Disch_Date,
+                                        DateTime.Now, false, Session["username"].ToString(), DateTime.Now,
+                                        "", DateTime.Now, "", case_idParameter);
+
+
+                                    new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+
+                                    acdDetails.link = 1;
+                                }
+                            }
+                        }
+
+
+                        TCG_WorklistModel context = new TCG_WorklistModel();
+                        TCG_DataEntities context_tcg = new TCG_DataEntities();
+
+
+                        ViewBag.ACD_data = get_CaseDetails(HospitalAccountID, new_Case_Value);
+                        ViewBag.One_ACD_data = get_OnlyOneCaseDetails(HospitalAccountID);
+                        ViewBag.OriginalData = taskDetails;
+                        ACD = get_CaseDetailsList(HospitalAccountID);
+                        ACD[0].dateConvert = ACD[0].ACD_DueDate.Value.ToShortDateString();
+
+                        //CASE DETAILS
+                        acdDetails = TCG_WLM.Account_Case_Details.Where(m => m.ACD_HspAccID == HospitalAccountID).FirstOrDefault();
+                        acdDetails.dateConvert = acdDetails.ACD_DueDate.Value.ToShortDateString();
+                        acdDetails.dateFollowUp = acdDetails.ACD_FollowUpDate.Value.ToShortDateString();
+                        Decimal AmtConvert = Convert.ToDecimal(acdDetails.ACD_Amount);
+                        acdDetails.convertAmount = Math.Round(AmtConvert, 2);
+                        acdDetails.convAmt = acdDetails.convertAmount.ToString();
+                        Decimal conv1 = Convert.ToDecimal(acdDetails.ACD_Amount);
+                        conv1 = Math.Round(conv1, 2);
+                        acdDetails.TotAccBal = "$" + Convert.ToString(conv1);
+                        Decimal conv2 = Math.Round(acdDetails.ACD_TotalCharges, 2);
+                        acdDetails.TotChrgAmt = "$" + Convert.ToString(conv2);
+                        Decimal conv3 = Math.Round(acdDetails.ACD_TotalPay, 2);
+                        acdDetails.TotPayAmt = "$" + Convert.ToString(conv3);
+                        Decimal conv4 = Math.Round(acdDetails.ACD_TotalAdj, 2);
+                        acdDetails.TotAdjAmt = "$" + Convert.ToString(conv4);
+                        Decimal conv5 = Math.Round(acdDetails.ACD_AmtDiffNAA, 2);
+                        acdDetails.convAllAmtDiff = "$" + Convert.ToString(conv5);
+                        Decimal conv6 = Math.Round(acdDetails.ACD_AmtDiffPayor, 2);
+                        acdDetails.convAllAmtDiffPyr = "$" + Convert.ToString(conv6);
+                        Decimal conv7 = Math.Round(acdDetails.ACD_ExpAmt, 2);
+                        acdDetails.convExpAmtDiff = "$" + Convert.ToString(conv7);
+
+                        if (linkName == "underPay")
+                        {
+                            acdDetails.link = 1;
+                        }
+                        else
+                        {
+                            acdDetails.link = 2;
+                        }
+                        //acdDetails.userName = underPaymentsListByID[0].Biller;
+                        //if (!string.IsNullOrEmpty(underPaymentsListByID[0].Biller))
+                        //{
+                        //    acdDetails.userName = underPaymentsListByID[0].Biller;
+                        //    acdDetails.userFlag = 1;
+                        //}
+                        //else
+                        //{
+                        //    acdDetails.userFlag = 2;
+                        //}
+                        acdDetails.userFlag = 2;
+                        acdDetails.userID = acdDetails.ACD_Owner;
+
+                        if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                        {
+                            acdDetails.ACD_Comments = underPaymentsListByID[0].Brief_Summary;
+                        }
+
+
+                        if (!string.IsNullOrEmpty(underPaymentsListByID[0].Brief_Summary))
+                        {
+                            acdDetails.ACD_Status = 5;
+                        }
+
+
+                        //CASE DETAILS HISTORY
+                        ACDH = getCaseDetailsHistoryList(HospitalAccountID);
+                        if (ACDH.Count > 0)
+                        {
+                            for (int j = 0; j < ACDH.Count; j++)
+                            {
+                                ACDH[j].ACDH_Status = ACDH[j].ACDH_Status;
+                                ACDH[j].ACDH_PayerReason = ACDH[j].ACDH_PayerReason;
+                                Double amt = Convert.ToDouble(ACDH[j].ACDH_Amount);
+                                amt = Math.Round(amt, 2);
+                                ACDH[j].ACDH_Amount = "$" + Convert.ToString(amt);
+                                ACDH[j].ACDH_Owner = get_Owner_dropDownText(ACDH[j].ACDH_Owner);
+                                ACDH[j].convertDate = ACDH[j].ACDH_CreatedDate.ToShortDateString();
+                                ACDH[j].ACDH_Priority = getPrioritydropDownText(Convert.ToInt32(ACDH[j].ACDH_Priority));
+                                ACDH[j].convertFollowUpDate = ACDH[j].ACDH_FollowUpDate.Value.ToShortDateString();
+                                ACDH[j].ACDH_TaskFollowUp = ACDH[j].ACDH_TaskFollowUp;
+                                Decimal amt1 = Math.Round(ACDH[j].ACDH_TotalCharges, 2);
+                                ACDH[j].totalCharges = "$" + Convert.ToString(amt1);
+                                Decimal amt2 = Math.Round(ACDH[j].ACDH_TotalPay, 2);
+                                ACDH[j].totalPay = "$" + Convert.ToString(amt2);
+                                Decimal amt3 = Math.Round(ACDH[j].ACDH_TotalAdj, 2);
+                                ACDH[j].totalAdj = "$" + Convert.ToString(amt3);
+
+                            }
+
+                        }
+
+                        ViewBag.underPaymentsLinkData = underPaymentsListByID;
+                        ViewBag.caseDetailsHistory = ACDH;
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                return View(acdDetails);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult APDEditCaseDetails(Account_Case_Details ACD)
+        {
+            if (Session["username"] == null)
+            {
+                return Redirect("~/Home/Login");
+            }
+            else
+            {
+                ViewBag.SM = populateStatus();
+                ViewBag.AARS = populateAccount_ARStatus();
+                ViewBag.ABS = populate_BillStatus();
+                ViewBag.AS = populate_AccountSource();
+                ViewBag.ECT = populate_EncounterType();
+                ViewBag.ICN = populate_Insurance();
+                ViewBag.PFC = populate_PayorFC();
+                ViewBag.PRM = populate_PrimaryReason();
+                ViewBag.TM = populate_Task();
+                ViewBag.UL = populate_UserLogin();
+                ViewBag.PM = populate_Priority();
+                ViewBag.RC = populateRootCause();
+                ViewBag.DC = populateDenialCategory();
+                ViewBag.UP = populateUnderPayReason();
+                ViewBag.CC = populateCompleted();
+                ViewBag.DS = populateDenialStatusMaster();
+
+                Session["AccountID"] = ACD.ACD_HspAccID;
+
+                openCaseID = ACD.ACD_HspAccID;
+                string HospitalAccountID = openCaseID;
+
+                TCG_WLM = new TCG_WorklistModel();
+                string linkName = string.Empty;
+                if (ACD.link == 1)
+                {
+                    linkName = "underPay";
+                }
+                else
+                {
+                    linkName = "Other";
+                }
+
+                try
+                {
+                    using (TCG_WorklistModel tcg_CaseDetails = new TCG_WorklistModel())
+                    {
+                        var case_idParameter = new ObjectParameter("new_recordNumber", typeof(int));
+
+                        string ownerId = get_Owner_dropDownValue(Session["username"].ToString());
+                        string[] test = ACD.ACD_Amount.Split('$');
+                        ACD.ACD_Amount = test[1];
+                        string[] test2 = ACD.TotChrgAmt.Split('$');
+                        ACD.ACD_TotalCharges = Convert.ToDecimal(test2[1]);
+                        string[] test3 = ACD.TotPayAmt.Split('$');
+                        ACD.ACD_TotalPay = Convert.ToDecimal(test3[1]);
+                        string[] test4 = ACD.TotAdjAmt.Split('$');
+                        ACD.ACD_TotalAdj = Convert.ToDecimal(test4[1]);
+
+
+                        //Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, Nullable<decimal> aCD_TotalCharges, Nullable<decimal> aCD_TotalPay, Nullable<decimal> aCD_TotalAdj,
+                        //Nullable<decimal> aCD_AmtDiffNAA, Nullable<decimal> aCD_AmtDiffPayor, Nullable<decimal> aCD_ExpAmt, string aCD_BillProvider, string aCD_Department, string aCD_HBorPB, 
+                        //Nullable<int> aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, Nullable<int> aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, 
+                        //string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, Nullable<int> aCD_TaskFollowUp, 
+                        //Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, 
+                        //string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber
+                        string desc = string.Empty;
+                        if (string.IsNullOrEmpty(ACD.ACD_Description))
+                        { desc = " "; }
+                        else
+                        { desc = ACD.ACD_Description; }
+                        TCG_WLM.Case_InsUpd(ACD.ACD_ID, ACD.ACD_HspAccID, ACD.ACD_Amount, ACD.ACD_TotalCharges, ACD.ACD_TotalPay, ACD.ACD_TotalAdj,
+                            ACD.ACD_AmtDiffNAA, ACD.ACD_AmtDiffPayor, ACD.ACD_ExpAmt, "1", "1", "3",
+                            ACD.ACD_Status, ACD.ACD_Owner, ACD.ACD_Type, ACD.ACD_SubType,
+                            ACD.ACD_PayerReason, ACD.ACD_PrimaryReason, "22", "49", "49", ACD.ACD_Comments,
+                            "2", ACD.ACD_Priority, desc, ACD.ACD_TaskFollowUp, ACD.ACD_DueDate,
+                            ACD.ACD_FollowUpDate, false, Session["username"].ToString(), DateTime.Now,
+                            "", DateTime.Now, "", case_idParameter);
+
+
+                        //new_Case_Value = Convert.ToInt32(case_idParameter.Value);
+
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                return RedirectToAction("APDViewCaseDetails", new { id = ACD.ACD_HspAccID, linkName });
+            }
+        }
+
 
         public int getRootCauseDDLValue(string x)
         {
@@ -3187,9 +4541,9 @@ namespace HealthcareAnalytics.Controllers
         public string get_Owner_dropDownText(string x)
         {
             TCG_DataEntities context_tcg = new TCG_DataEntities();
-            User_Login ACD = new User_Login();
+            Users_Data ACD = new Users_Data();
 
-            ACD = context_tcg.User_Login.Where(m => m.user_Id.ToString() == x).FirstOrDefault();
+            ACD = context_tcg.Users_Data.Where(m => m.user_ID.ToString() == x).FirstOrDefault();
 
             string DDL_Name = ACD.user_web_login;
             return DDL_Name;
@@ -3199,11 +4553,11 @@ namespace HealthcareAnalytics.Controllers
         public string get_Owner_dropDownValue(string x)
         {
             TCG_DataEntities context_tcg = new TCG_DataEntities();
-            User_Login ACD = new User_Login();
+            Users_Data ACD = new Users_Data();
 
-            ACD = context_tcg.User_Login.Where(m => m.user_web_login.ToString() == x).FirstOrDefault();
+            ACD = context_tcg.Users_Data.Where(m => m.user_web_login.ToString() == x).FirstOrDefault();
 
-            string DDL_Name_Value = ACD.user_Id.ToString();
+            string DDL_Name_Value = ACD.user_ID.ToString();
             return DDL_Name_Value;
 
         }
@@ -3282,6 +4636,19 @@ namespace HealthcareAnalytics.Controllers
             using (var db = new TCG_WorklistModel())
             {
                 return (from c in db.Get_Under_Paymnent_Accounts_PB()
+                        where c.Account == HospitalAccountID
+                        select c).ToList();
+            }
+        }
+
+
+        public List<Get_Under_Paymnent_Accounts_APD_Result> getAPDUnderPaymentsDetailsList(string HospitalAccountID)
+        {
+
+            List<Get_Under_Paymnent_Accounts_APD_Result> UPD = new List<Get_Under_Paymnent_Accounts_APD_Result>();
+            using (var db = new TCG_WorklistModel())
+            {
+                return (from c in db.Get_Under_Paymnent_Accounts_APD()
                         where c.Account == HospitalAccountID
                         select c).ToList();
             }

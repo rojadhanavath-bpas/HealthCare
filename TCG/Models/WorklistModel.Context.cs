@@ -269,5 +269,10 @@ namespace HealthcareAnalytics.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_Result>("Get_Under_Paymnent_Accounts");
         }
+    
+        public virtual ObjectResult<Get_Under_Paymnent_Accounts_APD_Result> Get_Under_Paymnent_Accounts_APD()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_APD_Result>("Get_Under_Paymnent_Accounts_APD");
+        }
     }
 }
