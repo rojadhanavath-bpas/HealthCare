@@ -218,6 +218,7 @@ namespace HealthcareAnalytics.Controllers
 
         }
 
+
         public ActionResult Underpayemnts_UserAcc_List(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue, string type)
         {
             if (Session["username"] == null)
@@ -236,6 +237,7 @@ namespace HealthcareAnalytics.Controllers
                 ViewBag.sort_PayorName = sortOrder == "payorName_Asc" ? "payorName_Des" : "payorName_Asc";
                 ViewBag.sort_Bal = sortOrder == "Bal_Asc" ? "Bal_Des" : "Bal_Asc";
                 ViewBag.sort_Plan = sortOrder == "Plan_Asc" ? "Plan_Des" : "Plan_Asc";
+                ViewBag.sort_FC = sortOrder == "FC_Asc" ? "FC_Des" : "FC_Asc";
                 ViewBag.sort_AccClass = sortOrder == "AccClass_Asc" ? "AccClass_Des" : "AccClass_Asc";
                 int pageSize = 10;
                 int pageNumber = (page ?? 1);
@@ -256,12 +258,15 @@ namespace HealthcareAnalytics.Controllers
                 using (TCG_WorklistModel db2 = new TCG_WorklistModel())
                 {
                     List<Get_Under_Paymnent_Accounts_Result> result = db2.Get_Under_Paymnent_Accounts().ToList();
+                    string usrName = Session["username"].ToString();
+                    result = getHBResultBasedOnLogin(usrName);
+
 
                     if (type == "All")
                     {
                         using (var db = new TCG_WorklistModel())
                         {
-                            result = (from c in db.Get_Under_Paymnent_Accounts()                                      
+                            result = (from c in result
                                       select c).ToList();
                         }
                     }
@@ -269,7 +274,7 @@ namespace HealthcareAnalytics.Controllers
                     {
                         using (var db = new TCG_WorklistModel())
                         {
-                            result = (from c in db.Get_Under_Paymnent_Accounts()
+                            result = (from c in result
                                       where c.CaseStatus == type
                                       select c).ToList();
                         }
@@ -368,6 +373,12 @@ namespace HealthcareAnalytics.Controllers
                         case "AccClass_Des":
                             result = result.OrderBy(s => s.Acct_Class).ToList();
                             break;
+                        //case "FC_Asc":
+                        //    result = result.OrderByDescending(s => s.Financial_Class).ToList();
+                        //    break;
+                        //case "FC_Des":
+                        //    result = result.OrderBy(s => s.Financial_Class).ToList();
+                        //    break;
                         default:  // Name Descending 
                             result = result.OrderByDescending(s => s.Acct_Bal).ToList();
                             break;
@@ -395,7 +406,7 @@ namespace HealthcareAnalytics.Controllers
             }
 
         }
-
+        
 
         public ActionResult PB_Underpayments_UserAccList(string sortOrder, string currentFilter, string searchString, int? page, string DDLValue,string type)
         {
@@ -787,6 +798,138 @@ namespace HealthcareAnalytics.Controllers
         }
 
 
+        public List<Get_Under_Paymnent_Accounts_Result> getHBResultBasedOnLogin(string userName)
+        {
+
+            List<Get_Under_Paymnent_Accounts_Result> UPD = new List<Get_Under_Paymnent_Accounts_Result>();
+            List<Get_Under_Paymnent_Accounts_Result> UPD1 = new List<Get_Under_Paymnent_Accounts_Result>();
+            List<Get_Under_Paymnent_Accounts_Result> UPD2 = new List<Get_Under_Paymnent_Accounts_Result>();
+            using (var db = new TCG_WorklistModel())
+            {
+
+                if (userName == "Deborah.Harrington")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts()
+                            where c.Payor_Name.Contains("COMMERCIAL") || c.Payor_Name.Contains("MEDICAID")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where  c.Account_Name.StartsWith("J") || c.Account_Name.StartsWith("K") || c.Account_Name.StartsWith("L") || c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N")
+                            || c.Account_Name.StartsWith("O") || c.Account_Name.StartsWith("P") || c.Account_Name.StartsWith("Q")
+                            select c).ToList();
+                    
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Candice.Ford")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts()
+                            where c.Payor_Name.Contains("MEDICARE") && c.Acct_Class.Contains("Outpatient")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("A") || c.Account_Name.StartsWith("B") || c.Account_Name.StartsWith("C") || c.Account_Name.StartsWith("D") || c.Account_Name.StartsWith("E") ||
+                            c.Account_Name.StartsWith("F") || c.Account_Name.StartsWith("G") || c.Account_Name.StartsWith("H") || c.Account_Name.StartsWith("I") || c.Account_Name.StartsWith("J")
+                            || c.Account_Name.StartsWith("K") || c.Account_Name.StartsWith("L") || c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N")
+                            select c).ToList();
+
+
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Williamson.Starrish")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts()
+                            where c.Payor_Name.Contains("MEDICARE") && c.Acct_Class.Contains("Outpatient")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N") || c.Account_Name.StartsWith("O") || c.Account_Name.StartsWith("P") || c.Account_Name.StartsWith("Q") ||
+                            c.Account_Name.StartsWith("R") || c.Account_Name.StartsWith("S") || c.Account_Name.StartsWith("T") || c.Account_Name.StartsWith("U") || c.Account_Name.StartsWith("V")
+                            || c.Account_Name.StartsWith("W") || c.Account_Name.StartsWith("X") || c.Account_Name.StartsWith("Y") || c.Account_Name.StartsWith("Z")
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+                
+                else
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts()
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+
+
+
+
+                return UPD.ToList();
+
+            }
+        }
+
+
+        public List<Get_Under_Paymnent_Accounts_PB_Result> getPBResultBasedOnLogin(string userName)
+        {
+
+            List<Get_Under_Paymnent_Accounts_PB_Result> UPD = new List<Get_Under_Paymnent_Accounts_PB_Result>();
+            List<Get_Under_Paymnent_Accounts_PB_Result> UPD1 = new List<Get_Under_Paymnent_Accounts_PB_Result>();
+            List<Get_Under_Paymnent_Accounts_PB_Result> UPD2 = new List<Get_Under_Paymnent_Accounts_PB_Result>();
+            using (var db = new TCG_WorklistModel())
+            {
+
+                if (userName == "Deborah.Harrington")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_PB()
+                            where c.Payor_Name.Contains("COMMERCIAL") || c.Payor_Name.Contains("MEDICAID")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("J") || c.Account_Name.StartsWith("K") || c.Account_Name.StartsWith("L") || c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N")
+                            || c.Account_Name.StartsWith("O") || c.Account_Name.StartsWith("P") || c.Account_Name.StartsWith("Q")
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Candice.Ford")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_PB()
+                            where c.Payor_Name.Contains("MEDICARE") && c.Acct_Class.Contains("Outpatient")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("A") || c.Account_Name.StartsWith("B") || c.Account_Name.StartsWith("C") || c.Account_Name.StartsWith("D") || c.Account_Name.StartsWith("E") ||
+                            c.Account_Name.StartsWith("F") || c.Account_Name.StartsWith("G") || c.Account_Name.StartsWith("H") || c.Account_Name.StartsWith("I") || c.Account_Name.StartsWith("J")
+                            || c.Account_Name.StartsWith("K") || c.Account_Name.StartsWith("L") || c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N")
+                            select c).ToList();
+
+
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Williamson.Starrish")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_PB()
+                            where c.Payor_Name.Contains("MEDICARE") && c.Acct_Class.Contains("Outpatient")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N") || c.Account_Name.StartsWith("O") || c.Account_Name.StartsWith("P") || c.Account_Name.StartsWith("Q") ||
+                            c.Account_Name.StartsWith("R") || c.Account_Name.StartsWith("S") || c.Account_Name.StartsWith("T") || c.Account_Name.StartsWith("U") || c.Account_Name.StartsWith("V")
+                            || c.Account_Name.StartsWith("W") || c.Account_Name.StartsWith("X") || c.Account_Name.StartsWith("Y") || c.Account_Name.StartsWith("Z")
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+
+                else
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_PB()
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+
+
+
+
+                return UPD.ToList();
+
+            }
+        }
+
+
         public List<Get_Under_Paymnent_Accounts_APD_Result> getResultBasedOnLogin(string userName)
         {
 
@@ -917,6 +1060,7 @@ namespace HealthcareAnalytics.Controllers
                 
             }
         }
+
 
         private static List<SelectListItem> populateHPorPB()
         {
