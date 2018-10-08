@@ -139,6 +139,8 @@ namespace HealthcareAnalytics.Controllers
                                                ).ToList();
                     }
 
+                    
+
                     switch (sortOrder)
                     {
                         case "accID_Sorting":
@@ -600,6 +602,7 @@ namespace HealthcareAnalytics.Controllers
                 ViewBag.sort_PayorName = sortOrder == "payorName_Asc" ? "payorName_Des" : "payorName_Asc";
                 ViewBag.sort_Bal = sortOrder == "Bal_Asc" ? "Bal_Des" : "Bal_Asc";
                 ViewBag.sort_Plan = sortOrder == "Plan_Asc" ? "Plan_Des" : "Plan_Asc";
+                ViewBag.sort_FC = sortOrder == "FC_Asc" ? "FC_Des" : "FC_Asc";
                 ViewBag.sort_AccClass = sortOrder == "AccClass_Asc" ? "AccClass_Des" : "AccClass_Asc";
                 int pageSize = 10;
                 int pageNumber = (page ?? 1);
@@ -620,12 +623,14 @@ namespace HealthcareAnalytics.Controllers
                 using (TCG_WorklistModel db2 = new TCG_WorklistModel())
                 {
                     List<Get_Under_Paymnent_Accounts_APD_Result> result = db2.Get_Under_Paymnent_Accounts_APD().ToList();
+                    string usrName = Session["username"].ToString();
+                    result = getResultBasedOnLogin(usrName);
 
                     if (type == "All")
                     {
                         using (var db = new TCG_WorklistModel())
                         {
-                            result = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            result = (from c in result
                                       select c).ToList();
                         }
                     }
@@ -633,7 +638,7 @@ namespace HealthcareAnalytics.Controllers
                     {
                         using (var db = new TCG_WorklistModel())
                         {
-                            result = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            result = (from c in result
                                       where c.CaseStatus == type
                                       select c).ToList();
                         }
@@ -690,6 +695,11 @@ namespace HealthcareAnalytics.Controllers
 
                     }
 
+
+                    
+                    
+
+
                     if (!String.IsNullOrEmpty(searchString))
                     {
                         result = result.Where(s => s.AccId.Contains(searchString.Trim().ToString())
@@ -698,6 +708,8 @@ namespace HealthcareAnalytics.Controllers
                                                || s.Acct_Class.ToLower().Contains(searchString.Trim().ToLower())
                                                || s.Plan_Name.ToLower().Contains(searchString.Trim().ToLower())).ToList();
                     }
+                    //&& s.Account_Name.Split(',').First().StartsWith("A")
+                    
 
                     switch (sortOrder)
                     {
@@ -740,6 +752,12 @@ namespace HealthcareAnalytics.Controllers
                         case "AccClass_Des":
                             result = result.OrderBy(s => s.Acct_Class).ToList();
                             break;
+                        case "FC_Asc":
+                            result = result.OrderByDescending(s => s.Financial_Class).ToList();
+                            break;
+                        case "FC_Des":
+                            result = result.OrderBy(s => s.Financial_Class).ToList();
+                            break;
                         default:  // Name Descending 
                             result = result.OrderByDescending(s => s.Acct_Bal).ToList();
                             break;
@@ -768,6 +786,137 @@ namespace HealthcareAnalytics.Controllers
             }
         }
 
+
+        public List<Get_Under_Paymnent_Accounts_APD_Result> getResultBasedOnLogin(string userName)
+        {
+
+            List<Get_Under_Paymnent_Accounts_APD_Result> UPD = new List<Get_Under_Paymnent_Accounts_APD_Result>();
+            List<Get_Under_Paymnent_Accounts_APD_Result> UPD1 = new List<Get_Under_Paymnent_Accounts_APD_Result>();
+            List<Get_Under_Paymnent_Accounts_APD_Result> UPD2 = new List<Get_Under_Paymnent_Accounts_APD_Result>();
+            using (var db = new TCG_WorklistModel())
+            {
+
+                if (userName == "Darlene.Party")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            where c.Financial_Class.Contains("MCR") && c.Acct_Class.Contains("IP")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("A") || c.Account_Name.StartsWith("B") || c.Account_Name.StartsWith("C") || c.Account_Name.StartsWith("D") || c.Account_Name.StartsWith("E") ||
+                            c.Account_Name.StartsWith("F") || c.Account_Name.StartsWith("G") || c.Account_Name.StartsWith("H") || c.Account_Name.StartsWith("I") || c.Account_Name.StartsWith("J")
+                            || c.Account_Name.StartsWith("K") || c.Account_Name.StartsWith("L") || c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N")
+                            select c).ToList();
+                    //UPD2 = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                    //        where c.Financial_Class.Contains("MCR") && c.Acct_Class.Contains("OP")
+                    //        select c).ToList();
+                    //UPD2 = (from c in UPD2
+                    //        where c.Account_Name.StartsWith("A") || c.Account_Name.StartsWith("B") || c.Account_Name.StartsWith("C") || c.Account_Name.StartsWith("D") || c.Account_Name.StartsWith("E")
+                    //        select c).ToList();
+                    //var UPDMerge = UPD1.Concat(UPD2);
+                    //UPD = UPDMerge.ToList();
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Shirley.Lindsey")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            where c.Financial_Class.Contains("MCR") && c.Acct_Class.Contains("IP")
+                            select c).ToList();                    
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N") || c.Account_Name.StartsWith("O") || c.Account_Name.StartsWith("P") || c.Account_Name.StartsWith("Q") ||
+                            c.Account_Name.StartsWith("R") || c.Account_Name.StartsWith("S") || c.Account_Name.StartsWith("T") || c.Account_Name.StartsWith("U") || c.Account_Name.StartsWith("V")
+                            || c.Account_Name.StartsWith("W") || c.Account_Name.StartsWith("X") || c.Account_Name.StartsWith("Y") || c.Account_Name.StartsWith("Z")
+                            select c).ToList();
+                    
+
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Williamson.Starrish")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            where c.Financial_Class.Contains("MCR") && c.Acct_Class.Contains("OP")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N") || c.Account_Name.StartsWith("O") || c.Account_Name.StartsWith("P") || c.Account_Name.StartsWith("Q") ||
+                            c.Account_Name.StartsWith("R") || c.Account_Name.StartsWith("S") || c.Account_Name.StartsWith("T") || c.Account_Name.StartsWith("U") || c.Account_Name.StartsWith("V")
+                            || c.Account_Name.StartsWith("W") || c.Account_Name.StartsWith("X") || c.Account_Name.StartsWith("Y") || c.Account_Name.StartsWith("Z")
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Candice.Ford")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            where c.Financial_Class.Contains("MCR") && c.Acct_Class.Contains("OP")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("A") || c.Account_Name.StartsWith("B") || c.Account_Name.StartsWith("C") || c.Account_Name.StartsWith("D") || c.Account_Name.StartsWith("E") ||
+                            c.Account_Name.StartsWith("F") || c.Account_Name.StartsWith("G") || c.Account_Name.StartsWith("H") || c.Account_Name.StartsWith("I") || c.Account_Name.StartsWith("J")
+                            || c.Account_Name.StartsWith("K") || c.Account_Name.StartsWith("L") || c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N")
+                            select c).ToList();
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Monique.Swarn")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            where c.Financial_Class.Contains("CO") || c.Financial_Class.Contains("MCD")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("R") || c.Account_Name.StartsWith("S") || c.Account_Name.StartsWith("T") || c.Account_Name.StartsWith("U") || c.Account_Name.StartsWith("V")
+                            || c.Account_Name.StartsWith("W") || c.Account_Name.StartsWith("X") || c.Account_Name.StartsWith("Y") || c.Account_Name.StartsWith("Z")
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Deborah.Harrington")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            where c.Financial_Class.Contains("CO") || c.Financial_Class.Contains("MCD")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("J") || c.Account_Name.StartsWith("K") || c.Account_Name.StartsWith("L") || c.Account_Name.StartsWith("M") || c.Account_Name.StartsWith("N")
+                            || c.Account_Name.StartsWith("O") || c.Account_Name.StartsWith("P") || c.Account_Name.StartsWith("Q")
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Brittanie.Morris")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            where c.Financial_Class.Contains("CO") || c.Financial_Class.Contains("MCD")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where  c.Account_Name.StartsWith("G") || c.Account_Name.StartsWith("H") || c.Account_Name.StartsWith("I")
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+                else if (userName == "Monique.Price")
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_APD()
+                            where c.Financial_Class.Contains("CO") || c.Financial_Class.Contains("MCD")
+                            select c).ToList();
+                    UPD1 = (from c in UPD1
+                            where c.Account_Name.StartsWith("A") || c.Account_Name.StartsWith("B") || c.Account_Name.StartsWith("C") || c.Account_Name.StartsWith("D") || c.Account_Name.StartsWith("E") ||
+                            c.Account_Name.StartsWith("F")
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+                else
+                {
+                    UPD1 = (from c in db.Get_Under_Paymnent_Accounts_APD()                            
+                            select c).ToList();
+
+                    UPD = UPD1.ToList();
+                }
+
+
+
+
+                return UPD.ToList();
+                
+            }
+        }
 
         private static List<SelectListItem> populateHPorPB()
         {

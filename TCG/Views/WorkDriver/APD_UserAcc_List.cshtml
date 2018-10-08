@@ -30,7 +30,7 @@
 </head>
 <body>
 
-    @using (Html.BeginForm("APD_UserAccList", "WorkDriver", FormMethod.Get, new { @class = "search-wrapper cf" }))
+    @using (Html.BeginForm("APD_UserAcc_List", "WorkDriver", FormMethod.Get, new { @class = "search-wrapper cf" }))
     {
         @Html.AntiForgeryToken()
         <form>
@@ -121,6 +121,7 @@
                                             <th>@Html.ActionLink("Payor", "APD_UserAcc_List", new { sortOrder = ViewBag.sort_PayorName })</th>
                                             <th>@Html.ActionLink("Account Balance", "APD_UserAcc_List", new { sortOrder = ViewBag.sort_Bal })</th>
                                             @*<th>@Html.ActionLink("Plan", "Underpayemnts_UserAcc_List", new { sortOrder = ViewBag.sort_Plan })</th>*@
+                                            <th>@Html.ActionLink("Financial Class", "APD_UserAcc_List", new { sortOrder = ViewBag.sort_FC })</th>
                                             <th>@Html.ActionLink("Account Class", "APD_UserAcc_List", new { sortOrder = ViewBag.sort_AccClass })</th>
                                             @*<th>@Html.ActionLink("# of cases" , "Underpayemnts_UserAcc_List")</th>*@
                                             <th>
@@ -134,43 +135,46 @@
                                     <tbody class="table-responsive">
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>
-                                                    @Html.ActionLink((@Html.DisplayFor(m => item.Account)).ToString(), "APDViewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(m => item.DischargeDate)
-                                                </td>
-                                                <td>@Html.DisplayFor(m => item.PatientName)</td>
+                                        <tr>
+                                            <td>
+                                                @Html.ActionLink((@Html.DisplayFor(m => item.Account)).ToString(), "APDViewCaseDetails", "WorkDriver", new { id = item.Account, linkName = "underPay" }, null)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(m => item.DischargeDate)
+                                            </td>
+                                            <td>@Html.DisplayFor(m => item.PatientName)</td>
 
-                                                <td>
-                                                    @Html.DisplayFor(m => item.Payor_Name)
-                                                </td>
-                                                <td class="text-right">
-                                                    @Html.DisplayFor(m => item.convertBal)
-                                                </td>
-                                                @*<td >
-                                                        @Html.DisplayFor(modelItem => item.Plan_Name)
-                                                    </td>*@
-                                                <td>
-                                                    @Html.DisplayFor(m => item.Acct_Class)
-                                                </td>
-                                                <td></td>
-                                                @if (item.flagCaseValue == 1)
-                                                {
-                                                    <td class="small text-center" style="color:dimgrey;font-weight:bold;font-size:small">DEBIT</td>
-                                                }
-                                                @if (item.flagCaseValue == 2)
-                                                {
-                                                    <td class="small text-center" style="color:red;font-weight:bold;font-size:small">CREDIT</td>
-                                                }
-                                                @if (item.flagCaseValue == 3)
-                                                {
-                                                    <td class="small text-center" style="color:forestgreen;font-weight:bold;font-size:small">ZERO BAL</td>
-                                                }
-                                               
+                                            <td>
+                                                @Html.DisplayFor(m => item.Payor_Name)
+                                            </td>
+                                            <td class="text-right">
+                                                @Html.DisplayFor(m => item.convertBal)
+                                            </td>
+                                            @*<td >
+                                                @Html.DisplayFor(modelItem => item.Plan_Name)
+                                            </td>*@
+                                            <td>
+                                                @Html.DisplayFor(m => item.Financial_Class)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(m => item.Acct_Class)
+                                            </td>
+                                            <td></td>
+                                            @if (item.flagCaseValue == 1)
+                                            {
+                                                <td class="small text-center" style="color:dimgrey;font-weight:bold;font-size:small">DEBIT</td>
+                                            }
+                                            @if (item.flagCaseValue == 2)
+                                            {
+                                                <td class="small text-center" style="color:red;font-weight:bold;font-size:small">CREDIT</td>
+                                            }
+                                            @if (item.flagCaseValue == 3)
+                                            {
+                                                <td class="small text-center" style="color:forestgreen;font-weight:bold;font-size:small">ZERO BAL</td>
+                                            }
 
-                                            </tr>
+
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
