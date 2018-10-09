@@ -772,6 +772,7 @@
     <Content Include="Views\WorkDriver\APDViewCaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\APDEditCaseDetails.cshtml" />
     <Content Include="Views\WorkDriver\APDTrendGraph.cshtml" />
+    <Content Include="Views\ManageUsers\Successfully.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

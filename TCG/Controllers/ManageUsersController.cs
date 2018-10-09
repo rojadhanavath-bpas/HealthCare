@@ -314,15 +314,51 @@ namespace HealthcareAnalytics.Controllers
             {
                 ViewBag.UserFirst = Session["first"];
                 ViewBag.UserLast = Session["last"];
-                ViewBag.roles = db.Roles.Select(r => r.role_code).Distinct().ToList();
+                //ViewBag.roles = db.Roles.Select(r => r.role_code).Distinct().ToList();
+                ViewBag.roles = populateRoleMaster();
                 return View();
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddUser(ManageUsersModel registration)
+        {
+            if (ModelState.IsValid)
+            {
+                var firstname = registration.FirstName;
+                var lastname = registration.LastName;
+                var middleName = registration.MiddleName;
+                var username = registration.UserName;
+                var email = registration.EmailId;
+                var phonenum = registration.PhoneNumber;
+                var pwd = registration.Password;
+                var role = registration.UserRole;
+                db.Database.ExecuteSqlCommand("CreateAccount @First_name = {0}, @last_name = {1}, @middle_name = {2}, @Email = {3}, @Phone_number = {4}, @pwd = {5}, @UserName={6}, @role = {7}", firstname, lastname, middleName, email, phonenum, pwd, username, role);
+                return View("Successfully");
+            }
+            else
+            {
+                ModelState.AddModelError("", "PLease Enter Mandatroty feilds");
+                return View();
+            }
+        }
+
+        private static List<SelectListItem> populateRoleMaster() //1 - Select
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            TCG_DataEntities context = new TCG_DataEntities();
+            return context.Roles.Select(x => new SelectListItem { Text = x.role_code, Value = x.role_key.ToString() }).ToList();
+
+        }
+
         private String isNullCheck(String val)
         {
 
             return val == null ? " " : val;
         }
+
+       
 
     }
 }

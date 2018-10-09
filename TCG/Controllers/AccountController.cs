@@ -150,7 +150,8 @@ namespace HealthcareAnalytics.Controllers
                 var email = registration.Email;
                 var phonenum = registration.Phone;
                 var pwd = registration.Password;
-                db.Database.ExecuteSqlCommand("CreateAccount @First_name = {0}, @last_name = {1}, @middle_name = {2}, @Email = {3}, @Phone_number = {4}, @pwd = {5}, @UserName={6}", firstname, lastname, middleName, email, phonenum, pwd,username);
+                var role = "1fbdb62a-724d-e811-a97b-0a436ee98f76";
+                db.Database.ExecuteSqlCommand("CreateAccount @First_name = {0}, @last_name = {1}, @middle_name = {2}, @Email = {3}, @Phone_number = {4}, @pwd = {5}, @UserName={6}, @role={7}", firstname, lastname, middleName, email, phonenum, pwd,username, role);
                 return View("Successfully");
             }
             else
