@@ -94,7 +94,16 @@
     <Compile Include="Get_AR_Info_for_Balance_Range_Result.cs">
       <DependentUpon>TCG_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Get_Under_Paymnent_Accounts_APD_Result.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_Under_Paymnent_Accounts_PB_Result.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Get_Under_Paymnent_Accounts_Result.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HBorPB_Master.cs">
       <DependentUpon>TCG_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Insurance_Company_Name.cs">
@@ -115,6 +124,21 @@
       <DependentUpon>TCG_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="RootCause_Master.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_fallback_db.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_fallback_dev.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_fallback_usg.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_monitor.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spt_values.cs">
       <DependentUpon>TCG_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Status_Master.cs">
@@ -144,10 +168,31 @@
     <Compile Include="Underpayment.cs">
       <DependentUpon>TCG_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Underpayments_APD.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Underpayments_Old.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Underpayments_PB.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnderPayments_PB_July.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Underpayments_Stage.cs">
       <DependentUpon>TCG_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="UnderPayments_Stage_HB.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Underpayment_Reason.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Underpayment_ReasonCode.cs">
+      <DependentUpon>TCG_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Underpayment_ReasonCode1.cs">
       <DependentUpon>TCG_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Users_Data.cs">

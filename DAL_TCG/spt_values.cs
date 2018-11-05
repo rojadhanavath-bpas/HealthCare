@@ -7,19 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HealthcareAnalytics.Models
+namespace DAL_TCG
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class spt_values
     {
-        public System.Guid role_key { get; set; }
-        public string role_code { get; set; }
-        public string role_code_short { get; set; }
-        public string role_designation { get; set; }
-        public string role_createdBy_user { get; set; }
-        public System.DateTime role_created_date { get; set; }
-        public byte role_delete_flag { get; set; }
+        public string name { get; set; }
+        public int number { get; set; }
+        public string type { get; set; }
+        public Nullable<int> low { get; set; }
+        public Nullable<int> high { get; set; }
+        public Nullable<int> status { get; set; }
     }
 }

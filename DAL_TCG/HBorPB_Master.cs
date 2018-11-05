@@ -7,14 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HealthcareAnalytics.Models
+namespace DAL_TCG
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class DenialCat_Master
+    public partial class HBorPB_Master
     {
-        public int DC_ID { get; set; }
-        public string DC_Name { get; set; }
+        public int HP_ID { get; set; }
+        public string HP_Name { get; set; }
     }
 }

@@ -7,13 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HealthcareAnalytics.Models
+namespace DAL_TCG
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class Get_Under_Paymnent_Accounts_Result
+    public partial class Underpayments_PB
     {
-        public Nullable<int> Deferral_Due { get; set; }
         public string Account { get; set; }
         public string Acct_Class { get; set; }
         public string Acct_Status { get; set; }
@@ -21,28 +21,26 @@ namespace HealthcareAnalytics.Models
         public Nullable<System.DateTime> Disch_Date { get; set; }
         public Nullable<double> Acct_Bal { get; set; }
         public string Message { get; set; }
-        public string Diagnosis_Codes { get; set; }
+        public string Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_ { get; set; }
         public string Plan_Name { get; set; }
         public string Payor_Name { get; set; }
-        public Nullable<double> Allowed_Amount_Difference { get; set; }
+        public Nullable<double> Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_ { get; set; }
         public string Expected_Allowed_Amount { get; set; }
-        public Nullable<double> Allowed_Amount_Difference_Payor_Specified { get; set; }
+        public Nullable<double> Allowed_Amount_Difference__Payor_Specified_ { get; set; }
         public Nullable<int> Underpayment_Reason_Code { get; set; }
         public string Brief_Summary { get; set; }
         public Nullable<System.DateTime> DateOfUpdate { get; set; }
         public string Biller { get; set; }
-        public string CaseStatus { get; set; }
-
-        public string DischargeDate { get; set; }
-        public decimal convertAmount { get; set; }
-        public string convertBal { get; set; }
-        public string AccId { get; set; }
-        public string PatientName { get; set; }
-        public string caseFlag { get; set; }
-        public Boolean flagCase { get; set; }
-        public string ddlValue { get; set; }
-        public int flag { get; set; }
-        public int flagCaseValue { get; set; }
-
+        public string BillingProvider { get; set; }
+        public Nullable<double> TOTALCHARGES { get; set; }
+        public Nullable<double> TOTALPAYMENTS { get; set; }
+        public Nullable<double> TOTALADJUSTMENTS { get; set; }
+        public Nullable<System.DateTime> FIRSTPAYMENTDATE { get; set; }
+        public Nullable<double> FIRSTPAYMENTAMT { get; set; }
+        public Nullable<System.DateTime> LASTPAYMENTDATE { get; set; }
+        public Nullable<double> LASTPAYMENTAMT { get; set; }
+        public string CPTCODES { get; set; }
+        public Nullable<double> DEPARTMENTID { get; set; }
+        public string DEPARTMENTNAME { get; set; }
     }
 }

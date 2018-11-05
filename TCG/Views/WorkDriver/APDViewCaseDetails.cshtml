@@ -1,4 +1,4 @@
-﻿@model HealthcareAnalytics.Models.Account_Case_Details
+﻿@model DAL_TCG.Account_Case_Details
 @using GridMvc.Html
 @using HealthcareAnalytics.Models
 @{
@@ -188,7 +188,7 @@
                                                             <label for="dt_Date" class="text-info small">DISCHARGE DATE</label>
                                                             @Html.TextBoxFor(m => m.ACD_DueDate, new { @Value = Model.dateConvert.ToString(), @class = "form-control", @readonly = "readonly" })
                                                         </div>
-                                                        @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                        @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                         {
                                                             <div class="form-group col-sm-3">
                                                                 <label for="lbl_DeniedDays" class="text-info small">DENIED DAYS</label>
@@ -286,7 +286,7 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-sm-12">
-                                                    @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                    @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                     {
                                                         <div class="form-row">
                                                             <div class="form-group col-sm-3">
@@ -313,7 +313,7 @@
                                                         </div>
                                                     }
                                                     <div class="form-row">
-                                                        @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                        @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                         {
 
                                                             <div class="form-group col-sm-3">
@@ -327,7 +327,7 @@
                                                                 </div>*@
                                                         }
 
-                                                        @foreach (HealthcareAnalytics.Models.Get_Under_Paymnent_Accounts_APD_Result v in ViewBag.underPaymentsLinkData)
+                                                        @foreach (DAL_TCG.Get_Under_Paymnent_Accounts_APD_Result v in ViewBag.underPaymentsLinkData)
                                                         {
                                                             <div class="form-group col-sm-3">
                                                                 <label for="Txt_DischargeDispos" class="text-info small">DIAG/PROC CODE</label>
@@ -368,7 +368,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach (HealthcareAnalytics.Models.Account_Case_Detials_History item in ViewBag.caseDetailsHistory)
+                                                                @foreach (DAL_TCG.Account_Case_Detials_History item in ViewBag.caseDetailsHistory)
                                                                 {
                                                                     <tr>
                                                                         <td>
@@ -397,7 +397,7 @@
 
                                                     <table class="table table-striped table-bordered table-responsive table-condensed table-hover">
                                                         <tbody>
-                                                            @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                            @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                             {
                                                                 <tr>
                                                                     <td>
@@ -436,7 +436,7 @@
                                     </div>
                                     <hr />
                                     <div id="id_InsuranceBuckets_detials">
-                                        @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                        @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                         {
                                             <div class="panel panel-default pre-scrollable">
                                                 @*<table class="table table-striped table-bordered table-responsive table-condensed table-hover">
@@ -592,7 +592,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach (HealthcareAnalytics.Models.Account_Case_Detials_History item in ViewBag.caseDetailsHistory)
+                                                @foreach (DAL_TCG.Account_Case_Detials_History item in ViewBag.caseDetailsHistory)
                                                 {
                                                     <tr>
                                                         <td>

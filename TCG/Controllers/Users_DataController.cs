@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using HealthcareAnalytics.Models;
 using System.Collections;
+using DAL_TCG;
+
 namespace HealthcareAnalytics.Controllers
 {
     public class Users_DataController : Controller

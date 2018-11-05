@@ -24,7 +24,8 @@
         h = $(window).height() - 70;
         var vizDiv = document.getElementById("vizDiv");
         var ticket = "@ViewBag.Message";
-        var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/APD_Underpay_Dashboard/APD?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
+         var tableauSingin = " @System.Configuration.ConfigurationManager.AppSettings["TableauSingleSignOn"].ToString()";
+        var url = tableauSingin + ticket + "/views/APD_Underpay_Dashboard/APD?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
         //var url = "http://tab.bpa.services/views/APD_Underpay_Dashboard/APD?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
 
 

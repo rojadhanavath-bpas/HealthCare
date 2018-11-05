@@ -47,6 +47,15 @@ namespace DAL_TCG
         public Nullable<System.DateTime> ACD_DueDate { get; set; }
         public Nullable<System.DateTime> ACD_FollowUpDate { get; set; }
         public Nullable<bool> ACD_DeleteFlag { get; set; }
+        public decimal ACD_TotalCharges { get; set; }
+        public decimal ACD_TotalPay { get; set; }
+        public decimal ACD_TotalAdj { get; set; }
+        public decimal ACD_AmtDiffNAA { get; set; }
+        public decimal ACD_AmtDiffPayor { get; set; }
+        public decimal ACD_ExpAmt { get; set; }
+        public string ACD_BillProvider { get; set; }
+        public string ACD_Department { get; set; }
+        public string ACD_HBorPB { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account_Case_Detials_History> Account_Case_Detials_History { get; set; }

@@ -13,6 +13,7 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System.Net.Mail;
 using System.Data.SqlClient;
+using DAL_TCG;
 
 namespace HealthcareAnalytics.Controllers
 {
@@ -22,7 +23,7 @@ namespace HealthcareAnalytics.Controllers
         private static log4net.ILog Log { get; set; }
         ILog log = log4net.LogManager.GetLogger(typeof(AccountController));
         private TCG_DataEntities db = new TCG_DataEntities();
-        private TCG_Registration db2 = new TCG_Registration();
+        //private TCG_Registration db2 = new TCG_Registration();
 
 
         [HttpPost]
@@ -112,10 +113,6 @@ namespace HealthcareAnalytics.Controllers
             return View("PwdChanged");
 
         }
-
-
-
-
 
         // GET: Email
         [HttpGet]

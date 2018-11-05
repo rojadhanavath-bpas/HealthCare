@@ -57,8 +57,21 @@ namespace DAL_TCG
         public virtual DbSet<VW_AR_AGE_CATEGORY> VW_AR_AGE_CATEGORY { get; set; }
         public virtual DbSet<VW_AR_AGE_CATEGORY_CREDIT> VW_AR_AGE_CATEGORY_CREDIT { get; set; }
         public virtual DbSet<VW_AR_AGE_CATEGORY_DEBIT> VW_AR_AGE_CATEGORY_DEBIT { get; set; }
+        public virtual DbSet<HBorPB_Master> HBorPB_Master { get; set; }
+        public virtual DbSet<Underpayment_ReasonCode> Underpayment_ReasonCode { get; set; }
+        public virtual DbSet<Underpayments_APD> Underpayments_APD { get; set; }
+        public virtual DbSet<Underpayments_PB> Underpayments_PB { get; set; }
+        public virtual DbSet<UnderPayments_Stage_HB> UnderPayments_Stage_HB { get; set; }
+        public virtual DbSet<Underpayment_ReasonCode1> Underpayment_ReasonCode1 { get; set; }
+        public virtual DbSet<Underpayments_Old> Underpayments_Old { get; set; }
+        public virtual DbSet<UnderPayments_PB_July> UnderPayments_PB_July { get; set; }
+        public virtual DbSet<spt_fallback_db> spt_fallback_db { get; set; }
+        public virtual DbSet<spt_fallback_dev> spt_fallback_dev { get; set; }
+        public virtual DbSet<spt_fallback_usg> spt_fallback_usg { get; set; }
+        public virtual DbSet<spt_monitor> spt_monitor { get; set; }
+        public virtual DbSet<spt_values> spt_values { get; set; }
     
-        public virtual int Case_InsUpd(Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, Nullable<int> aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, Nullable<int> aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, Nullable<int> aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber)
+        public virtual int Case_InsUpd(Nullable<int> aCD_ID, string aCD_HspAccID, string aCD_Amount, Nullable<decimal> aCD_TotalCharges, Nullable<decimal> aCD_TotalPay, Nullable<decimal> aCD_TotalAdj, Nullable<decimal> aCD_AmtDiffNAA, Nullable<decimal> aCD_AmtDiffPayor, Nullable<decimal> aCD_ExpAmt, string aCD_BillProvider, string aCD_Department, string aCD_HBorPB, Nullable<int> aCD_Status, string aCD_Owner, string aCD_Type, string aCD_SubType, Nullable<int> aCD_PayerReason, string aCD_PrimaryReason, string aCD_SecondaryReason, string aCD_PrinDiag, string aCD_PrinProc, string aCD_Comments, string aCD_Completed, string aCD_Priority, string aCD_Description, Nullable<int> aCD_TaskFollowUp, Nullable<System.DateTime> aCD_DueDate, Nullable<System.DateTime> aCD_FollowUpDate, Nullable<bool> aCD_DeleteFlag, string aCD_CreatedBy, Nullable<System.DateTime> aCD_CreatedDate, string aCD_UpdatedBy, Nullable<System.DateTime> aCD_Updateddate, string aCTD_UpdatedBy_DB, ObjectParameter new_recordNumber)
         {
             var aCD_IDParameter = aCD_ID.HasValue ?
                 new ObjectParameter("ACD_ID", aCD_ID) :
@@ -71,6 +84,42 @@ namespace DAL_TCG
             var aCD_AmountParameter = aCD_Amount != null ?
                 new ObjectParameter("ACD_Amount", aCD_Amount) :
                 new ObjectParameter("ACD_Amount", typeof(string));
+    
+            var aCD_TotalChargesParameter = aCD_TotalCharges.HasValue ?
+                new ObjectParameter("ACD_TotalCharges", aCD_TotalCharges) :
+                new ObjectParameter("ACD_TotalCharges", typeof(decimal));
+    
+            var aCD_TotalPayParameter = aCD_TotalPay.HasValue ?
+                new ObjectParameter("ACD_TotalPay", aCD_TotalPay) :
+                new ObjectParameter("ACD_TotalPay", typeof(decimal));
+    
+            var aCD_TotalAdjParameter = aCD_TotalAdj.HasValue ?
+                new ObjectParameter("ACD_TotalAdj", aCD_TotalAdj) :
+                new ObjectParameter("ACD_TotalAdj", typeof(decimal));
+    
+            var aCD_AmtDiffNAAParameter = aCD_AmtDiffNAA.HasValue ?
+                new ObjectParameter("ACD_AmtDiffNAA", aCD_AmtDiffNAA) :
+                new ObjectParameter("ACD_AmtDiffNAA", typeof(decimal));
+    
+            var aCD_AmtDiffPayorParameter = aCD_AmtDiffPayor.HasValue ?
+                new ObjectParameter("ACD_AmtDiffPayor", aCD_AmtDiffPayor) :
+                new ObjectParameter("ACD_AmtDiffPayor", typeof(decimal));
+    
+            var aCD_ExpAmtParameter = aCD_ExpAmt.HasValue ?
+                new ObjectParameter("ACD_ExpAmt", aCD_ExpAmt) :
+                new ObjectParameter("ACD_ExpAmt", typeof(decimal));
+    
+            var aCD_BillProviderParameter = aCD_BillProvider != null ?
+                new ObjectParameter("ACD_BillProvider", aCD_BillProvider) :
+                new ObjectParameter("ACD_BillProvider", typeof(string));
+    
+            var aCD_DepartmentParameter = aCD_Department != null ?
+                new ObjectParameter("ACD_Department", aCD_Department) :
+                new ObjectParameter("ACD_Department", typeof(string));
+    
+            var aCD_HBorPBParameter = aCD_HBorPB != null ?
+                new ObjectParameter("ACD_HBorPB", aCD_HBorPB) :
+                new ObjectParameter("ACD_HBorPB", typeof(string));
     
             var aCD_StatusParameter = aCD_Status.HasValue ?
                 new ObjectParameter("ACD_Status", aCD_Status) :
@@ -160,7 +209,7 @@ namespace DAL_TCG
                 new ObjectParameter("ACTD_UpdatedBy_DB", aCTD_UpdatedBy_DB) :
                 new ObjectParameter("ACTD_UpdatedBy_DB", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_InsUpd", aCD_IDParameter, aCD_HspAccIDParameter, aCD_AmountParameter, aCD_StatusParameter, aCD_OwnerParameter, aCD_TypeParameter, aCD_SubTypeParameter, aCD_PayerReasonParameter, aCD_PrimaryReasonParameter, aCD_SecondaryReasonParameter, aCD_PrinDiagParameter, aCD_PrinProcParameter, aCD_CommentsParameter, aCD_CompletedParameter, aCD_PriorityParameter, aCD_DescriptionParameter, aCD_TaskFollowUpParameter, aCD_DueDateParameter, aCD_FollowUpDateParameter, aCD_DeleteFlagParameter, aCD_CreatedByParameter, aCD_CreatedDateParameter, aCD_UpdatedByParameter, aCD_UpdateddateParameter, aCTD_UpdatedBy_DBParameter, new_recordNumber);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_InsUpd", aCD_IDParameter, aCD_HspAccIDParameter, aCD_AmountParameter, aCD_TotalChargesParameter, aCD_TotalPayParameter, aCD_TotalAdjParameter, aCD_AmtDiffNAAParameter, aCD_AmtDiffPayorParameter, aCD_ExpAmtParameter, aCD_BillProviderParameter, aCD_DepartmentParameter, aCD_HBorPBParameter, aCD_StatusParameter, aCD_OwnerParameter, aCD_TypeParameter, aCD_SubTypeParameter, aCD_PayerReasonParameter, aCD_PrimaryReasonParameter, aCD_SecondaryReasonParameter, aCD_PrinDiagParameter, aCD_PrinProcParameter, aCD_CommentsParameter, aCD_CompletedParameter, aCD_PriorityParameter, aCD_DescriptionParameter, aCD_TaskFollowUpParameter, aCD_DueDateParameter, aCD_FollowUpDateParameter, aCD_DeleteFlagParameter, aCD_CreatedByParameter, aCD_CreatedDateParameter, aCD_UpdatedByParameter, aCD_UpdateddateParameter, aCTD_UpdatedBy_DBParameter, new_recordNumber);
         }
     
         public virtual int Case_Task_InsUpd(Nullable<int> aCT_ID, string aCT_HspAccID, Nullable<int> aCT_ACD_ID, Nullable<bool> aCT_Completed, string aCT_Priority, string aCT_Description, string aCT_Owner, string aCT_Comment, Nullable<System.DateTime> aCT_DueDate, Nullable<int> aCT_DeleteFlag, string aCT_CreatedBy, Nullable<System.DateTime> aCT_CreatedDate, string aCT_UpdatedBy, Nullable<System.DateTime> aCT_Updateddate, string aCT_UpdatedBy_DB, ObjectParameter new_recordNumber)
@@ -228,7 +277,7 @@ namespace DAL_TCG
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Case_Task_InsUpd", aCT_IDParameter, aCT_HspAccIDParameter, aCT_ACD_IDParameter, aCT_CompletedParameter, aCT_PriorityParameter, aCT_DescriptionParameter, aCT_OwnerParameter, aCT_CommentParameter, aCT_DueDateParameter, aCT_DeleteFlagParameter, aCT_CreatedByParameter, aCT_CreatedDateParameter, aCT_UpdatedByParameter, aCT_UpdateddateParameter, aCT_UpdatedBy_DBParameter, new_recordNumber);
         }
     
-        public virtual int create_user(string first_name, string last_name, string middle_name, string email, string phone_number, string pwd, string role, string keyword, string admin, Nullable<System.Guid> iD)
+        public virtual int create_user(string first_name, string last_name, string middle_name, string email, string phone_number, string pwd, string role, string keyword, string username, string addedby)
         {
             var first_nameParameter = first_name != null ?
                 new ObjectParameter("First_name", first_name) :
@@ -262,18 +311,18 @@ namespace DAL_TCG
                 new ObjectParameter("keyword", keyword) :
                 new ObjectParameter("keyword", typeof(string));
     
-            var adminParameter = admin != null ?
-                new ObjectParameter("admin", admin) :
-                new ObjectParameter("admin", typeof(string));
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
     
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(System.Guid));
+            var addedbyParameter = addedby != null ?
+                new ObjectParameter("addedby", addedby) :
+                new ObjectParameter("addedby", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("create_user", first_nameParameter, last_nameParameter, middle_nameParameter, emailParameter, phone_numberParameter, pwdParameter, roleParameter, keywordParameter, adminParameter, iDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("create_user", first_nameParameter, last_nameParameter, middle_nameParameter, emailParameter, phone_numberParameter, pwdParameter, roleParameter, keywordParameter, usernameParameter, addedbyParameter);
         }
     
-        public virtual int CreateAccount(string first_name, string last_name, string middle_name, string email, string phone_number, string pwd)
+        public virtual int CreateAccount(string first_name, string last_name, string middle_name, string userName, string email, string phone_number, string role, string pwd)
         {
             var first_nameParameter = first_name != null ?
                 new ObjectParameter("First_name", first_name) :
@@ -287,6 +336,10 @@ namespace DAL_TCG
                 new ObjectParameter("middle_name", middle_name) :
                 new ObjectParameter("middle_name", typeof(string));
     
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
             var emailParameter = email != null ?
                 new ObjectParameter("Email", email) :
                 new ObjectParameter("Email", typeof(string));
@@ -295,11 +348,15 @@ namespace DAL_TCG
                 new ObjectParameter("Phone_number", phone_number) :
                 new ObjectParameter("Phone_number", typeof(string));
     
+            var roleParameter = role != null ?
+                new ObjectParameter("role", role) :
+                new ObjectParameter("role", typeof(string));
+    
             var pwdParameter = pwd != null ?
                 new ObjectParameter("pwd", pwd) :
                 new ObjectParameter("pwd", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateAccount", first_nameParameter, last_nameParameter, middle_nameParameter, emailParameter, phone_numberParameter, pwdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateAccount", first_nameParameter, last_nameParameter, middle_nameParameter, userNameParameter, emailParameter, phone_numberParameter, roleParameter, pwdParameter);
         }
     
         public virtual ObjectResult<Get_Account_Info_for_ARandDenial_Result> Get_Account_Info_for_ARandDenial(string account_ID)
@@ -354,6 +411,41 @@ namespace DAL_TCG
                 new ObjectParameter("tablename", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("md_null_to_NULL_fields", tablenameParameter);
+        }
+    
+        public virtual ObjectResult<Get_Under_Paymnent_Accounts_APD_Result> Get_Under_Paymnent_Accounts_APD()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_APD_Result>("Get_Under_Paymnent_Accounts_APD");
+        }
+    
+        public virtual ObjectResult<Get_Under_Paymnent_Accounts_PB_Result> Get_Under_Paymnent_Accounts_PB()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Get_Under_Paymnent_Accounts_PB_Result>("Get_Under_Paymnent_Accounts_PB");
+        }
+    
+        public virtual int SP_Manage_Roles(string addedBY, string add_Date, string role_Name, string role_Description, string keyword)
+        {
+            var addedBYParameter = addedBY != null ?
+                new ObjectParameter("addedBY", addedBY) :
+                new ObjectParameter("addedBY", typeof(string));
+    
+            var add_DateParameter = add_Date != null ?
+                new ObjectParameter("Add_Date", add_Date) :
+                new ObjectParameter("Add_Date", typeof(string));
+    
+            var role_NameParameter = role_Name != null ?
+                new ObjectParameter("Role_Name", role_Name) :
+                new ObjectParameter("Role_Name", typeof(string));
+    
+            var role_DescriptionParameter = role_Description != null ?
+                new ObjectParameter("Role_Description", role_Description) :
+                new ObjectParameter("Role_Description", typeof(string));
+    
+            var keywordParameter = keyword != null ?
+                new ObjectParameter("Keyword", keyword) :
+                new ObjectParameter("Keyword", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Manage_Roles", addedBYParameter, add_DateParameter, role_NameParameter, role_DescriptionParameter, keywordParameter);
         }
     }
 }

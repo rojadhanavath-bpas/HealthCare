@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HealthcareAnalytics.Models
+namespace DAL_TCG
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Underpayment
+    public partial class UnderPayments_Stage_HB
     {
         public string Account { get; set; }
         public string Acct_Class { get; set; }
@@ -27,11 +27,10 @@ namespace HealthcareAnalytics.Models
         public Nullable<double> Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_ { get; set; }
         public string Expected_Allowed_Amount { get; set; }
         public Nullable<double> Allowed_Amount_Difference__Payor_Specified_ { get; set; }
-        public Nullable<int> Underpayment_Reason_Code { get; set; }
+        public string Underpayment_Reason_Code { get; set; }
         public string Brief_Summary { get; set; }
-        public Nullable<System.DateTime> DateOfUpdate { get; set; }
+        public string Date_of_Update { get; set; }
         public string Biller { get; set; }
-        public string BillingProvider { get; set; }
-        public string CaseStatus { get; set; }
+        public string Billing_Provider { get; set; }
     }
 }

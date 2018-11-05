@@ -218,150 +218,15 @@
     </Compile>
     <Compile Include="Helper\PagedData.cs" />
     <Compile Include="Helper\Pagination.cs" />
-    <Compile Include="Models\Account_AR_Status.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Account_Bill_Status.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Account_Case_Details.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Account_Case_Detials_History.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Account_Case_Task.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Account_Case_Task_History.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Account_Source.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ApplicationRoles.cs" />
-    <Compile Include="Models\CaseCompleted_Master.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DenialCat_Master.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DenialStatus_Master.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Denials_Data.cs">
-      <DependentUpon>tcgDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Encounter_Type.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\forgotPassword.cs" />
-    <Compile Include="Models\Get_Account_Info_for_ARandDenial_Result.cs">
-      <DependentUpon>tcgDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Get_AR_Info_for_Balance_Range_Result.cs">
-      <DependentUpon>tcgDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Get_Under_Paymnent_Accounts_APD_Result.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Get_Under_Paymnent_Accounts_PB_Result.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Get_Under_Paymnent_Accounts_Result.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HBorPB_Master.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Insurance_Company_Name.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageUsersModel.cs" />
     <Compile Include="Models\Pager.cs" />
-    <Compile Include="Models\Payor_Financial_Class.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PrimaryReason_Master.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Priority_Master.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\PwdChange.cs" />
     <Compile Include="Models\Registration.cs" />
-    <Compile Include="Models\Registration_SP.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Registration_SP.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Registration_SP.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Registration_SP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Registration_SP.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Registration_SP.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Role.cs">
-      <DependentUpon>tcgDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RootCause_Master.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Status_Master.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Task_Master.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tcgDatabase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>tcgDatabase.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tcgDatabase.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>tcgDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tcgDatabase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>tcgDatabase.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Underpayment.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Underpayment_ReasonCode.cs">
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UserContext.cs" />
-    <Compile Include="Models\Users_Data.cs">
-      <DependentUpon>tcgDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User_Login.cs">
-      <DependentUpon>tcgDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewModel.cs" />
-    <Compile Include="Models\WorklistModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WorklistModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WorklistModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WorklistModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WorklistModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WorklistModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -409,30 +274,6 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <EntityDeploy Include="Models\tcgDatabase.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>tcgDatabase.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Registration_SP.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Registration_SP.edmx</DependentUpon>
-      <LastGenOutput>Registration_SP.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Registration_SP.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Registration_SP.edmx</DependentUpon>
-      <LastGenOutput>Registration_SP.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\tcgDatabase.edmx.diagram">
-      <DependentUpon>tcgDatabase.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\Registration_SP.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Registration_SP.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Registration_SP.edmx.diagram">
-      <DependentUpon>Registration_SP.edmx</DependentUpon>
-    </Content>
     <Content Include="Grid.mvc.readme" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -523,34 +364,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Models\WorklistModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WorklistModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\WorklistModel.edmx.diagram">
-      <DependentUpon>WorklistModel.edmx</DependentUpon>
-    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <Content Include="Models\tcgDatabase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>tcgDatabase.edmx</DependentUpon>
-      <LastGenOutput>tcgDatabase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\tcgDatabase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>tcgDatabase.edmx</DependentUpon>
-      <LastGenOutput>tcgDatabase.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\WorklistModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WorklistModel.edmx</DependentUpon>
-      <LastGenOutput>WorklistModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\WorklistModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WorklistModel.edmx</DependentUpon>
-      <LastGenOutput>WorklistModel.cs</LastGenOutput>
-    </Content>
     <Content Include="pager\first.png" />
     <Content Include="pager\last.png" />
     <Content Include="pager\next.png" />
@@ -787,6 +601,12 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL_TCG\DAL_TCG.csproj">
+      <Project>{9ba70cc0-9428-443b-bd94-c0a78e122d96}</Project>
+      <Name>DAL_TCG</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -12,7 +12,7 @@ namespace DAL_TCG
     using System;
     using System.Collections.Generic;
     
-    public partial class Underpayment
+    public partial class Underpayments_APD
     {
         public string Account { get; set; }
         public string Acct_Class { get; set; }
@@ -33,5 +33,23 @@ namespace DAL_TCG
         public string Biller { get; set; }
         public string BillingProvider { get; set; }
         public string CaseStatus { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
+        public string SSN { get; set; }
+        public Nullable<System.DateTime> Adm_Ser_Date { get; set; }
+        public Nullable<System.DateTime> Bill_Date { get; set; }
+        public Nullable<System.DateTime> Claim_Date { get; set; }
+        public Nullable<double> Total_Charges { get; set; }
+        public string Financial_Class { get; set; }
+        public string Ins1_ID__ { get; set; }
+        public Nullable<double> INS1_Balance { get; set; }
+        public string Ins2_ID__ { get; set; }
+        public string INS2_Mnemonic { get; set; }
+        public string Ins2_Payer { get; set; }
+        public Nullable<double> INS2_Balance { get; set; }
+        public string Ins3_ID { get; set; }
+        public string INS3_Mnemonic { get; set; }
+        public string Ins3_Payer { get; set; }
+        public string INS3_Balance { get; set; }
+        public Nullable<double> Pt_Balance { get; set; }
     }
 }

@@ -20,7 +20,8 @@
             h = $(window).height() - 70;
             var vizDiv = document.getElementById("vizDiv");
             var ticket = "@ViewBag.Message";
-            var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/AR-ManagementDebitCredit------TodaysDemo/ARBY?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
+            var tableauSingin = " @System.Configuration.ConfigurationManager.AppSettings["TableauSingleSignOn"].ToString()";
+            var url = tableauSingin + ticket + "/views/AR-ManagementDebitCredit------TodaysDemo/ARBY?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
               options = {
                 height: h,
                 width: w,

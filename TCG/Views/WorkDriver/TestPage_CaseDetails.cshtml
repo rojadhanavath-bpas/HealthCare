@@ -1,4 +1,4 @@
-﻿@model List<HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result>
+﻿@model List<DAL_TCG.Get_Account_Info_for_ARandDenial_Result>
 @using GridMvc.Html
 @using HealthcareAnalytics.Models
 @{
@@ -172,7 +172,7 @@
                                                         @Html.DropDownListFor(Model => @item.ACD_Owner, (IEnumerable<SelectListItem>)ViewBag.UL, "Select", new { @class = "form-control dropdown", @disabled = "disabled" })
                                                     </div>
                                                 }
-                                                @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                 {
                                                     <div class="form-group col-sm-2">
                                                         <label for="lbl_DeniedDays" class="text-info">DENIED DAYS</label>
@@ -188,7 +188,7 @@
 
 
                                             <div class="form-row">
-                                                @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                 {
 
                                                     <div class="form-group col-sm-4">
@@ -258,7 +258,7 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-sm-12">
-                                                    @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                    @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                     {
                                                         <div class="form-row">
                                                             <div class="form-group col-sm-4">
@@ -313,7 +313,7 @@
 
                                                     }
                                                     <div class="form-row">
-                                                        @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                        @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                         {
                                                             <div class="form-group col-sm-4">
                                                                 <label for="Txt_SSN" class="text-info">SSN</label>
@@ -333,7 +333,7 @@
                                                             </div>
                                                         }
                                                     </div>
-                                                    @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                    @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                     {
                                                         <div class="form-row">
                                                             <div class="form-group col-sm-4">
@@ -411,7 +411,7 @@
                                             <div class="form-row">
 
                                                 <div class="form-group col-sm-6">
-                                                    @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                    @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                     {
                                                         <div class="panel panel-default pre-scrollable">
                                                             <table class="table table-striped table-bordered table-responsive table-condensed table-hover">
@@ -460,7 +460,7 @@
                                                     }
                                                 </div>
                                                 <div class="form-group col-sm-6">
-                                                    @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                                    @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                                     {
                                                         <table class="table table-striped table-bordered table-responsive table-condensed table-hover">
                                                             <tbody data-bind="foreach:Persons">
@@ -539,7 +539,7 @@
                                     </div>
                                     <hr />
                                     <div id="id_InsuranceBuckets_detials">
-                                        @foreach (HealthcareAnalytics.Models.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
+                                        @foreach (DAL_TCG.Get_Account_Info_for_ARandDenial_Result s in ViewBag.OriginalData)
                                         {
                                             <div class="panel panel-default pre-scrollable">
                                                 <table class="table table-striped table-bordered table-responsive table-condensed table-hover">

@@ -24,8 +24,8 @@
         var vizDiv = document.getElementById("vizDiv");
 
         var ticket = "@ViewBag.Message";
-
-        var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/AR-Management_TCG-DEBIT/DEBITAR-BY?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
+        var tableauSingin = " @System.Configuration.ConfigurationManager.AppSettings["TableauSingleSignOn"].ToString()";
+        var url = tableauSingin + ticket + "/views/AR-Management_TCG-DEBIT/DEBITAR-BY?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
         options = {
             height: h,
             width: w,

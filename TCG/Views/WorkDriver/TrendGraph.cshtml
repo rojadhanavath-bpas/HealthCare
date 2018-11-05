@@ -24,7 +24,9 @@
         h = $(window).height() - 70;
         var vizDiv = document.getElementById("vizDiv");
         var ticket = "@ViewBag.Message";
-        var url = "http://tableau.bpa.services/trusted/" + ticket + "/views/Workdriver_Main/HB?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
+         var tableauSingin = "@System.Configuration.ConfigurationManager.AppSettings["TableauSingleSignOn"].ToString()";
+
+        var url = tableauSingin + ticket + "/views/Workdriver_Main/HB?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
         //var url = "http://tab.bpa.services/views/Workdriver_Main/HB?:embed=y&:showAppBanner=false&:display_count=no&:showVizHome=no";
 
 

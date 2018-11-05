@@ -7,14 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HealthcareAnalytics.Models
+namespace DAL_TCG
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class RootCause_Master
+    public partial class Underpayment_ReasonCode1
     {
-        public int RC_ID { get; set; }
-        public string RC_Name { get; set; }
+        public int Reason_Code { get; set; }
+        public string Reason_Title { get; set; }
+        public string Root_Cause_Category { get; set; }
     }
 }

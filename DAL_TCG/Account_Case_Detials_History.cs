@@ -38,6 +38,15 @@ namespace DAL_TCG
         public Nullable<System.DateTime> ACDH_DueDate { get; set; }
         public Nullable<System.DateTime> ACDH_FollowUpDate { get; set; }
         public Nullable<bool> ACDH_DeleteFlag { get; set; }
+        public decimal ACDH_TotalCharges { get; set; }
+        public decimal ACDH_TotalPay { get; set; }
+        public decimal ACDH_TotalAdj { get; set; }
+        public decimal ACDH_AmtDiffNAA { get; set; }
+        public decimal ACDH_AmtDiffPayor { get; set; }
+        public decimal ACDH_ExpAmt { get; set; }
+        public string ACDH_BillProvider { get; set; }
+        public string ACDH_Department { get; set; }
+        public string ACDH_HBorPB { get; set; }
     
         public virtual Account_Case_Details Account_Case_Details { get; set; }
     }

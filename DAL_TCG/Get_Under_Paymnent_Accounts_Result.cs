@@ -31,5 +31,6 @@ namespace DAL_TCG
         public string Brief_Summary { get; set; }
         public Nullable<System.DateTime> DateOfUpdate { get; set; }
         public string Biller { get; set; }
+        public string CaseStatus { get; set; }
     }
 }

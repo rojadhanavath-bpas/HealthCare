@@ -7,14 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HealthcareAnalytics.Models
+namespace DAL_TCG
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CaseCompleted_Master
+    public partial class Underpayment_ReasonCode
     {
-        public int CC_ID { get; set; }
-        public string CC_Name { get; set; }
+        public string Reason_Title { get; set; }
+        public int Reason_Code { get; set; }
     }
 }
