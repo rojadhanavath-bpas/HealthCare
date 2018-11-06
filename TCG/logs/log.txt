@@ -357,3 +357,13 @@ DEBUG 2018-10-26 10:56:12,485 2537642ms HomeController         Login            
 DEBUG 2018-11-06 13:57:24,944 18245ms HomeController         Login              - password
 DEBUG 2018-11-06 13:57:24,968 18270ms HomeController         Login              - password
 DEBUG 2018-11-06 13:57:24,969 18271ms HomeController         Login              - [Home][login]: Succesfully logged in  Deepak.Nalli
+DEBUG 2018-11-06 14:16:29,339 17473ms HomeController         Login              - password
+DEBUG 2018-11-06 14:16:29,358 17492ms HomeController         Login              - password
+DEBUG 2018-11-06 14:16:29,359 17493ms HomeController         Login              - [Home][login]: Succesfully logged in  Deepak.Nalli
+DEBUG 2018-11-06 14:16:39,922 28056ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-11-06 14:16:40,443 28577ms HomeController         TrendGraph         - [User:Deepak]  Loading Denials Management  Page..
+DEBUG 2018-11-06 14:17:08,361 56495ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-11-06 14:17:18,353 66487ms HomeController         GetTableauToken    - Retrieving Tableau token 
+DEBUG 2018-11-06 14:32:29,147 27296ms HomeController         Login              - bpas
+DEBUG 2018-11-06 14:32:29,175 27323ms HomeController         Login              - bpas
+DEBUG 2018-11-06 14:32:29,175 27324ms HomeController         Login              - [Home][login]: Succesfully logged in  rojadhanavath

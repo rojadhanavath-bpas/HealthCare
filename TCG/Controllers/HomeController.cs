@@ -28,7 +28,9 @@ namespace HealthcareAnalytics.Controllers
     {
         private static log4net.ILog Log { get; set; }
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
-        readonly string tableauServer = "http://tableau.bpa.services/trusted/";
+      //  readonly string tableauServer = "http://tableau.bpa.services/trusted/";
+
+        readonly string tableauServer_Bpas = System.Configuration.ConfigurationManager.AppSettings["TableauSingleSignOn"];
 
 
         //private healthcareEntities db = new healthcareEntities();
@@ -253,7 +255,7 @@ namespace HealthcareAnalytics.Controllers
 
             log.Debug("Retrieving Tableau token ");
             var user = "Rdhanavath";
-            var request = (HttpWebRequest)WebRequest.Create(tableauServer);
+            var request = (HttpWebRequest)WebRequest.Create(tableauServer_Bpas);
 
             var encoding = new UTF8Encoding();
             var postData = "username=" + user;
