@@ -47,7 +47,14 @@ namespace DAL_TCG
         public string ACDH_BillProvider { get; set; }
         public string ACDH_Department { get; set; }
         public string ACDH_HBorPB { get; set; }
-    
+
+        public string convertDate { get; set; }
+        public string convertFollowUpDate { get; set; }
+        public string totalCharges { get; set; }
+        public string totalPay { get; set; }
+        public string totalAdj { get; set; }
+        public string totalAccBal { get; set; }
+
         public virtual Account_Case_Details Account_Case_Details { get; set; }
     }
 }

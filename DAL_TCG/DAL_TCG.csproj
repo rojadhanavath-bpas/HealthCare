@@ -230,6 +230,7 @@
       <LastGenOutput>TCG_Model.Context.cs</LastGenOutput>
       <DependentUpon>TCG_Model.edmx</DependentUpon>
     </Content>
+    <Content Include="TCG_Model.edmx.sql" />
     <Content Include="TCG_Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TCG_Model.edmx</DependentUpon>

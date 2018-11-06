@@ -42,5 +42,19 @@ namespace DAL_TCG
         public string CPTCODES { get; set; }
         public Nullable<double> DEPARTMENTID { get; set; }
         public string DEPARTMENTNAME { get; set; }
+
+
+        public string DischargeDate { get; set; }
+        public decimal convertAmount { get; set; }
+        public string convertBal { get; set; }
+        public string AccId { get; set; }
+        public string PatientName { get; set; }
+        public string caseFlag { get; set; }
+        public Boolean flagCase { get; set; }
+        public string ddlValue { get; set; }
+        public int flag { get; set; }
+        public int flagCaseValue { get; set; }
+
+
     }
 }

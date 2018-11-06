@@ -4,184 +4,883 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TCG_DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.spt_fallback_db' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="spt_fallback_db">
-          <Key>
-            <PropertyRef Name="xserver_name" />
-            <PropertyRef Name="xdttm_ins" />
-            <PropertyRef Name="xdttm_last_ins_upd" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="dbid" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="version" />
-          </Key>
-          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
-          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
-          <Property Name="xfallback_dbid" Type="smallint" />
-          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="dbid" Type="smallint" Nullable="false" />
-          <Property Name="status" Type="smallint" Nullable="false" />
-          <Property Name="version" Type="smallint" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.spt_fallback_dev' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="spt_fallback_dev">
-          <Key>
-            <PropertyRef Name="xserver_name" />
-            <PropertyRef Name="xdttm_ins" />
-            <PropertyRef Name="xdttm_last_ins_upd" />
-            <PropertyRef Name="low" />
-            <PropertyRef Name="high" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="phyname" />
-          </Key>
-          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
-          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
-          <Property Name="xfallback_low" Type="int" />
-          <Property Name="xfallback_drive" Type="char" MaxLength="2" />
-          <Property Name="low" Type="int" Nullable="false" />
-          <Property Name="high" Type="int" Nullable="false" />
-          <Property Name="status" Type="smallint" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="phyname" Type="varchar" MaxLength="127" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.spt_fallback_usg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="spt_fallback_usg">
-          <Key>
-            <PropertyRef Name="xserver_name" />
-            <PropertyRef Name="xdttm_ins" />
-            <PropertyRef Name="xdttm_last_ins_upd" />
-            <PropertyRef Name="dbid" />
-            <PropertyRef Name="segmap" />
-            <PropertyRef Name="lstart" />
-            <PropertyRef Name="sizepg" />
-            <PropertyRef Name="vstart" />
-          </Key>
-          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
-          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
-          <Property Name="xfallback_vstart" Type="int" />
-          <Property Name="dbid" Type="smallint" Nullable="false" />
-          <Property Name="segmap" Type="int" Nullable="false" />
-          <Property Name="lstart" Type="int" Nullable="false" />
-          <Property Name="sizepg" Type="int" Nullable="false" />
-          <Property Name="vstart" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="spt_monitor">
-          <Key>
-            <PropertyRef Name="lastrun" />
-            <PropertyRef Name="cpu_busy" />
-            <PropertyRef Name="io_busy" />
-            <PropertyRef Name="idle" />
-            <PropertyRef Name="pack_received" />
-            <PropertyRef Name="pack_sent" />
-            <PropertyRef Name="connections" />
-            <PropertyRef Name="pack_errors" />
-            <PropertyRef Name="total_read" />
-            <PropertyRef Name="total_write" />
-            <PropertyRef Name="total_errors" />
-          </Key>
-          <Property Name="lastrun" Type="datetime" Nullable="false" />
-          <Property Name="cpu_busy" Type="int" Nullable="false" />
-          <Property Name="io_busy" Type="int" Nullable="false" />
-          <Property Name="idle" Type="int" Nullable="false" />
-          <Property Name="pack_received" Type="int" Nullable="false" />
-          <Property Name="pack_sent" Type="int" Nullable="false" />
-          <Property Name="connections" Type="int" Nullable="false" />
-          <Property Name="pack_errors" Type="int" Nullable="false" />
-          <Property Name="total_read" Type="int" Nullable="false" />
-          <Property Name="total_write" Type="int" Nullable="false" />
-          <Property Name="total_errors" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'master.dbo.spt_values' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="spt_values">
-          <Key>
-            <PropertyRef Name="number" />
-            <PropertyRef Name="type" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="35" />
-          <Property Name="number" Type="int" Nullable="false" />
-          <Property Name="type" Type="nchar" MaxLength="3" Nullable="false" />
-          <Property Name="low" Type="int" />
-          <Property Name="high" Type="int" />
-          <Property Name="status" Type="int" />
-        </EntityType>
-        <EntityContainer Name="TCG_DataModelStoreContainer">
-          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [spt_fallback_db].[xserver_name] AS [xserver_name], 
-    [spt_fallback_db].[xdttm_ins] AS [xdttm_ins], 
-    [spt_fallback_db].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
-    [spt_fallback_db].[xfallback_dbid] AS [xfallback_dbid], 
-    [spt_fallback_db].[name] AS [name], 
-    [spt_fallback_db].[dbid] AS [dbid], 
-    [spt_fallback_db].[status] AS [status], 
-    [spt_fallback_db].[version] AS [version]
-    FROM [dbo].[spt_fallback_db] AS [spt_fallback_db]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [spt_fallback_dev].[xserver_name] AS [xserver_name], 
-    [spt_fallback_dev].[xdttm_ins] AS [xdttm_ins], 
-    [spt_fallback_dev].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
-    [spt_fallback_dev].[xfallback_low] AS [xfallback_low], 
-    [spt_fallback_dev].[xfallback_drive] AS [xfallback_drive], 
-    [spt_fallback_dev].[low] AS [low], 
-    [spt_fallback_dev].[high] AS [high], 
-    [spt_fallback_dev].[status] AS [status], 
-    [spt_fallback_dev].[name] AS [name], 
-    [spt_fallback_dev].[phyname] AS [phyname]
-    FROM [dbo].[spt_fallback_dev] AS [spt_fallback_dev]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [spt_fallback_usg].[xserver_name] AS [xserver_name], 
-    [spt_fallback_usg].[xdttm_ins] AS [xdttm_ins], 
-    [spt_fallback_usg].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
-    [spt_fallback_usg].[xfallback_vstart] AS [xfallback_vstart], 
-    [spt_fallback_usg].[dbid] AS [dbid], 
-    [spt_fallback_usg].[segmap] AS [segmap], 
-    [spt_fallback_usg].[lstart] AS [lstart], 
-    [spt_fallback_usg].[sizepg] AS [sizepg], 
-    [spt_fallback_usg].[vstart] AS [vstart]
-    FROM [dbo].[spt_fallback_usg] AS [spt_fallback_usg]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [spt_monitor].[lastrun] AS [lastrun], 
-    [spt_monitor].[cpu_busy] AS [cpu_busy], 
-    [spt_monitor].[io_busy] AS [io_busy], 
-    [spt_monitor].[idle] AS [idle], 
-    [spt_monitor].[pack_received] AS [pack_received], 
-    [spt_monitor].[pack_sent] AS [pack_sent], 
-    [spt_monitor].[connections] AS [connections], 
-    [spt_monitor].[pack_errors] AS [pack_errors], 
-    [spt_monitor].[total_read] AS [total_read], 
-    [spt_monitor].[total_write] AS [total_write], 
-    [spt_monitor].[total_errors] AS [total_errors]
-    FROM [dbo].[spt_monitor] AS [spt_monitor]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="spt_values" EntityType="Self.spt_values" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [spt_values].[name] AS [name], 
-    [spt_values].[number] AS [number], 
-    [spt_values].[type] AS [type], 
-    [spt_values].[low] AS [low], 
-    [spt_values].[high] AS [high], 
-    [spt_values].[status] AS [status]
-    FROM [dbo].[spt_values] AS [spt_values]</DefiningQuery>
-          </EntitySet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="TCG_DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TCG_DataModelStoreContainer">
+    <EntitySet Name="Account_AR_Status" EntityType="TCG_DataModel.Store.Account_AR_Status" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Account_Bill_Status" EntityType="TCG_DataModel.Store.Account_Bill_Status" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Account_Case_Details" EntityType="TCG_DataModel.Store.Account_Case_Details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Account_Case_Detials_History" EntityType="TCG_DataModel.Store.Account_Case_Detials_History" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Account_Case_Task" EntityType="TCG_DataModel.Store.Account_Case_Task" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Account_Case_Task_History" EntityType="TCG_DataModel.Store.Account_Case_Task_History" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Account_Source" EntityType="TCG_DataModel.Store.Account_Source" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CaseCompleted_Master" EntityType="TCG_DataModel.Store.CaseCompleted_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DenialCat_Master" EntityType="TCG_DataModel.Store.DenialCat_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DenialStatus_Master" EntityType="TCG_DataModel.Store.DenialStatus_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Encounter_Type" EntityType="TCG_DataModel.Store.Encounter_Type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Insurance_Company_Name" EntityType="TCG_DataModel.Store.Insurance_Company_Name" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Payor_Financial_Class" EntityType="TCG_DataModel.Store.Payor_Financial_Class" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PrimaryReason_Master" EntityType="TCG_DataModel.Store.PrimaryReason_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Priority_Master" EntityType="TCG_DataModel.Store.Priority_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="TCG_DataModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RootCause_Master" EntityType="TCG_DataModel.Store.RootCause_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Status_Master" EntityType="TCG_DataModel.Store.Status_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Task_Master" EntityType="TCG_DataModel.Store.Task_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Underpayment_Reason" EntityType="TCG_DataModel.Store.Underpayment_Reason" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Underpayments" EntityType="TCG_DataModel.Store.Underpayments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Underpayments_Stage" EntityType="TCG_DataModel.Store.Underpayments_Stage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User_Login" EntityType="TCG_DataModel.Store.User_Login" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users_Data" EntityType="TCG_DataModel.Store.Users_Data" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Denials_Data" EntityType="TCG_DataModel.Store.Denials_Data" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Forgot_Pwd" EntityType="TCG_DataModel.Store.Forgot_Pwd" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Timely_Filing_Limits" EntityType="TCG_DataModel.Store.Timely_Filing_Limits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VW_AR_AGE_CATEGORY" EntityType="TCG_DataModel.Store.VW_AR_AGE_CATEGORY" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VW_AR_AGE_CATEGORY_CREDIT" EntityType="TCG_DataModel.Store.VW_AR_AGE_CATEGORY_CREDIT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VW_AR_AGE_CATEGORY_DEBIT" EntityType="TCG_DataModel.Store.VW_AR_AGE_CATEGORY_DEBIT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HBorPB_Master" EntityType="TCG_DataModel.Store.HBorPB_Master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Underpayment_ReasonCode" EntityType="TCG_DataModel.Store.Underpayment_ReasonCode" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Underpayments_APD" EntityType="TCG_DataModel.Store.Underpayments_APD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Underpayments_PB" EntityType="TCG_DataModel.Store.Underpayments_PB" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UnderPayments_Stage_HB" EntityType="TCG_DataModel.Store.UnderPayments_Stage_HB" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Underpayment_ReasonCode1" EntityType="TCG_DataModel.Store.Underpayment_ReasonCode1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Underpayments_Old" EntityType="TCG_DataModel.Store.Underpayments_Old" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UnderPayments_PB_July" EntityType="TCG_DataModel.Store.UnderPayments_PB_July" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="spt_fallback_db" EntityType="TCG_DataModel.Store.spt_fallback_db" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="spt_fallback_dev" EntityType="TCG_DataModel.Store.spt_fallback_dev" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="spt_fallback_usg" EntityType="TCG_DataModel.Store.spt_fallback_usg" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="spt_monitor" EntityType="TCG_DataModel.Store.spt_monitor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="spt_values" EntityType="TCG_DataModel.Store.spt_values" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Account_C__ACDH___40F9A68C" Association="TCG_DataModel.Store.FK__Account_C__ACDH___40F9A68C">
+      <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+      <End Role="Account_Case_Detials_History" EntitySet="Account_Case_Detials_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account_C__ACT_A__44CA3770" Association="TCG_DataModel.Store.FK__Account_C__ACT_A__44CA3770">
+      <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+      <End Role="Account_Case_Task" EntitySet="Account_Case_Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account_C__ACTH___498EEC8D" Association="TCG_DataModel.Store.FK__Account_C__ACTH___498EEC8D">
+      <End Role="Account_Case_Details" EntitySet="Account_Case_Details" />
+      <End Role="Account_Case_Task_History" EntitySet="Account_Case_Task_History" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account_C__ACTH___489AC854" Association="TCG_DataModel.Store.FK__Account_C__ACTH___489AC854">
+      <End Role="Account_Case_Task" EntitySet="Account_Case_Task" />
+      <End Role="Account_Case_Task_History" EntitySet="Account_Case_Task_History" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account_AR_Status">
+    <Key>
+      <PropertyRef Name="ARSts_ID" />
+    </Key>
+    <Property Name="ARSts_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ARSts_Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Account_Bill_Status">
+    <Key>
+      <PropertyRef Name="BillSts_ID" />
+    </Key>
+    <Property Name="BillSts_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillSts_Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Account_Case_Details">
+    <Key>
+      <PropertyRef Name="ACD_ID" />
+    </Key>
+    <Property Name="ACD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACD_HspAccID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACD_Amount" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACD_Status" Type="int" Nullable="false" />
+    <Property Name="ACD_Owner" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACD_Type" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACD_SubType" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACD_PayerReason" Type="int" Nullable="false" />
+    <Property Name="ACD_PrimaryReason" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACD_SecondaryReason" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACD_PrinDiag" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACD_PrinProc" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACD_Comments" Type="varchar(max)" Nullable="true" />
+    <Property Name="ACD_CreatedBy" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACD_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ACD_UpdatedBy" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACD_Updateddate" Type="datetime" Nullable="false" />
+    <Property Name="ACD_UpdatedBy_DB" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACD_Completed" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACD_Priority" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACD_Description" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACD_TaskFollowUp" Type="int" Nullable="false" />
+    <Property Name="ACD_DueDate" Type="datetime" Nullable="true" />
+    <Property Name="ACD_FollowUpDate" Type="datetime" Nullable="true" />
+    <Property Name="ACD_DeleteFlag" Type="bit" Nullable="true" />
+    <Property Name="ACD_TotalCharges" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACD_TotalPay" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACD_TotalAdj" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACD_AmtDiffNAA" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACD_AmtDiffPayor" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACD_ExpAmt" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACD_BillProvider" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ACD_Department" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ACD_HBorPB" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Account_Case_Detials_History">
+    <Key>
+      <PropertyRef Name="ACDH_ID" />
+    </Key>
+    <Property Name="ACDH_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACDH_ACD_ID" Type="int" Nullable="false" />
+    <Property Name="ACDH_HspAccID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACDH_Amount" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACDH_Status" Type="int" Nullable="false" />
+    <Property Name="ACDH_Owner" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACDH_Type" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACDH_SubType" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACDH_PayerReason" Type="int" Nullable="false" />
+    <Property Name="ACDH_PrimaryReason" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACDH_SecondaryReason" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACDH_PrinDiag" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACDH_PrinProc" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACDH_Comments" Type="varchar(max)" Nullable="true" />
+    <Property Name="ACDH_CreatedBy" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACDH_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ACDH_UpdatedBy_DB" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACDH_Completed" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACDH_Priority" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACDH_Description" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACDH_TaskFollowUp" Type="int" Nullable="false" />
+    <Property Name="ACDH_DueDate" Type="datetime" Nullable="true" />
+    <Property Name="ACDH_FollowUpDate" Type="datetime" Nullable="true" />
+    <Property Name="ACDH_DeleteFlag" Type="bit" Nullable="true" />
+    <Property Name="ACDH_TotalCharges" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACDH_TotalPay" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACDH_TotalAdj" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACDH_AmtDiffNAA" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACDH_AmtDiffPayor" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACDH_ExpAmt" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ACDH_BillProvider" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ACDH_Department" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ACDH_HBorPB" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Account_Case_Task">
+    <Key>
+      <PropertyRef Name="ACT_ID" />
+    </Key>
+    <Property Name="ACT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACT_HspAccID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACT_ACD_ID" Type="int" Nullable="false" />
+    <Property Name="ACT_Completed" Type="bit" Nullable="false" />
+    <Property Name="ACT_Priority" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACT_Description" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACT_Owner" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACT_Comment" Type="varchar(max)" Nullable="true" />
+    <Property Name="ACT_DueDate" Type="datetime" Nullable="false" />
+    <Property Name="ACT_CreatedBy" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACT_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ACT_UpdatedBy" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACT_Updateddate" Type="datetime" Nullable="false" />
+    <Property Name="ACT_UpdatedBy_DB" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACT_DeleteFlag" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Account_Case_Task_History">
+    <Key>
+      <PropertyRef Name="ACTH_ID" />
+    </Key>
+    <Property Name="ACTH_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACTH_ACT_ID" Type="int" Nullable="false" />
+    <Property Name="ACTH_ACD_ID" Type="int" Nullable="false" />
+    <Property Name="ACTH_HspAccID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACTH_Completed" Type="bit" Nullable="false" />
+    <Property Name="ACTH_Priority" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACTH_Description" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACTH_Owner" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ACTH_Comment" Type="varchar(max)" Nullable="true" />
+    <Property Name="ACTH_DueDate" Type="datetime" Nullable="false" />
+    <Property Name="ACTH_CreatedBy" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACTH_CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ACTH_UpdatedBy_DB" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="ACTH_DeleteFlag" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Account_Source">
+    <Key>
+      <PropertyRef Name="AccSrc_ID" />
+    </Key>
+    <Property Name="AccSrc_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccSrc_Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CaseCompleted_Master">
+    <Key>
+      <PropertyRef Name="CC_ID" />
+    </Key>
+    <Property Name="CC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CC_Name" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DenialCat_Master">
+    <Key>
+      <PropertyRef Name="DC_ID" />
+    </Key>
+    <Property Name="DC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DC_Name" Type="varchar" Nullable="false" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="DenialStatus_Master">
+    <Key>
+      <PropertyRef Name="DS_ID" />
+    </Key>
+    <Property Name="DS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DS_Name" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Encounter_Type">
+    <Key>
+      <PropertyRef Name="EncType_ID" />
+    </Key>
+    <Property Name="EncType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EncType_Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Insurance_Company_Name">
+    <Key>
+      <PropertyRef Name="InsCmp_ID" />
+    </Key>
+    <Property Name="InsCmp_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsCmp_Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Payor_Financial_Class">
+    <Key>
+      <PropertyRef Name="PyrFC_ID" />
+    </Key>
+    <Property Name="PyrFC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PyrFC_Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PrimaryReason_Master">
+    <Key>
+      <PropertyRef Name="PRM_ID" />
+    </Key>
+    <Property Name="PRM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRM_Name" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Priority_Master">
+    <Key>
+      <PropertyRef Name="PM_ID" />
+    </Key>
+    <Property Name="PM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PM_Name" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="role_key" />
+    </Key>
+    <Property Name="role_key" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="role_code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="role_code_short" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="role_designation" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="role_createdBy_user" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="role_created_date" Type="datetime" Nullable="false" />
+    <Property Name="role_delete_flag" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RootCause_Master">
+    <Key>
+      <PropertyRef Name="RC_ID" />
+    </Key>
+    <Property Name="RC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RC_Name" Type="varchar" Nullable="false" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Status_Master">
+    <Key>
+      <PropertyRef Name="SM_ID" />
+    </Key>
+    <Property Name="SM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SM_Name" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Task_Master">
+    <Key>
+      <PropertyRef Name="TM_ID" />
+    </Key>
+    <Property Name="TM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TM_Name" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Underpayment_Reason">
+    <Key>
+      <PropertyRef Name="Reason_Code" />
+    </Key>
+    <Property Name="Reason_Code" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Underpayments">
+    <Key>
+      <PropertyRef Name="Account" />
+    </Key>
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Acct_Class" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Acct_Status" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Account_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Disch_Date" Type="datetime" Nullable="true" />
+    <Property Name="Acct_Bal" Type="float" Nullable="true" />
+    <Property Name="Message" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Plan_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Payor_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" Type="float" Nullable="true" />
+    <Property Name="Expected_Allowed_Amount" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Payor_Specified_" Type="float" Nullable="true" />
+    <Property Name="Underpayment_Reason_Code" Type="int" Nullable="true" />
+    <Property Name="Brief_Summary" Type="nvarchar" Nullable="true" MaxLength="4000" />
+    <Property Name="DateOfUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Biller" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="BillingProvider" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="CaseStatus" Type="varchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Underpayments_Stage">
+    <Key>
+      <PropertyRef Name="Account" />
+    </Key>
+    <Property Name="Account" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Acct_Class" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Acct_Status" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Account_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Disch_Date" Type="datetime" Nullable="true" />
+    <Property Name="Acct_Bal" Type="float" Nullable="true" />
+    <Property Name="Message" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Diagnosis_Codes" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Plan_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Payor_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference" Type="float" Nullable="true" />
+    <Property Name="Expected_Allowed_Amount" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Payor_Specified" Type="float" Nullable="true" />
+    <Property Name="Underpayment_Reason_Code" Type="int" Nullable="true" />
+    <Property Name="Brief_Summary" Type="nvarchar" Nullable="true" MaxLength="4000" />
+    <Property Name="DateOfUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Biller" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="BillingProvider" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="User_Login">
+    <Key>
+      <PropertyRef Name="user_Id" />
+    </Key>
+    <Property Name="user_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="user_first_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_last_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_web_login" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_web_pwd" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users_Data">
+    <Key>
+      <PropertyRef Name="user_ID" />
+    </Key>
+    <Property Name="user_ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="user_first_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_last_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_full_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_role_key" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="user_phone_number" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_email_id" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_added_by" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_add_date" Type="datetime" Nullable="false" />
+    <Property Name="user_updated_by" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_updated_date" Type="datetime" Nullable="true" />
+    <Property Name="user_delete_flag" Type="tinyint" Nullable="false" />
+    <Property Name="user_middle_name" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="user_web_pwd" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="otp_key" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="otp_time" Type="datetime" Nullable="true" />
+    <Property Name="user_active_flag" Type="tinyint" Nullable="false" />
+    <Property Name="user_web_login" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Denials_Data">
+    <Key>
+      <PropertyRef Name="Invoice" />
+      <PropertyRef Name="Ext_Rsn_Code" />
+      <PropertyRef Name="Ln_on_EOB" />
+      <PropertyRef Name="Bucket_Payor" />
+      <PropertyRef Name="Bucket_Plan" />
+      <PropertyRef Name="Aging_Bkt" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Rcvd_Dt" />
+      <PropertyRef Name="Acct_Class" />
+      <PropertyRef Name="Account_ID" />
+      <PropertyRef Name="Account_Name" />
+      <PropertyRef Name="Account_Location" />
+      <PropertyRef Name="Acct_Status" />
+      <PropertyRef Name="Rsn_Code" />
+      <PropertyRef Name="Reporting_Rsn_Code_w_Desc" />
+      <PropertyRef Name="Service_Area" />
+      <PropertyRef Name="Source" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="Financial_Class" />
+      <PropertyRef Name="Src_Pmt_Tx" />
+    </Key>
+    <Property Name="Invoice" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Ext_Rsn_Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Ln_on_EOB" Type="int" Nullable="false" />
+    <Property Name="Rev_Code" Type="int" Nullable="true" />
+    <Property Name="CPT_R_Code" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Allowed_Amt" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Denied_Amount" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Billed_Amount" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Bucket_Payor" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Bucket_Plan" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="Aging_Bkt" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Owning_Area" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Source_Area" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Root_Cause" Type="nvarchar" Nullable="true" MaxLength="150" />
+    <Property Name="Preventable" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="Follow_Up_Date" Type="nvarchar" Nullable="true" MaxLength="1" />
+    <Property Name="Resolution_or_Resp_Cat" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Rcvd_Dt" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Acct_Class" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Account_ID" Type="bigint" Nullable="false" />
+    <Property Name="Account_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Account_Location" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Follow_up_ID" Type="int" Nullable="true" />
+    <Property Name="First_Payor_Rcvd_Dt" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Last_Payor_Rcvd_Dt" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Days_Denied" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Denial_Cat" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Ext_Rsn_Code_w__Desc" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="First_Claim_Dt" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="HB_Acct_Bal" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Acct_Status" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Paid_Amount" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Last_Reopened_Date" Type="datetime" Nullable="true" />
+    <Property Name="Last_User_for_Closed_Rec" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Last_Completed_Date" Type="datetime" Nullable="true" />
+    <Property Name="Rsn_Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Reporting_Rsn_Code_w_Desc" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Service_Area" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Rev_Code_Desc" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="Source" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Source_Dept" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Stage" Type="bigint" Nullable="true" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Clinical_Root_Cause" Type="nvarchar" Nullable="true" MaxLength="25" />
+    <Property Name="Financial_Class" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="First_Ext_Claim_Sent_Date" Type="datetime" Nullable="true" />
+    <Property Name="Src_Pmt_Tx" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Forgot_Pwd">
+    <Key>
+      <PropertyRef Name="user_first_name" />
+      <PropertyRef Name="user_email_id" />
+      <PropertyRef Name="new_pwd" />
+    </Key>
+    <Property Name="user_first_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_email_id" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="new_pwd" Type="varbinary" Nullable="false" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Timely_Filing_Limits">
+    <Key>
+      <PropertyRef Name="Payer" />
+      <PropertyRef Name="FileAsPrimary" />
+      <PropertyRef Name="PrimaryInMonths" />
+      <PropertyRef Name="PrimaryInDays" />
+      <PropertyRef Name="FileAsSecondary" />
+      <PropertyRef Name="SecondaryInMonths" />
+      <PropertyRef Name="SecondaryInDays" />
+      <PropertyRef Name="AppealInMonths" />
+      <PropertyRef Name="AppealInDays" />
+    </Key>
+    <Property Name="Payer" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="FileAsPrimary" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="PrimaryInMonths" Type="int" Nullable="false" />
+    <Property Name="PrimaryInDays" Type="int" Nullable="false" />
+    <Property Name="FileAsSecondary" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="SecondaryInMonths" Type="int" Nullable="false" />
+    <Property Name="SecondaryInDays" Type="int" Nullable="false" />
+    <Property Name="AppealTimeFrame" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="AppealInMonths" Type="float" Nullable="false" />
+    <Property Name="AppealInDays" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_AR_AGE_CATEGORY">
+    <Key>
+      <PropertyRef Name="Age" />
+    </Key>
+    <Property Name="Hospital_Account_ID" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Admission_Date" Type="datetime" Nullable="true" />
+    <Property Name="First_Billed_Date" Type="datetime" Nullable="true" />
+    <Property Name="Age" Type="varchar" Nullable="false" MaxLength="14" />
+    <Property Name="Amount" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Agency" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Collectable" Type="int" Nullable="true" />
+    <Property Name="Primary_Coverage_Payor_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Total_Account_Balance" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Primary_Coverage_Payor_Financial_Class" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Account_AR_Status" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Total_Primary_Insurance_Balance" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Account_Department_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Account_Location_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Account_Service_Area_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Account_Bill_Status" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Encounter_Type" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Account_Source" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="VW_AR_AGE_CATEGORY_CREDIT">
+    <Key>
+      <PropertyRef Name="Age" />
+    </Key>
+    <Property Name="Hospital_Account_ID" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Admission_Date" Type="datetime" Nullable="true" />
+    <Property Name="First_Billed_Date" Type="datetime" Nullable="true" />
+    <Property Name="Age" Type="varchar" Nullable="false" MaxLength="14" />
+    <Property Name="Amount" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Agency" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Collectable" Type="int" Nullable="true" />
+    <Property Name="Primary_Coverage_Payor_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Total_Account_Balance" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Primary_Coverage_Payor_Financial_Class" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Account_AR_Status" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Total_Primary_Insurance_Balance" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Account_Department_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Account_Location_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Account_Service_Area_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Account_Bill_Status" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Encounter_Type" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Account_Source" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="VW_AR_AGE_CATEGORY_DEBIT">
+    <Key>
+      <PropertyRef Name="Age" />
+    </Key>
+    <Property Name="Hospital_Account_ID" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Admission_Date" Type="datetime" Nullable="true" />
+    <Property Name="First_Billed_Date" Type="datetime" Nullable="true" />
+    <Property Name="Age" Type="varchar" Nullable="false" MaxLength="14" />
+    <Property Name="Amount" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Agency" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Collectable" Type="int" Nullable="true" />
+    <Property Name="Primary_Coverage_Payor_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Total_Account_Balance" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Primary_Coverage_Payor_Financial_Class" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Account_AR_Status" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Total_Primary_Insurance_Balance" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Account_Department_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Account_Location_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Account_Service_Area_Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Account_Bill_Status" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Encounter_Type" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Account_Source" Type="varchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HBorPB_Master">
+    <Key>
+      <PropertyRef Name="HP_ID" />
+    </Key>
+    <Property Name="HP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HP_Name" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Underpayment_ReasonCode">
+    <Key>
+      <PropertyRef Name="Reason_Code" />
+    </Key>
+    <Property Name="Reason_Title" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Reason_Code" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Underpayments_APD">
+    <Key>
+      <PropertyRef Name="Account" />
+    </Key>
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Acct_Class" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Acct_Status" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Account_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Disch_Date" Type="datetime" Nullable="true" />
+    <Property Name="Acct_Bal" Type="float" Nullable="true" />
+    <Property Name="Message" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Plan_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Payor_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" Type="float" Nullable="true" />
+    <Property Name="Expected_Allowed_Amount" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Payor_Specified_" Type="float" Nullable="true" />
+    <Property Name="Underpayment_Reason_Code" Type="int" Nullable="true" />
+    <Property Name="Brief_Summary" Type="nvarchar" Nullable="true" MaxLength="4000" />
+    <Property Name="DateOfUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Biller" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="BillingProvider" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="CaseStatus" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="DOB" Type="datetime" Nullable="true" />
+    <Property Name="SSN" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Adm_Ser_Date" Type="datetime" Nullable="true" />
+    <Property Name="Bill_Date" Type="datetime" Nullable="true" />
+    <Property Name="Claim_Date" Type="datetime" Nullable="true" />
+    <Property Name="Total_Charges" Type="float" Nullable="true" />
+    <Property Name="Financial_Class" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Ins1_ID__" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="INS1_Balance" Type="float" Nullable="true" />
+    <Property Name="Ins2_ID__" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="INS2_Mnemonic" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Ins2_Payer" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="INS2_Balance" Type="float" Nullable="true" />
+    <Property Name="Ins3_ID" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="INS3_Mnemonic" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Ins3_Payer" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="INS3_Balance" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Pt_Balance" Type="float" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Underpayments_PB">
+    <Key>
+      <PropertyRef Name="Account" />
+    </Key>
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Acct_Class" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Acct_Status" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Account_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Disch_Date" Type="datetime" Nullable="true" />
+    <Property Name="Acct_Bal" Type="float" Nullable="true" />
+    <Property Name="Message" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Plan_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Payor_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" Type="float" Nullable="true" />
+    <Property Name="Expected_Allowed_Amount" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Payor_Specified_" Type="float" Nullable="true" />
+    <Property Name="Underpayment_Reason_Code" Type="int" Nullable="true" />
+    <Property Name="Brief_Summary" Type="nvarchar" Nullable="true" MaxLength="4000" />
+    <Property Name="DateOfUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Biller" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="BillingProvider" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="TOTALCHARGES" Type="float" Nullable="true" />
+    <Property Name="TOTALPAYMENTS" Type="float" Nullable="true" />
+    <Property Name="TOTALADJUSTMENTS" Type="float" Nullable="true" />
+    <Property Name="FIRSTPAYMENTDATE" Type="datetime" Nullable="true" />
+    <Property Name="FIRSTPAYMENTAMT" Type="float" Nullable="true" />
+    <Property Name="LASTPAYMENTDATE" Type="datetime" Nullable="true" />
+    <Property Name="LASTPAYMENTAMT" Type="float" Nullable="true" />
+    <Property Name="CPTCODES" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="DEPARTMENTID" Type="float" Nullable="true" />
+    <Property Name="DEPARTMENTNAME" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UnderPayments_Stage_HB">
+    <Key>
+      <PropertyRef Name="Account" />
+    </Key>
+    <Property Name="Account" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Acct_Class" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Acct_Status" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Account_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Disch_Date" Type="datetime" Nullable="true" />
+    <Property Name="Acct_Bal" Type="float" Nullable="true" />
+    <Property Name="Message" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Plan_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Payor_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" Type="float" Nullable="true" />
+    <Property Name="Expected_Allowed_Amount" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Payor_Specified_" Type="float" Nullable="true" />
+    <Property Name="Underpayment_Reason_Code" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Brief_Summary" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Date_of_Update" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Biller" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Billing_Provider" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Underpayment_ReasonCode1">
+    <Key>
+      <PropertyRef Name="Reason_Code" />
+    </Key>
+    <Property Name="Reason_Code" Type="int" Nullable="false" />
+    <Property Name="Reason_Title" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Root_Cause_Category" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Underpayments_Old">
+    <Key>
+      <PropertyRef Name="Account" />
+    </Key>
+    <Property Name="Account" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Acct_Class" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Acct_Status" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Account_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Disch_Date" Type="datetime" Nullable="true" />
+    <Property Name="Acct_Bal" Type="float" Nullable="true" />
+    <Property Name="Message" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Plan_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Payor_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" Type="float" Nullable="true" />
+    <Property Name="Expected_Allowed_Amount" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allowed_Amount_Difference__Payor_Specified_" Type="float" Nullable="true" />
+    <Property Name="Underpayment_Reason_Code" Type="int" Nullable="true" />
+    <Property Name="Brief_Summary" Type="nvarchar" Nullable="true" MaxLength="4000" />
+    <Property Name="DateOfUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Biller" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="BillingProvider" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UnderPayments_PB_July">
+    <Key>
+      <PropertyRef Name="Acct_Class" />
+    </Key>
+    <Property Name="Account" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Acct_Class" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Acct_Status" Type="int" Nullable="true" />
+    <Property Name="Account_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Procedure" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Svc_Dt" Type="datetime" Nullable="true" />
+    <Property Name="Ins_Amt" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Billing_Provider" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Payor_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Acct_Bal" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Account_Workqueues" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="All_Claim_Payors" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Allow_Discrepancy_Amt" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Plan_Name" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Cur_Plan_Group" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Dr_Cr" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Dept_Specialty" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Diagnosis_Code" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Enc_Specialty" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Prim_Fee_Sched" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Procedure_Code" Type="float" Nullable="true" />
+    <Property Name="Procedure_Description" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Underpayment_Reason_Code" Type="int" Nullable="true" />
+    <Property Name="Brief_Summary" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="DateOfUpdate" Type="datetime" Nullable="true" />
+    <Property Name="ServiceDepartmentName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="AccountMostRecentClaimDate" Type="datetime" Nullable="true" />
+    <Property Name="TotalChargeAmount" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="TotalPaymentAmount" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="TotalAdjustmentAmount" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="AllowedAmount_ProfessionalOnly" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="spt_fallback_db">
+    <Key>
+      <PropertyRef Name="xserver_name" />
+      <PropertyRef Name="xdttm_ins" />
+      <PropertyRef Name="xdttm_last_ins_upd" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="dbid" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="version" />
+    </Key>
+    <Property Name="xserver_name" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+    <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+    <Property Name="xfallback_dbid" Type="smallint" Nullable="true" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="dbid" Type="smallint" Nullable="false" />
+    <Property Name="status" Type="smallint" Nullable="false" />
+    <Property Name="version" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="spt_fallback_dev">
+    <Key>
+      <PropertyRef Name="xserver_name" />
+      <PropertyRef Name="xdttm_ins" />
+      <PropertyRef Name="xdttm_last_ins_upd" />
+      <PropertyRef Name="low" />
+      <PropertyRef Name="high" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="phyname" />
+    </Key>
+    <Property Name="xserver_name" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+    <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+    <Property Name="xfallback_low" Type="int" Nullable="true" />
+    <Property Name="xfallback_drive" Type="char" Nullable="true" MaxLength="2" />
+    <Property Name="low" Type="int" Nullable="false" />
+    <Property Name="high" Type="int" Nullable="false" />
+    <Property Name="status" Type="smallint" Nullable="false" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="phyname" Type="varchar" Nullable="false" MaxLength="127" />
+  </EntityType>
+  <EntityType Name="spt_fallback_usg">
+    <Key>
+      <PropertyRef Name="xserver_name" />
+      <PropertyRef Name="xdttm_ins" />
+      <PropertyRef Name="xdttm_last_ins_upd" />
+      <PropertyRef Name="dbid" />
+      <PropertyRef Name="segmap" />
+      <PropertyRef Name="lstart" />
+      <PropertyRef Name="sizepg" />
+      <PropertyRef Name="vstart" />
+    </Key>
+    <Property Name="xserver_name" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+    <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+    <Property Name="xfallback_vstart" Type="int" Nullable="true" />
+    <Property Name="dbid" Type="smallint" Nullable="false" />
+    <Property Name="segmap" Type="int" Nullable="false" />
+    <Property Name="lstart" Type="int" Nullable="false" />
+    <Property Name="sizepg" Type="int" Nullable="false" />
+    <Property Name="vstart" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="spt_monitor">
+    <Key>
+      <PropertyRef Name="lastrun" />
+      <PropertyRef Name="cpu_busy" />
+      <PropertyRef Name="io_busy" />
+      <PropertyRef Name="idle" />
+      <PropertyRef Name="pack_received" />
+      <PropertyRef Name="pack_sent" />
+      <PropertyRef Name="connections" />
+      <PropertyRef Name="pack_errors" />
+      <PropertyRef Name="total_read" />
+      <PropertyRef Name="total_write" />
+      <PropertyRef Name="total_errors" />
+    </Key>
+    <Property Name="lastrun" Type="datetime" Nullable="false" />
+    <Property Name="cpu_busy" Type="int" Nullable="false" />
+    <Property Name="io_busy" Type="int" Nullable="false" />
+    <Property Name="idle" Type="int" Nullable="false" />
+    <Property Name="pack_received" Type="int" Nullable="false" />
+    <Property Name="pack_sent" Type="int" Nullable="false" />
+    <Property Name="connections" Type="int" Nullable="false" />
+    <Property Name="pack_errors" Type="int" Nullable="false" />
+    <Property Name="total_read" Type="int" Nullable="false" />
+    <Property Name="total_write" Type="int" Nullable="false" />
+    <Property Name="total_errors" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="spt_values">
+    <Key>
+      <PropertyRef Name="number" />
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="true" MaxLength="35" />
+    <Property Name="number" Type="int" Nullable="false" />
+    <Property Name="type" Type="nchar" Nullable="false" MaxLength="3" />
+    <Property Name="low" Type="int" Nullable="true" />
+    <Property Name="high" Type="int" Nullable="true" />
+    <Property Name="status" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="FK__Account_C__ACDH___40F9A68C">
+    <End Role="Account_Case_Details" Type="TCG_DataModel.Store.Account_Case_Details" Multiplicity="1" />
+    <End Role="Account_Case_Detials_History" Type="TCG_DataModel.Store.Account_Case_Detials_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account_Case_Details">
+        <PropertyRef Name="ACD_ID" />
+      </Principal>
+      <Dependent Role="Account_Case_Detials_History">
+        <PropertyRef Name="ACDH_ACD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account_C__ACT_A__44CA3770">
+    <End Role="Account_Case_Details" Type="TCG_DataModel.Store.Account_Case_Details" Multiplicity="1" />
+    <End Role="Account_Case_Task" Type="TCG_DataModel.Store.Account_Case_Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account_Case_Details">
+        <PropertyRef Name="ACD_ID" />
+      </Principal>
+      <Dependent Role="Account_Case_Task">
+        <PropertyRef Name="ACT_ACD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account_C__ACTH___498EEC8D">
+    <End Role="Account_Case_Details" Type="TCG_DataModel.Store.Account_Case_Details" Multiplicity="1" />
+    <End Role="Account_Case_Task_History" Type="TCG_DataModel.Store.Account_Case_Task_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account_Case_Details">
+        <PropertyRef Name="ACD_ID" />
+      </Principal>
+      <Dependent Role="Account_Case_Task_History">
+        <PropertyRef Name="ACTH_ACD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account_C__ACTH___489AC854">
+    <End Role="Account_Case_Task" Type="TCG_DataModel.Store.Account_Case_Task" Multiplicity="1" />
+    <End Role="Account_Case_Task_History" Type="TCG_DataModel.Store.Account_Case_Task_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account_Case_Task">
+        <PropertyRef Name="ACT_ID" />
+      </Principal>
+      <Dependent Role="Account_Case_Task_History">
+        <PropertyRef Name="ACTH_ACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TCG_DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1430,85 +2129,759 @@ warning 6002: The table/view 'master.dbo.spt_values' does not have a primary key
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TCG_DataModelStoreContainer" CdmEntityContainer="TCG_DataEntities">
-          <EntitySetMapping Name="spt_fallback_db">
-            <EntityTypeMapping TypeName="TCG_DataModel.spt_fallback_db">
-              <MappingFragment StoreEntitySet="spt_fallback_db">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="dbid" ColumnName="dbid" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="xfallback_dbid" ColumnName="xfallback_dbid" />
-                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
-                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
-                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="spt_fallback_dev">
-            <EntityTypeMapping TypeName="TCG_DataModel.spt_fallback_dev">
-              <MappingFragment StoreEntitySet="spt_fallback_dev">
-                <ScalarProperty Name="phyname" ColumnName="phyname" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="high" ColumnName="high" />
-                <ScalarProperty Name="low" ColumnName="low" />
-                <ScalarProperty Name="xfallback_drive" ColumnName="xfallback_drive" />
-                <ScalarProperty Name="xfallback_low" ColumnName="xfallback_low" />
-                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
-                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
-                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="spt_fallback_usg">
-            <EntityTypeMapping TypeName="TCG_DataModel.spt_fallback_usg">
-              <MappingFragment StoreEntitySet="spt_fallback_usg">
-                <ScalarProperty Name="vstart" ColumnName="vstart" />
-                <ScalarProperty Name="sizepg" ColumnName="sizepg" />
-                <ScalarProperty Name="lstart" ColumnName="lstart" />
-                <ScalarProperty Name="segmap" ColumnName="segmap" />
-                <ScalarProperty Name="dbid" ColumnName="dbid" />
-                <ScalarProperty Name="xfallback_vstart" ColumnName="xfallback_vstart" />
-                <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
-                <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
-                <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="spt_monitor">
-            <EntityTypeMapping TypeName="TCG_DataModel.spt_monitor">
-              <MappingFragment StoreEntitySet="spt_monitor">
-                <ScalarProperty Name="total_errors" ColumnName="total_errors" />
-                <ScalarProperty Name="total_write" ColumnName="total_write" />
-                <ScalarProperty Name="total_read" ColumnName="total_read" />
-                <ScalarProperty Name="pack_errors" ColumnName="pack_errors" />
-                <ScalarProperty Name="connections" ColumnName="connections" />
-                <ScalarProperty Name="pack_sent" ColumnName="pack_sent" />
-                <ScalarProperty Name="pack_received" ColumnName="pack_received" />
-                <ScalarProperty Name="idle" ColumnName="idle" />
-                <ScalarProperty Name="io_busy" ColumnName="io_busy" />
-                <ScalarProperty Name="cpu_busy" ColumnName="cpu_busy" />
-                <ScalarProperty Name="lastrun" ColumnName="lastrun" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="spt_values">
-            <EntityTypeMapping TypeName="TCG_DataModel.spt_values">
-              <MappingFragment StoreEntitySet="spt_values">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="high" ColumnName="high" />
-                <ScalarProperty Name="low" ColumnName="low" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="number" ColumnName="number" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TCG_DataModelStoreContainer" CdmEntityContainer="TCG_DataEntities">
+    <EntitySetMapping Name="Account_AR_Status">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Account_AR_Status)">
+        <MappingFragment StoreEntitySet="Account_AR_Status">
+          <ScalarProperty Name="ARSts_ID" ColumnName="ARSts_ID" />
+          <ScalarProperty Name="ARSts_Name" ColumnName="ARSts_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Account_Bill_Status">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Account_Bill_Status)">
+        <MappingFragment StoreEntitySet="Account_Bill_Status">
+          <ScalarProperty Name="BillSts_ID" ColumnName="BillSts_ID" />
+          <ScalarProperty Name="BillSts_Name" ColumnName="BillSts_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Account_Case_Details">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Account_Case_Details)">
+        <MappingFragment StoreEntitySet="Account_Case_Details">
+          <ScalarProperty Name="ACD_ID" ColumnName="ACD_ID" />
+          <ScalarProperty Name="ACD_HspAccID" ColumnName="ACD_HspAccID" />
+          <ScalarProperty Name="ACD_Amount" ColumnName="ACD_Amount" />
+          <ScalarProperty Name="ACD_Status" ColumnName="ACD_Status" />
+          <ScalarProperty Name="ACD_Owner" ColumnName="ACD_Owner" />
+          <ScalarProperty Name="ACD_Type" ColumnName="ACD_Type" />
+          <ScalarProperty Name="ACD_SubType" ColumnName="ACD_SubType" />
+          <ScalarProperty Name="ACD_PayerReason" ColumnName="ACD_PayerReason" />
+          <ScalarProperty Name="ACD_PrimaryReason" ColumnName="ACD_PrimaryReason" />
+          <ScalarProperty Name="ACD_SecondaryReason" ColumnName="ACD_SecondaryReason" />
+          <ScalarProperty Name="ACD_PrinDiag" ColumnName="ACD_PrinDiag" />
+          <ScalarProperty Name="ACD_PrinProc" ColumnName="ACD_PrinProc" />
+          <ScalarProperty Name="ACD_Comments" ColumnName="ACD_Comments" />
+          <ScalarProperty Name="ACD_CreatedBy" ColumnName="ACD_CreatedBy" />
+          <ScalarProperty Name="ACD_CreatedDate" ColumnName="ACD_CreatedDate" />
+          <ScalarProperty Name="ACD_UpdatedBy" ColumnName="ACD_UpdatedBy" />
+          <ScalarProperty Name="ACD_Updateddate" ColumnName="ACD_Updateddate" />
+          <ScalarProperty Name="ACD_UpdatedBy_DB" ColumnName="ACD_UpdatedBy_DB" />
+          <ScalarProperty Name="ACD_Completed" ColumnName="ACD_Completed" />
+          <ScalarProperty Name="ACD_Priority" ColumnName="ACD_Priority" />
+          <ScalarProperty Name="ACD_Description" ColumnName="ACD_Description" />
+          <ScalarProperty Name="ACD_TaskFollowUp" ColumnName="ACD_TaskFollowUp" />
+          <ScalarProperty Name="ACD_DueDate" ColumnName="ACD_DueDate" />
+          <ScalarProperty Name="ACD_FollowUpDate" ColumnName="ACD_FollowUpDate" />
+          <ScalarProperty Name="ACD_DeleteFlag" ColumnName="ACD_DeleteFlag" />
+          <ScalarProperty Name="ACD_TotalCharges" ColumnName="ACD_TotalCharges" />
+          <ScalarProperty Name="ACD_TotalPay" ColumnName="ACD_TotalPay" />
+          <ScalarProperty Name="ACD_TotalAdj" ColumnName="ACD_TotalAdj" />
+          <ScalarProperty Name="ACD_AmtDiffNAA" ColumnName="ACD_AmtDiffNAA" />
+          <ScalarProperty Name="ACD_AmtDiffPayor" ColumnName="ACD_AmtDiffPayor" />
+          <ScalarProperty Name="ACD_ExpAmt" ColumnName="ACD_ExpAmt" />
+          <ScalarProperty Name="ACD_BillProvider" ColumnName="ACD_BillProvider" />
+          <ScalarProperty Name="ACD_Department" ColumnName="ACD_Department" />
+          <ScalarProperty Name="ACD_HBorPB" ColumnName="ACD_HBorPB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Account_Case_Detials_History">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Account_Case_Detials_History)">
+        <MappingFragment StoreEntitySet="Account_Case_Detials_History">
+          <ScalarProperty Name="ACDH_ID" ColumnName="ACDH_ID" />
+          <ScalarProperty Name="ACDH_ACD_ID" ColumnName="ACDH_ACD_ID" />
+          <ScalarProperty Name="ACDH_HspAccID" ColumnName="ACDH_HspAccID" />
+          <ScalarProperty Name="ACDH_Amount" ColumnName="ACDH_Amount" />
+          <ScalarProperty Name="ACDH_Status" ColumnName="ACDH_Status" />
+          <ScalarProperty Name="ACDH_Owner" ColumnName="ACDH_Owner" />
+          <ScalarProperty Name="ACDH_Type" ColumnName="ACDH_Type" />
+          <ScalarProperty Name="ACDH_SubType" ColumnName="ACDH_SubType" />
+          <ScalarProperty Name="ACDH_PayerReason" ColumnName="ACDH_PayerReason" />
+          <ScalarProperty Name="ACDH_PrimaryReason" ColumnName="ACDH_PrimaryReason" />
+          <ScalarProperty Name="ACDH_SecondaryReason" ColumnName="ACDH_SecondaryReason" />
+          <ScalarProperty Name="ACDH_PrinDiag" ColumnName="ACDH_PrinDiag" />
+          <ScalarProperty Name="ACDH_PrinProc" ColumnName="ACDH_PrinProc" />
+          <ScalarProperty Name="ACDH_Comments" ColumnName="ACDH_Comments" />
+          <ScalarProperty Name="ACDH_CreatedBy" ColumnName="ACDH_CreatedBy" />
+          <ScalarProperty Name="ACDH_CreatedDate" ColumnName="ACDH_CreatedDate" />
+          <ScalarProperty Name="ACDH_UpdatedBy_DB" ColumnName="ACDH_UpdatedBy_DB" />
+          <ScalarProperty Name="ACDH_Completed" ColumnName="ACDH_Completed" />
+          <ScalarProperty Name="ACDH_Priority" ColumnName="ACDH_Priority" />
+          <ScalarProperty Name="ACDH_Description" ColumnName="ACDH_Description" />
+          <ScalarProperty Name="ACDH_TaskFollowUp" ColumnName="ACDH_TaskFollowUp" />
+          <ScalarProperty Name="ACDH_DueDate" ColumnName="ACDH_DueDate" />
+          <ScalarProperty Name="ACDH_FollowUpDate" ColumnName="ACDH_FollowUpDate" />
+          <ScalarProperty Name="ACDH_DeleteFlag" ColumnName="ACDH_DeleteFlag" />
+          <ScalarProperty Name="ACDH_TotalCharges" ColumnName="ACDH_TotalCharges" />
+          <ScalarProperty Name="ACDH_TotalPay" ColumnName="ACDH_TotalPay" />
+          <ScalarProperty Name="ACDH_TotalAdj" ColumnName="ACDH_TotalAdj" />
+          <ScalarProperty Name="ACDH_AmtDiffNAA" ColumnName="ACDH_AmtDiffNAA" />
+          <ScalarProperty Name="ACDH_AmtDiffPayor" ColumnName="ACDH_AmtDiffPayor" />
+          <ScalarProperty Name="ACDH_ExpAmt" ColumnName="ACDH_ExpAmt" />
+          <ScalarProperty Name="ACDH_BillProvider" ColumnName="ACDH_BillProvider" />
+          <ScalarProperty Name="ACDH_Department" ColumnName="ACDH_Department" />
+          <ScalarProperty Name="ACDH_HBorPB" ColumnName="ACDH_HBorPB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Account_Case_Task">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Account_Case_Task)">
+        <MappingFragment StoreEntitySet="Account_Case_Task">
+          <ScalarProperty Name="ACT_ID" ColumnName="ACT_ID" />
+          <ScalarProperty Name="ACT_HspAccID" ColumnName="ACT_HspAccID" />
+          <ScalarProperty Name="ACT_ACD_ID" ColumnName="ACT_ACD_ID" />
+          <ScalarProperty Name="ACT_Completed" ColumnName="ACT_Completed" />
+          <ScalarProperty Name="ACT_Priority" ColumnName="ACT_Priority" />
+          <ScalarProperty Name="ACT_Description" ColumnName="ACT_Description" />
+          <ScalarProperty Name="ACT_Owner" ColumnName="ACT_Owner" />
+          <ScalarProperty Name="ACT_Comment" ColumnName="ACT_Comment" />
+          <ScalarProperty Name="ACT_DueDate" ColumnName="ACT_DueDate" />
+          <ScalarProperty Name="ACT_CreatedBy" ColumnName="ACT_CreatedBy" />
+          <ScalarProperty Name="ACT_CreatedDate" ColumnName="ACT_CreatedDate" />
+          <ScalarProperty Name="ACT_UpdatedBy" ColumnName="ACT_UpdatedBy" />
+          <ScalarProperty Name="ACT_Updateddate" ColumnName="ACT_Updateddate" />
+          <ScalarProperty Name="ACT_UpdatedBy_DB" ColumnName="ACT_UpdatedBy_DB" />
+          <ScalarProperty Name="ACT_DeleteFlag" ColumnName="ACT_DeleteFlag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Account_Case_Task_History">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Account_Case_Task_History)">
+        <MappingFragment StoreEntitySet="Account_Case_Task_History">
+          <ScalarProperty Name="ACTH_ID" ColumnName="ACTH_ID" />
+          <ScalarProperty Name="ACTH_ACT_ID" ColumnName="ACTH_ACT_ID" />
+          <ScalarProperty Name="ACTH_ACD_ID" ColumnName="ACTH_ACD_ID" />
+          <ScalarProperty Name="ACTH_HspAccID" ColumnName="ACTH_HspAccID" />
+          <ScalarProperty Name="ACTH_Completed" ColumnName="ACTH_Completed" />
+          <ScalarProperty Name="ACTH_Priority" ColumnName="ACTH_Priority" />
+          <ScalarProperty Name="ACTH_Description" ColumnName="ACTH_Description" />
+          <ScalarProperty Name="ACTH_Owner" ColumnName="ACTH_Owner" />
+          <ScalarProperty Name="ACTH_Comment" ColumnName="ACTH_Comment" />
+          <ScalarProperty Name="ACTH_DueDate" ColumnName="ACTH_DueDate" />
+          <ScalarProperty Name="ACTH_CreatedBy" ColumnName="ACTH_CreatedBy" />
+          <ScalarProperty Name="ACTH_CreatedDate" ColumnName="ACTH_CreatedDate" />
+          <ScalarProperty Name="ACTH_UpdatedBy_DB" ColumnName="ACTH_UpdatedBy_DB" />
+          <ScalarProperty Name="ACTH_DeleteFlag" ColumnName="ACTH_DeleteFlag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Account_Source">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Account_Source)">
+        <MappingFragment StoreEntitySet="Account_Source">
+          <ScalarProperty Name="AccSrc_ID" ColumnName="AccSrc_ID" />
+          <ScalarProperty Name="AccSrc_Name" ColumnName="AccSrc_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CaseCompleted_Master">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.CaseCompleted_Master)">
+        <MappingFragment StoreEntitySet="CaseCompleted_Master">
+          <ScalarProperty Name="CC_ID" ColumnName="CC_ID" />
+          <ScalarProperty Name="CC_Name" ColumnName="CC_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DenialCat_Master">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.DenialCat_Master)">
+        <MappingFragment StoreEntitySet="DenialCat_Master">
+          <ScalarProperty Name="DC_ID" ColumnName="DC_ID" />
+          <ScalarProperty Name="DC_Name" ColumnName="DC_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DenialStatus_Master">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.DenialStatus_Master)">
+        <MappingFragment StoreEntitySet="DenialStatus_Master">
+          <ScalarProperty Name="DS_ID" ColumnName="DS_ID" />
+          <ScalarProperty Name="DS_Name" ColumnName="DS_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Encounter_Type">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Encounter_Type)">
+        <MappingFragment StoreEntitySet="Encounter_Type">
+          <ScalarProperty Name="EncType_ID" ColumnName="EncType_ID" />
+          <ScalarProperty Name="EncType_Name" ColumnName="EncType_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Insurance_Company_Name">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Insurance_Company_Name)">
+        <MappingFragment StoreEntitySet="Insurance_Company_Name">
+          <ScalarProperty Name="InsCmp_ID" ColumnName="InsCmp_ID" />
+          <ScalarProperty Name="InsCmp_Name" ColumnName="InsCmp_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payor_Financial_Class">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Payor_Financial_Class)">
+        <MappingFragment StoreEntitySet="Payor_Financial_Class">
+          <ScalarProperty Name="PyrFC_ID" ColumnName="PyrFC_ID" />
+          <ScalarProperty Name="PyrFC_Name" ColumnName="PyrFC_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrimaryReason_Master">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.PrimaryReason_Master)">
+        <MappingFragment StoreEntitySet="PrimaryReason_Master">
+          <ScalarProperty Name="PRM_ID" ColumnName="PRM_ID" />
+          <ScalarProperty Name="PRM_Name" ColumnName="PRM_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Priority_Master">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Priority_Master)">
+        <MappingFragment StoreEntitySet="Priority_Master">
+          <ScalarProperty Name="PM_ID" ColumnName="PM_ID" />
+          <ScalarProperty Name="PM_Name" ColumnName="PM_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Role)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="role_key" ColumnName="role_key" />
+          <ScalarProperty Name="role_code" ColumnName="role_code" />
+          <ScalarProperty Name="role_code_short" ColumnName="role_code_short" />
+          <ScalarProperty Name="role_designation" ColumnName="role_designation" />
+          <ScalarProperty Name="role_createdBy_user" ColumnName="role_createdBy_user" />
+          <ScalarProperty Name="role_created_date" ColumnName="role_created_date" />
+          <ScalarProperty Name="role_delete_flag" ColumnName="role_delete_flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RootCause_Master">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.RootCause_Master)">
+        <MappingFragment StoreEntitySet="RootCause_Master">
+          <ScalarProperty Name="RC_ID" ColumnName="RC_ID" />
+          <ScalarProperty Name="RC_Name" ColumnName="RC_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status_Master">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Status_Master)">
+        <MappingFragment StoreEntitySet="Status_Master">
+          <ScalarProperty Name="SM_ID" ColumnName="SM_ID" />
+          <ScalarProperty Name="SM_Name" ColumnName="SM_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Task_Master">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Task_Master)">
+        <MappingFragment StoreEntitySet="Task_Master">
+          <ScalarProperty Name="TM_ID" ColumnName="TM_ID" />
+          <ScalarProperty Name="TM_Name" ColumnName="TM_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Underpayment_Reason">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Underpayment_Reason)">
+        <MappingFragment StoreEntitySet="Underpayment_Reason">
+          <ScalarProperty Name="Reason_Code" ColumnName="Reason_Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Underpayments">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Underpayment)">
+        <MappingFragment StoreEntitySet="Underpayments">
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Acct_Class" ColumnName="Acct_Class" />
+          <ScalarProperty Name="Acct_Status" ColumnName="Acct_Status" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Disch_Date" ColumnName="Disch_Date" />
+          <ScalarProperty Name="Acct_Bal" ColumnName="Acct_Bal" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" ColumnName="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" />
+          <ScalarProperty Name="Plan_Name" ColumnName="Plan_Name" />
+          <ScalarProperty Name="Payor_Name" ColumnName="Payor_Name" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" ColumnName="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" />
+          <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected_Allowed_Amount" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Payor_Specified_" ColumnName="Allowed_Amount_Difference__Payor_Specified_" />
+          <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+          <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+          <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
+          <ScalarProperty Name="Biller" ColumnName="Biller" />
+          <ScalarProperty Name="BillingProvider" ColumnName="BillingProvider" />
+          <ScalarProperty Name="CaseStatus" ColumnName="CaseStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Underpayments_Stage">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Underpayments_Stage)">
+        <MappingFragment StoreEntitySet="Underpayments_Stage">
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Acct_Class" ColumnName="Acct_Class" />
+          <ScalarProperty Name="Acct_Status" ColumnName="Acct_Status" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Disch_Date" ColumnName="Disch_Date" />
+          <ScalarProperty Name="Acct_Bal" ColumnName="Acct_Bal" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Diagnosis_Codes" ColumnName="Diagnosis_Codes" />
+          <ScalarProperty Name="Plan_Name" ColumnName="Plan_Name" />
+          <ScalarProperty Name="Payor_Name" ColumnName="Payor_Name" />
+          <ScalarProperty Name="Allowed_Amount_Difference" ColumnName="Allowed_Amount_Difference" />
+          <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected_Allowed_Amount" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Payor_Specified" ColumnName="Allowed_Amount_Difference__Payor_Specified" />
+          <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+          <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+          <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
+          <ScalarProperty Name="Biller" ColumnName="Biller" />
+          <ScalarProperty Name="BillingProvider" ColumnName="BillingProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Login">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.User_Login)">
+        <MappingFragment StoreEntitySet="User_Login">
+          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+          <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+          <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+          <ScalarProperty Name="user_web_login" ColumnName="user_web_login" />
+          <ScalarProperty Name="user_web_pwd" ColumnName="user_web_pwd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_Data">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Users_Data)">
+        <MappingFragment StoreEntitySet="Users_Data">
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+          <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+          <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+          <ScalarProperty Name="user_full_name" ColumnName="user_full_name" />
+          <ScalarProperty Name="user_role_key" ColumnName="user_role_key" />
+          <ScalarProperty Name="user_phone_number" ColumnName="user_phone_number" />
+          <ScalarProperty Name="user_email_id" ColumnName="user_email_id" />
+          <ScalarProperty Name="user_added_by" ColumnName="user_added_by" />
+          <ScalarProperty Name="user_add_date" ColumnName="user_add_date" />
+          <ScalarProperty Name="user_updated_by" ColumnName="user_updated_by" />
+          <ScalarProperty Name="user_updated_date" ColumnName="user_updated_date" />
+          <ScalarProperty Name="user_delete_flag" ColumnName="user_delete_flag" />
+          <ScalarProperty Name="user_middle_name" ColumnName="user_middle_name" />
+          <ScalarProperty Name="user_web_pwd" ColumnName="user_web_pwd" />
+          <ScalarProperty Name="otp_key" ColumnName="otp_key" />
+          <ScalarProperty Name="otp_time" ColumnName="otp_time" />
+          <ScalarProperty Name="user_active_flag" ColumnName="user_active_flag" />
+          <ScalarProperty Name="user_web_login" ColumnName="user_web_login" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Denials_Data">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Denials_Data)">
+        <MappingFragment StoreEntitySet="Denials_Data">
+          <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+          <ScalarProperty Name="Ext_Rsn_Code" ColumnName="Ext_Rsn_Code" />
+          <ScalarProperty Name="Ln_on_EOB" ColumnName="Ln_on_EOB" />
+          <ScalarProperty Name="Bucket_Payor" ColumnName="Bucket_Payor" />
+          <ScalarProperty Name="Bucket_Plan" ColumnName="Bucket_Plan" />
+          <ScalarProperty Name="Aging_Bkt" ColumnName="Aging_Bkt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Rcvd_Dt" ColumnName="Rcvd_Dt" />
+          <ScalarProperty Name="Acct_Class" ColumnName="Acct_Class" />
+          <ScalarProperty Name="Account_ID" ColumnName="Account_ID" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Account_Location" ColumnName="Account_Location" />
+          <ScalarProperty Name="Acct_Status" ColumnName="Acct_Status" />
+          <ScalarProperty Name="Rsn_Code" ColumnName="Rsn_Code" />
+          <ScalarProperty Name="Reporting_Rsn_Code_w_Desc" ColumnName="Reporting_Rsn_Code_w_Desc" />
+          <ScalarProperty Name="Service_Area" ColumnName="Service_Area" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Financial_Class" ColumnName="Financial_Class" />
+          <ScalarProperty Name="Src_Pmt_Tx" ColumnName="Src_Pmt_Tx" />
+          <ScalarProperty Name="Rev_Code" ColumnName="Rev_Code" />
+          <ScalarProperty Name="CPT_R_Code" ColumnName="CPT_R_Code" />
+          <ScalarProperty Name="Allowed_Amt" ColumnName="Allowed_Amt" />
+          <ScalarProperty Name="Denied_Amount" ColumnName="Denied_Amount" />
+          <ScalarProperty Name="Billed_Amount" ColumnName="Billed_Amount" />
+          <ScalarProperty Name="Owning_Area" ColumnName="Owning_Area" />
+          <ScalarProperty Name="Source_Area" ColumnName="Source_Area" />
+          <ScalarProperty Name="Root_Cause" ColumnName="Root_Cause" />
+          <ScalarProperty Name="Preventable" ColumnName="Preventable" />
+          <ScalarProperty Name="Follow_Up_Date" ColumnName="Follow_Up_Date" />
+          <ScalarProperty Name="Resolution_or_Resp_Cat" ColumnName="Resolution_or_Resp_Cat" />
+          <ScalarProperty Name="Follow_up_ID" ColumnName="Follow_up_ID" />
+          <ScalarProperty Name="First_Payor_Rcvd_Dt" ColumnName="First_Payor_Rcvd_Dt" />
+          <ScalarProperty Name="Last_Payor_Rcvd_Dt" ColumnName="Last_Payor_Rcvd_Dt" />
+          <ScalarProperty Name="Days_Denied" ColumnName="Days_Denied" />
+          <ScalarProperty Name="Denial_Cat" ColumnName="Denial_Cat" />
+          <ScalarProperty Name="Ext_Rsn_Code_w__Desc" ColumnName="Ext_Rsn_Code_w__Desc" />
+          <ScalarProperty Name="First_Claim_Dt" ColumnName="First_Claim_Dt" />
+          <ScalarProperty Name="HB_Acct_Bal" ColumnName="HB_Acct_Bal" />
+          <ScalarProperty Name="Paid_Amount" ColumnName="Paid_Amount" />
+          <ScalarProperty Name="Last_Reopened_Date" ColumnName="Last_Reopened_Date" />
+          <ScalarProperty Name="Last_User_for_Closed_Rec" ColumnName="Last_User_for_Closed_Rec" />
+          <ScalarProperty Name="Last_Completed_Date" ColumnName="Last_Completed_Date" />
+          <ScalarProperty Name="Rev_Code_Desc" ColumnName="Rev_Code_Desc" />
+          <ScalarProperty Name="Source_Dept" ColumnName="Source_Dept" />
+          <ScalarProperty Name="Stage" ColumnName="Stage" />
+          <ScalarProperty Name="Clinical_Root_Cause" ColumnName="Clinical_Root_Cause" />
+          <ScalarProperty Name="First_Ext_Claim_Sent_Date" ColumnName="First_Ext_Claim_Sent_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Forgot_Pwd">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Forgot_Pwd)">
+        <MappingFragment StoreEntitySet="Forgot_Pwd">
+          <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+          <ScalarProperty Name="user_email_id" ColumnName="user_email_id" />
+          <ScalarProperty Name="new_pwd" ColumnName="new_pwd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timely_Filing_Limits">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Timely_Filing_Limits)">
+        <MappingFragment StoreEntitySet="Timely_Filing_Limits">
+          <ScalarProperty Name="Payer" ColumnName="Payer" />
+          <ScalarProperty Name="FileAsPrimary" ColumnName="FileAsPrimary" />
+          <ScalarProperty Name="PrimaryInMonths" ColumnName="PrimaryInMonths" />
+          <ScalarProperty Name="PrimaryInDays" ColumnName="PrimaryInDays" />
+          <ScalarProperty Name="FileAsSecondary" ColumnName="FileAsSecondary" />
+          <ScalarProperty Name="SecondaryInMonths" ColumnName="SecondaryInMonths" />
+          <ScalarProperty Name="SecondaryInDays" ColumnName="SecondaryInDays" />
+          <ScalarProperty Name="AppealInMonths" ColumnName="AppealInMonths" />
+          <ScalarProperty Name="AppealInDays" ColumnName="AppealInDays" />
+          <ScalarProperty Name="AppealTimeFrame" ColumnName="AppealTimeFrame" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_AR_AGE_CATEGORY">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.VW_AR_AGE_CATEGORY)">
+        <MappingFragment StoreEntitySet="VW_AR_AGE_CATEGORY">
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Hospital_Account_ID" ColumnName="Hospital_Account_ID" />
+          <ScalarProperty Name="Admission_Date" ColumnName="Admission_Date" />
+          <ScalarProperty Name="First_Billed_Date" ColumnName="First_Billed_Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Agency" ColumnName="Agency" />
+          <ScalarProperty Name="Collectable" ColumnName="Collectable" />
+          <ScalarProperty Name="Primary_Coverage_Payor_Name" ColumnName="Primary_Coverage_Payor_Name" />
+          <ScalarProperty Name="Total_Account_Balance" ColumnName="Total_Account_Balance" />
+          <ScalarProperty Name="Primary_Coverage_Payor_Financial_Class" ColumnName="Primary_Coverage_Payor_Financial_Class" />
+          <ScalarProperty Name="Account_AR_Status" ColumnName="Account_AR_Status" />
+          <ScalarProperty Name="Total_Primary_Insurance_Balance" ColumnName="Total_Primary_Insurance_Balance" />
+          <ScalarProperty Name="Account_Department_Name" ColumnName="Account_Department_Name" />
+          <ScalarProperty Name="Account_Location_Name" ColumnName="Account_Location_Name" />
+          <ScalarProperty Name="Account_Service_Area_Name" ColumnName="Account_Service_Area_Name" />
+          <ScalarProperty Name="Account_Bill_Status" ColumnName="Account_Bill_Status" />
+          <ScalarProperty Name="Encounter_Type" ColumnName="Encounter_Type" />
+          <ScalarProperty Name="Account_Source" ColumnName="Account_Source" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_AR_AGE_CATEGORY_CREDIT">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.VW_AR_AGE_CATEGORY_CREDIT)">
+        <MappingFragment StoreEntitySet="VW_AR_AGE_CATEGORY_CREDIT">
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Hospital_Account_ID" ColumnName="Hospital_Account_ID" />
+          <ScalarProperty Name="Admission_Date" ColumnName="Admission_Date" />
+          <ScalarProperty Name="First_Billed_Date" ColumnName="First_Billed_Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Agency" ColumnName="Agency" />
+          <ScalarProperty Name="Collectable" ColumnName="Collectable" />
+          <ScalarProperty Name="Primary_Coverage_Payor_Name" ColumnName="Primary_Coverage_Payor_Name" />
+          <ScalarProperty Name="Total_Account_Balance" ColumnName="Total_Account_Balance" />
+          <ScalarProperty Name="Primary_Coverage_Payor_Financial_Class" ColumnName="Primary_Coverage_Payor_Financial_Class" />
+          <ScalarProperty Name="Account_AR_Status" ColumnName="Account_AR_Status" />
+          <ScalarProperty Name="Total_Primary_Insurance_Balance" ColumnName="Total_Primary_Insurance_Balance" />
+          <ScalarProperty Name="Account_Department_Name" ColumnName="Account_Department_Name" />
+          <ScalarProperty Name="Account_Location_Name" ColumnName="Account_Location_Name" />
+          <ScalarProperty Name="Account_Service_Area_Name" ColumnName="Account_Service_Area_Name" />
+          <ScalarProperty Name="Account_Bill_Status" ColumnName="Account_Bill_Status" />
+          <ScalarProperty Name="Encounter_Type" ColumnName="Encounter_Type" />
+          <ScalarProperty Name="Account_Source" ColumnName="Account_Source" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_AR_AGE_CATEGORY_DEBIT">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.VW_AR_AGE_CATEGORY_DEBIT)">
+        <MappingFragment StoreEntitySet="VW_AR_AGE_CATEGORY_DEBIT">
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Hospital_Account_ID" ColumnName="Hospital_Account_ID" />
+          <ScalarProperty Name="Admission_Date" ColumnName="Admission_Date" />
+          <ScalarProperty Name="First_Billed_Date" ColumnName="First_Billed_Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Agency" ColumnName="Agency" />
+          <ScalarProperty Name="Collectable" ColumnName="Collectable" />
+          <ScalarProperty Name="Primary_Coverage_Payor_Name" ColumnName="Primary_Coverage_Payor_Name" />
+          <ScalarProperty Name="Total_Account_Balance" ColumnName="Total_Account_Balance" />
+          <ScalarProperty Name="Primary_Coverage_Payor_Financial_Class" ColumnName="Primary_Coverage_Payor_Financial_Class" />
+          <ScalarProperty Name="Account_AR_Status" ColumnName="Account_AR_Status" />
+          <ScalarProperty Name="Total_Primary_Insurance_Balance" ColumnName="Total_Primary_Insurance_Balance" />
+          <ScalarProperty Name="Account_Department_Name" ColumnName="Account_Department_Name" />
+          <ScalarProperty Name="Account_Location_Name" ColumnName="Account_Location_Name" />
+          <ScalarProperty Name="Account_Service_Area_Name" ColumnName="Account_Service_Area_Name" />
+          <ScalarProperty Name="Account_Bill_Status" ColumnName="Account_Bill_Status" />
+          <ScalarProperty Name="Encounter_Type" ColumnName="Encounter_Type" />
+          <ScalarProperty Name="Account_Source" ColumnName="Account_Source" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HBorPB_Master">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.HBorPB_Master)">
+        <MappingFragment StoreEntitySet="HBorPB_Master">
+          <ScalarProperty Name="HP_ID" ColumnName="HP_ID" />
+          <ScalarProperty Name="HP_Name" ColumnName="HP_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Underpayment_ReasonCode">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Underpayment_ReasonCode)">
+        <MappingFragment StoreEntitySet="Underpayment_ReasonCode">
+          <ScalarProperty Name="Reason_Code" ColumnName="Reason_Code" />
+          <ScalarProperty Name="Reason_Title" ColumnName="Reason_Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Underpayments_APD">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Underpayments_APD)">
+        <MappingFragment StoreEntitySet="Underpayments_APD">
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Acct_Class" ColumnName="Acct_Class" />
+          <ScalarProperty Name="Acct_Status" ColumnName="Acct_Status" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Disch_Date" ColumnName="Disch_Date" />
+          <ScalarProperty Name="Acct_Bal" ColumnName="Acct_Bal" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" ColumnName="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" />
+          <ScalarProperty Name="Plan_Name" ColumnName="Plan_Name" />
+          <ScalarProperty Name="Payor_Name" ColumnName="Payor_Name" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" ColumnName="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" />
+          <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected_Allowed_Amount" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Payor_Specified_" ColumnName="Allowed_Amount_Difference__Payor_Specified_" />
+          <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+          <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+          <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
+          <ScalarProperty Name="Biller" ColumnName="Biller" />
+          <ScalarProperty Name="BillingProvider" ColumnName="BillingProvider" />
+          <ScalarProperty Name="CaseStatus" ColumnName="CaseStatus" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="Adm_Ser_Date" ColumnName="Adm_Ser_Date" />
+          <ScalarProperty Name="Bill_Date" ColumnName="Bill_Date" />
+          <ScalarProperty Name="Claim_Date" ColumnName="Claim_Date" />
+          <ScalarProperty Name="Total_Charges" ColumnName="Total_Charges" />
+          <ScalarProperty Name="Financial_Class" ColumnName="Financial_Class" />
+          <ScalarProperty Name="Ins1_ID__" ColumnName="Ins1_ID__" />
+          <ScalarProperty Name="INS1_Balance" ColumnName="INS1_Balance" />
+          <ScalarProperty Name="Ins2_ID__" ColumnName="Ins2_ID__" />
+          <ScalarProperty Name="INS2_Mnemonic" ColumnName="INS2_Mnemonic" />
+          <ScalarProperty Name="Ins2_Payer" ColumnName="Ins2_Payer" />
+          <ScalarProperty Name="INS2_Balance" ColumnName="INS2_Balance" />
+          <ScalarProperty Name="Ins3_ID" ColumnName="Ins3_ID" />
+          <ScalarProperty Name="INS3_Mnemonic" ColumnName="INS3_Mnemonic" />
+          <ScalarProperty Name="Ins3_Payer" ColumnName="Ins3_Payer" />
+          <ScalarProperty Name="INS3_Balance" ColumnName="INS3_Balance" />
+          <ScalarProperty Name="Pt_Balance" ColumnName="Pt_Balance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Underpayments_PB">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Underpayments_PB)">
+        <MappingFragment StoreEntitySet="Underpayments_PB">
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Acct_Class" ColumnName="Acct_Class" />
+          <ScalarProperty Name="Acct_Status" ColumnName="Acct_Status" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Disch_Date" ColumnName="Disch_Date" />
+          <ScalarProperty Name="Acct_Bal" ColumnName="Acct_Bal" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" ColumnName="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" />
+          <ScalarProperty Name="Plan_Name" ColumnName="Plan_Name" />
+          <ScalarProperty Name="Payor_Name" ColumnName="Payor_Name" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" ColumnName="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" />
+          <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected_Allowed_Amount" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Payor_Specified_" ColumnName="Allowed_Amount_Difference__Payor_Specified_" />
+          <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+          <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+          <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
+          <ScalarProperty Name="Biller" ColumnName="Biller" />
+          <ScalarProperty Name="BillingProvider" ColumnName="BillingProvider" />
+          <ScalarProperty Name="TOTALCHARGES" ColumnName="TOTALCHARGES" />
+          <ScalarProperty Name="TOTALPAYMENTS" ColumnName="TOTALPAYMENTS" />
+          <ScalarProperty Name="TOTALADJUSTMENTS" ColumnName="TOTALADJUSTMENTS" />
+          <ScalarProperty Name="FIRSTPAYMENTDATE" ColumnName="FIRSTPAYMENTDATE" />
+          <ScalarProperty Name="FIRSTPAYMENTAMT" ColumnName="FIRSTPAYMENTAMT" />
+          <ScalarProperty Name="LASTPAYMENTDATE" ColumnName="LASTPAYMENTDATE" />
+          <ScalarProperty Name="LASTPAYMENTAMT" ColumnName="LASTPAYMENTAMT" />
+          <ScalarProperty Name="CPTCODES" ColumnName="CPTCODES" />
+          <ScalarProperty Name="DEPARTMENTID" ColumnName="DEPARTMENTID" />
+          <ScalarProperty Name="DEPARTMENTNAME" ColumnName="DEPARTMENTNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnderPayments_Stage_HB">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.UnderPayments_Stage_HB)">
+        <MappingFragment StoreEntitySet="UnderPayments_Stage_HB">
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Acct_Class" ColumnName="Acct_Class" />
+          <ScalarProperty Name="Acct_Status" ColumnName="Acct_Status" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Disch_Date" ColumnName="Disch_Date" />
+          <ScalarProperty Name="Acct_Bal" ColumnName="Acct_Bal" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" ColumnName="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" />
+          <ScalarProperty Name="Plan_Name" ColumnName="Plan_Name" />
+          <ScalarProperty Name="Payor_Name" ColumnName="Payor_Name" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" ColumnName="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" />
+          <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected_Allowed_Amount" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Payor_Specified_" ColumnName="Allowed_Amount_Difference__Payor_Specified_" />
+          <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+          <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+          <ScalarProperty Name="Date_of_Update" ColumnName="Date_of_Update" />
+          <ScalarProperty Name="Biller" ColumnName="Biller" />
+          <ScalarProperty Name="Billing_Provider" ColumnName="Billing_Provider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Underpayment_ReasonCode1">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Underpayment_ReasonCode1)">
+        <MappingFragment StoreEntitySet="Underpayment_ReasonCode1">
+          <ScalarProperty Name="Reason_Code" ColumnName="Reason_Code" />
+          <ScalarProperty Name="Reason_Title" ColumnName="Reason_Title" />
+          <ScalarProperty Name="Root_Cause_Category" ColumnName="Root_Cause_Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Underpayments_Old">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.Underpayments_Old)">
+        <MappingFragment StoreEntitySet="Underpayments_Old">
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Acct_Class" ColumnName="Acct_Class" />
+          <ScalarProperty Name="Acct_Status" ColumnName="Acct_Status" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Disch_Date" ColumnName="Disch_Date" />
+          <ScalarProperty Name="Acct_Bal" ColumnName="Acct_Bal" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" ColumnName="Diagnosis_Codes__Mapped___CMS_ICD_10_CM___ICD_9_CM_" />
+          <ScalarProperty Name="Plan_Name" ColumnName="Plan_Name" />
+          <ScalarProperty Name="Payor_Name" ColumnName="Payor_Name" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" ColumnName="Allowed_Amount_Difference__Current_NAA_Posted_To_Bucket_" />
+          <ScalarProperty Name="Expected_Allowed_Amount" ColumnName="Expected_Allowed_Amount" />
+          <ScalarProperty Name="Allowed_Amount_Difference__Payor_Specified_" ColumnName="Allowed_Amount_Difference__Payor_Specified_" />
+          <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+          <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+          <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
+          <ScalarProperty Name="Biller" ColumnName="Biller" />
+          <ScalarProperty Name="BillingProvider" ColumnName="BillingProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnderPayments_PB_July">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.UnderPayments_PB_July)">
+        <MappingFragment StoreEntitySet="UnderPayments_PB_July">
+          <ScalarProperty Name="Acct_Class" ColumnName="Acct_Class" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Acct_Status" ColumnName="Acct_Status" />
+          <ScalarProperty Name="Account_Name" ColumnName="Account_Name" />
+          <ScalarProperty Name="Procedure" ColumnName="Procedure" />
+          <ScalarProperty Name="Svc_Dt" ColumnName="Svc_Dt" />
+          <ScalarProperty Name="Ins_Amt" ColumnName="Ins_Amt" />
+          <ScalarProperty Name="Billing_Provider" ColumnName="Billing_Provider" />
+          <ScalarProperty Name="Payor_Name" ColumnName="Payor_Name" />
+          <ScalarProperty Name="Acct_Bal" ColumnName="Acct_Bal" />
+          <ScalarProperty Name="Account_Workqueues" ColumnName="Account_Workqueues" />
+          <ScalarProperty Name="All_Claim_Payors" ColumnName="All_Claim_Payors" />
+          <ScalarProperty Name="Allow_Discrepancy_Amt" ColumnName="Allow_Discrepancy_Amt" />
+          <ScalarProperty Name="Plan_Name" ColumnName="Plan_Name" />
+          <ScalarProperty Name="Cur_Plan_Group" ColumnName="Cur_Plan_Group" />
+          <ScalarProperty Name="Dr_Cr" ColumnName="Dr_Cr" />
+          <ScalarProperty Name="Dept_Specialty" ColumnName="Dept_Specialty" />
+          <ScalarProperty Name="Diagnosis_Code" ColumnName="Diagnosis_Code" />
+          <ScalarProperty Name="Enc_Specialty" ColumnName="Enc_Specialty" />
+          <ScalarProperty Name="Prim_Fee_Sched" ColumnName="Prim_Fee_Sched" />
+          <ScalarProperty Name="Procedure_Code" ColumnName="Procedure_Code" />
+          <ScalarProperty Name="Procedure_Description" ColumnName="Procedure_Description" />
+          <ScalarProperty Name="Underpayment_Reason_Code" ColumnName="Underpayment_Reason_Code" />
+          <ScalarProperty Name="Brief_Summary" ColumnName="Brief_Summary" />
+          <ScalarProperty Name="DateOfUpdate" ColumnName="DateOfUpdate" />
+          <ScalarProperty Name="ServiceDepartmentName" ColumnName="ServiceDepartmentName" />
+          <ScalarProperty Name="AccountMostRecentClaimDate" ColumnName="AccountMostRecentClaimDate" />
+          <ScalarProperty Name="TotalChargeAmount" ColumnName="TotalChargeAmount" />
+          <ScalarProperty Name="TotalPaymentAmount" ColumnName="TotalPaymentAmount" />
+          <ScalarProperty Name="TotalAdjustmentAmount" ColumnName="TotalAdjustmentAmount" />
+          <ScalarProperty Name="AllowedAmount_ProfessionalOnly" ColumnName="AllowedAmount_ProfessionalOnly" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spt_fallback_db">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.spt_fallback_db)">
+        <MappingFragment StoreEntitySet="spt_fallback_db">
+          <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+          <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+          <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="dbid" ColumnName="dbid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="xfallback_dbid" ColumnName="xfallback_dbid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spt_fallback_dev">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.spt_fallback_dev)">
+        <MappingFragment StoreEntitySet="spt_fallback_dev">
+          <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+          <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+          <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+          <ScalarProperty Name="low" ColumnName="low" />
+          <ScalarProperty Name="high" ColumnName="high" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phyname" ColumnName="phyname" />
+          <ScalarProperty Name="xfallback_low" ColumnName="xfallback_low" />
+          <ScalarProperty Name="xfallback_drive" ColumnName="xfallback_drive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spt_fallback_usg">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.spt_fallback_usg)">
+        <MappingFragment StoreEntitySet="spt_fallback_usg">
+          <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+          <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+          <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+          <ScalarProperty Name="dbid" ColumnName="dbid" />
+          <ScalarProperty Name="segmap" ColumnName="segmap" />
+          <ScalarProperty Name="lstart" ColumnName="lstart" />
+          <ScalarProperty Name="sizepg" ColumnName="sizepg" />
+          <ScalarProperty Name="vstart" ColumnName="vstart" />
+          <ScalarProperty Name="xfallback_vstart" ColumnName="xfallback_vstart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spt_monitor">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.spt_monitor)">
+        <MappingFragment StoreEntitySet="spt_monitor">
+          <ScalarProperty Name="lastrun" ColumnName="lastrun" />
+          <ScalarProperty Name="cpu_busy" ColumnName="cpu_busy" />
+          <ScalarProperty Name="io_busy" ColumnName="io_busy" />
+          <ScalarProperty Name="idle" ColumnName="idle" />
+          <ScalarProperty Name="pack_received" ColumnName="pack_received" />
+          <ScalarProperty Name="pack_sent" ColumnName="pack_sent" />
+          <ScalarProperty Name="connections" ColumnName="connections" />
+          <ScalarProperty Name="pack_errors" ColumnName="pack_errors" />
+          <ScalarProperty Name="total_read" ColumnName="total_read" />
+          <ScalarProperty Name="total_write" ColumnName="total_write" />
+          <ScalarProperty Name="total_errors" ColumnName="total_errors" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spt_values">
+      <EntityTypeMapping TypeName="IsTypeOf(TCG_DataModel.spt_values)">
+        <MappingFragment StoreEntitySet="spt_values">
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="low" ColumnName="low" />
+          <ScalarProperty Name="high" ColumnName="high" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -1522,7 +2895,7 @@ warning 6002: The table/view 'master.dbo.spt_values' does not have a primary key
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

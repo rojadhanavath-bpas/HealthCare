@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using DAL_TCG;
 
 namespace HealthcareAnalytics.Models
 {

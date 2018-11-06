@@ -49,5 +49,19 @@ namespace DAL_TCG
         public string Ins3_Payer { get; set; }
         public string INS3_Balance { get; set; }
         public Nullable<double> Pt_Balance { get; set; }
+
+
+        public string DischargeDate { get; set; }
+        public decimal convertAmount { get; set; }
+        public string convertBal { get; set; }
+        public string AccId { get; set; }
+        public string PatientName { get; set; }
+        public string caseFlag { get; set; }
+        public Boolean flagCase { get; set; }
+        public string ddlValue { get; set; }
+        public int flag { get; set; }
+        public int flagCaseValue { get; set; }
+
+
     }
 }

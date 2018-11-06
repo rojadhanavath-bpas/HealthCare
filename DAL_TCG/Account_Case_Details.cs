@@ -56,7 +56,24 @@ namespace DAL_TCG
         public string ACD_BillProvider { get; set; }
         public string ACD_Department { get; set; }
         public string ACD_HBorPB { get; set; }
-    
+
+        public string dateConvert { get; set; }
+        public string dateFollowUp { get; set; }
+        public decimal convertAmount { get; set; }
+        public string convAmt { get; set; }
+        public int link { get; set; }
+        public string userName { get; set; }
+        public string userID { get; set; }
+        public string convAllAmtDiff { get; set; }
+        public string convExpAmtDiff { get; set; }
+        public string convAllAmtDiffPyr { get; set; }
+        public int userFlag { get; set; }
+        public string TotChrgAmt { get; set; }
+        public string TotPayAmt { get; set; }
+        public string TotAdjAmt { get; set; }
+        public string TotAccBal { get; set; }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account_Case_Detials_History> Account_Case_Detials_History { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

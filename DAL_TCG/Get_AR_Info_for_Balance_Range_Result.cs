@@ -70,5 +70,9 @@ namespace DAL_TCG
         public Nullable<decimal> Total_Bad_Debt_Payment_Amount { get; set; }
         public Nullable<decimal> Total_Settlement_Payments { get; set; }
         public Nullable<decimal> Total_Charge_Amount { get; set; }
+
+        public string New_DischargeDate { get; set; }
+        public decimal convertAmount { get; set; }
+        public string convertBal { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using HealthcareAnalytics.Models;
 using System.Web.Security;
 using System.Net;
-using System.Text;  // for class Encoding
+using System.Text; 
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -82,7 +82,6 @@ namespace HealthcareAnalytics.Controllers
             {
                 ViewBag.UserFirst = Session["first"];
                 ViewBag.UserLast = Session["last"];
-
 
                 return View();
             }
@@ -206,8 +205,8 @@ namespace HealthcareAnalytics.Controllers
                         result[i].Total_Account_Balance = result[i].Total_Account_Balance.HasValue ? Decimal.Round(result[i].Total_Account_Balance.Value, 2) : 0;
                         string testAmt = result[i].Total_Account_Balance.Value.ToString("0.00");
                         Decimal testDecimal = Convert.ToDecimal(testAmt);
-                        result[i].Total_Charge_Amount = Math.Round(testDecimal, 2);
-                        result[i].Total_Account_Balance = "$" + result[i].Total_Charge_Amount.Value.ToString();
+                        result[i].convertAmount = Math.Round(testDecimal, 2);
+                        result[i].convertBal = "$" + result[i].convertAmount.ToString();
                     }
                     return View(result.ToPagedList(pageNumber, pageSize));
                 }

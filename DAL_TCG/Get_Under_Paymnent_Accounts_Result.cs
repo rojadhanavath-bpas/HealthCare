@@ -31,6 +31,19 @@ namespace DAL_TCG
         public string Brief_Summary { get; set; }
         public Nullable<System.DateTime> DateOfUpdate { get; set; }
         public string Biller { get; set; }
+
         public string CaseStatus { get; set; }
+
+        public string DischargeDate { get; set; }
+        public decimal convertAmount { get; set; }
+        public string convertBal { get; set; }
+        public string AccId { get; set; }
+        public string PatientName { get; set; }
+        public string caseFlag { get; set; }
+        public Boolean flagCase { get; set; }
+        public string ddlValue { get; set; }
+        public int flag { get; set; }
+        public int flagCaseValue { get; set; }
+
     }
 }

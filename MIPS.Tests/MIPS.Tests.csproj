@@ -48,12 +48,6 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions">
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="MIPS">
-      <HintPath>..\..\..\..\..\Users\roja dhanavath\Downloads\MIPS.dll</HintPath>
-    </Reference>
-    <Reference Include="MIPS.Tests">
-      <HintPath>..\..\..\..\..\Users\roja dhanavath\Downloads\MIPS.Tests.dll</HintPath>
-    </Reference>
     <!--<Reference Include="MIPS">
       <HintPath>..\..\..\..\..\Users\roja dhanavath\Downloads\MIPS.dll</HintPath>-->
     <!--<Reference Include="MIPS.Tests">
